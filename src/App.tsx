@@ -13,6 +13,7 @@ import {
   Check,
   Download,
   History,
+  House,
   Library,
   Menu,
   Moon,
@@ -136,7 +137,13 @@ const emptyOptions: BracketOptions = {
   seed: Math.floor(Math.random() * 2 ** 31),
   name: "",
 };
-type View = "new" | "game" | "active" | "history" | "library" | "settings";
+type View =
+  "home" | "new" | "game" | "active" | "history" | "library" | "settings";
+const menuGuard = { musicBracketMenuGuard: true };
+function keepMenuInHistory(url?: string) {
+  if (!window.history.state?.musicBracketMenuGuard)
+    window.history.pushState(menuGuard, "", url);
+}
 function roundTitle(round: number, total: number) {
   switch (total - round) {
     case 1:
@@ -153,8 +160,11 @@ export default function App() {
   const [snapshotSize, setSnapshotSize] = useState(16);
   const [artistChosen, setArtistChosen] = useState(false);
   const [incoming, setIncoming] = useState<Definition | null>(null);
+  const incomingUrl = useRef<string | undefined>(undefined);
+  const leavingForMenu = useRef(false);
   const [share, setShare] = useState<Definition | null>(null);
   const [confirmNew, setConfirmNew] = useState(false);
+  const [confirmHome, setConfirmHome] = useState(false);
   const [seenStage, setSeenStage] = useState("");
   const [winnerRun, setWinnerRun] = useState<Run>();
   const [archiveFailures, setArchiveFailures] = useState<string[]>([]);
@@ -162,7 +172,7 @@ export default function App() {
   const [catalog, setCatalog] = useState<Catalog | null>(null),
     [settings, setSettings] = useState(defaults),
     [loaded, setLoaded] = useState(false),
-    [view, setView] = useState<View>("new"),
+    [view, setView] = useState<View>("home"),
     [runs, setRuns] = useState<Run[]>([]),
     [history, setHistory] = useState<HistoryEntry[]>([]),
     [runId, setRunId] = useState(""),
@@ -185,7 +195,9 @@ export default function App() {
   const menuOpener = useRef<HTMLButtonElement | null>(null);
   const drawerClose = useRef<HTMLButtonElement>(null);
   const drawerOpen = menu || settings.pinned;
-  useDialogFocus(bracket && !share, ".bracket-dialog", () => setBracket(false));
+  useDialogFocus(bracket && !share && !confirmHome, ".bracket-dialog", () =>
+    setBracket(false),
+  );
   const run =
       runs.find((r) => r.id === runId) ??
       (winnerRun?.id === runId ? winnerRun : undefined),
@@ -194,10 +206,32 @@ export default function App() {
   const stageKey = match && run ? `${run.id}:${match.round}` : "";
   const showStage =
     view === "game" && Boolean(stageKey) && seenStage !== stageKey;
-  const showPrompt = confirmNew || showStage;
-  const dismissPrompt = () =>
-    confirmNew ? setConfirmNew(false) : setSeenStage(stageKey);
-  useDialogFocus(showPrompt, ".bracket-prompt", dismissPrompt);
+  const showPrompt = confirmHome || confirmNew || showStage;
+  const dismissPrompt = () => {
+    if (confirmHome) setConfirmHome(false);
+    else if (confirmNew) setConfirmNew(false);
+    else setSeenStage(stageKey);
+  };
+  useDialogFocus(
+    showPrompt,
+    confirmHome ? ".home-prompt" : ".run-prompt",
+    dismissPrompt,
+  );
+  useLayoutEffect(() => {
+    if (view !== "home") keepMenuInHistory();
+    window.scrollTo(0, 0);
+    const onBack = (event: PopStateEvent) => {
+      if (leavingForMenu.current) {
+        leavingForMenu.current = false;
+        return;
+      }
+      if (view === "home" || event.state?.musicBracketMenuGuard) return;
+      keepMenuInHistory(incomingUrl.current);
+      setConfirmHome(true);
+    };
+    window.addEventListener("popstate", onBack);
+    return () => window.removeEventListener("popstate", onBack);
+  }, [view]);
   const notify = useCallback((s: string) => {
     setNotice(s);
     setTimeout(() => setNotice(""), 5000);
@@ -283,12 +317,6 @@ export default function App() {
             )
             .map((x) => x.id),
         }));
-        if (active.length && !isChallengeLink(window.location.hash)) {
-          setRunId(
-            active.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0].id,
-          );
-          setView("game");
-        }
         setLoaded(true);
       })
       .catch((e) => setError(e.message));
@@ -299,8 +327,18 @@ export default function App() {
       const id = ++request;
       const hash = window.location.hash;
       if (!isChallengeLink(hash)) {
+        incomingUrl.current = undefined;
         setIncoming(null);
         return;
+      }
+      // Keep the menu entry free of replay data so Back can return to it.
+      const url = new URL(window.location.href);
+      const replayUrl = url.href;
+      incomingUrl.current = replayUrl;
+      if (!window.history.state?.musicBracketMenuGuard) {
+        url.hash = "";
+        window.history.replaceState(window.history.state, "", url);
+        keepMenuInHistory(replayUrl);
       }
       setView("new");
       setMenu(false);
@@ -309,12 +347,12 @@ export default function App() {
       setActiveSong("");
       try {
         const definition = await readChallengeLink(hash);
-        if (id === request) {
+        if (id === request && incomingUrl.current === replayUrl) {
           setError("");
           setIncoming(definition);
         }
       } catch {
-        if (id === request) {
+        if (id === request && incomingUrl.current === replayUrl) {
           setIncoming(null);
           setError(
             "This challenge link is invalid or incomplete. Ask your friend to send it again.",
@@ -322,11 +360,14 @@ export default function App() {
         }
       }
     };
+    const onHashChange = (event: HashChangeEvent) => {
+      if (event.newURL === window.location.href) void openLink();
+    };
     void openLink();
-    window.addEventListener("hashchange", openLink);
+    window.addEventListener("hashchange", onHashChange);
     return () => {
       request++;
-      window.removeEventListener("hashchange", openLink);
+      window.removeEventListener("hashchange", onHashChange);
     };
   }, []);
   useEffect(() => {
@@ -360,6 +401,30 @@ export default function App() {
     setMenu(false);
     setActiveSong("");
     setQuery("");
+    if (next === "home") {
+      incomingUrl.current = undefined;
+      setIncoming(null);
+      setConfirmHome(false);
+      setConfirmNew(false);
+      setBracket(false);
+      setShare(null);
+      setEditing(null);
+      if (window.history.state?.musicBracketMenuGuard) {
+        leavingForMenu.current = true;
+        window.history.back();
+      }
+    } else {
+      keepMenuInHistory();
+    }
+  };
+  const requestHome = () => {
+    if (view === "home") setMenu(false);
+    else if (view === "game" && match) setConfirmHome(true);
+    else navigate("home");
+  };
+  const resume = (savedRun: Run) => {
+    setRunId(savedRun.id);
+    navigate("game");
   };
   const requestNew = () => {
     if (view === "game" && match) setConfirmNew(true);
@@ -569,11 +634,12 @@ export default function App() {
     }
   };
   const dismissChallenge = () => {
+    incomingUrl.current = undefined;
     setIncoming(null);
     if (isChallengeLink(window.location.hash)) {
       const url = new URL(window.location.href);
       url.hash = "";
-      window.history.replaceState(null, "", url.href);
+      window.history.replaceState(window.history.state, "", url.href);
     }
   };
   const start = async (challenge?: Definition) => {
@@ -706,6 +772,7 @@ export default function App() {
     icon: typeof Plus;
     count?: number;
   }[] = [
+    { id: "home", label: "Main menu", icon: House },
     { id: "new", label: "New bracket", icon: Plus },
     {
       id: "active",
@@ -737,7 +804,7 @@ export default function App() {
             inert={bracket || Boolean(editing) || showPrompt ? true : undefined}
           >
             <div className="drawer-heading">
-              <button className="wordmark" onClick={requestNew}>
+              <button className="wordmark" onClick={requestHome}>
                 MusicBracket<span>.</span>
               </button>
               <button
@@ -785,7 +852,11 @@ export default function App() {
                   key={n.id}
                   className={view === n.id ? "nav-active" : ""}
                   onClick={() =>
-                    n.id === "new" ? requestNew() : navigate(n.id)
+                    n.id === "new"
+                      ? requestNew()
+                      : n.id === "home"
+                        ? requestHome()
+                        : navigate(n.id)
                   }
                 >
                   <n.icon size={19} />
@@ -839,15 +910,17 @@ export default function App() {
             >
               <Menu size={21} />
             </button>
-            <button className="wordmark" onClick={requestNew}>
+            <button className="wordmark" onClick={requestHome}>
               MusicBracket<span>.</span>
             </button>
           </div>
           <nav className="header-nav">
-            <button className="new-bracket-button" onClick={requestNew}>
-              <Plus size={16} /> New bracket
-            </button>
-            {run && (
+            {view !== "home" && (
+              <button className="new-bracket-button" onClick={requestNew}>
+                <Plus size={16} /> New bracket
+              </button>
+            )}
+            {run && view !== "home" && (
               <button className="full-bracket" onClick={() => setBracket(true)}>
                 <GitBranch size={15} /> Full bracket
               </button>
@@ -883,6 +956,19 @@ export default function App() {
                 Open MusicBracket <ArrowRight size={15} />
               </a>
             </aside>
+          )}
+          {view === "home" && (
+            <MainMenu
+              albums={c.albums}
+              latestRun={activeRuns.reduce<Run | undefined>(
+                (latest, item) =>
+                  !latest || item.updatedAt > latest.updatedAt ? item : latest,
+                undefined,
+              )}
+              onNew={requestNew}
+              onResume={resume}
+              onNavigate={navigate}
+            />
           )}
           {view === "new" && incoming && (
             <section className="challenge-card">
@@ -1620,6 +1706,9 @@ export default function App() {
                         ? "Your result is safe. Retry saving its images from History."
                         : "Saving your result images to History…"}
                   </small>
+                  <button className="text-button" onClick={requestHome}>
+                    <ArrowLeft size={14} /> Back to main menu
+                  </button>
                 </div>
               )}
             </>
@@ -1660,13 +1749,7 @@ export default function App() {
                         max={decisionCount(r.definition)}
                       />
                     </div>
-                    <button
-                      className="primary"
-                      onClick={() => {
-                        setRunId(r.id);
-                        navigate("game");
-                      }}
-                    >
+                    <button className="primary" onClick={() => resume(r)}>
                       Resume <ArrowRight size={16} />
                     </button>
                     <button
@@ -1853,7 +1936,7 @@ export default function App() {
                 <label className="preference">
                   <span>
                     <strong>Dark listening</strong>
-                    <small>Warm dark surfaces and softer light text.</small>
+                    <small>Dark gray surfaces and softer light text.</small>
                   </span>
                   <input
                     type="checkbox"
@@ -1961,41 +2044,62 @@ export default function App() {
       {showPrompt && (
         <div className="dialog-backdrop">
           <section
-            className="source-dialog bracket-prompt"
+            className={`source-dialog bracket-prompt ${confirmHome ? "home-prompt" : "run-prompt"}`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="bracket-prompt-title"
           >
-            {confirmNew ? <Plus size={27} /> : <Disc3 size={32} />}
+            {confirmHome ? (
+              <House size={27} />
+            ) : confirmNew ? (
+              <Plus size={27} />
+            ) : (
+              <Disc3 size={32} />
+            )}
             <h2 id="bracket-prompt-title">
-              {confirmNew ? "Start a new bracket?" : stageLabel}
+              {confirmHome
+                ? "Return to the main menu?"
+                : confirmNew
+                  ? "Start a new bracket?"
+                  : stageLabel}
             </h2>
             <p>
-              {confirmNew
-                ? "Your current bracket is saved. You can resume it from Active runs."
-                : `Round ${(match?.round ?? 0) + 1} of ${(run?.definition.roundSizes.length ?? 1) - 1} · ${run?.definition.artist.name}`}
+              {confirmHome
+                ? view === "game" && match
+                  ? "Your bracket is saved. You can pick up where you left off from Active runs."
+                  : "You’ll leave this screen and go back to the main menu."
+                : confirmNew
+                  ? "Your current bracket is saved. You can resume it from Active runs."
+                  : `Round ${(match?.round ?? 0) + 1} of ${(run?.definition.roundSizes.length ?? 1) - 1} · ${run?.definition.artist.name}`}
             </p>
             <div className="inline centered">
-              {confirmNew && (
+              {(confirmHome || confirmNew) && (
                 <button className="secondary" onClick={dismissPrompt}>
-                  Keep playing
+                  {confirmHome && (view !== "game" || !match)
+                    ? "Stay here"
+                    : "Keep playing"}
                 </button>
               )}
               <button
                 className="primary"
                 onClick={() => {
                   dismissPrompt();
-                  if (confirmNew) navigate("new");
+                  if (confirmHome) navigate("home");
+                  else if (confirmNew) navigate("new");
                 }}
               >
-                {confirmNew ? "Start new bracket" : "Continue"}{" "}
+                {confirmHome
+                  ? "Back to menu"
+                  : confirmNew
+                    ? "Start new bracket"
+                    : "Continue"}{" "}
                 <ArrowRight size={16} />
               </button>
             </div>
           </section>
         </div>
       )}
-      {bracket && run && (
+      {bracket && run && !confirmHome && (
         <div className="dialog-backdrop">
           <section
             role="dialog"
@@ -2043,10 +2147,10 @@ export default function App() {
           </section>
         </div>
       )}
-      {share && (
+      {share && !confirmHome && (
         <ShareDialog definition={share} onClose={() => setShare(null)} />
       )}
-      {editing && (
+      {editing && !confirmHome && (
         <SourceEditor
           song={editing}
           source={sources[editing.id] || {}}
@@ -2167,6 +2271,89 @@ export default function App() {
     </div>
   );
 }
+const featuredSleeves = [
+  "fleetwood-mac-rumours",
+  "outkast-stankonia",
+  "olivia-rodrigo-sour",
+  "daft-punk-discovery",
+];
+const mainMenuLinks = [
+  { view: "active", label: "Active runs", icon: Play },
+  { view: "history", label: "History", icon: History },
+  { view: "library", label: "Music library", icon: Library },
+  { view: "settings", label: "Settings", icon: SettingsIcon },
+] as const;
+function MainMenu({
+  albums,
+  latestRun,
+  onNew,
+  onResume,
+  onNavigate,
+}: {
+  albums: Album[];
+  latestRun?: Run;
+  onNew: () => void;
+  onResume: (run: Run) => void;
+  onNavigate: (view: View) => void;
+}) {
+  const sleeves = featuredSleeves.flatMap(
+    (id) => albums.find((album) => album.id === id) ?? [],
+  );
+  return (
+    <div className="main-menu">
+      <section className="menu-feature" aria-labelledby="menu-title">
+        <div className="menu-feature-copy">
+          <h1 id="menu-title">Follow your ears.</h1>
+          <p>
+            Pick an artist or mix a few. Play songs head to head until one wins.
+          </p>
+          <button className="primary menu-start" onClick={onNew}>
+            Start a bracket <ArrowRight size={19} />
+          </button>
+          {latestRun && (
+            <button
+              className="menu-resume"
+              title={
+                latestRun.definition.options.name ||
+                latestRun.definition.artist.name
+              }
+              onClick={() => onResume(latestRun)}
+            >
+              <Play size={14} />
+              <span>
+                Resume{" "}
+                {latestRun.definition.options.name ||
+                  latestRun.definition.artist.name}
+              </span>
+            </button>
+          )}
+        </div>
+        {sleeves.length === featuredSleeves.length && (
+          <div className="menu-sleeves" aria-hidden="true">
+            {sleeves.map((album) => (
+              <img
+                key={album.id}
+                src={album.cover}
+                alt=""
+                width={180}
+                height={180}
+              />
+            ))}
+          </div>
+        )}
+      </section>
+      <nav className="menu-index" aria-label="Main menu">
+        {mainMenuLinks.map(({ view, label, icon: Icon }) => (
+          <button key={view} onClick={() => onNavigate(view)}>
+            <Icon size={19} aria-hidden="true" />
+            <span>{label}</span>
+            <ArrowRight size={15} aria-hidden="true" />
+          </button>
+        ))}
+      </nav>
+    </div>
+  );
+}
 function ShareDialog({
   definition,
   onClose,
@@ -2249,19 +2436,6 @@ function ShareDialog({
             }}
           >
             <Link2 size={16} /> Copy link
-          </button>
-          <button
-            className="secondary"
-            onClick={() =>
-              download(
-                new Blob([JSON.stringify(definition)], {
-                  type: "application/json",
-                }),
-                "musicbracket-challenge.json",
-              )
-            }
-          >
-            <Download size={15} /> Challenge file
           </button>
         </div>
         {message && (

@@ -68,7 +68,7 @@ IndexedDB stores up to five active runs plus preferences, video overrides, and c
 
 Mixed artists lets you select 2–8 artists, then switch between compact album collections with remembered selections. Smaller fields share slots evenly where possible, choosing each artist's strongest songs with the usual score. A shared collaboration enters once. Every selected song enters when that size is chosen.
 
-Share bracket in Full bracket or on the winner screen creates a compressed URL containing the frozen entrants, video sources and opening matchups. Opening it shows a replay invitation, and Play this bracket saves a fresh run with no picks. Later opponents follow each listener's decisions. Links use the current site's address, so send links from the hosted site when playing with friends. Challenge files remain available for large brackets and offline transfer. No server database is required for these links.
+Share bracket in Full bracket or on the winner screen creates a compressed URL containing the frozen entrants, video sources and opening matchups. Opening it shows a replay invitation, and Play this bracket saves a fresh run with no picks. Later opponents follow each listener's decisions. Links use the current site's address, so send links from the hosted site when playing with friends. No server database is required for these links.
 
 ## Catalog and provenance
 

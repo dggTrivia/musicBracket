@@ -9,11 +9,11 @@ const palettes = {
     soft: "#78684c",
   },
   dark: {
-    bg: "#211f1a",
-    ink: "#e9dfc9",
+    bg: "#242526",
+    ink: "#e5e3df",
     green: "#b8c699",
-    line: "#68644d",
-    soft: "#b9ad92",
+    line: "#5b5e60",
+    soft: "#b9bab9",
   },
 };
 export async function renderHistoryEntry(
@@ -172,7 +172,7 @@ export async function exportBracket(
     winner: boolean,
   ) => {
     if (winner) {
-      ctx.fillStyle = dark ? "#343b28" : "#e0e5c9";
+      ctx.fillStyle = dark ? "#363839" : "#e0e5c9";
       ctx.fillRect(x - 8, y - 41, col - 42, 58);
     }
     const art = s ? covers.get(s.albumId) : null;

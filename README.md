@@ -17,7 +17,7 @@ Choose one artist or mix 2–8, tick the albums you want, and start. Click a vid
 - Play every selected song or a smaller bracket with balanced seeding.
 - Speed up early rounds with 3–4 songs per matchup, or start songs at 40 seconds.
 - Undo picks, resume saved runs, and export full-bracket or Final 16 images.
-- Share an exact bracket through a replay link or challenge file. Local links open on the same device; challenge files work for sharing the downloaded app.
+- Share an exact bracket through a replay link. Use the hosted site when sending a link to a friend.
 
 Progress saves automatically in your browser. Light and dark modes included.
 
