@@ -42,7 +42,7 @@ export function useDialogFocus(
     return () => {
       window.removeEventListener("keydown", handler);
       document.body.style.overflow = overflow;
-      before?.focus();
+      before?.focus({ preventScroll: true });
     };
   }, [open, selector]);
 }
