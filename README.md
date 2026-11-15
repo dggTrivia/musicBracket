@@ -1,70 +1,28 @@
 # MusicBracket
 
-A local-first music tournament in the approved **Soul Paper** theme. React + TypeScript + Vite, self-hosted fonts, 26 artist catalogs, real YouTube embeds, no login or API key needed to play.
+Pick your favorite songs in a knockout bracket, with YouTube playback built in. Includes **26 artists, 272 albums and 4,137 tracks**, from Kanye and Kendrick to The Beatles, Radiohead, ABBA and Olivia Rodrigo.
 
-## Play on Windows
+## Install & play on Windows
 
-1. Download this repository using **Code → Download ZIP**, then extract the ZIP.
-2. Double-click **Play-MusicBracket.bat** inside the extracted folder.
-3. The launcher sets up dependencies and opens MusicBracket in your default browser. Keep its window open while playing.
+1. [Download the ZIP](https://github.com/dggTrivia/musicBracket/archive/refs/heads/main.zip) and **extract it**.
+2. Double-click **Play-MusicBracket.bat**.
+3. Wait for setup, then play in the browser that opens. **Keep the launcher window open.**
 
-First launch needs an internet connection. If needed, the launcher downloads a checksum-verified portable Node.js into the project folder. Administrator access and a separate Node.js or pnpm installation are unnecessary. Later launches reuse the setup. YouTube playback always needs internet access.
+The launcher handles Node.js and dependencies automatically. First launch takes longer and needs internet. YouTube playback also needs internet.
 
-Your brackets and history are saved in that browser. Opening the launcher again reopens the existing server. If another application uses port 19473, the launcher asks you to close it.
+## How to play
 
-## Development and macOS/Linux
+Choose one artist or mix 2–8, tick the albums you want, and start. Click a video to listen, then choose your favorite song in each matchup. Once playing, hover another song to switch.
 
-Requires Node.js 22.18+ and pnpm.
+- Play every selected song or a smaller bracket with balanced seeding.
+- Speed up early rounds with 3–4 songs per matchup, or start songs at 40 seconds.
+- Undo picks, resume saved runs, and export full-bracket or Final 16 images.
+- Share an exact bracket through a replay link or challenge file. Local links open on the same device; challenge files work for sharing the downloaded app.
 
-```sh
-pnpm install
-pnpm dev
-```
+Progress saves automatically in your browser. Light and dark modes included.
 
-Open http://musicbracket.localhost:19473/. Use this hostname for inline playback because YouTube can reject music embeds from a raw loopback IP. The server binds to loopback on port 19473.
+![A song matchup with side-by-side YouTube players](docs/screenshots/matchup.jpg)
 
-When debugging a blocked embed, test the **same YouTube video ID** from a named local origin before replacing it. In MusicBracket, standard YouTube iframes that failed on `127.0.0.1` loaded on `musicbracket.localhost`, and actual inline playback was verified on the named origin. Keep the embed's referrer available and pass the embedding page's actual origin when using the IFrame API. Confirm playback after clicking Play. A watch URL or successful metadata lookup cannot verify an embed, and a hostname change will not restore uploads that the owner has disabled for embedding.
+![Choose albums for a mixed artist bracket](docs/screenshots/setup.jpg)
 
-If you played on the old `127.0.0.1` address, its saved runs and history stay there. To move an active run, use **Save backup** on the old address and **Settings → Import backup** on the named address. Download any history images you want to take with you.
-
-```sh
-pnpm test
-pnpm build
-pnpm preview
-```
-
-## Play
-
-New bracket starts with an alphabetical artist picker, then shows albums and bracket settings. You can include skits, choose every song or best 8/16/32/64/128, set rounds one and two to up to 2/3/4 songs, and adjust shuffle randomness. The summary shows the actual round sizes. One winner advances from each group; byes advance without a decision. Preview & shuffle inspects the whole opening field. Each round opens with an announcement, including the quarterfinals, semifinals, and final.
-
-Entrant selection and seeding use 60% popularity and 40% quality. A Rate Your Music score requires at least 15 votes. A matched rating below that threshold uses 50/100 for quality, and songs without a match use the existing estimate. Seeding also uses bounded randomness, score-balanced branches and a secondary album-mixing preference. The complete tree is generated before the first pick. Saved runs contain the frozen definition and a sequential decision log. Keys 1–4 choose a song; Space toggles playback lock when focus is outside controls. Undo reverses the most recent decision during play.
-
-Click Play on a video to start listening inside the matchup. Once a song is playing, hover another candidate to switch. Leaving the cards keeps the current video playing. For a stalled or blocked embed, **Open on YouTube** below the player opens its watch page in a new tab. In-app volume adjusts the embedded players. YouTube embeds do not expose measured loudness normalization. Each song supports a preferred video and at most one fallback, editable from the library. Missing or blocked videos never remove a song from the bracket.
-
-## Saves and images
-
-IndexedDB stores up to five active runs plus preferences, video overrides, and completed history. After the final pick, the winner screen stays available for review and snapshot downloads. MusicBracket automatically stores the full bracket and Final 16 PNGs with identifying metadata and removes the completed run in the same transaction. Completed runs from older versions are archived when opened on the same browser address. If rendering or storage fails, retry from History. Download backups and images you want to keep before clearing browser data.
-
-Mixed artists lets you select 2–8 artists, then switch between compact album collections with remembered selections. Smaller fields share slots evenly where possible, choosing each artist's strongest songs with the usual score. A shared collaboration enters once. Every selected song enters when that size is chosen.
-
-Share bracket in Full bracket or on the winner screen creates a compressed URL containing the frozen entrants, video sources and opening matchups. Opening it shows a replay invitation, and Play this bracket saves a fresh run with no picks. Later opponents follow each listener's decisions. Links use the current site's address, so send links from the hosted site when playing with friends. Challenge files remain available for large brackets and offline transfer. No server database is required for these links.
-
-## Catalog and provenance
-
-The catalog is a versioned static database at `public/catalog.json`, with shared artist/album memberships and canonical-song IDs. Primary/backup playback sources and rating evidence are stored in separate versioned data files. The import scripts document upstream sources and support regenerating data. The library supports importing/merging a catalog JSON file with `artists`, `albums`, and `songs` arrays, adding future artists without application code changes. Personal video/score overrides affect new brackets; existing definitions remain frozen.
-
-To rebuild the database, run `node scripts/catalog-import.mjs`, then `node scripts/ratings-import.mjs --apply` and `node scripts/video-import.mjs --apply`. To extend the source index, `node scripts/album-videos.mjs` matches official YouTube album playlists by track-title overlap and `node scripts/video-import.mjs --search --verify --apply` queries unresolved tracks and checks public video metadata. An upload can still restrict playback by territory or disallow embeds, so the player tries its backup and offers the YouTube watch page.
-
-The Beatles selection uses the 13 canonical albums in the supplied list: Please Please Me, With the Beatles, A Hard Day's Night (UK), Beatles for Sale, Help! (UK only), Rubber Soul (UK), Revolver (UK), Sgt. Pepper's Lonely Hearts Club Band, Magical Mystery Tour, The Beatles, Yellow Submarine, Abbey Road, and Let It Be.
-
-The catalog contains 26 artists, 272 albums, and 4,137 canonical tracks. Quality uses Rate Your Music where a matched song meets the minimum vote count. Popularity uses public Spotify stream totals from Kworb and Music Metrics Vault. The player offers a YouTube search when a video could not be matched.
-
-## Cloudflare
-
-The application is a static SPA with no machine-local server dependency in production. `pnpm build` produces `dist/`, deployable to Cloudflare Workers Static Assets or Pages. The `_headers` file preserves the referrer YouTube requires; never replace it with `no-referrer`. `_redirects` provides SPA fallback for Pages. For new Cloudflare projects use the `cf` CLI; `cloudflare.config.ts` records the Worker name, compatibility date and SPA behavior. No account resources, credentials or public deployment have been created.
-
-For Workers: install Cloudflare's `cf` development dependency when enabling deployment, run `cf build` to prepare its Vite integration, review generated configuration, then `cf deploy`. Keep the static SPA entrypoint; no D1/R2 is required merely to publish the current app. See [Cloudflare config](https://developers.cloudflare.com/cf/projects/cloudflare-config/) and [Static Assets](https://developers.cloudflare.com/workers/static-assets/).
-
-When online sharing or cross-device saves are enabled, apply `migrations/0001_catalog.sql` to D1, use R2 for the two history PNGs, add authenticated ownership checks and signed opaque share tokens, and replace the storage adapter without changing the tournament engine. `node scripts/catalog-sql.mjs` writes a catalog seed migration to `tmp/`. Do not expose an unauthenticated write API.
-
-`src/chat.ts` is a dormant, tested voting boundary: transport contract, match-scoped deadline checking and one vote per user. `CHAT_VOTING_ENABLED` is false; no chat connection is opened. Enabling it later needs a provider transport, server-authoritative deadlines, identity, anti-replay checks and authenticated session ownership.
+For macOS/Linux setup, architecture and coding-agent context, see the [development guide](docs/DEVELOPMENT.md).
