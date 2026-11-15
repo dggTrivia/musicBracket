@@ -15,7 +15,7 @@ The launcher handles Node.js and dependencies automatically. First launch takes 
 Choose one artist or mix 2–8, tick the albums you want, and start. Click a video to listen, then choose your favorite song in each matchup. Once playing, hover another song to switch.
 
 - Play every selected song or a smaller bracket with balanced seeding.
-- Speed up early rounds with 3–4 songs per matchup, or start songs at 40 seconds.
+- Speed up the opening round with up to four songs per matchup, or start songs at 40 seconds.
 - Undo picks, resume saved runs, and export full-bracket or Final 16 images.
 - Share an exact bracket through a replay link. Use the hosted site when sending a link to a friend.
 

@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useId,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -14,7 +15,10 @@ import {
   Download,
   History,
   House,
+  Info,
+  LayoutGrid,
   Library,
+  List,
   Menu,
   Moon,
   Pin,
@@ -203,6 +207,21 @@ export default function App() {
       (winnerRun?.id === runId ? winnerRun : undefined),
     match = run ? currentMatch(run) : undefined;
   const activeRuns = useMemo(() => runs.filter((r) => currentMatch(r)), [runs]);
+  const albumSongCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const song of catalog?.songs ?? []) {
+      if (song.kind !== "song") continue;
+      for (const id of song.albumIds) counts.set(id, (counts.get(id) ?? 0) + 1);
+    }
+    return counts;
+  }, [catalog]);
+  const sortedArtists = useMemo(
+    () =>
+      [...(catalog?.artists ?? [])].sort((a, b) =>
+        a.name.localeCompare(b.name),
+      ),
+    [catalog],
+  );
   const stageKey = match && run ? `${run.id}:${match.round}` : "";
   const showStage =
     view === "game" && Boolean(stageKey) && seenStage !== stageKey;
@@ -549,6 +568,18 @@ export default function App() {
   const albums = c.albums
     .filter((a) => a.artistIds.includes(artist.id))
     .sort((a, b) => a.year - b.year);
+  const artistPickerView = settings.artistPickerView ?? "grid";
+  const albumPickerView = settings.albumPickerView ?? "grid";
+  const librarySelection =
+    view === "library" && libraryArtist !== "all"
+      ? c.artists.find((a) => a.id === libraryArtist)
+      : undefined;
+  const libraryTracks = librarySelection
+    ? c.songs.filter((s) => s.artistIds.includes(librarySelection.id))
+    : c.songs;
+  const libraryAlbumCount = librarySelection
+    ? c.albums.filter((a) => a.artistIds.includes(librarySelection.id)).length
+    : c.albums.length;
   const selectedAlbums = artistAlbums?.[artist.id] ?? options.albumIds;
   const field =
     view === "new" && artistChosen ? selectEntrants(options, c.songs) : null;
@@ -1046,14 +1077,27 @@ export default function App() {
                       <Users size={17} aria-hidden="true" /> Mixed artists
                     </button>
                   </div>
-                  <h2>
-                    {mixed ? "1. Choose 2–8 artists" : "1. Choose an artist"}
-                  </h2>
-                  <p>
-                    {mixed
-                      ? "Build your lineup, then choose albums for each artist."
-                      : "Next you’ll choose albums and set the bracket size."}
-                  </p>
+                  <div className="artist-picker-heading">
+                    <div>
+                      <h2>
+                        {mixed
+                          ? "1. Choose 2–8 artists"
+                          : "1. Choose an artist"}
+                      </h2>
+                      <p>
+                        {mixed
+                          ? "Build your lineup, then choose albums for each artist."
+                          : "Next you’ll choose albums and set the bracket size."}
+                      </p>
+                    </div>
+                    <PickerViewControl
+                      name="Artist"
+                      view={artistPickerView}
+                      onChange={(value) =>
+                        setSettings((s) => ({ ...s, artistPickerView: value }))
+                      }
+                    />
+                  </div>
                   {mixed && (
                     <div className="lineup-bar">
                       <span role="status">
@@ -1071,46 +1115,50 @@ export default function App() {
                       </button>
                     </div>
                   )}
-                  <div className="artist-grid">
-                    {[...c.artists]
-                      .sort((a, b) => a.name.localeCompare(b.name))
-                      .map((a) => (
-                        <button
-                          key={a.id}
-                          className="artist-choice"
-                          aria-pressed={
-                            artistAlbums
-                              ? Object.hasOwn(artistAlbums, a.id)
-                              : undefined
-                          }
-                          disabled={
-                            artistAlbums &&
-                            mixedArtists.length >= 8 &&
-                            !Object.hasOwn(artistAlbums, a.id)
-                          }
-                          onClick={() => chooseArtist(a)}
-                        >
-                          <span className="artist-portrait" aria-hidden="true">
-                            {artistPortraits.has(a.id) ? (
-                              <img src={`/artists/${a.id}.webp`} alt="" />
+                  <div
+                    className={`artist-grid ${artistPickerView === "list" ? "artist-list" : ""}`}
+                  >
+                    {sortedArtists.map((a) => (
+                      <button
+                        key={a.id}
+                        className="artist-choice"
+                        aria-pressed={
+                          artistAlbums
+                            ? Object.hasOwn(artistAlbums, a.id)
+                            : undefined
+                        }
+                        disabled={
+                          artistAlbums &&
+                          mixedArtists.length >= 8 &&
+                          !Object.hasOwn(artistAlbums, a.id)
+                        }
+                        onClick={() => chooseArtist(a)}
+                      >
+                        <span className="artist-portrait" aria-hidden="true">
+                          {artistPortraits.has(a.id) ? (
+                            <img
+                              src={`/artists/${a.id}.webp`}
+                              alt=""
+                              loading="lazy"
+                            />
+                          ) : (
+                            <Disc3 size={30} />
+                          )}
+                        </span>
+                        <span className="artist-name">{a.name}</span>
+                        <span className="artist-arrow" aria-hidden="true">
+                          {mixed ? (
+                            Object.hasOwn(artistAlbums, a.id) ? (
+                              <Check size={16} />
                             ) : (
-                              <Disc3 size={30} />
-                            )}
-                          </span>
-                          <span className="artist-name">{a.name}</span>
-                          <span className="artist-arrow" aria-hidden="true">
-                            {mixed ? (
-                              Object.hasOwn(artistAlbums, a.id) ? (
-                                <Check size={16} />
-                              ) : (
-                                <Plus size={16} />
-                              )
-                            ) : (
-                              <ArrowRight size={16} />
-                            )}
-                          </span>
-                        </button>
-                      ))}
+                              <Plus size={16} />
+                            )
+                          ) : (
+                            <ArrowRight size={16} />
+                          )}
+                        </span>
+                      </button>
+                    ))}
                   </div>
                   <button
                     className="text-button"
@@ -1173,24 +1221,34 @@ export default function App() {
                           }{" "}
                           of {albums.length} albums selected
                         </span>
-                        <div>
-                          <button
-                            onClick={() =>
-                              updateVisibleAlbums(albums.map((a) => a.id))
+                        <div className="collection-actions">
+                          <div className="album-selection-actions">
+                            <button
+                              onClick={() =>
+                                updateVisibleAlbums(albums.map((a) => a.id))
+                              }
+                            >
+                              Select all
+                            </button>
+                            <span> / </span>
+                            <button onClick={() => updateVisibleAlbums([])}>
+                              Clear
+                            </button>
+                          </div>
+                          <PickerViewControl
+                            name="Album"
+                            view={albumPickerView}
+                            onChange={(value) =>
+                              setSettings((s) => ({
+                                ...s,
+                                albumPickerView: value,
+                              }))
                             }
-                          >
-                            Select all
-                          </button>
-                          <span> / </span>
-                          <button onClick={() => updateVisibleAlbums([])}>
-                            Clear
-                          </button>
+                          />
                         </div>
                       </div>
                       <div
-                        className={
-                          mixed ? "album-grid mixed-albums" : "album-grid"
-                        }
+                        className={`album-grid ${mixed ? "mixed-albums" : ""} ${albumPickerView === "list" ? "album-list" : ""}`}
                       >
                         {albums.map((a) => (
                           <label
@@ -1198,41 +1256,30 @@ export default function App() {
                             className={`album ${selectedAlbums.includes(a.id) ? "album-selected" : ""}`}
                           >
                             <div className="album-cover">
-                              <img
-                                src={a.cover}
-                                alt={`${a.title} cover`}
-                                loading="lazy"
-                              />
-                              <input
-                                type="checkbox"
-                                checked={selectedAlbums.includes(a.id)}
-                                onChange={() =>
-                                  updateVisibleAlbums(
-                                    selectedAlbums.includes(a.id)
-                                      ? selectedAlbums.filter(
-                                          (id) => id !== a.id,
-                                        )
-                                      : [...selectedAlbums, a.id],
-                                  )
-                                }
-                              />
-                              <span className="album-check">
-                                <Check size={13} />
+                              <img src={a.cover} alt="" loading="lazy" />
+                            </div>
+                            <input
+                              type="checkbox"
+                              checked={selectedAlbums.includes(a.id)}
+                              onChange={() =>
+                                updateVisibleAlbums(
+                                  selectedAlbums.includes(a.id)
+                                    ? selectedAlbums.filter((id) => id !== a.id)
+                                    : [...selectedAlbums, a.id],
+                                )
+                              }
+                            />
+                            <span className="album-check" aria-hidden="true">
+                              <Check size={13} />
+                            </span>
+                            <div className="album-caption">
+                              <strong>{a.title}</strong>
+                              {a.credit && <span>{a.credit}</span>}
+                              <span>
+                                {a.year} · {albumSongCounts.get(a.id) ?? 0}{" "}
+                                songs
                               </span>
                             </div>
-                            <strong>{a.title}</strong>
-                            {a.credit && <span>{a.credit}</span>}
-                            <span>
-                              {a.year} ·{" "}
-                              {
-                                c.songs.filter(
-                                  (s) =>
-                                    s.albumIds.includes(a.id) &&
-                                    s.kind === "song",
-                                ).length
-                              }{" "}
-                              songs
-                            </span>
                           </label>
                         ))}
                       </div>
@@ -1263,18 +1310,26 @@ export default function App() {
                           ))}
                         </ul>
                       )}
-                      <label className="field">
-                        Bracket name{" "}
+                      <div className="field">
+                        <SettingLabel id="setup-name" label="Bracket name">
+                          Give this run a name so it’s easy to find in Active
+                          runs and History.
+                        </SettingLabel>
                         <input
+                          id="setup-name"
                           placeholder={`${bracketArtist.name} · My favorites`}
                           value={options.name}
                           onChange={(e) => setOption("name", e.target.value)}
                         />
-                      </label>
-                      <label className="field">
-                        How many songs?{" "}
+                      </div>
+                      <div className="field">
+                        <SettingLabel id="setup-size" label="How many songs?">
+                          {mixed
+                            ? "Smaller brackets give each artist an even share where possible. Extra slots go to artists with songs left."
+                            : "Smaller brackets pick songs using 60% popularity and 40% quality. If fewer songs are available, they all enter."}
+                        </SettingLabel>
                         <select
-                          aria-label="How many songs?"
+                          id="setup-size"
                           value={options.size}
                           onChange={(e) =>
                             setOption("size", Number(e.target.value))
@@ -1289,37 +1344,34 @@ export default function App() {
                             </option>
                           ))}
                         </select>
-                      </label>
-                      {options.size > 0 && (
-                        <p className="field-note">
-                          {mixed
-                            ? "Artists get an even share where possible. Extra slots go to artists with songs left."
-                            : "Selected with 60% popularity and 40% quality. All available songs enter if fewer than requested."}
-                        </p>
-                      )}
-                      <div className="fields-pair">
-                        {(["first", "second"] as const).map((key, i) => (
-                          <label className="field" key={key}>
-                            Round {i + 1}
-                            <select
-                              value={options[key]}
-                              onChange={(e) =>
-                                setOption(key, Number(e.target.value))
-                              }
-                            >
-                              <option value={2}>1 vs 1</option>
-                              <option value={3}>Up to 3 songs</option>
-                              <option value={4}>Up to 4 songs</option>
-                            </select>
-                          </label>
-                        ))}
                       </div>
-                      <p className="field-note">
-                        One winner per group. We balance the numbers; later
-                        rounds are 1 vs 1.
-                      </p>
-                      <label className="field range-label">
-                        Shuffle character{" "}
+                      <div className="field">
+                        <SettingLabel id="setup-opening" label="Round 1">
+                          Choose one winner in each matchup. The game balances
+                          the opening groups and runs every later round one on
+                          one.
+                        </SettingLabel>
+                        <select
+                          id="setup-opening"
+                          value={options.first}
+                          onChange={(e) =>
+                            setOption("first", Number(e.target.value))
+                          }
+                        >
+                          <option value={2}>1 vs 1</option>
+                          <option value={3}>Up to 3 songs</option>
+                          <option value={4}>Up to 4 songs</option>
+                        </select>
+                      </div>
+                      <div className="field range-label">
+                        <SettingLabel
+                          id="setup-shuffle"
+                          label="Shuffle character"
+                        >
+                          Balanced spreads high-scoring songs across the bracket
+                          using 60% popularity and 40% quality. Surprising
+                          allows more variation.
+                        </SettingLabel>
                         <strong>
                           {options.randomness < 25
                             ? "Carefully seeded"
@@ -1328,6 +1380,7 @@ export default function App() {
                               : "Feeling adventurous"}
                         </strong>
                         <input
+                          id="setup-shuffle"
                           type="range"
                           min="0"
                           max="100"
@@ -1340,31 +1393,41 @@ export default function App() {
                           <span>Balanced</span>
                           <span>Surprising</span>
                         </span>
-                      </label>
-                      <p className="field-note">
-                        Seeding uses 60% popularity and 40% quality to spread
-                        higher-scoring songs across the tree.
-                      </p>
-                      <label className="check-field">
+                      </div>
+                      <div className="check-field">
                         <input
+                          id="setup-interludes"
                           type="checkbox"
                           checked={options.includeInterludes}
                           onChange={(e) =>
                             setOption("includeInterludes", e.target.checked)
                           }
-                        />{" "}
-                        Include skits & interludes
-                      </label>
-                      <label className="check-field">
+                        />
+                        <SettingLabel
+                          id="setup-interludes"
+                          label="Include skits & interludes"
+                        >
+                          Add spoken skits and interludes from your selected
+                          albums to the eligible tracks.
+                        </SettingLabel>
+                      </div>
+                      <div className="check-field">
                         <input
+                          id="setup-start-time"
                           type="checkbox"
                           checked={options.startAt40 ?? false}
                           onChange={(event) =>
                             setOption("startAt40", event.target.checked)
                           }
-                        />{" "}
-                        Start songs at 40 seconds
-                      </label>
+                        />
+                        <SettingLabel
+                          id="setup-start-time"
+                          label="Start songs at 40 seconds"
+                        >
+                          Start playback 40 seconds into each song when the
+                          video is long enough.
+                        </SettingLabel>
+                      </div>
                       <div className="route-preview">
                         {canStart ? (
                           <>
@@ -1842,7 +1905,11 @@ export default function App() {
             <>
               <PageTitle
                 title="The record collection."
-                text={`${c.artists.length} artists · ${c.albums.length} albums · ${c.songs.length} unique songs`}
+                text={
+                  librarySelection
+                    ? `${librarySelection.name} · ${libraryAlbumCount} ${libraryAlbumCount === 1 ? "album" : "albums"} · ${libraryTracks.length} ${libraryTracks.length === 1 ? "track" : "tracks"}`
+                    : `${c.artists.length} artists · ${libraryAlbumCount} albums · ${libraryTracks.length} tracks`
+                }
               />
               <div className="library-tools">
                 <label className="search-field">
@@ -1859,7 +1926,7 @@ export default function App() {
                   onChange={(e) => setLibraryArtist(e.target.value)}
                 >
                   <option value="all">All artists</option>
-                  {c.artists.map((a) => (
+                  {sortedArtists.map((a) => (
                     <option key={a.id} value={a.id}>
                       {a.name}
                     </option>
@@ -1884,18 +1951,15 @@ export default function App() {
                   <span>Popularity</span>
                   <span>Video</span>
                 </div>
-                {c.songs
-                  .filter(
-                    (s) =>
-                      (libraryArtist === "all" ||
-                        s.artistIds.includes(libraryArtist)) &&
-                      (
-                        s.title +
-                        " " +
-                        c.albums.find((a) => a.id === s.albumId)?.title
-                      )
-                        .toLowerCase()
-                        .includes(query.toLowerCase()),
+                {libraryTracks
+                  .filter((s) =>
+                    (
+                      s.title +
+                      " " +
+                      c.albums.find((a) => a.id === s.albumId)?.title
+                    )
+                      .toLowerCase()
+                      .includes(query.toLowerCase()),
                   )
                   .slice(0, 250)
                   .map((s) => (
@@ -2276,6 +2340,82 @@ export default function App() {
         }}
       />
     </div>
+  );
+}
+type PickerView = "grid" | "list";
+function PickerViewControl({
+  name,
+  view,
+  onChange,
+}: {
+  name: "Artist" | "Album";
+  view: PickerView;
+  onChange: (view: PickerView) => void;
+}) {
+  return (
+    <div className="picker-view" role="group" aria-label={`${name} view`}>
+      <button
+        type="button"
+        aria-label={`${name} grid view`}
+        title="Grid view"
+        aria-pressed={view === "grid"}
+        onClick={() => onChange("grid")}
+      >
+        <LayoutGrid size={16} aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        aria-label={`${name} list view`}
+        title="List view"
+        aria-pressed={view === "list"}
+        onClick={() => onChange("list")}
+      >
+        <List size={18} aria-hidden="true" />
+      </button>
+    </div>
+  );
+}
+function SettingLabel({
+  id,
+  label,
+  children,
+}: {
+  id: string;
+  label: string;
+  children: string;
+}) {
+  const tooltipId = useId();
+  const [showHelp, setShowHelp] = useState(false);
+  return (
+    <span className="setting-label">
+      <label htmlFor={id}>{label}</label>
+      <span
+        className="setting-help"
+        onPointerEnter={(event) => {
+          if (event.pointerType === "mouse") setShowHelp(true);
+        }}
+        onPointerLeave={(event) => {
+          if (event.pointerType === "mouse") setShowHelp(false);
+        }}
+      >
+        <button
+          type="button"
+          aria-label={`About ${label}`}
+          aria-describedby={tooltipId}
+          onFocus={() => setShowHelp(true)}
+          onBlur={() => setShowHelp(false)}
+          onClick={() => setShowHelp(true)}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setShowHelp(false);
+          }}
+        >
+          <Info size={15} aria-hidden="true" />
+        </button>
+        <span role="tooltip" id={tooltipId} hidden={!showHelp}>
+          {children}
+        </span>
+      </span>
+    </span>
   );
 }
 const featuredSleeves = [

@@ -90,6 +90,8 @@ export interface SourceOverride {
   start?: number;
 }
 export interface Settings {
+  artistPickerView?: "grid" | "list";
+  albumPickerView?: "grid" | "list";
   dark: boolean;
   pinned: boolean;
   hover: boolean;
