@@ -1,6 +1,6 @@
 # MusicBracket
 
-Pick your favorite songs in a knockout bracket, with YouTube playback built in. Includes **26 artists, 272 albums and 4,137 tracks**, from Kanye and Kendrick to The Beatles, Radiohead, ABBA and Olivia Rodrigo.
+Pick your favorite songs in a knockout bracket, with YouTube playback built in. Includes **43 artists, 441 albums and 6,457 tracks**, including J. Cole, Gorillaz, The Weeknd, Lana Del Rey and Pink Floyd.
 
 ## Install & play on Windows
 

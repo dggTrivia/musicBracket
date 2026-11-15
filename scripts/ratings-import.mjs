@@ -13,11 +13,36 @@ export function normalizeTitle(value) {
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .replace(/ni\*\*as/g, "niggas")
+    .replace(/\bn\*{4}z\b/g, "niggaz")
+    .replace(/\bn\*{3}a\b/g, "nigga")
+    .replace(/\bf\*{2}k\b/g, "fuck")
+    .replace(/\bf\*{4}d\b/g, "fucked")
+    .replace(/\bf\*{5}g\b/g, "fucking")
     .replace(/^f\*+g young\s*\/\s*perfect\b/, "fucking young / perfect")
-    .replace(/^(the brown stains of darkeese latifah part 6-12)\s*\(remix\)/, "$1")
-    .replace(/^dirt off your shoulders(?=\s*\/\s*lying from you\b)/, "dirt off your shoulder")
-    .replace(/^a6\s*(?:\(|[-–—]\s*)meteora[|l]20 demo\)?$/i, "a6 meteora20 demo")
+    .replace(
+      /^(the brown stains of darkeese latifah part 6-12)\s*\(remix\)/,
+      "$1",
+    )
+    .replace(
+      /^dirt off your shoulders(?=\s*\/\s*lying from you\b)/,
+      "dirt off your shoulder",
+    )
+    .replace(
+      /^a6\s*(?:\(|[-–—]\s*)meteora[|l]20 demo\)?$/i,
+      "a6 meteora20 demo",
+    )
     .replace(/\s*[([](?:feat\.?|featuring|with)\b[^)\]]*[)\]]/gi, "")
+    .replace(/\s*[([](?:original|lp version|bonus (?:track|version))[)\]]/g, "")
+    .replace(
+      /\s*[-–—]\s*(?:single version|bbc (?:mark goodier|john peel) session(?: \d+)?)$/g,
+      "",
+    )
+    .replace(
+      /^pigs on the wing,?\s+(?:pt\.?\s*)?([12])$/,
+      "pigs on the wing part $1",
+    )
+    .replace(/^(elevators)\s+\(me\s*&\s*you\)$/, "$1")
+    .replace(/^(mx)\s+\(including hidden tracks.*\)$/, "$1")
     .replace(
       /\s*[-–—]\s*(?:\d{4}\s*)?(?:remaster(?:ed)?|mono|stereo|deluxe|album version|explicit|radio edit).*$/gi,
       "",
@@ -117,6 +142,23 @@ export function applyRatings(catalog, data) {
 }
 
 const spotifyIds = {
+  "j-cole": "6l3HvQ5sa6mXTsMTB19rO5",
+  gorillaz: "3AA28KZvwAUcZuOKwyblJQ",
+  "the-weeknd": "1Xyo4u8uXC1ZmMpatF05PJ",
+  "daft-punk": "4tZwfgrHOc3mvqYlEYSvVi",
+  "arctic-monkeys": "7Ln80lUS6He07XvHI8qqHH",
+  "mac-miller": "4LLpKhyESsyAXpc4laK94U",
+  "tame-impala": "5INjqkS1o8h1imAzPqGZBb",
+  deftones: "6Ghvu1VvMGScGpOUJBAHNH",
+  paramore: "74XFHRwlV6OrjEM0A2NCMF",
+  sza: "7tYKF4w9nC0nq9CsPZTHyP",
+  outkast: "1G9G7WwrXka3Z1r7aIDjI7",
+  "fleetwood-mac": "08GQAI4eElDnROBrJRGE0X",
+  "pink-floyd": "0k17h0D3J5VfsdmQ1iZtE9",
+  "lana-del-rey": "00FQb4jTyendYWaN8pK0wa",
+  "the-cure": "7bu3H8JO7d0UbMoVzbo70s",
+  "stevie-wonder": "7guDJrEfX3qb6FEbdPA5qi",
+  nirvana: "6olE6TJLqED3rqDCT0FyPh",
   "kanye-west": "5K4W6rqBFWDnAN6FQUkS6x",
   "kid-cudi": "0fA0VVWsXO9YnASrzqfmYu",
   "frank-ocean": "2h93pZq0e7k5yf4dywlkpM",

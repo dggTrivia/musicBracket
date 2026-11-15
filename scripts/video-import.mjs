@@ -38,6 +38,13 @@ const artistFilter = new Set(
 const sources = new Map(data.sources.map((r) => [key(r), r]));
 // Title spelling or shared credits make these recordings difficult to match automatically.
 const reviewedLinks = [
+  ["paramore", "Still Into You", "OblL026SvD4"],
+  ["deftones", "Sextape", "f0pdwd0miqs"],
+  ["deftones", "Entombed", "gEXbHKAuHSg"],
+  ["tame-impala", "Dracula", "xnP7qKxwzjg"],
+  ["nirvana", "All Apologies", "URVxyDJnJF0"],
+  ["nirvana", "Rape Me", "JtWaCViY_tc"],
+  ["daft-punk", "Give Life Back to Music", "IluRBvnYMoY", "zKSsP2084nU"],
   ["kanye-west", "All of the Lights", "HAfFfqiYLp0"],
   ["kanye-west", "All of the Lights (Interlude)", "WHxRd_va950"],
   ["kendrick-lamar", "Savior", "HMIrpcNtk9E", "0MUB6_ObKr4"],

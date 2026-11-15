@@ -293,6 +293,11 @@ function addSong(track, album, artistIds) {
       .replace(/^Illest M\*+r Alive$/i, "Illest Motherfucker Alive");
   if (artistIds.includes("kendrick-lamar"))
     title = title.replace(/^F\*\*k Your Ethnicity$/i, "Fuck Your Ethnicity");
+  if (artistIds.includes("nirvana"))
+    title = title
+      .replace(/\s+\(BBC (?:Mark Goodier|John Peel) Session(?: \d+)?\)$/i, "")
+      .replace(/^\(New Wave\) Polly$/i, "Polly")
+      .replace(/\s+\(B-Side\)$/i, "");
   const key = songKey(artistIds, title);
   const existing = songMap.get(key);
   if (existing) {
@@ -425,10 +430,43 @@ for (const artist of append
                 track.trackName,
               )),
         );
-      if (artist.id === "linkin-park" &&
-        (title === "Hybrid Theory" || title === "Minutes to Midnight"))
+      if (
+        artist.id === "linkin-park" &&
+        (title === "Hybrid Theory" || title === "Minutes to Midnight")
+      )
         tracks = tracks.filter(
-          (track) => !/\b(?:remix|third encore session)\b/i.test(track.trackName),
+          (track) =>
+            !/\b(?:remix|third encore session)\b/i.test(track.trackName),
+        );
+      // These deluxe editions include archival versions of the same songs.
+      if (appleId === 171987598)
+        tracks = tracks.filter((track) => track.trackNumber <= 18);
+      if (appleId === 651871544)
+        tracks = tracks.filter((track) => track.discNumber === 1);
+      if (appleId === 1440875565)
+        tracks = tracks.filter(
+          (track) =>
+            track.discNumber === 1 ||
+            /^(?:Forgotten Tune|Jam)\b/i.test(track.trackName),
+        );
+      if (appleId === 1508205485 || appleId === 1508204880)
+        tracks = tracks.filter(
+          (track) => !/\(Take \d+\)/i.test(track.trackName),
+        );
+      if (appleId === 1673536063)
+        tracks = tracks.filter(
+          (track) =>
+            !/^(?:GL \(Early Take\)|GLBTM|LYTD|The Writing of Fragments of Time|Touch \(2021 Epilogue\))/i.test(
+              track.trackName,
+            ),
+        );
+      if (appleId === 607340168 || appleId === 607337417)
+        tracks = tracks.filter(
+          (track) => !/\(Acoustic Version\)/i.test(track.trackName),
+        );
+      if (appleId === 1841975745 || appleId === 1440857300)
+        tracks = tracks.filter(
+          (track) => !/[([]Instrumental[)\]]/i.test(track.trackName),
         );
       // HIStory disc one is a greatest-hits compilation; membership is retained via dedup.
       for (const track of tracks) addSong(track, album, artistIds);
@@ -499,9 +537,11 @@ for (const { artistId, albumTitle, sourceUrl, tracks } of expandedBonusTracks) {
   if (!album) continue;
   for (const title of tracks)
     addSong({ title, trackViewUrl: sourceUrl }, album, album.artistIds);
-  if (!catalog.sources.some(
-    (source) => source.albumId === album.id && source.url === sourceUrl,
-  ))
+  if (
+    !catalog.sources.some(
+      (source) => source.albumId === album.id && source.url === sourceUrl,
+    )
+  )
     catalog.sources.push({
       provider: "Original release track listing",
       url: sourceUrl,

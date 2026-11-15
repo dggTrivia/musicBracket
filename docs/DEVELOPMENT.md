@@ -78,11 +78,11 @@ To rebuild the database, run `node scripts/catalog-import.mjs`, then `node scrip
 
 The Beatles selection uses the 13 canonical albums in the supplied list: Please Please Me, With the Beatles, A Hard Day's Night (UK), Beatles for Sale, Help! (UK only), Rubber Soul (UK), Revolver (UK), Sgt. Pepper's Lonely Hearts Club Band, Magical Mystery Tour, The Beatles, Yellow Submarine, Abbey Road, and Let It Be.
 
-The catalog contains 26 artists, 272 albums, and 4,137 canonical tracks. Quality uses Rate Your Music where a matched song meets the minimum vote count. Popularity uses public Spotify stream totals from Kworb and Music Metrics Vault. The player offers a YouTube search when a video could not be matched.
+The catalog contains 43 artists, 441 albums, and 6,457 canonical tracks. Quality uses Rate Your Music where a matched song meets the minimum vote count. Popularity uses public Spotify stream totals from Kworb and Music Metrics Vault. The player offers a YouTube search when a video could not be matched.
 
 ## Cloudflare
 
-The application is a static SPA with no machine-local server dependency in production. `pnpm build` produces `dist/`, deployable to Cloudflare Workers Static Assets or Pages. The `_headers` file preserves the referrer YouTube requires; never replace it with `no-referrer`. `_redirects` provides SPA fallback for Pages. For new Cloudflare projects use the `cf` CLI; `cloudflare.config.ts` records the Worker name, compatibility date and SPA behavior. No account resources, credentials or public deployment have been created.
+The application is a static SPA with no machine-local server dependency in production. `pnpm build` produces `dist/`, deployable to Cloudflare Workers Static Assets or Pages. The `_headers` file preserves the referrer YouTube requires; never replace it with `no-referrer`. `_redirects` provides SPA fallback for Pages. For new Cloudflare projects use the `cf` CLI; `cloudflare.config.ts` records the Worker name, compatibility date and SPA behavior. The GitHub repository deploys to [MusicBracket on Cloudflare Pages](https://musicbracket.pages.dev/) when changes reach `main`.
 
 For Workers: install Cloudflare's `cf` development dependency when enabling deployment, run `cf build` to prepare its Vite integration, review generated configuration, then `cf deploy`. Keep the static SPA entrypoint; no D1/R2 is required merely to publish the current app. See [Cloudflare config](https://developers.cloudflare.com/cf/projects/cloudflare-config/) and [Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 
