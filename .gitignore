@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.dev.vars
+.env.local
+.env
+.env.*
+!.env.example
+.runtime/
+.impeccable/
+PRODUCT.md
+DESIGN.md
+*.tsbuildinfo
+.impeccable/review/
+tmp/

@@ -1,0 +1,271 @@
+/** Public ratings evidence and catalog merge. No API keys, no fabricated RYM values.
+ * node scripts/ratings-import.mjs --apply
+ * node scripts/ratings-import.mjs --refresh-popularity --apply
+ * Add verified RYM records to public/ratings.json quality[] to extend coverage.
+ */
+import { readFile, writeFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+export function normalizeTitle(value) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/ni\*\*as/g, "niggas")
+    .replace(/^f\*+g young\s*\/\s*perfect\b/, "fucking young / perfect")
+    .replace(/^(the brown stains of darkeese latifah part 6-12)\s*\(remix\)/, "$1")
+    .replace(/^dirt off your shoulders(?=\s*\/\s*lying from you\b)/, "dirt off your shoulder")
+    .replace(/^a6\s*(?:\(|[-–—]\s*)meteora[|l]20 demo\)?$/i, "a6 meteora20 demo")
+    .replace(/\s*[([](?:feat\.?|featuring|with)\b[^)\]]*[)\]]/gi, "")
+    .replace(
+      /\s*[-–—]\s*(?:\d{4}\s*)?(?:remaster(?:ed)?|mono|stereo|deluxe|album version|explicit|radio edit).*$/gi,
+      "",
+    )
+    .replace(
+      /\s*[([](?:\d{4}\s*)?(?:remaster(?:ed)?|mono|stereo|album version|explicit)[^)\]]*[)\]]/gi,
+      "",
+    )
+    .replace(/\b(?:feat\.?|featuring)\b.*$/gi, "")
+    .replace(/\b(?:pt\.?|part)\s*(\d+)/g, "part$1")
+    .replace(/\s*[-–—]\s*(?:remix|mix).*$/gi, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]/g, "");
+}
+const artistAlias = (id) =>
+  id === "beatles" ? "the-beatles" : id === "kanye" ? "kanye-west" : id;
+const minimumRatingCount = 15;
+export function applyRatings(catalog, data) {
+  const q = new Map(),
+    p = new Map();
+  for (const r of data.quality || []) {
+    const scope = r.albumId ? `album:${r.albumId}` : r.artistId;
+    const key = `${scope}:${normalizeTitle(r.title)}`;
+    if (!q.has(key) || r.ratingCount > q.get(key).ratingCount) q.set(key, r);
+  }
+  for (const r of data.popularity || []) {
+    const scope = r.albumId ? `album:${r.albumId}` : r.artistId;
+    const key = `${scope}:${normalizeTitle(r.title)}`;
+    if (!p.has(key) || r.streams > p.get(key).streams) p.set(key, r);
+  }
+  let qualityMatches = 0,
+    popularityMatches = 0;
+  const songs = catalog.songs.map((song) => {
+    const title = normalizeTitle(song.title);
+    let quality = q.get(`album:${song.albumId}:${title}`);
+    let popularity = p.get(`album:${song.albumId}:${title}`);
+    for (const artist of song.artistIds) {
+      const key = `${artistAlias(artist)}:${title}`;
+      quality ||= q.get(key);
+      const next = p.get(key);
+      if (next && (!popularity || next.streams > popularity.streams))
+        popularity = next;
+    }
+    const sparseQuality = quality && quality.ratingCount < minimumRatingCount;
+    if (quality && !sparseQuality) qualityMatches++;
+    if (popularity) popularityMatches++;
+    if (!quality && !popularity) return song;
+    return {
+      ...song,
+      quality: sparseQuality ? 50 : (quality?.quality ?? song.quality),
+      popularity: popularity?.popularity ?? song.popularity,
+      qualitySource: quality
+        ? {
+            provider: sparseQuality ? "Initial estimate" : "Rate Your Music",
+            rating: quality.rating,
+            ratingCount: quality.ratingCount,
+            ratingCountDisplay: quality.ratingCountDisplay,
+            note: sparseQuality
+              ? `Neutral 50/100 because RYM has fewer than ${minimumRatingCount} ratings.`
+              : quality.note,
+            url: quality.sourceUrl,
+            retrievedAt: quality.retrievedAt,
+          }
+        : song.qualitySource,
+      popularitySource: popularity
+        ? {
+            provider:
+              popularity.provider ?? "Kworb / Spotify public stream totals",
+            streams: popularity.streams,
+            streamsDisplay: popularity.streamsDisplay,
+            url: popularity.sourceUrl,
+            sourceUpdatedAt: popularity.sourceUpdatedAt,
+            scaleArtistId: popularity.scaleArtistId,
+            retrievedAt: popularity.retrievedAt,
+          }
+        : song.popularitySource,
+      scoreSource: [
+        sparseQuality
+          ? `Quality: 50/100 estimate (fewer than ${minimumRatingCount} RYM ratings)`
+          : quality
+            ? `RYM ${quality.rating.toFixed(2)}/5 (${quality.ratingCountDisplay ?? quality.ratingCount.toLocaleString("en-US")} ratings)`
+            : song.qualitySource?.provider === "Rate Your Music"
+              ? "Verified RYM"
+              : "Quality: initial estimate",
+        popularity
+          ? `Popularity: log-normalized public Spotify streams (${popularity.provider ?? "Kworb"})`
+          : "Popularity: initial estimate",
+      ].join(" · "),
+      youtubeId: song.youtubeId || quality?.youtubeId,
+    };
+  });
+  return {
+    catalog: { ...catalog, songs, ratingsUpdatedAt: data.updatedAt },
+    qualityMatches,
+    popularityMatches,
+  };
+}
+
+const spotifyIds = {
+  "kanye-west": "5K4W6rqBFWDnAN6FQUkS6x",
+  "kid-cudi": "0fA0VVWsXO9YnASrzqfmYu",
+  "frank-ocean": "2h93pZq0e7k5yf4dywlkpM",
+  "kendrick-lamar": "2YZyLoL8N0Wb9xBt1NhZWg",
+  "the-beatles": "3WrFJ7ztbogyGnTHbHJFl2",
+  queen: "1dfeR4HaWDbWqFHLkxsg1d",
+  "michael-jackson": "3fMbdgg4jU18AjLCKBhRSm",
+  abba: "0LcJLqbBmaGUft1e9Mm8HV",
+  rihanna: "5pKCCKE2ajJHZ9KAiaK11H",
+  "kids-see-ghosts": "2hPgGN4uhvXAxiXQBIXOmE",
+  "jay-z": "3nFkdlSjzX9mRTtwJOzDYB",
+  "earl-sweatshirt": "3A5tHz1SfngyOZM2gItYKu",
+  "vince-staples": "68kEuyFKyqrdQQLLsmiatm",
+  eminem: "7dGJo4pcD2V6oG8kP0tJRR",
+  "james-blake": "53KwLdlmrlCelAZMaLVZqU",
+  jpegmafia: "6yJ6QQ3Y5l0s0tn7b0arrO",
+  "mf-doom": "2pAWfrd7WFF3XhVt9GooDL",
+  "a-tribe-called-quest": "09hVIj6vWgoCDtT03h8ZCa",
+  "young-thug": "50co4Is1HCEo8bhOyUWKpn",
+  "action-bronson": "7BMccF0hQFBpP6417k1OtQ",
+  "alex-g": "6lcwlkAjBPSKnFBZjjZFJs",
+  drake: "3TVXtAsR1Inumwj472S9r4",
+  radiohead: "4Z8W4fKeB5YxbusRsdQVPb",
+  "olivia-rodrigo": "1McMsnEElThX1knmY4oliG",
+  "tyler-the-creator": "4V8LLVI7PbaPR0K2TGSxFF",
+  "linkin-park": "6XyY86QOPPrYVGvF9ch6wz",
+  madvillain: "2aoFQUeHD1U7pL098lRsDU",
+  "viktor-vaughn": "0wIb0PhwT3disoWykRhq6V",
+  "king-geedorah": "77AKJs9SJqxHXbPgtJPKRa",
+};
+const collaboration = {
+  "kids-see-ghosts": {
+    albumId: "kanye-west-kids-see-ghosts",
+    scaleArtistId: "kanye-west",
+  },
+  madvillain: { albumId: "mf-doom-madvillainy", scaleArtistId: "mf-doom" },
+  "viktor-vaughn": {
+    albumId: "mf-doom-vaudeville-villain",
+    scaleArtistId: "mf-doom",
+  },
+  "king-geedorah": {
+    albumId: "mf-doom-take-me-to-your-leader",
+    scaleArtistId: "mf-doom",
+  },
+};
+function decode(value) {
+  return value
+    .replace(/<[^>]*>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
+    .trim();
+}
+export async function refreshPopularity(data, onlyArtist) {
+  for (const [artistId, spotifyId] of Object.entries(spotifyIds)) {
+    if (onlyArtist && artistId !== onlyArtist) continue;
+    const scope = collaboration[artistId];
+    const sourceUrl = `https://kworb.net/spotify/artist/${spotifyId}_songs.html`;
+    const response = await fetch(sourceUrl, {
+      headers: {
+        "User-Agent": "MusicBracket catalog updater; contact: local-user",
+      },
+      signal: AbortSignal.timeout(30000),
+    });
+    if (!response.ok) throw Error(`${artistId}: HTTP ${response.status}`);
+    const html = await response.text(),
+      rows = [];
+    for (const match of html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)) {
+      const cells = [...match[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map(
+        (m) => m[1],
+      );
+      if (cells.length < 3) continue;
+      const anchor = cells[0].match(
+        /<a[^>]*href="(https:\/\/open\.spotify\.com\/track\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/i,
+      );
+      if (!anchor) continue;
+      const streams = Number(decode(cells[1]).replaceAll(",", "")),
+        daily = Number(decode(cells[2]).replaceAll(",", ""));
+      if (!Number.isFinite(streams) || streams < 1) continue;
+      rows.push({
+        artistId,
+        ...scope,
+        title: decode(anchor[2]),
+        streams,
+        daily,
+        spotifyUrl: anchor[1],
+        sourceUrl,
+        sourceUpdatedAt: html.match(
+          /Last updated:\s*(\d{4}\/\d{2}\/\d{2})/,
+        )?.[1],
+        retrievedAt: new Date().toISOString().slice(0, 10),
+      });
+    }
+    if (rows.length < 5)
+      throw Error(
+        `${artistId}: no reliable stream table found; existing evidence retained.`,
+      );
+    const scale = scope
+      ? data.popularity.filter((r) => r.artistId === scope.scaleArtistId)
+      : rows;
+    const max = Math.max(...scale.map((r) => r.streams)),
+      min = Math.min(...scale.map((r) => r.streams));
+    if (!(max > min && min > 0))
+      throw Error(`${artistId}: missing popularity scale`);
+    const logMin = Math.log1p(min);
+    const logRange = Math.log1p(max) - logMin;
+    for (const row of rows) {
+      const fraction = (Math.log1p(row.streams) - logMin) / logRange;
+      row.popularity =
+        Math.round(10000 * Math.min(1, Math.max(0, fraction))) / 100;
+    }
+    data.popularity = [
+      ...data.popularity.filter((r) => r.artistId !== artistId),
+      ...rows,
+    ];
+    console.log(`${artistId}: ${rows.length} stream records`);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+  }
+  data.updatedAt = new Date().toISOString().slice(0, 10);
+  return data;
+}
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+  const ratingsPath = path.join(root, "public/ratings.json"),
+    catalogPath = path.join(root, "public/catalog.json");
+  let data = JSON.parse(await readFile(ratingsPath, "utf8"));
+  if (process.argv.includes("--refresh-popularity")) {
+    data = await refreshPopularity(
+      data,
+      process.argv.find((arg) => arg.startsWith("--artist="))?.slice(9),
+    );
+    await writeFile(ratingsPath, JSON.stringify(data, null, 2) + "\n");
+  }
+  if (process.argv.includes("--apply")) {
+    const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
+    const result = applyRatings(catalog, data);
+    await writeFile(
+      catalogPath,
+      JSON.stringify(result.catalog, null, 2) + "\n",
+    );
+    console.log(
+      `Applied verified RYM ratings to ${result.qualityMatches} songs, public Spotify popularity to ${result.popularityMatches} songs.`,
+    );
+  } else
+    console.log(
+      `${data.quality.length} verified RYM records; ${data.popularity.length} stream records. Add --apply to merge catalog; --refresh-popularity refreshes Kworb tables. RYM is never guessed.`,
+    );
+}
