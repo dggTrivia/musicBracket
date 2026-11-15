@@ -70,7 +70,10 @@ import {
 import { download, storage } from "./storage";
 import { exportBracket, renderHistoryEntry } from "./exports";
 import { parseVideo, SongPlayer } from "./Player";
+import type { SongPlayback } from "./Player";
 import { useDialogFocus } from "./useDialogFocus";
+import { artistCategories } from "./artistCategories";
+import { suggestedMixes } from "./suggestedMixes";
 import {
   challengeSnapshot,
   createChallengeLink,
@@ -86,48 +89,93 @@ const defaults: Settings = {
   delay: 220,
 };
 const artistPortraits = new Set([
+  "50-cent",
   "a-tribe-called-quest",
   "abba",
+  "ac-dc",
   "action-bronson",
+  "al-green",
   "alex-g",
+  "aphex-twin",
   "arctic-monkeys",
+  "aretha-franklin",
+  "beyonce",
+  "bjork",
+  "black-sabbath",
+  "bob-dylan",
+  "bruce-springsteen",
+  "creedence-clearwater-revival",
+  "curtis-mayfield",
   "daft-punk",
+  "danny-brown",
+  "david-bowie",
   "deftones",
   "drake",
   "earl-sweatshirt",
   "eminem",
   "fleetwood-mac",
   "frank-ocean",
+  "freddie-gibbs",
   "gorillaz",
+  "green-day",
   "j-cole",
   "james-blake",
   "jay-z",
+  "jimi-hendrix",
+  "john-coltrane",
   "jpegmafia",
   "ka",
   "kanye-west",
   "kendrick-lamar",
   "kid-cudi",
+  "kraftwerk",
   "lana-del-rey",
+  "led-zeppelin",
   "linkin-park",
   "mac-miller",
-  "michael-jackson",
+  "marvin-gaye",
+  "mary-j-blige",
+  "metallica",
   "mf-doom",
+  "michael-jackson",
+  "mitski",
+  "neil-young",
+  "nine-inch-nails",
   "nirvana",
   "olivia-rodrigo",
+  "otis-redding",
   "outkast",
   "paramore",
   "pink-floyd",
+  "pixies",
+  "playboi-carti",
+  "portishead",
+  "prince",
   "queen",
+  "r-kelly",
   "radiohead",
+  "rage-against-the-machine",
+  "ramones",
+  "ray-charles",
   "rihanna",
+  "sam-cooke",
+  "smino",
   "stevie-wonder",
+  "sufjan-stevens",
   "sza",
+  "talking-heads",
   "tame-impala",
+  "the-beach-boys",
   "the-beatles",
+  "the-clash",
   "the-cure",
+  "the-rolling-stones",
   "the-weeknd",
+  "the-who",
+  "tom-waits",
   "tyler-the-creator",
   "vince-staples",
+  "wilco",
   "young-thug",
 ]);
 const emptyOptions: BracketOptions = {
@@ -160,6 +208,36 @@ function roundTitle(round: number, total: number) {
       return `Round ${round + 1}`;
   }
 }
+let roundAudio: AudioContext | undefined;
+function prepareRoundCue(volume: number) {
+  if (!volume) return;
+  try {
+    const context = (roundAudio ??= new AudioContext());
+    const ready = context.resume().then(
+      () => true,
+      () => false,
+    );
+    return async () => {
+      if (!(await ready)) return;
+      const when = context.currentTime + 0.02;
+      [523.25, 659.25, 783.99].forEach((frequency, index) => {
+        const note = context.createOscillator();
+        const gain = context.createGain();
+        const start = when + index * 0.085;
+        note.type = "sine";
+        note.frequency.value = frequency;
+        gain.gain.setValueAtTime(0, start);
+        gain.gain.linearRampToValueAtTime(volume * 0.00042, start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.23);
+        note.connect(gain).connect(context.destination);
+        note.start(start);
+        note.stop(start + 0.24);
+      });
+    };
+  } catch {
+    // The stage heading still announces the round when sound is unavailable.
+  }
+}
 export default function App() {
   const [snapshotSize, setSnapshotSize] = useState(16);
   const [artistChosen, setArtistChosen] = useState(false);
@@ -169,7 +247,9 @@ export default function App() {
   const [share, setShare] = useState<Definition | null>(null);
   const [confirmNew, setConfirmNew] = useState(false);
   const [confirmHome, setConfirmHome] = useState(false);
-  const [seenStage, setSeenStage] = useState("");
+  const [artistQuery, setArtistQuery] = useState("");
+  const [artistCategory, setArtistCategory] = useState("");
+  const playback = useRef(new Map<string, SongPlayback>());
   const [winnerRun, setWinnerRun] = useState<Run>();
   const [archiveFailures, setArchiveFailures] = useState<string[]>([]);
   const archiving = useRef(new Set<string>());
@@ -206,6 +286,15 @@ export default function App() {
       runs.find((r) => r.id === runId) ??
       (winnerRun?.id === runId ? winnerRun : undefined),
     match = run ? currentMatch(run) : undefined;
+  const savedPositions = useMemo(
+    () =>
+      new Map(
+        run?.picks.flatMap((pick) =>
+          pick.position ? [[pick.songId, pick.position] as const] : [],
+        ),
+      ),
+    [run],
+  );
   const activeRuns = useMemo(() => runs.filter((r) => currentMatch(r)), [runs]);
   const albumSongCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -222,14 +311,10 @@ export default function App() {
       ),
     [catalog],
   );
-  const stageKey = match && run ? `${run.id}:${match.round}` : "";
-  const showStage =
-    view === "game" && Boolean(stageKey) && seenStage !== stageKey;
-  const showPrompt = confirmHome || confirmNew || showStage;
+  const showPrompt = confirmHome || confirmNew;
   const dismissPrompt = () => {
     if (confirmHome) setConfirmHome(false);
-    else if (confirmNew) setConfirmNew(false);
-    else setSeenStage(stageKey);
+    else setConfirmNew(false);
   };
   useDialogFocus(
     showPrompt,
@@ -398,6 +483,7 @@ export default function App() {
   }, []);
   useEffect(() => {
     document.documentElement.dataset.theme = settings.dark ? "dark" : "light";
+    document.documentElement.dataset.display = settings.displayScale ?? "auto";
     if (loaded)
       storage.saveSettings(settings).catch((e) => setError(e.message));
   }, [settings, loaded]);
@@ -422,7 +508,12 @@ export default function App() {
     setMenu(true);
   };
   const navigate = (next: View) => {
-    if (next === "new" && view !== "new") setArtistChosen(false);
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    if (next === "new" && view !== "new") {
+      setArtistChosen(false);
+      setArtistQuery("");
+      setArtistCategory("");
+    }
     setView(next);
     setMenu(false);
     setActiveSong("");
@@ -462,17 +553,30 @@ export default function App() {
       if (!run || busy) return;
       try {
         setBusy(true);
-        const next = choose(run, id);
+        const next = choose(
+          run,
+          id,
+          settings.resumeSongs
+            ? playback.current.get(id)?.getPosition()
+            : undefined,
+        );
+        const following = currentMatch(next);
+        const cue =
+          following && match && following.round > match.round
+            ? prepareRoundCue(settings.volume)
+            : undefined;
         await storage.saveRun(next);
+        if (hoverTimer.current) clearTimeout(hoverTimer.current);
         setRuns((list) => list.map((r) => (r.id === next.id ? next : r)));
         setActiveSong("");
+        void cue?.().catch(() => {});
       } catch (e) {
         setError((e as Error).message);
       } finally {
         setBusy(false);
       }
     },
-    [run, busy],
+    [run, busy, match, settings.resumeSongs, settings.volume],
   );
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -547,6 +651,24 @@ export default function App() {
       </div>
     );
   const c = catalog;
+  const searchKey = (value: string) =>
+    value
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .toLocaleLowerCase()
+      .replace(/[^a-z0-9\p{L}]+/gu, "");
+  const artistSearch = searchKey(artistQuery);
+  const category = artistCategories.find(
+    (group) => group.label === artistCategory,
+  );
+  const visibleArtists =
+    view === "new" && !artistChosen
+      ? sortedArtists.filter(
+          (a) =>
+            (!category || category.artists.includes(a.id)) &&
+            searchKey(a.name).includes(artistSearch),
+        )
+      : [];
   const artistAlbums = options.artistAlbums;
   const mixed = artistAlbums !== undefined;
   const mixedArtists = mixed
@@ -654,6 +776,33 @@ export default function App() {
     }));
     setPreview(null);
   };
+  const openSuggestedMix = (mix: (typeof suggestedMixes)[number]) => {
+    const [firstYear, lastYear] = mix.years;
+    const artists = mix.artists.flatMap((id) => {
+      const albums = c.albums.filter(
+        (album) =>
+          album.artistIds.includes(id) &&
+          album.year >= firstYear &&
+          album.year <= lastYear &&
+          (albumSongCounts.get(album.id) ?? 0) > 0,
+      );
+      return albums.length
+        ? [[id, albums.map((album) => album.id)] as const]
+        : [];
+    });
+    if (artists.length < 2) return;
+    setOptions((o) => ({
+      ...o,
+      artistId: artists[0][0],
+      artistAlbums: Object.fromEntries(artists),
+      albumIds: [...new Set(artists.flatMap(([, albumIds]) => albumIds))],
+      size: mix.size,
+      name: mix.name,
+      seed: Math.floor(Math.random() * 2 ** 31),
+    }));
+    setPreview(null);
+    setArtistChosen(true);
+  };
   const buildDefinition = (opts: BracketOptions) =>
     makeDefinition(
       opts,
@@ -712,6 +861,7 @@ export default function App() {
     try {
       const next = undo(run);
       await storage.saveRun(next);
+      if (hoverTimer.current) clearTimeout(hoverTimer.current);
       setRuns((list) => list.map((r) => (r.id === next.id ? next : r)));
       setActiveSong("");
       notify("Last pick undone.");
@@ -731,7 +881,18 @@ export default function App() {
         updatedAt: new Date().toISOString(),
       };
       if (Array.isArray(input.picks)) {
-        for (const p of input.picks) next = choose(next, p.songId);
+        for (const p of input.picks) {
+          const pos = p.position;
+          const parsedPosition =
+            pos &&
+            typeof pos.videoId === "string" &&
+            /^[\w-]{11}$/.test(pos.videoId) &&
+            Number.isFinite(pos.seconds) &&
+            pos.seconds >= 0
+              ? { videoId: pos.videoId, seconds: pos.seconds }
+              : undefined;
+          next = choose(next, p.songId, parsedPosition);
+        }
       }
       await storage.saveRun(next);
       if (input.sources && typeof input.sources === "object") {
@@ -826,6 +987,7 @@ export default function App() {
     run && match
       ? roundTitle(match.round, run.definition.roundSizes.length - 1)
       : "";
+  const stageSize = match && run ? run.definition.roundSizes[match.round] : 0;
   return (
     <div className={`app ${settings.pinned ? "menu-pinned" : ""}`}>
       {drawerOpen && (
@@ -1098,6 +1260,57 @@ export default function App() {
                       }
                     />
                   </div>
+                  <details className="suggested-mixes">
+                    <summary>
+                      <Shuffle size={16} aria-hidden="true" /> Suggested mixes
+                    </summary>
+                    <ul>
+                      {suggestedMixes.map((mix) => (
+                        <li key={mix.name}>
+                          <button
+                            type="button"
+                            onClick={() => openSuggestedMix(mix)}
+                          >
+                            <span>
+                              <strong>{mix.name}</strong>
+                              <small>
+                                {mix.size} songs · {mix.artists.length} artists
+                              </small>
+                            </span>
+                            <ArrowRight size={16} aria-hidden="true" />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                  <div className="artist-filters">
+                    <label className="search-field">
+                      <Search size={17} aria-hidden="true" />
+                      <input
+                        aria-label="Search artists"
+                        placeholder="Search artists…"
+                        type="search"
+                        value={artistQuery}
+                        onChange={(event) => setArtistQuery(event.target.value)}
+                      />
+                    </label>
+                    <select
+                      aria-label="Artist category"
+                      value={artistCategory}
+                      onChange={(event) =>
+                        setArtistCategory(event.target.value)
+                      }
+                    >
+                      <option value="">All categories</option>
+                      {artistCategories.map((group) => (
+                        <option key={group.label}>{group.label}</option>
+                      ))}
+                    </select>
+                    <span className="artist-result-count" role="status">
+                      {visibleArtists.length}{" "}
+                      {visibleArtists.length === 1 ? "artist" : "artists"}
+                    </span>
+                  </div>
                   {mixed && (
                     <div className="lineup-bar">
                       <span role="status">
@@ -1118,7 +1331,7 @@ export default function App() {
                   <div
                     className={`artist-grid ${artistPickerView === "list" ? "artist-list" : ""}`}
                   >
-                    {sortedArtists.map((a) => (
+                    {visibleArtists.map((a) => (
                       <button
                         key={a.id}
                         className="artist-choice"
@@ -1160,6 +1373,20 @@ export default function App() {
                       </button>
                     ))}
                   </div>
+                  {!visibleArtists.length && (
+                    <p>
+                      No artists match those filters.{" "}
+                      <button
+                        className="text-button"
+                        onClick={() => {
+                          setArtistQuery("");
+                          setArtistCategory("");
+                        }}
+                      >
+                        Clear filters
+                      </button>
+                    </p>
+                  )}
                   <button
                     className="text-button"
                     onClick={() => fileInput.current?.click()}
@@ -1537,8 +1764,8 @@ export default function App() {
                       <ArrowLeft size={14} /> {run.definition.artist.name}
                     </button>
                     <span>
-                      {stageLabel} <span className="status-dot" /> Match{" "}
-                      {run.picks.length + 1} of {decisionCount(run.definition)}
+                      Match {run.picks.length + 1} of{" "}
+                      {decisionCount(run.definition)}
                     </span>
                     <div className="round-dots">
                       {run.definition.roundSizes.slice(1).map((_, i) => (
@@ -1555,7 +1782,16 @@ export default function App() {
                       ))}
                     </div>
                   </div>
-                  <h1 className="sr-only">Choose your favorite song</h1>
+                  <div className="round-announcement" role="status">
+                    <div
+                      className="round-heading"
+                      key={`${run.id}:${match.round}`}
+                    >
+                      <h1>{stageLabel}</h1>
+                      {stageSize > 2 && <span>Top {stageSize}</span>}
+                      {stageSize === 2 && <span>One last matchup</span>}
+                    </div>
+                  </div>
                   <div
                     className={`matchup-grid players-${match.slots.length}`}
                     key={match.id}
@@ -1599,6 +1835,16 @@ export default function App() {
                         </div>
                         <div className="player-wrap">
                           <SongPlayer
+                            ref={(controls) => {
+                              if (controls)
+                                playback.current.set(song.id, controls);
+                              else playback.current.delete(song.id);
+                            }}
+                            resumePosition={
+                              settings.resumeSongs
+                                ? savedPositions.get(song.id)
+                                : undefined
+                            }
                             artistName={songArtist(run.definition, song)}
                             song={
                               run.definition.sharedSources
@@ -2006,6 +2252,48 @@ export default function App() {
               <div className="preferences">
                 <label className="preference">
                   <span>
+                    <strong>Display size</strong>
+                    <small>
+                      Automatic enlarges the interface on wide, high-resolution
+                      displays.
+                    </small>
+                  </span>
+                  <select
+                    value={settings.displayScale ?? "auto"}
+                    onChange={(e) =>
+                      setSettings((s) => ({
+                        ...s,
+                        displayScale: e.target
+                          .value as Settings["displayScale"],
+                      }))
+                    }
+                  >
+                    <option value="auto">Automatic</option>
+                    <option value="standard">Standard</option>
+                    <option value="large">Large · 1440p</option>
+                  </select>
+                </label>
+                <label className="preference">
+                  <span>
+                    <strong>Resume songs in later rounds</strong>
+                    <small>
+                      Continue from where you chose the song in its previous
+                      matchup.
+                    </small>
+                  </span>
+                  <input
+                    type="checkbox"
+                    checked={settings.resumeSongs ?? false}
+                    onChange={(e) =>
+                      setSettings((s) => ({
+                        ...s,
+                        resumeSongs: e.target.checked,
+                      }))
+                    }
+                  />
+                </label>
+                <label className="preference">
+                  <span>
                     <strong>Dark listening</strong>
                     <small>Dark gray surfaces and softer light text.</small>
                   </span>
@@ -2120,28 +2408,18 @@ export default function App() {
             aria-modal="true"
             aria-labelledby="bracket-prompt-title"
           >
-            {confirmHome ? (
-              <House size={27} />
-            ) : confirmNew ? (
-              <Plus size={27} />
-            ) : (
-              <Disc3 size={32} />
-            )}
+            {confirmHome ? <House size={27} /> : <Plus size={27} />}
             <h2 id="bracket-prompt-title">
               {confirmHome
                 ? "Return to the main menu?"
-                : confirmNew
-                  ? "Start a new bracket?"
-                  : stageLabel}
+                : "Start a new bracket?"}
             </h2>
             <p>
               {confirmHome
                 ? view === "game" && match
                   ? "Your bracket is saved. You can pick up where you left off from Active runs."
                   : "You’ll leave this screen and go back to the main menu."
-                : confirmNew
-                  ? "Your current bracket is saved. You can resume it from Active runs."
-                  : `Round ${(match?.round ?? 0) + 1} of ${(run?.definition.roundSizes.length ?? 1) - 1} · ${run?.definition.artist.name}`}
+                : "Your current bracket is saved. You can resume it from Active runs."}
             </p>
             <div className="inline centered">
               {(confirmHome || confirmNew) && (
@@ -2159,11 +2437,7 @@ export default function App() {
                   else if (confirmNew) navigate("new");
                 }}
               >
-                {confirmHome
-                  ? "Back to menu"
-                  : confirmNew
-                    ? "Start new bracket"
-                    : "Continue"}{" "}
+                {confirmHome ? "Back to menu" : "Start new bracket"}{" "}
                 <ArrowRight size={16} />
               </button>
             </div>

@@ -139,6 +139,26 @@ test("selection uses combined score; skits excluded; shared album tracks dedupli
   assert.ok(!d.songs.some((s) => s.id === "s0"));
   assert.equal(d.songs.filter((s) => s.id === "s1").length, 1);
 });
+test("a playback checkpoint belongs to a saved pick and is removed by undo", () => {
+  const run: Run = {
+    id: "playback",
+    definition: definition(4),
+    picks: [],
+    updatedAt: "",
+  };
+  const match = currentMatch(run)!;
+  const [first, second] = matchSongs(run, match);
+  const position = { videoId: "hTWKbfoikeg", seconds: 48.25 };
+  const saved: Run = JSON.parse(
+    JSON.stringify(choose(run, first.id, position)),
+  );
+  assert.deepEqual(saved.picks[0].position, position);
+  const corrected = choose(undo(saved), second.id);
+  assert.deepEqual(
+    corrected.picks.map((pick) => [pick.songId, pick.position]),
+    [[second.id, undefined]],
+  );
+});
 test("invalid votes and forward references are rejected", () => {
   const d = definition(8),
     r: Run = { id: "x", definition: d, picks: [], updatedAt: "" };

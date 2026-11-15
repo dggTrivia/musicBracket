@@ -67,6 +67,11 @@ export interface Pick {
   matchId: string;
   songId: string;
   at: string;
+  position?: PlaybackPosition;
+}
+export interface PlaybackPosition {
+  videoId: string;
+  seconds: number;
 }
 export interface Run {
   id: string;
@@ -90,6 +95,8 @@ export interface SourceOverride {
   start?: number;
 }
 export interface Settings {
+  resumeSongs?: boolean;
+  displayScale?: "auto" | "standard" | "large";
   artistPickerView?: "grid" | "list";
   albumPickerView?: "grid" | "list";
   dark: boolean;

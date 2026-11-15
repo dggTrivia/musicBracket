@@ -25,6 +25,7 @@ const albumNames = new Map(
 const pause = () => new Promise((resolve) => setTimeout(resolve, 350));
 const youtube = "https://www.youtube.com";
 let consecutiveFailures = 0;
+let stopped = false;
 const artistFilter = new Set(
   process.argv
     .slice(2)
@@ -34,7 +35,10 @@ const artistFilter = new Set(
 
 async function page(url) {
   await pause();
-  const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
+  const response = await fetch(url, {
+    headers: { Connection: "close" },
+    signal: AbortSignal.timeout(8000),
+  });
   if (!response.ok) throw Error(`HTTP ${response.status}`);
   return response.text();
 }
@@ -54,7 +58,13 @@ function titleKey(title, artist) {
   }
   return normalize(title);
 }
-async function checkpoint() {
+let writes = Promise.resolve();
+function checkpoint() {
+  const write = writes.then(saveIndex);
+  writes = write.catch(() => {});
+  return write;
+}
+async function saveIndex() {
   const file = `${indexPath}.tmp`;
   await writeFile(
     file,
@@ -70,9 +80,8 @@ async function checkpoint() {
   );
   await rename(file, indexPath);
 }
-for (const album of catalog.albums) {
+async function matchAlbum(album) {
   const artistId = album.artistIds[0];
-  if (artistFilter.size && !artistFilter.has(artistId)) continue;
   const artist =
     album.id === "ka-orpheus-vs-the-sirens"
       ? "Hermit and the Recluse"
@@ -88,7 +97,7 @@ for (const album of catalog.albums) {
   const songs = catalog.songs.filter((song) =>
     song.albumIds.includes(album.id),
   );
-  if (songs.every((song) => records.has(key(artistId, song.title)))) continue;
+  if (songs.every((song) => records.has(key(artistId, song.title)))) return;
   try {
     const query = `${artist} ${album.title} full album`;
     const search = await page(
@@ -135,7 +144,7 @@ for (const album of catalog.albums) {
       best.length <
       Math.min(songs.length, Math.max(3, Math.ceil(songs.length * 0.42)))
     )
-      continue;
+      return;
     let added = 0;
     for (const { song, track } of best) {
       const id = key(artistId, song.title);
@@ -160,11 +169,29 @@ for (const album of catalog.albums) {
     console.log(
       `${artist} · ${album.title}: ${best.length}/${songs.length} matched, ${added} new links`,
     );
-    await checkpoint();
+    if (added) await checkpoint();
   } catch (error) {
     console.error(`${album.title}: ${error.message}`);
     if (++consecutiveFailures >= 4 || /HTTP (403|429)/.test(error.message))
-      break;
+      stopped = true;
   }
 }
+const albums = catalog.albums.filter(
+  (album) => !artistFilter.size || artistFilter.has(album.artistIds[0]),
+);
+const concurrency = Math.min(
+  3,
+  Math.max(1, Number(process.env.ALBUM_VIDEO_CONCURRENCY) || 1),
+);
+let cursor = 0;
+await Promise.all(
+  Array.from({ length: concurrency }, async () => {
+    while (!stopped && cursor < albums.length)
+      await matchAlbum(albums[cursor++]);
+  }),
+);
 await checkpoint();
+if (stopped)
+  console.error(
+    "Stopped after repeated connection or access failures. Published matches were saved.",
+  );

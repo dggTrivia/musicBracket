@@ -78,7 +78,7 @@ To rebuild the database, run `node scripts/catalog-import.mjs`, then `node scrip
 
 The Beatles selection uses the 13 canonical albums in the supplied list: Please Please Me, With the Beatles, A Hard Day's Night (UK), Beatles for Sale, Help! (UK only), Rubber Soul (UK), Revolver (UK), Sgt. Pepper's Lonely Hearts Club Band, Magical Mystery Tour, The Beatles, Yellow Submarine, Abbey Road, and Let It Be.
 
-The catalog contains 43 artists, 441 albums, and 6,457 canonical tracks. Quality uses Rate Your Music where a matched song meets the minimum vote count. Popularity uses public Spotify stream totals from Kworb and Music Metrics Vault. The player offers a YouTube search when a video could not be matched.
+The catalog contains 88 artists, 1,153 albums, and 15,109 canonical tracks. Quality uses Rate Your Music where a matched song meets the minimum vote count. Popularity uses public Spotify stream totals from Kworb and Music Metrics Vault. The player offers a YouTube search when a video could not be matched.
 
 ## Cloudflare
 

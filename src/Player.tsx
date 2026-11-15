@@ -1,12 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useRef, useState } from "react";
+import type { Ref } from "react";
 import { ExternalLink, Link2, Play, RotateCcw } from "lucide-react";
-import type { Song, SourceOverride } from "./types";
+import type { PlaybackPosition, Song, SourceOverride } from "./types";
+export type SongPlayback = { getPosition: () => PlaybackPosition | undefined };
 type PlayerAPI = {
   playVideo: () => void;
   pauseVideo: () => void;
   setVolume: (n: number) => void;
   seekTo: (n: number, allow: boolean) => void;
   getCurrentTime: () => number;
+  getDuration: () => number;
   destroy: () => void;
 };
 declare global {
@@ -58,6 +61,8 @@ export function SongPlayer({
   song,
   artistName,
   source,
+  resumePosition,
+  ref,
   active,
   volume,
   onActivate,
@@ -66,6 +71,8 @@ export function SongPlayer({
   song: Song;
   artistName: string;
   source: SourceOverride;
+  resumePosition?: PlaybackPosition;
+  ref?: Ref<SongPlayback>;
   active: boolean;
   volume: number;
   onActivate: () => void;
@@ -73,6 +80,7 @@ export function SongPlayer({
 }) {
   const mount = useRef<HTMLDivElement>(null),
     player = useRef<PlayerAPI | null>(null);
+  const hasPlayed = useRef(false);
   const [ready, setReady] = useState(false),
     [error, setError] = useState(""),
     [backup, setBackup] = useState(false),
@@ -81,20 +89,44 @@ export function SongPlayer({
     ? source.backup || song.backupYoutubeId
     : source.primary || song.youtubeId;
   const primary = source.primary || song.youtubeId;
+  const start =
+    resumePosition &&
+    resumePosition.videoId === id &&
+    resumePosition.seconds > 0
+      ? resumePosition.seconds
+      : (source.start ?? 0);
   const unavailable = !id || Boolean(error);
   const watchId = unavailable ? primary || id : id;
   const watchParams = watchId ? new URLSearchParams({ v: watchId }) : null;
-  if (watchParams && source.start && source.start > 0) {
-    watchParams.set("t", String(Math.floor(source.start)));
+  if (watchParams && start > 0) {
+    watchParams.set("t", String(Math.floor(start)));
   }
   const activeRef = useRef(active);
   activeRef.current = active;
+  useImperativeHandle(
+    ref,
+    () => ({
+      getPosition() {
+        const current = player.current;
+        if (!id || !current || !hasPlayed.current) return;
+        const seconds = current.getCurrentTime();
+        const duration = current.getDuration();
+        if (!Number.isFinite(seconds) || seconds < 0) return;
+        return {
+          videoId: id,
+          seconds: duration && seconds >= duration - 1 ? 0 : seconds,
+        };
+      },
+    }),
+    [id],
+  );
   useEffect(() => setBackup(false), [source.primary, song.youtubeId]);
   useEffect(() => {
     let disposed = false;
     setReady(false);
     setError("");
     setBlocked(false);
+    hasPlayed.current = false;
     if (!id) return;
     const element = document.createElement("iframe");
     const params = new URLSearchParams({
@@ -102,7 +134,8 @@ export function SongPlayer({
       origin: location.origin,
       playsinline: "1",
       rel: "0",
-      start: String(source.start || 0),
+      autoplay: "0",
+      start: String(Math.floor(start)),
     });
     element.src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?${params}`;
     element.title = `${song.title} – YouTube player`;
@@ -137,7 +170,10 @@ export function SongPlayer({
             },
             onAutoplayBlocked: () => setBlocked(true),
             onStateChange: (event: { data: number }) => {
-              if (event.data === 1) onActivate();
+              if (event.data === 1 && !disposed) {
+                hasPlayed.current = true;
+                onActivate();
+              }
             },
           },
         });
@@ -150,18 +186,15 @@ export function SongPlayer({
       player.current?.destroy();
       player.current = null;
     };
-  }, [id]);
+  }, [id, start]);
   useEffect(() => {
     if (!ready) return;
     if (active) player.current?.playVideo();
-    else player.current?.pauseVideo();
+    else if (hasPlayed.current) player.current?.pauseVideo();
   }, [active, ready]);
   useEffect(() => {
     player.current?.setVolume(volume);
   }, [volume]);
-  useEffect(() => {
-    if (ready && source.start) player.current?.seekTo(source.start, true);
-  }, [source.start, ready]);
   return (
     <>
       <div
@@ -207,6 +240,7 @@ export function SongPlayer({
         <button
           disabled={!ready || unavailable}
           onClick={() => {
+            onActivate();
             player.current?.seekTo(0, true);
           }}
           title="Play from the beginning"

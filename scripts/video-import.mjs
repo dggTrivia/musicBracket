@@ -3,7 +3,7 @@
  * Optional --search fetches YouTube search metadata for unresolved songs, slowly,
  * caching each successful result. No audio/video content is downloaded.
  */
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, rename } from "node:fs/promises";
 import { normalizeTitle } from "./ratings-import.mjs";
 
 const readJson = async (path, fallback) => {
@@ -257,7 +257,9 @@ if (process.argv.includes("--search") && catalog) {
       Math.max(1, Number(process.env.VIDEO_IMPORT_CONCURRENCY || 4)),
     );
   const queue = [...catalog.songs].sort(
-    (a, b) => (a.kind === "song" ? 0 : 1) - (b.kind === "song" ? 0 : 1),
+    (a, b) =>
+      (a.kind === "song" ? 0 : 1) - (b.kind === "song" ? 0 : 1) ||
+      b.popularity - a.popularity,
   );
   let searched = 0,
     cursor = 0,
@@ -295,10 +297,13 @@ if (process.argv.includes("--search") && catalog) {
           /^(untitled \d{2})\s+[lI|].*$/i,
           "$1",
         );
-        const kaAlbum = artistId === "ka"
-          ? catalog.albums.find((album) => album.id === song.albumId)?.title
-          : undefined;
-        const query = [artist, lookupTitle, kaAlbum, "official audio"].filter(Boolean).join(" ");
+        const kaAlbum =
+          artistId === "ka"
+            ? catalog.albums.find((album) => album.id === song.albumId)?.title
+            : undefined;
+        const query = [artist, lookupTitle, kaAlbum, "official audio"]
+          .filter(Boolean)
+          .join(" ");
         const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
         try {
           const response = await fetch(searchUrl, {
@@ -336,9 +341,13 @@ if (process.argv.includes("--search") && catalog) {
             .map((v) => {
               const title = (v.title?.runs || []).map((r) => r.text).join(""),
                 channel = (v.ownerText?.runs || []).map((r) => r.text).join("");
-              const kaCredit = artistId === "ka" &&
-                (/^ka\s*[-–—:]/i.test(title) || /^ka(?:\s*-\s*topic)?$/i.test(channel));
-              const clean = (kaCredit ? title.replace(/^ka\s*[-–—:]\s*/i, "") : title)
+              const kaCredit =
+                artistId === "ka" &&
+                (/^ka\s*[-–—:]/i.test(title) ||
+                  /^ka(?:\s*-\s*topic)?$/i.test(channel));
+              const clean = (
+                kaCredit ? title.replace(/^ka\s*[-–—:]\s*/i, "") : title
+              )
                 .replace(
                   new RegExp(
                     `^${artist.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*[-–—:]\\s*`,
@@ -453,29 +462,38 @@ if (process.argv.includes("--apply") && catalog) {
       matched++;
     }
   }
-  await writeFile("public/catalog.json", JSON.stringify(catalog, null, 2));
+  await writeJson("public/catalog.json", catalog);
   console.log(
     `Applied ${matched} video mappings to ${catalog.songs.length} catalog songs`,
   );
 }
 console.log(`Published video source mappings: ${sources.size}`);
 function checkpoint() {
-  writeQueue = writeQueue.then(async () => {
-    await mkdir("public", { recursive: true });
-    await writeFile(
-      "public/video-sources.json",
-      JSON.stringify(
-        {
-          ...data,
-          updatedAt: new Date().toISOString(),
-          sources: [...sources.values()],
-        },
-        null,
-        2,
-      ),
-    );
-  });
+  writeQueue = writeQueue.then(() =>
+    writeJson("public/video-sources.json", {
+      ...data,
+      updatedAt: new Date().toISOString(),
+      sources: [...sources.values()],
+    }),
+  );
   return writeQueue;
+}
+async function writeJson(file, value) {
+  const pending = `${file}.tmp`;
+  await writeFile(pending, JSON.stringify(value, null, 2));
+  for (let attempt = 0; ; attempt++) {
+    try {
+      await rename(pending, file);
+      return;
+    } catch (error) {
+      if (
+        attempt === 7 ||
+        !["EPERM", "EACCES", "EBUSY", "UNKNOWN"].includes(error.code)
+      )
+        throw error;
+      await new Promise((resolve) => setTimeout(resolve, 125 * (attempt + 1)));
+    }
+  }
 }
 function decode(text) {
   return text

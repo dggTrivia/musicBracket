@@ -237,7 +237,11 @@ export function matchSongs(run: Run, m: Match) {
     )
     .filter((x): x is Song => Boolean(x));
 }
-export function choose(run: Run, songId: string): Run {
+export function choose(
+  run: Run,
+  songId: string,
+  position?: Run["picks"][number]["position"],
+): Run {
   const m = currentMatch(run);
   if (!m || !matchSongs(run, m).some((s) => s.id === songId))
     throw Error("This song is not in the current matchup.");
@@ -245,7 +249,12 @@ export function choose(run: Run, songId: string): Run {
     ...run,
     picks: [
       ...run.picks,
-      { matchId: m.id, songId, at: new Date().toISOString() },
+      {
+        matchId: m.id,
+        songId,
+        at: new Date().toISOString(),
+        ...(position ? { position } : {}),
+      },
     ],
     updatedAt: new Date().toISOString(),
   };

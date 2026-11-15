@@ -298,6 +298,8 @@ function addSong(track, album, artistIds) {
       .replace(/\s+\(BBC (?:Mark Goodier|John Peel) Session(?: \d+)?\)$/i, "")
       .replace(/^\(New Wave\) Polly$/i, "Polly")
       .replace(/\s+\(B-Side\)$/i, "");
+  if (album.title === "Band of Gypsys")
+    title = title.replace(/\s+[([]Live[^)\]]*[)\]]$/i, "");
   const key = songKey(artistIds, title);
   const existing = songMap.get(key);
   if (existing) {
@@ -347,7 +349,7 @@ for (const artist of append
   ? expandedArtists
   : [...artists, ...expandedArtists]) {
   if (append && artistFilter.size && !artistFilter.has(artist.id)) continue;
-  for (const [appleId, title, year] of plans[artist.id]) {
+  for (const [appleId, title, year, credit] of plans[artist.id]) {
     const albumId = `${artist.id}-${slug(title)}`;
     if (catalog.albums.some((album) => album.id === albumId)) continue;
     try {
@@ -393,8 +395,8 @@ for (const artist of append
         id: albumId,
         artistIds,
         title,
-        ...(title === "Orpheus vs. the Sirens"
-          ? { credit: "Hermit and the Recluse" }
+        ...(credit || title === "Orpheus vs. the Sirens"
+          ? { credit: credit ?? "Hermit and the Recluse" }
           : {}),
         year,
         cover,
@@ -418,6 +420,7 @@ for (const artist of append
       tracks = tracks.filter(
         (r) =>
           (!/[([][^)\]]*\blive\b/i.test(r.trackName) ||
+            title === "Band of Gypsys" ||
             /^Pinocchio Story/i.test(r.trackName)) &&
           !/^Interview|^Commentary|^Documentary/i.test(r.trackName),
       );
@@ -486,15 +489,20 @@ for (const artist of append
     }
   }
 }
-const throne = catalog.albums.find(
-  (album) => album.id === "kanye-west-watch-the-throne",
-);
-if (throne && !throne.artistIds.includes("jay-z")) {
-  throne.artistIds.push("jay-z");
+for (const [albumId, artistId, credit] of [
+  ["kanye-west-watch-the-throne", "jay-z"],
+  ["jpegmafia-scaring-the-hoes", "danny-brown", "JPEGMAFIA & Danny Brown"],
+  ["jay-z-everything-is-love", "beyonce", "The Carters"],
+]) {
+  const album = catalog.albums.find((entry) => entry.id === albumId);
+  if (!album || !catalog.artists.some((entry) => entry.id === artistId))
+    continue;
+  if (!album.artistIds.includes(artistId)) album.artistIds.push(artistId);
+  if (credit) album.credit = credit;
   for (const song of catalog.songs.filter((s) =>
-    s.albumIds.includes(throne.id),
+    s.albumIds.includes(albumId),
   )) {
-    if (!song.artistIds.includes("jay-z")) song.artistIds.push("jay-z");
+    if (!song.artistIds.includes(artistId)) song.artistIds.push(artistId);
   }
 }
 for (const {
