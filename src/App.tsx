@@ -218,6 +218,13 @@ export default function App() {
     dismissPrompt,
   );
   useLayoutEffect(() => {
+    const restoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.history.scrollRestoration = restoration;
+    };
+  }, []);
+  useLayoutEffect(() => {
     if (view !== "home") keepMenuInHistory();
     window.scrollTo(0, 0);
     const onBack = (event: PopStateEvent) => {
