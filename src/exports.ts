@@ -7,6 +7,7 @@ const palettes = {
     green: "#455a32",
     line: "#baab86",
     soft: "#78684c",
+    winner: "#e0e5c9",
   },
   dark: {
     bg: "#242526",
@@ -14,14 +15,24 @@ const palettes = {
     green: "#b8c699",
     line: "#5b5e60",
     soft: "#b9bab9",
+    winner: "#363839",
+  },
+  streaming: {
+    bg: "#141414",
+    ink: "#f4f5f1",
+    green: "#c4fa61",
+    line: "#464844",
+    soft: "#b9bdb5",
+    winner: "#262e1a",
   },
 };
+type ExportTheme = boolean | "streaming";
 export async function renderHistoryEntry(
   run: Run,
-  dark: boolean,
+  theme: ExportTheme,
 ): Promise<HistoryEntry> {
-  const full = await exportBracket(run, "full", dark),
-    top = await exportBracket(run, "top", dark);
+  const full = await exportBracket(run, "full", theme),
+    top = await exportBracket(run, "top", theme);
   const won = outcomes(run),
     winner = run.definition.songs.find(
       (s) => s.id === won[run.definition.matches.at(-1)!.id],
@@ -58,13 +69,15 @@ async function picture(url: string) {
 export async function exportBracket(
   run: Run,
   mode: "full" | "top",
-  dark = false,
+  theme: ExportTheme = false,
   limit = 16,
 ): Promise<Blob> {
   await document.fonts.ready;
   const d = run.definition,
     won = outcomes(run),
-    p = dark ? palettes.dark : palettes.light;
+    p =
+      palettes[theme === "streaming" ? "streaming" : theme ? "dark" : "light"];
+  const headingFont = theme === "streaming" ? "DM Sans" : "Fraunces";
   const final = d.matches.at(-1)!;
   const champion = d.songs.find((s) => s.id === won[final.id]);
   let matches = d.matches;
@@ -108,8 +121,8 @@ export async function exportBracket(
   ctx.scale(scale, scale);
   ctx.fillStyle = p.bg;
   ctx.fillRect(0, 0, width, height);
-  const paper = await picture("/paper.webp");
-  if (paper && !dark) {
+  const paper = theme === false ? await picture("/paper.webp") : null;
+  if (paper) {
     const pattern = ctx.createPattern(paper, "repeat");
     if (pattern) {
       ctx.globalAlpha = 0.28;
@@ -134,7 +147,7 @@ export async function exportBracket(
     ctx.font = `${size}px "${font}"`;
     ctx.fillText(value, x, y);
   };
-  text("MusicBracket", pad, 72, 38, "Fraunces");
+  text("MusicBracket", pad, 72, 38, headingFont);
   text(
     `${d.artist.name} · ${d.songs.length} songs · ${mode === "full" ? "The complete bracket" : `Final stages · up to ${limit} songs`}`,
     pad,
@@ -153,7 +166,7 @@ export async function exportBracket(
     pad,
     195,
     40,
-    "Fraunces",
+    headingFont,
     p.green,
   );
   text(
@@ -172,7 +185,7 @@ export async function exportBracket(
     winner: boolean,
   ) => {
     if (winner) {
-      ctx.fillStyle = dark ? "#363839" : "#e0e5c9";
+      ctx.fillStyle = p.winner;
       ctx.fillRect(x - 8, y - 41, col - 42, 58);
     }
     const art = s ? covers.get(s.albumId) : null;
@@ -207,7 +220,7 @@ export async function exportBracket(
       x,
       header + 25,
       18,
-      "Fraunces",
+      headingFont,
       p.green,
     );
     const totalHeight = height - header - 100;

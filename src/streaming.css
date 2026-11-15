@@ -1,0 +1,263 @@
+:root[data-appearance="streaming"] {
+  --paper: #141414;
+  --surface: #202120;
+  --ink: #f4f5f1;
+  --muted: #bec1ba;
+  --green: #c4fa61;
+  --green-hover: #d5ff8b;
+  --line: #484b45;
+  --soft: #2b2e28;
+  --orange: #c4fa61;
+  --shadow: 0 16px 38px #0006;
+  --club-heading: "DM Sans", sans-serif;
+}
+[data-appearance="streaming"] body::before {
+  display: none;
+}
+[data-appearance="streaming"]
+  :is(
+    h1,
+    h2,
+    h3,
+    .wordmark,
+    .footer-brand,
+    .artist-name,
+    .summary-stamp > span,
+    .route-preview > span
+  ) {
+  font-family: var(--club-heading);
+}
+[data-appearance="streaming"] :is(h1, h2, h3) {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+[data-appearance="streaming"] .wordmark {
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: -0.045em;
+}
+[data-appearance="streaming"] .wordmark svg {
+  margin-inline-end: 7px;
+  color: var(--green);
+}
+[data-appearance="streaming"] .masthead {
+  height: 68px;
+}
+[data-appearance="streaming"]
+  :is(.primary, .secondary, .new-bracket-button, .full-bracket) {
+  border-radius: 999px;
+}
+[data-appearance="streaming"] .save-state {
+  padding: 6px 11px;
+  border-radius: 999px;
+  color: var(--green);
+  background: #263018;
+}
+[data-appearance="streaming"] .drawer {
+  background: #101110;
+  box-shadow: none;
+  border-color: #30322f;
+  overflow-y: auto;
+}
+.streaming-docked .drawer {
+  width: 224px;
+  padding: 24px 16px;
+  animation: none;
+}
+.streaming-docked .app-body {
+  margin-inline-start: 224px;
+  padding-inline: clamp(20px, 3vw, 52px);
+}
+.streaming-docked .masthead .brand-group {
+  display: none;
+}
+[data-appearance="streaming"] .drawer nav {
+  margin-top: 23px;
+}
+[data-appearance="streaming"] .drawer nav > button {
+  min-height: 42px;
+  border-radius: 7px;
+  font-size: 13px;
+}
+[data-appearance="streaming"] .drawer nav > button.nav-active:hover {
+  color: var(--paper);
+  background: var(--green-hover);
+}
+[data-appearance="streaming"] .drawer .nav-rule {
+  margin-block: 8px;
+}
+.streaming-shelf {
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+  padding: 14px 5px 0;
+  font-size: 13px;
+}
+.streaming-shelf > div {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+}
+.streaming-shelf img {
+  width: 43px;
+  height: 43px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+[data-appearance="streaming"] .game-status {
+  padding-block: 14px;
+}
+[data-appearance="streaming"] .round-announcement {
+  border-bottom: 0;
+  margin-bottom: 10px;
+  padding-block: 14px;
+}
+[data-appearance="streaming"] .round-heading h1 {
+  color: var(--ink);
+}
+[data-appearance="streaming"] .round-heading > span {
+  color: var(--green);
+}
+[data-appearance="streaming"] .round-dots {
+  gap: 3px;
+}
+[data-appearance="streaming"] .round-dots > span {
+  width: clamp(7px, 1.4vw, 17px);
+  height: 5px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--line);
+}
+[data-appearance="streaming"] .round-dots > :is(.done, .current) {
+  background: var(--green);
+}
+[data-appearance="streaming"] .matchup-grid {
+  gap: 16px;
+  align-items: stretch;
+}
+[data-appearance="streaming"] .song-panel {
+  display: flex;
+  flex-direction: column;
+  grid-row: auto;
+  min-width: 0;
+  gap: 13px;
+  padding: clamp(11px, 1.35vw, 20px);
+  border: 1px solid #373a35;
+  border-radius: 17px;
+  background: var(--surface);
+}
+[data-appearance="streaming"] .matchup-grid .song-panel:nth-child(n + 3) {
+  margin-top: 0;
+}
+[data-appearance="streaming"] .song-panel.is-playing {
+  border-color: #779a3b;
+}
+[data-appearance="streaming"] .song-panel::before {
+  display: none;
+}
+[data-appearance="streaming"] .player-wrap {
+  order: -1;
+}
+[data-appearance="streaming"] .video {
+  border-radius: 10px;
+  background: #0d0e0d;
+}
+[data-appearance="streaming"] .is-playing .video {
+  outline: none;
+}
+[data-appearance="streaming"] .song-title-row {
+  min-height: auto;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+[data-appearance="streaming"] .song-title-row h2 {
+  font-size: clamp(19px, 2.3vw, 34px);
+  line-height: 1.1;
+  color: var(--ink);
+}
+[data-appearance="streaming"] .song-title-row .cover-thumb {
+  width: 43px;
+  height: 43px;
+  border-radius: 5px;
+}
+[data-appearance="streaming"] .album-tag {
+  margin-top: 4px;
+  padding: 0;
+  border: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--muted);
+  font-size: 12px;
+}
+[data-appearance="streaming"] .choose-button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: auto;
+  border: 1px solid #858a80;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--club-heading);
+  font-size: 14px;
+  font-weight: 700;
+}
+[data-appearance="streaming"] .is-playing .choose-button,
+[data-appearance="streaming"] .choose-button:not(:disabled):hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--paper);
+}
+[data-appearance="streaming"]
+  :is(.source-dialog, .bracket-dialog, .challenge-card, .share-dialog) {
+  border-radius: 14px;
+}
+[data-appearance="streaming"] .album-cover,
+[data-appearance="streaming"] .menu-sleeves {
+  border-radius: 8px;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  [data-appearance="streaming"] .masthead {
+    height: auto;
+    min-height: 62px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-block: 8px;
+  }
+  [data-appearance="streaming"] .masthead .brand-group {
+    gap: 4px;
+  }
+  [data-appearance="streaming"] .masthead .wordmark {
+    font-size: clamp(16px, 4.9vw, 23px);
+  }
+  [data-appearance="streaming"] .masthead .wordmark svg {
+    width: 18px;
+    margin-inline-end: 4px;
+  }
+  [data-appearance="streaming"] .masthead .header-end {
+    display: none;
+  }
+  [data-appearance="streaming"] .header-nav {
+    gap: 5px;
+  }
+  [data-appearance="streaming"] .header-nav button {
+    padding: 7px 8px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  [data-appearance="streaming"] .matchup-grid {
+    grid-template-columns: repeat(2, minmax(224px, 80%));
+    scroll-snap-type: x proximity;
+  }
+  [data-appearance="streaming"] .song-panel {
+    scroll-snap-align: start;
+  }
+  [data-appearance="streaming"] .song-title-row .cover-thumb {
+    width: 32px;
+    height: 32px;
+  }
+  [data-appearance="streaming"] .song-title-row h2 {
+    font-size: 17px;
+  }
+}

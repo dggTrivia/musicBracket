@@ -19,7 +19,7 @@ Search or filter artists by genre, then choose one artist, mix 2–8, or try a s
 - Undo picks, resume saved runs, and export full-bracket or Final 16 images.
 - Share an exact bracket through a replay link. Use the hosted site when sending a link to a friend.
 
-Progress saves automatically in your browser. Light and dark modes included.
+Progress saves automatically in your browser. Choose Soul Paper or Streaming Club in Settings.
 
 ![A song matchup with side-by-side YouTube players](docs/screenshots/matchup.jpg)
 

@@ -7,6 +7,7 @@ import "@fontsource/dm-sans/latin-400.css";
 import "@fontsource/dm-sans/latin-500.css";
 import "@fontsource/dm-sans/latin-600.css";
 import "./styles.css";
+import "./streaming.css";
 import App from "./App";
 class Boundary extends React.Component<
   { children: React.ReactNode },

@@ -95,6 +95,7 @@ export interface SourceOverride {
   start?: number;
 }
 export interface Settings {
+  appearance?: "soul" | "streaming";
   resumeSongs?: boolean;
   displayScale?: "auto" | "standard" | "large";
   artistPickerView?: "grid" | "list";

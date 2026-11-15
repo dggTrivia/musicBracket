@@ -10,6 +10,7 @@ import {
 import {
   ArrowLeft,
   ArrowRight,
+  AudioLines,
   ChevronRight,
   Check,
   Download,
@@ -278,7 +279,20 @@ export default function App() {
     catalogInput = useRef<HTMLInputElement>(null);
   const menuOpener = useRef<HTMLButtonElement | null>(null);
   const drawerClose = useRef<HTMLButtonElement>(null);
-  const drawerOpen = menu || settings.pinned;
+  const streaming = settings.appearance === "streaming";
+  const [wideLayout, setWideLayout] = useState(
+    () => window.matchMedia("(min-width: 1100px)").matches,
+  );
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 1100px)");
+    const update = () => setWideLayout(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+  const docked = streaming && wideLayout;
+  const pinned = docked || settings.pinned;
+  const drawerOpen = menu || pinned;
+  const exportTheme = streaming ? "streaming" : settings.dark;
   useDialogFocus(bracket && !share && !confirmHome, ".bracket-dialog", () =>
     setBracket(false),
   );
@@ -482,19 +496,23 @@ export default function App() {
     };
   }, []);
   useEffect(() => {
-    document.documentElement.dataset.theme = settings.dark ? "dark" : "light";
+    document.documentElement.dataset.appearance = streaming
+      ? "streaming"
+      : "soul";
+    document.documentElement.dataset.theme =
+      streaming || settings.dark ? "dark" : "light";
     document.documentElement.dataset.display = settings.displayScale ?? "auto";
     if (loaded)
       storage.saveSettings(settings).catch((e) => setError(e.message));
-  }, [settings, loaded]);
+  }, [settings, streaming, loaded]);
   useEffect(() => {
-    if (!menu || settings.pinned) return;
+    if (!menu || pinned) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMenu(false);
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [menu, settings.pinned]);
+  }, [menu, pinned]);
   useLayoutEffect(() => {
     if (drawerOpen) {
       if (menuOpener.current) drawerClose.current?.focus();
@@ -608,7 +626,7 @@ export default function App() {
       if (archiving.current.has(finished.id)) return;
       archiving.current.add(finished.id);
       try {
-        const entry = await renderHistoryEntry(finished, settings.dark);
+        const entry = await renderHistoryEntry(finished, exportTheme);
         await storage.archive(entry);
         if (finished.id === runId) setWinnerRun(finished);
         setHistory((items) => [
@@ -626,7 +644,7 @@ export default function App() {
         archiving.current.delete(finished.id);
       }
     },
-    [runId, settings.dark],
+    [runId, exportTheme],
   );
   useEffect(() => {
     for (const finished of runs) {
@@ -989,11 +1007,13 @@ export default function App() {
       : "";
   const stageSize = match && run ? run.definition.roundSizes[match.round] : 0;
   return (
-    <div className={`app ${settings.pinned ? "menu-pinned" : ""}`}>
+    <div
+      className={`app ${pinned ? "menu-pinned" : ""} ${docked ? "streaming-docked" : ""}`}
+    >
       {drawerOpen && (
         <>
           <button
-            className={`menu-scrim ${settings.pinned ? "pinned-scrim" : ""}`}
+            className={`menu-scrim ${pinned ? "pinned-scrim" : ""}`}
             aria-label="Close menu"
             onClick={() => setMenu(false)}
           />
@@ -1005,28 +1025,33 @@ export default function App() {
           >
             <div className="drawer-heading">
               <button className="wordmark" onClick={requestHome}>
+                {streaming && <AudioLines size={24} aria-hidden="true" />}
                 MusicBracket<span>.</span>
               </button>
-              <button
-                className={`icon-button ${settings.pinned ? "selected" : ""}`}
-                onClick={() =>
-                  setSettings((s) => ({ ...s, pinned: !s.pinned }))
-                }
-                aria-label={settings.pinned ? "Unpin menu" : "Pin menu"}
-              >
-                <Pin size={17} />
-              </button>
-              <button
-                ref={drawerClose}
-                className="icon-button"
-                aria-label="Close menu"
-                onClick={() => {
-                  setMenu(false);
-                  setSettings((s) => ({ ...s, pinned: false }));
-                }}
-              >
-                <X size={18} />
-              </button>
+              {!docked && (
+                <>
+                  <button
+                    className={`icon-button ${settings.pinned ? "selected" : ""}`}
+                    onClick={() =>
+                      setSettings((s) => ({ ...s, pinned: !s.pinned }))
+                    }
+                    aria-label={settings.pinned ? "Unpin menu" : "Pin menu"}
+                  >
+                    <Pin size={17} />
+                  </button>
+                  <button
+                    ref={drawerClose}
+                    className="icon-button"
+                    aria-label="Close menu"
+                    onClick={() => {
+                      setMenu(false);
+                      setSettings((s) => ({ ...s, pinned: false }));
+                    }}
+                  >
+                    <X size={18} />
+                  </button>
+                </>
+              )}
             </div>
             <nav>
               {run && (
@@ -1067,14 +1092,26 @@ export default function App() {
                 </button>
               ))}
             </nav>
-            <div className="drawer-bottom">
-              <button
-                onClick={() => setSettings((s) => ({ ...s, dark: !s.dark }))}
-              >
-                {settings.dark ? <Sun size={18} /> : <Moon size={18} />}{" "}
-                {settings.dark ? "Light listening" : "Dark listening"}
-              </button>
-            </div>
+            {streaming && run && view === "game" && (
+              <div className="streaming-shelf">
+                <strong>{run.definition.artist.name}</strong>
+                <div aria-hidden="true">
+                  {run.definition.albums.slice(0, 3).map((album) => (
+                    <img key={album.id} src={album.cover} alt="" />
+                  ))}
+                </div>
+              </div>
+            )}
+            {!streaming && (
+              <div className="drawer-bottom">
+                <button
+                  onClick={() => setSettings((s) => ({ ...s, dark: !s.dark }))}
+                >
+                  {settings.dark ? <Sun size={18} /> : <Moon size={18} />}{" "}
+                  {settings.dark ? "Light listening" : "Dark listening"}
+                </button>
+              </div>
+            )}
           </aside>
         </>
       )}
@@ -1111,6 +1148,7 @@ export default function App() {
               <Menu size={21} />
             </button>
             <button className="wordmark" onClick={requestHome}>
+              {streaming && <AudioLines size={24} aria-hidden="true" />}
               MusicBracket<span>.</span>
             </button>
           </div>
@@ -1130,15 +1168,17 @@ export default function App() {
             <span className="save-state">
               <CheckCircle2 size={14} /> Saved locally
             </span>
-            <button
-              className="icon-button theme-switch"
-              aria-label={
-                settings.dark ? "Switch to light mode" : "Switch to dark mode"
-              }
-              onClick={() => setSettings((s) => ({ ...s, dark: !s.dark }))}
-            >
-              {settings.dark ? <Sun size={19} /> : <Moon size={19} />}
-            </button>
+            {!streaming && (
+              <button
+                className="icon-button theme-switch"
+                aria-label={
+                  settings.dark ? "Switch to light mode" : "Switch to dark mode"
+                }
+                onClick={() => setSettings((s) => ({ ...s, dark: !s.dark }))}
+              >
+                {settings.dark ? <Sun size={19} /> : <Moon size={19} />}
+              </button>
+            )}
           </div>
         </header>
         <main>
@@ -2000,7 +2040,7 @@ export default function App() {
                             await exportBracket(
                               run,
                               "top",
-                              settings.dark,
+                              exportTheme,
                               snapshotSize,
                             ),
                             `final-${snapshotSize}.png`,
@@ -2294,17 +2334,41 @@ export default function App() {
                 </label>
                 <label className="preference">
                   <span>
-                    <strong>Dark listening</strong>
-                    <small>Dark gray surfaces and softer light text.</small>
+                    <strong>Theme</strong>
+                    <small>
+                      Choose Soul Paper or the dark, lime-accented Streaming
+                      Club.
+                    </small>
                   </span>
-                  <input
-                    type="checkbox"
-                    checked={settings.dark}
+                  <select
+                    value={streaming ? "streaming" : "soul"}
                     onChange={(e) =>
-                      setSettings((s) => ({ ...s, dark: e.target.checked }))
+                      setSettings((s) => ({
+                        ...s,
+                        appearance:
+                          e.target.value === "streaming" ? "streaming" : "soul",
+                      }))
                     }
-                  />
+                  >
+                    <option value="soul">Soul Paper</option>
+                    <option value="streaming">Streaming Club</option>
+                  </select>
                 </label>
+                {!streaming && (
+                  <label className="preference">
+                    <span>
+                      <strong>Dark listening</strong>
+                      <small>Dark gray surfaces and softer light text.</small>
+                    </span>
+                    <input
+                      type="checkbox"
+                      checked={settings.dark}
+                      onChange={(e) =>
+                        setSettings((s) => ({ ...s, dark: e.target.checked }))
+                      }
+                    />
+                  </label>
+                )}
                 <label className="preference">
                   <span>
                     <strong>Hover to listen</strong>
@@ -2337,7 +2401,11 @@ export default function App() {
                 <label className="preference">
                   <span>
                     <strong>Keep the menu open</strong>
-                    <small>Pin navigation beside your listening space.</small>
+                    <small>
+                      {streaming
+                        ? "Keep navigation open on smaller screens."
+                        : "Pin navigation beside your listening space."}
+                    </small>
                   </span>
                   <input
                     type="checkbox"
