@@ -13,6 +13,12 @@
   --line: #c7b893;
   --soft: #eae2cc;
   --orange: #bd582d;
+  --danger: #992c25;
+  --danger-border: #ba7569;
+  --danger-tint: #f7e8de;
+  --danger-fill: #a33229;
+  --danger-hover: #82231c;
+  --danger-on-fill: #fff8f4;
   --shadow: 0 14px 50px #38291f19;
   color-scheme: light;
 }
@@ -26,6 +32,11 @@
   --line: #5b5e60;
   --soft: #363839;
   --orange: #df9b73;
+  --danger: #ffad9c;
+  --danger-border: #a4675e;
+  --danger-tint: #3c2927;
+  --danger-fill: #a5392e;
+  --danger-hover: #8c2d25;
   --shadow: 0 14px 50px #0005;
   color-scheme: dark;
   background: var(--paper);
@@ -1821,6 +1832,78 @@ progress::-webkit-progress-value {
   font-size: 12px;
   margin: 15px 0;
   max-width: 70ch;
+}
+.settings-danger {
+  margin-top: 36px;
+  padding: 20px;
+  border: 1px solid var(--danger-border);
+  border-radius: 5px;
+  background: var(--danger-tint);
+}
+.settings-danger h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--danger);
+  font-size: 23px;
+}
+.settings-danger-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 16px;
+  padding-top: 13px;
+}
+.settings-danger-row + .settings-danger-row {
+  margin-top: 13px;
+  border-top: 1px solid var(--danger-border);
+}
+.settings-danger-row p {
+  flex: 1 1 240px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.danger-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 43px;
+  padding: 9px 13px;
+  border: 1px solid var(--danger-border);
+  border-radius: 4px;
+  color: var(--danger);
+  background: var(--paper);
+  font-size: 13px;
+  font-weight: 600;
+}
+.danger-button:not(:disabled):hover,
+.danger-button-confirm {
+  border-color: var(--danger-fill);
+  color: var(--danger-on-fill);
+  background: var(--danger-fill);
+}
+.danger-button-confirm:not(:disabled):hover {
+  border-color: var(--danger-hover);
+  background: var(--danger-hover);
+}
+.danger-button:focus-visible {
+  outline-color: var(--danger);
+}
+.settings-confirmation > svg,
+.settings-confirmation .settings-action-error {
+  color: var(--danger);
+}
+.settings-confirmation h2 {
+  margin-top: 8px;
+}
+.settings-confirmation .inline {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+[data-appearance="streaming"] .danger-button {
+  border-radius: 999px;
 }
 .inline {
   display: flex;

@@ -40,21 +40,27 @@ async function remove(store: string, key: string) {
 export const storage = {
   runs: () => readAll<Run>("runs"),
   history: () => readAll<HistoryEntry>("history"),
-  saveRun: async (run: Run) => {
+  saveRun: async (run: Run, { existing = false } = {}) => {
     const db = await database;
     return new Promise<void>((resolve, reject) => {
       const tx = db.transaction("runs", "readwrite"),
         store = tx.objectStore("runs"),
         request = store.getAll();
-      let limit = false;
+      let failure: string | undefined;
       request.onsuccess = () => {
         const list = request.result as Run[];
+        if (existing && !list.some((r) => r.id === run.id)) {
+          failure = "This run has been deleted.";
+          tx.abort();
+          return;
+        }
         if (
           currentMatch(run) &&
           !list.some((r) => r.id === run.id && currentMatch(r)) &&
           list.filter((r) => currentMatch(r)).length >= 5
         ) {
-          limit = true;
+          failure =
+            "Five active runs are already saved. Finish or delete one before starting another.";
           tx.abort();
           return;
         }
@@ -62,26 +68,37 @@ export const storage = {
       };
       tx.oncomplete = () => resolve();
       tx.onerror = () => reject(tx.error);
-      tx.onabort = () =>
-        reject(
-          limit
-            ? Error(
-                "Five active runs are already saved. Finish or delete one before starting another.",
-              )
-            : tx.error,
-        );
+      tx.onabort = () => reject(failure ? Error(failure) : tx.error);
     });
   },
   deleteRun: (id: string) => remove("runs", id),
   deleteHistory: (id: string) => remove("history", id),
-  archive: async (entry: HistoryEntry) => {
+  clearBrackets: async () => {
     const db = await database;
     return new Promise<void>((resolve, reject) => {
       const tx = db.transaction(["runs", "history"], "readwrite");
-      tx.objectStore("history").put(entry, entry.id);
-      tx.objectStore("runs").delete(entry.id);
+      tx.objectStore("runs").clear();
+      tx.objectStore("history").clear();
       tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
+      tx.onabort = () =>
+        reject(tx.error ?? Error("Saved brackets could not be cleared."));
+    });
+  },
+  archive: async (entry: HistoryEntry) => {
+    const db = await database;
+    return new Promise<boolean>((resolve, reject) => {
+      const tx = db.transaction(["runs", "history"], "readwrite");
+      const runs = tx.objectStore("runs");
+      const request = runs.getKey(entry.id);
+      let archived = false;
+      request.onsuccess = () => {
+        if (request.result === undefined) return;
+        archived = true;
+        tx.objectStore("history").put(entry, entry.id);
+        runs.delete(entry.id);
+      };
+      tx.oncomplete = () => resolve(archived);
+      tx.onabort = () => reject(tx.error);
     });
   },
   settings: async () => {

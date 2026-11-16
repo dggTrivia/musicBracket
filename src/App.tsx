@@ -10,6 +10,7 @@ import {
 import {
   ArrowLeft,
   ArrowRight,
+  TriangleAlert,
   AudioLines,
   ChevronRight,
   Check,
@@ -88,6 +89,23 @@ const defaults: Settings = {
   hover: true,
   volume: 65,
   delay: 220,
+};
+const settingsActions = {
+  reset: {
+    label: "Reset settings",
+    summary: "Restore the original theme, playback, and display preferences.",
+    title: "Reset settings to default?",
+    detail:
+      "Your appearance, playback, display, and picker preferences will return to their defaults. Your saved brackets and history will be kept.",
+  },
+  wipe: {
+    label: "Wipe all saved brackets",
+    summary:
+      "Permanently delete every active run and completed result on this browser.",
+    title: "Wipe all saved brackets?",
+    detail:
+      "This permanently deletes every active run and all completed results, including their bracket images, from this browser. You can’t undo this.",
+  },
 };
 const artistPortraits = new Set([
   "50-cent",
@@ -248,6 +266,11 @@ export default function App() {
   const [share, setShare] = useState<Definition | null>(null);
   const [confirmNew, setConfirmNew] = useState(false);
   const [confirmHome, setConfirmHome] = useState(false);
+  const [settingsAction, setSettingsAction] = useState<
+    keyof typeof settingsActions | null
+  >(null);
+  const [settingsActionBusy, setSettingsActionBusy] = useState(false);
+  const [settingsActionError, setSettingsActionError] = useState("");
   const [artistQuery, setArtistQuery] = useState("");
   const [artistCategory, setArtistCategory] = useState("");
   const playback = useRef(new Map<string, SongPlayback>());
@@ -326,6 +349,10 @@ export default function App() {
     [catalog],
   );
   const showPrompt = confirmHome || confirmNew;
+  const confirmation = settingsAction ? settingsActions[settingsAction] : null;
+  useDialogFocus(Boolean(confirmation), ".settings-confirmation", () => {
+    if (!settingsActionBusy) setSettingsAction(null);
+  });
   const playingBracket = view === "game" && Boolean(match);
   const navigate = useCallback(
     (next: View) => {
@@ -347,6 +374,7 @@ export default function App() {
         setBracket(false);
         setShare(null);
         setEditing(null);
+        setSettingsAction(null);
         if (window.history.state?.musicBracketMenuGuard) {
           leavingForMenu.current = true;
           window.history.back();
@@ -396,6 +424,35 @@ export default function App() {
     setNotice(s);
     setTimeout(() => setNotice(""), 5000);
   }, []);
+  const confirmSettingsAction = async () => {
+    if (!settingsAction || settingsActionBusy) return;
+    setSettingsActionBusy(true);
+    setSettingsActionError("");
+    try {
+      if (settingsAction === "reset") {
+        await storage.saveSettings(defaults);
+        setSettings(defaults);
+        notify("Settings reset to default.");
+      } else {
+        await storage.clearBrackets();
+        setRuns([]);
+        setHistory([]);
+        setRunId("");
+        setWinnerRun(undefined);
+        setArchiveFailures([]);
+        notify("Active runs and history cleared.");
+      }
+      setSettingsAction(null);
+    } catch (cause) {
+      setSettingsActionError(
+        cause instanceof Error
+          ? cause.message
+          : "The change could not be saved. Try again.",
+      );
+    } finally {
+      setSettingsActionBusy(false);
+    }
+  };
   const refresh = async () => {
     setRuns(
       (await storage.runs()).sort((a, b) =>
@@ -591,7 +648,7 @@ export default function App() {
           following && match && following.round > match.round
             ? prepareRoundCue(settings.volume)
             : undefined;
-        await storage.saveRun(next);
+        await storage.saveRun(next, { existing: true });
         if (hoverTimer.current) clearTimeout(hoverTimer.current);
         setRuns((list) => list.map((r) => (r.id === next.id ? next : r)));
         setActiveSong("");
@@ -635,7 +692,7 @@ export default function App() {
       archiving.current.add(finished.id);
       try {
         const entry = await renderHistoryEntry(finished, exportTheme);
-        await storage.archive(entry);
+        if (!(await storage.archive(entry))) return;
         if (finished.id === runId) setWinnerRun(finished);
         setHistory((items) => [
           entry,
@@ -885,7 +942,7 @@ export default function App() {
     if (!run || !run.picks.length) return;
     try {
       const next = undo(run);
-      await storage.saveRun(next);
+      await storage.saveRun(next, { existing: true });
       if (hoverTimer.current) clearTimeout(hoverTimer.current);
       setRuns((list) => list.map((r) => (r.id === next.id ? next : r)));
       setActiveSong("");
@@ -1028,7 +1085,11 @@ export default function App() {
             id="site-drawer"
             className="drawer"
             aria-label="Site menu"
-            inert={bracket || Boolean(editing) || showPrompt ? true : undefined}
+            inert={
+              bracket || Boolean(editing) || showPrompt || Boolean(confirmation)
+                ? true
+                : undefined
+            }
           >
             <div className="drawer-heading">
               <button className="wordmark" onClick={requestHome}>
@@ -1124,7 +1185,11 @@ export default function App() {
       )}
       <div
         className="app-body"
-        inert={bracket || Boolean(editing) || showPrompt ? true : undefined}
+        inert={
+          bracket || Boolean(editing) || showPrompt || Boolean(confirmation)
+            ? true
+            : undefined
+        }
       >
         <button
           type="button"
@@ -2479,6 +2544,38 @@ export default function App() {
                     )}
                   </div>
                 </div>
+                <section
+                  className="settings-danger"
+                  aria-labelledby="settings-danger-title"
+                >
+                  <h2 id="settings-danger-title">
+                    <TriangleAlert size={22} aria-hidden="true" /> Reset and
+                    delete
+                  </h2>
+                  {Object.entries(settingsActions).map(([action, item]) => (
+                    <div className="settings-danger-row" key={action}>
+                      <p>{item.summary}</p>
+                      <button
+                        className="danger-button"
+                        type="button"
+                        disabled={settingsActionBusy}
+                        onClick={() => {
+                          setSettingsActionError("");
+                          setSettingsAction(
+                            action as keyof typeof settingsActions,
+                          );
+                        }}
+                      >
+                        {action === "wipe" ? (
+                          <Trash2 size={15} aria-hidden="true" />
+                        ) : (
+                          <TriangleAlert size={15} aria-hidden="true" />
+                        )}
+                        {item.label}
+                      </button>
+                    </div>
+                  ))}
+                </section>
               </div>
             </>
           )}
@@ -2490,6 +2587,44 @@ export default function App() {
           </button>
         </footer>
       </div>
+      {confirmation && (
+        <div className="dialog-backdrop">
+          <section
+            className="source-dialog settings-confirmation"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="settings-confirmation-title"
+            aria-describedby="settings-confirmation-detail"
+          >
+            <TriangleAlert size={29} aria-hidden="true" />
+            <h2 id="settings-confirmation-title">{confirmation.title}</h2>
+            <p id="settings-confirmation-detail">{confirmation.detail}</p>
+            {settingsActionError && (
+              <p role="alert" className="settings-action-error">
+                {settingsActionError}
+              </p>
+            )}
+            <div className="inline">
+              <button
+                className="secondary"
+                type="button"
+                disabled={settingsActionBusy}
+                onClick={() => setSettingsAction(null)}
+              >
+                Cancel
+              </button>
+              <button
+                className="danger-button danger-button-confirm"
+                type="button"
+                disabled={settingsActionBusy}
+                onClick={() => void confirmSettingsAction()}
+              >
+                {settingsActionBusy ? "Applying…" : confirmation.label}
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
       {showPrompt && (
         <div className="dialog-backdrop">
           <section
