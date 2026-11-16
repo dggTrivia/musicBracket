@@ -1,10 +1,26 @@
 import { readFile, rm, writeFile } from "node:fs/promises";
+import { minimumSingleRatingCount } from "./ratings-import.mjs";
 
 const asset = (name) => new URL(`../dist/${name}`, import.meta.url);
 const catalogFile = asset("catalog.json");
 const { artists, albums, songs } = JSON.parse(
   await readFile(catalogFile, "utf8"),
 );
+const singlesIds = new Set(
+  albums.filter((album) => album.singles).map((album) => album.id),
+);
+for (const song of songs) {
+  if (!song.albumIds.some((id) => singlesIds.has(id))) continue;
+  const { provider, ratingCount } = song.qualitySource ?? {};
+  if (
+    provider !== "Rate Your Music" ||
+    !(ratingCount >= minimumSingleRatingCount)
+  ) {
+    throw Error(
+      `${song.title} needs at least ${minimumSingleRatingCount} RYM ratings for Singles.`,
+    );
+  }
+}
 
 // The complete source records stay in the repository for catalog maintenance.
 const playableCatalog = {

@@ -4,7 +4,11 @@
  */
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { applyRatings, normalizeTitle } from "./ratings-import.mjs";
+import {
+  applyRatings,
+  minimumSingleRatingCount,
+  normalizeTitle,
+} from "./ratings-import.mjs";
 import {
   expandedAlbums,
   expandedBonusTracks,
@@ -542,6 +546,16 @@ for (const artist of singlesOnly
   }
 }
 async function importSingles() {
+  const { quality } = JSON.parse(
+    await readFile(path.join(root, "public/ratings.json"), "utf8"),
+  );
+  const eligibleRatings = new Set(
+    quality
+      .filter(
+        (row) => row.artistId && row.ratingCount >= minimumSingleRatingCount,
+      )
+      .map((row) => songKey([row.artistId], row.title)),
+  );
   for (const [artistId, [year, releaseIds, titles]] of Object.entries(
     singles,
   )) {
@@ -551,8 +565,29 @@ async function importSingles() {
     if (titles.length > 5)
       throw Error(`${artistId} exceeds the five-single limit`);
     const wanted = new Map(
-      titles.map((title) => [normalizeTitle(title), title]),
+      titles
+        .filter((title) => {
+          const key = songKey([artistId], title);
+          const alreadyOnAlbum = songMap
+            .get(key)
+            ?.albumIds.some((albumId) => albumId !== id);
+          return eligibleRatings.has(key) && !alreadyOnAlbum;
+        })
+        .map((title) => [normalizeTitle(title), title]),
     );
+    for (const song of catalog.songs) {
+      if (!song.albumIds.includes(id) || wanted.has(normalizeTitle(song.title)))
+        continue;
+      song.albumIds = song.albumIds.filter((albumId) => albumId !== id);
+      if (song.albumId === id) song.albumId = song.albumIds[0];
+      if (!song.albumId) songMap.delete(songKey(song.artistIds, song.title));
+    }
+    catalog.songs = catalog.songs.filter((song) => song.albumId);
+    catalog.sources = catalog.sources.filter((source) => source.albumId !== id);
+    if (!wanted.size) {
+      catalog.albums = catalog.albums.filter((album) => album.id !== id);
+      continue;
+    }
     const releases = await Promise.all(
       releaseIds.map(async (appleId) => {
         const url = `https://itunes.apple.com/lookup?id=${appleId}&entity=song&country=us&limit=200`;
@@ -591,15 +626,6 @@ async function importSingles() {
       sourceUrl: meta.collectionViewUrl,
     };
     if (!catalog.albums.includes(album)) catalog.albums.push(album);
-    for (const song of catalog.songs) {
-      if (!song.albumIds.includes(id) || wanted.has(normalizeTitle(song.title)))
-        continue;
-      song.albumIds = song.albumIds.filter((albumId) => albumId !== id);
-      if (song.albumId === id) song.albumId = song.albumIds[0];
-      if (!song.albumId) songMap.delete(songKey(song.artistIds, song.title));
-    }
-    catalog.songs = catalog.songs.filter((song) => song.albumId);
-    catalog.sources = catalog.sources.filter((source) => source.albumId !== id);
     for (const { url, tracks } of releases) {
       let trackCount = 0;
       for (const track of tracks) {
@@ -607,12 +633,10 @@ async function importSingles() {
         const normalized = normalizeTitle(canonicalTitle(track.trackName));
         const trackTitle = wanted.get(normalized);
         if (!trackTitle) continue;
-        const key = songKey(album.artistIds, trackTitle);
-        const existing = songMap.get(key);
-        if (existing && !existing.albumIds.includes(id)) continue;
         addSong({ ...track, trackName: trackTitle }, album, album.artistIds);
         trackCount++;
       }
+      if (!trackCount) continue;
       catalog.sources.push({
         provider: "Apple iTunes public lookup API",
         url,

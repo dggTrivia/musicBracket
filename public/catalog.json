@@ -546221,44 +546221,6 @@
         "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime",
         "retrievedAt": "2026-11-16T01:30:03.242Z"
       }
-    },
-    {
-      "id": "rihanna-american-oxygen",
-      "title": "American Oxygen",
-      "artistIds": [
-        "rihanna"
-      ],
-      "albumIds": [
-        "rihanna-singles"
-      ],
-      "albumId": "rihanna-singles",
-      "duration": 320,
-      "kind": "song",
-      "quality": 52.8,
-      "popularity": 71.28,
-      "scoreSource": "RYM 2.64/5 (21 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
-      "qualitySource": {
-        "provider": "Rate Your Music",
-        "rating": 2.64,
-        "ratingCount": 21,
-        "url": "https://rateyourmusic.com/song/rihanna/american-oxygen/",
-        "retrievedAt": "2026-11-16"
-      },
-      "appleTrackId": 985919144,
-      "sourceUrl": "https://music.apple.com/us/album/american-oxygen/985919136?i=985919144&uo=4",
-      "popularitySource": {
-        "provider": "Kworb / Spotify public stream totals",
-        "streams": 146522439,
-        "url": "https://kworb.net/spotify/artist/5pKCCKE2ajJHZ9KAiaK11H_songs.html",
-        "sourceUpdatedAt": "2026/11/14",
-        "retrievedAt": "2026-11-15"
-      },
-      "youtubeId": "Ao8cGLIMtvg",
-      "videoSource": {
-        "url": "https://kworb.net/youtube/artist/rihanna.html",
-        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
-        "retrievedAt": "2026-11-14T23:39:39.619Z"
-      }
     }
   ],
   "sources": [
@@ -554445,13 +554407,6 @@
     {
       "provider": "Apple iTunes public lookup API",
       "url": "https://itunes.apple.com/lookup?id=1651763191&entity=song&country=us&limit=200",
-      "albumId": "rihanna-singles",
-      "retrievedAt": "2026-11-16",
-      "trackCount": 1
-    },
-    {
-      "provider": "Apple iTunes public lookup API",
-      "url": "https://itunes.apple.com/lookup?id=985919136&entity=song&country=us&limit=200",
       "albumId": "rihanna-singles",
       "retrievedAt": "2026-11-16",
       "trackCount": 1
