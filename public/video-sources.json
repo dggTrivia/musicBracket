@@ -18400,14 +18400,14 @@
     {
       "artistId": "kendrick-lamar",
       "title": "Rigamortus",
-      "youtubeId": "8cBJ5QhqIqY",
-      "sourceUrl": "https://www.youtube.com/results?search_query=Kendrick%20Lamar%20Rigamortus%20official%20audio",
-      "videoTitle": "Kendrick Lamar - RIGAMORTUS ( Official lyrics music video )",
-      "channel": "Kendrick vibes ",
-      "retrievedAt": "2026-11-15T00:03:16.371Z",
-      "metadataCheckedAt": "2026-11-15T00:03:16.371Z",
+      "youtubeId": "yh6QxtRpSH8",
+      "sourceUrl": "https://www.youtube.com/watch?v=yh6QxtRpSH8",
+      "videoTitle": "Kendrick Lamar - Rigamortis (Official Video)",
+      "channel": "Top Dawg Entertainment",
+      "retrievedAt": "2026-11-14T23:39:37.631Z",
+      "metadataCheckedAt": "2026-11-14T23:41:11.592Z",
       "oembedStatus": 200,
-      "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
+      "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime"
     },
     {
       "artistId": "kendrick-lamar",

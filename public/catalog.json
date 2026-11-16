@@ -34860,11 +34860,11 @@
         "sourceUpdatedAt": "2026/11/13",
         "retrievedAt": "2026-11-15"
       },
-      "youtubeId": "8cBJ5QhqIqY",
+      "youtubeId": "yh6QxtRpSH8",
       "videoSource": {
-        "url": "https://www.youtube.com/results?search_query=Kendrick%20Lamar%20Rigamortus%20official%20audio",
-        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
-        "retrievedAt": "2026-11-15T00:03:16.371Z"
+        "url": "https://www.youtube.com/watch?v=yh6QxtRpSH8",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:37.631Z"
       }
     },
     {
