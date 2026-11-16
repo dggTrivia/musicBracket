@@ -546182,45 +546182,6 @@
         "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime",
         "retrievedAt": "2026-11-16T01:30:03.162Z"
       }
-    },
-    {
-      "id": "rihanna-lift-me-up",
-      "title": "Lift Me Up",
-      "artistIds": [
-        "rihanna"
-      ],
-      "albumIds": [
-        "rihanna-singles"
-      ],
-      "albumId": "rihanna-singles",
-      "duration": 197,
-      "kind": "song",
-      "quality": 57,
-      "popularity": 83.14,
-      "scoreSource": "RYM 2.85/5 (74 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
-      "qualitySource": {
-        "provider": "Rate Your Music",
-        "rating": 2.85,
-        "ratingCount": 74,
-        "url": "https://rateyourmusic.com/song/rihanna/lift-me-up/",
-        "retrievedAt": "2026-11-16"
-      },
-      "appleTrackId": 1651763192,
-      "sourceUrl": "https://music.apple.com/us/album/lift-me-up-from-black-panther-wakanda-forever-music/1651763191?i=1651763192&uo=4",
-      "popularitySource": {
-        "provider": "Kworb / Spotify public stream totals",
-        "streams": 491699080,
-        "url": "https://kworb.net/spotify/artist/5pKCCKE2ajJHZ9KAiaK11H_songs.html",
-        "sourceUpdatedAt": "2026/11/14",
-        "retrievedAt": "2026-11-15"
-      },
-      "youtubeId": "Mx_OexsUI2M",
-      "backupYoutubeId": "UWCf7GNy6cc",
-      "videoSource": {
-        "url": "https://www.youtube.com/watch?v=Mx_OexsUI2M",
-        "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime",
-        "retrievedAt": "2026-11-16T01:30:03.242Z"
-      }
     }
   ],
   "sources": [
@@ -554400,13 +554361,6 @@
     {
       "provider": "Apple iTunes public lookup API",
       "url": "https://itunes.apple.com/lookup?id=1445136072&entity=song&country=us&limit=200",
-      "albumId": "rihanna-singles",
-      "retrievedAt": "2026-11-16",
-      "trackCount": 1
-    },
-    {
-      "provider": "Apple iTunes public lookup API",
-      "url": "https://itunes.apple.com/lookup?id=1651763191&entity=song&country=us&limit=200",
       "albumId": "rihanna-singles",
       "retrievedAt": "2026-11-16",
       "trackCount": 1

@@ -7,7 +7,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
-export const minimumSingleRatingCount = 40;
+export const minimumSingleRatingCount = 80;
 
 export function normalizeTitle(value) {
   return value
