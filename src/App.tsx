@@ -803,13 +803,12 @@ export default function App() {
     setPreview(null);
   };
   const openSuggestedMix = (mix: (typeof suggestedMixes)[number]) => {
-    const [firstYear, lastYear] = mix.years;
+    const years = mix.years;
     const artists = mix.artists.flatMap((id) => {
       const albums = c.albums.filter(
         (album) =>
           album.artistIds.includes(id) &&
-          album.year >= firstYear &&
-          album.year <= lastYear &&
+          (!years || (album.year >= years[0] && album.year <= years[1])) &&
           (albumSongCounts.get(album.id) ?? 0) > 0,
       );
       return albums.length

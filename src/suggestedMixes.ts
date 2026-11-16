@@ -1,4 +1,11 @@
-export const suggestedMixes = [
+interface SuggestedMix {
+  name: string;
+  years?: [number, number];
+  size: number;
+  artists: string[];
+}
+
+export const suggestedMixes: SuggestedMix[] = [
   {
     name: "’90s Alternative Rock",
     years: [1990, 1999],
@@ -72,6 +79,53 @@ export const suggestedMixes = [
       "fleetwood-mac",
       "pink-floyd",
       "bruce-springsteen",
+    ],
+  },
+  {
+    name: "Classic Rock Heavyweights",
+    size: 64,
+    artists: [
+      "the-beatles",
+      "the-rolling-stones",
+      "led-zeppelin",
+      "pink-floyd",
+      "queen",
+      "fleetwood-mac",
+      "david-bowie",
+      "bruce-springsteen",
+    ],
+  },
+  {
+    name: "Pop & R&B Hitmakers",
+    size: 64,
+    artists: [
+      "michael-jackson",
+      "prince",
+      "beyonce",
+      "rihanna",
+      "the-weeknd",
+      "stevie-wonder",
+      "abba",
+      "sza",
+    ],
+  },
+  {
+    name: "Trip-Hop & Leftfield Pop",
+    size: 16,
+    artists: ["portishead", "bjork", "gorillaz", "james-blake"],
+  },
+  {
+    name: "Hip-Hop Across Eras",
+    size: 32,
+    artists: [
+      "outkast",
+      "jay-z",
+      "eminem",
+      "50-cent",
+      "mf-doom",
+      "drake",
+      "kendrick-lamar",
+      "playboi-carti",
     ],
   },
 ];
