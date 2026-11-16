@@ -2816,10 +2816,64 @@ progress::-webkit-progress-value {
   margin: 0 0 16px;
   font-size: 12px;
 }
+.lineup-selection {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.lineup-clear {
+  padding: 4px 0;
+  min-height: 28px;
+  font-size: 12px;
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.artist-choice[aria-pressed="false"] .artist-arrow {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+}
+.artist-choice[aria-pressed="false"]:hover .artist-arrow {
+  color: var(--green);
+  border-color: var(--green);
+}
 .artist-choice[aria-pressed="true"] {
-  background: var(--soft);
-  outline: 2px solid var(--green);
-  outline-offset: -2px;
+  background: var(--green);
+  color: var(--paper);
+  border-color: var(--green);
+}
+.artist-choice[aria-pressed="true"]:hover {
+  background: var(--green-hover);
+  color: var(--paper);
+}
+.artist-choice[aria-pressed="true"] .artist-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: auto;
+  min-width: 24px;
+  padding-inline: 6px;
+  border-radius: 999px;
+  color: var(--green);
+  background: var(--paper);
+}
+.artist-picked-label {
+  display: none;
+  font-size: 10px;
+  font-weight: 700;
+}
+.artist-list .artist-picked-label {
+  display: inline;
+}
+@media (max-width: 560px) {
+  .artist-grid:not(.artist-list)
+    .artist-choice[aria-pressed="true"]
+    .artist-arrow {
+    display: none;
+  }
 }
 .lineup-tabs {
   overflow-x: auto;

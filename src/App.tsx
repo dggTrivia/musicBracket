@@ -326,6 +326,37 @@ export default function App() {
     [catalog],
   );
   const showPrompt = confirmHome || confirmNew;
+  const playingBracket = view === "game" && Boolean(match);
+  const navigate = useCallback(
+    (next: View) => {
+      if (hoverTimer.current) clearTimeout(hoverTimer.current);
+      if (next === "new" && view !== "new") {
+        setArtistChosen(false);
+        setArtistQuery("");
+        setArtistCategory("");
+      }
+      setView(next);
+      setMenu(false);
+      setActiveSong("");
+      setQuery("");
+      if (next === "home") {
+        incomingUrl.current = undefined;
+        setIncoming(null);
+        setConfirmHome(false);
+        setConfirmNew(false);
+        setBracket(false);
+        setShare(null);
+        setEditing(null);
+        if (window.history.state?.musicBracketMenuGuard) {
+          leavingForMenu.current = true;
+          window.history.back();
+        }
+      } else {
+        keepMenuInHistory();
+      }
+    },
+    [view],
+  );
   const dismissPrompt = () => {
     if (confirmHome) setConfirmHome(false);
     else setConfirmNew(false);
@@ -351,12 +382,16 @@ export default function App() {
         return;
       }
       if (view === "home" || event.state?.musicBracketMenuGuard) return;
+      if (!playingBracket) {
+        navigate("home");
+        return;
+      }
       keepMenuInHistory(incomingUrl.current);
       setConfirmHome(true);
     };
     window.addEventListener("popstate", onBack);
     return () => window.removeEventListener("popstate", onBack);
-  }, [view]);
+  }, [view, playingBracket, navigate]);
   const notify = useCallback((s: string) => {
     setNotice(s);
     setTimeout(() => setNotice(""), 5000);
@@ -525,36 +560,9 @@ export default function App() {
     menuOpener.current = opener;
     setMenu(true);
   };
-  const navigate = (next: View) => {
-    if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    if (next === "new" && view !== "new") {
-      setArtistChosen(false);
-      setArtistQuery("");
-      setArtistCategory("");
-    }
-    setView(next);
-    setMenu(false);
-    setActiveSong("");
-    setQuery("");
-    if (next === "home") {
-      incomingUrl.current = undefined;
-      setIncoming(null);
-      setConfirmHome(false);
-      setConfirmNew(false);
-      setBracket(false);
-      setShare(null);
-      setEditing(null);
-      if (window.history.state?.musicBracketMenuGuard) {
-        leavingForMenu.current = true;
-        window.history.back();
-      }
-    } else {
-      keepMenuInHistory();
-    }
-  };
   const requestHome = () => {
     if (view === "home") setMenu(false);
-    else if (view === "game" && match) setConfirmHome(true);
+    else if (playingBracket) setConfirmHome(true);
     else navigate("home");
   };
   const resume = (savedRun: Run) => {
@@ -1353,9 +1361,19 @@ export default function App() {
                   </div>
                   {mixed && (
                     <div className="lineup-bar">
-                      <span role="status">
-                        {mixedArtists.length} of 8 selected
-                      </span>
+                      <div className="lineup-selection">
+                        <span role="status">
+                          {mixedArtists.length} of 8 selected
+                        </span>
+                        <button
+                          type="button"
+                          className="lineup-clear"
+                          disabled={mixedArtists.length === 0}
+                          onClick={() => setArtistAlbums({}, artist.id)}
+                        >
+                          Deselect all
+                        </button>
+                      </div>
                       <button
                         className="primary"
                         disabled={mixedArtists.length < 2}
@@ -1390,7 +1408,7 @@ export default function App() {
                         <span className="artist-portrait" aria-hidden="true">
                           {artistPortraits.has(a.id) ? (
                             <img
-                              src={`/artists/${a.id}.webp`}
+                              src={`/artists/${a.id}.webp?v=2`}
                               alt=""
                               loading="lazy"
                             />
@@ -1402,7 +1420,12 @@ export default function App() {
                         <span className="artist-arrow" aria-hidden="true">
                           {mixed ? (
                             Object.hasOwn(artistAlbums, a.id) ? (
-                              <Check size={16} />
+                              <>
+                                <Check size={15} strokeWidth={3} />
+                                <span className="artist-picked-label">
+                                  Picked
+                                </span>
+                              </>
                             ) : (
                               <Plus size={16} />
                             )
