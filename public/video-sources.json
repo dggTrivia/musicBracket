@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15T22:50:52.920Z",
+  "updatedAt": "2026-11-16T01:17:36.937Z",
   "sources": [
     {
       "artistId": "kanye-west",
@@ -3042,14 +3042,15 @@
     {
       "artistId": "the-beatles",
       "title": "Hey Jude",
-      "youtubeId": "A_MjCqQoLLA",
-      "sourceUrl": "https://kworb.net/youtube/artist/thebeatles.html",
-      "videoTitle": "The Beatles - The Beatles - Hey Jude (Official Music Video) [Remastered 2015]",
-      "retrievedAt": "2026-11-14T23:39:38.020Z",
-      "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+      "youtubeId": "RhfHed14cNc",
+      "backupYoutubeId": "A_MjCqQoLLA",
+      "sourceUrl": "https://www.youtube.com/watch?v=RhfHed14cNc",
+      "videoTitle": "Hey Jude (Remastered 2009)",
+      "channel": "The Beatles - Topic",
+      "retrievedAt": "2026-11-16T01:17:36.746Z",
+      "metadataCheckedAt": "2026-11-16T01:17:36.746Z",
       "oembedStatus": 200,
-      "channel": "TheBeatlesVEVO",
-      "metadataCheckedAt": "2026-11-14T23:41:11.642Z"
+      "verification": "Official artist upload; YouTube oEmbed metadata available; final region/embedding checked at runtime"
     },
     {
       "artistId": "the-beatles",
@@ -173510,6 +173511,66 @@
       "channel": "Freddie Gibbs - Topic",
       "retrievedAt": "2026-11-15T22:50:52.408Z",
       "metadataCheckedAt": "2026-11-15T22:50:52.408Z",
+      "oembedStatus": 200,
+      "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
+    },
+    {
+      "artistId": "the-beatles",
+      "title": "She Loves You",
+      "youtubeId": "nGbWU8S3vzs",
+      "sourceUrl": "https://www.youtube.com/results?search_query=The%20Beatles%20She%20Loves%20You%20official%20audio",
+      "videoTitle": "She Loves You (Remastered 2009)",
+      "channel": "The Beatles - Topic",
+      "retrievedAt": "2026-11-16T01:16:29.273Z",
+      "metadataCheckedAt": "2026-11-16T01:16:29.273Z",
+      "oembedStatus": 200,
+      "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
+    },
+    {
+      "artistId": "the-beatles",
+      "title": "Day Tripper",
+      "youtubeId": "2IbPn5j2YKk",
+      "sourceUrl": "https://www.youtube.com/results?search_query=The%20Beatles%20Day%20Tripper%20official%20audio",
+      "videoTitle": "Day Tripper (Remastered 2015)",
+      "channel": "The Beatles - Topic",
+      "retrievedAt": "2026-11-16T01:16:30.268Z",
+      "metadataCheckedAt": "2026-11-16T01:16:30.268Z",
+      "oembedStatus": 200,
+      "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "DHL",
+      "youtubeId": "7So2lOJjTXI",
+      "sourceUrl": "https://www.youtube.com/results?search_query=Frank%20Ocean%20DHL%20official%20audio",
+      "videoTitle": "Frank Ocean - DHL",
+      "channel": "House of Lords",
+      "retrievedAt": "2026-11-16T01:16:31.190Z",
+      "metadataCheckedAt": "2026-11-16T01:16:31.190Z",
+      "oembedStatus": 200,
+      "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "euphoria",
+      "youtubeId": "NPqDIwWMtxg",
+      "sourceUrl": "https://www.youtube.com/results?search_query=Kendrick%20Lamar%20euphoria%20official%20audio",
+      "videoTitle": "euphoria",
+      "channel": "Kendrick Lamar",
+      "retrievedAt": "2026-11-16T01:16:28.150Z",
+      "metadataCheckedAt": "2026-11-16T01:16:28.150Z",
+      "oembedStatus": 200,
+      "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "meet the grahams",
+      "youtubeId": "2QiFl9Dc7D0",
+      "sourceUrl": "https://www.youtube.com/results?search_query=Kendrick%20Lamar%20meet%20the%20grahams%20official%20audio",
+      "videoTitle": "meet the grahams",
+      "channel": "Kendrick Lamar",
+      "retrievedAt": "2026-11-16T01:16:27.957Z",
+      "metadataCheckedAt": "2026-11-16T01:16:27.957Z",
       "oembedStatus": 200,
       "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
     }

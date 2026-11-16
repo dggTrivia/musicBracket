@@ -746,6 +746,31 @@ main {
   right: 10px;
   pointer-events: none;
 }
+.singles-picker {
+  margin: 0 0 18px;
+  padding: 12px 15px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.singles-picker-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  width: fit-content;
+  font-weight: 700;
+  cursor: pointer;
+}
+.singles-picker-toggle input {
+  margin: 0;
+}
+.singles-picker p {
+  margin: 0 0 2px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
 .collection-toolbar {
   border-top: 1px solid var(--line);
   display: flex;

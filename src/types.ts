@@ -9,6 +9,7 @@ export interface Album {
   credit?: string;
   year: number;
   cover: string;
+  singles?: boolean;
   defaultSelected?: boolean;
 }
 export interface Song {

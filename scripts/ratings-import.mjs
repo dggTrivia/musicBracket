@@ -43,6 +43,7 @@ export function normalizeTitle(value) {
     )
     .replace(/^(elevators)\s+\(me\s*&\s*you\)$/, "$1")
     .replace(/^(mx)\s+\(including hidden tracks.*\)$/, "$1")
+    .replace(/\s*(?:\(\d{4} mix\)|[-–—]\s*\d{4} mix)$/i, "")
     .replace(
       /\s*[-–—]\s*(?:\d{4}\s*)?(?:remaster(?:ed)?|mono|stereo|deluxe|album version|explicit|radio edit).*$/gi,
       "",

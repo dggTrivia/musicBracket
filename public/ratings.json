@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "methodology": {
     "quality": "RYM rating / 5 × 100, unshrunk. Abbreviated chart vote counts retain their display label and use a rounded numeric count.",
     "popularity": "Log-normalized Spotify total streams within each artist, based on public third-party Kworb tables. Not Spotify API data.",
@@ -55780,6 +55780,112 @@
       "sourceUrl": "https://rateyourmusic.com/song/the-weeknd/i-heard-youre-married/",
       "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the%2dweeknd/3/",
       "retrievedAt": "2026-11-15"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "Chanel",
+      "rating": 4.34,
+      "ratingCount": 421,
+      "quality": 86.8,
+      "sourceUrl": "https://rateyourmusic.com/song/frank-ocean/chanel/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:frank%2docean/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "Meet the Grahams",
+      "rating": 4.4,
+      "ratingCount": 1000,
+      "ratingCountDisplay": "1k",
+      "quality": 88,
+      "sourceUrl": "https://rateyourmusic.com/song/kendrick-lamar/meet-the-grahams/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:kendrick%2dlamar/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "Euphoria",
+      "rating": 4.35,
+      "ratingCount": 818,
+      "quality": 87,
+      "sourceUrl": "https://rateyourmusic.com/song/kendrick-lamar/euphoria/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:kendrick%2dlamar/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "rihanna",
+      "title": "Bitch Better Have My Money",
+      "rating": 3.29,
+      "ratingCount": 108,
+      "quality": 65.8,
+      "sourceUrl": "https://rateyourmusic.com/song/rihanna/bitch-better-have-my-money/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:rihanna/2/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "rihanna",
+      "title": "FourFiveSeconds",
+      "rating": 2.81,
+      "ratingCount": 226,
+      "quality": 56.2,
+      "sourceUrl": "https://rateyourmusic.com/song/rihanna-kanye-west-paul-mccartney/fourfiveseconds/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:rihanna/3/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "the-beatles",
+      "title": "Hey Jude",
+      "rating": 4.49,
+      "ratingCount": 2000,
+      "ratingCountDisplay": "2k",
+      "quality": 89.8,
+      "sourceUrl": "https://rateyourmusic.com/song/the-beatles/hey-jude/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the-beatles/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "the-beatles",
+      "title": "Don't Let Me Down",
+      "rating": 4.45,
+      "ratingCount": 2000,
+      "ratingCountDisplay": "2k",
+      "quality": 89,
+      "sourceUrl": "https://rateyourmusic.com/song/the-beatles/dont-let-me-down/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the-beatles/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "the-beatles",
+      "title": "Day Tripper",
+      "rating": 4.34,
+      "ratingCount": 2000,
+      "ratingCountDisplay": "2k",
+      "quality": 86.8,
+      "sourceUrl": "https://rateyourmusic.com/song/the-beatles/day-tripper/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the%2dbeatles/2/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "the-beatles",
+      "title": "She Loves You",
+      "rating": 4.29,
+      "ratingCount": 2000,
+      "ratingCountDisplay": "2k",
+      "quality": 85.8,
+      "sourceUrl": "https://rateyourmusic.com/song/the-beatles/she-loves-you/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the%2dbeatles/2/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "the-beatles",
+      "title": "I Want to Hold Your Hand",
+      "rating": 4.25,
+      "ratingCount": 2000,
+      "ratingCountDisplay": "2k",
+      "quality": 85,
+      "sourceUrl": "https://rateyourmusic.com/song/the-beatles/i-want-to-hold-your-hand/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the%2dbeatles/2/",
+      "retrievedAt": "2026-11-16"
     }
   ],
   "popularity": [

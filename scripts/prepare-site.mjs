@@ -10,13 +10,23 @@ const { artists, albums, songs } = JSON.parse(
 const playableCatalog = {
   artists: artists.map(({ id, name }) => ({ id, name })),
   albums: albums.map(
-    ({ id, artistIds, title, credit, year, cover, defaultSelected }) => ({
+    ({
       id,
       artistIds,
       title,
       credit,
       year,
       cover,
+      singles,
+      defaultSelected,
+    }) => ({
+      id,
+      artistIds,
+      title,
+      credit,
+      year,
+      cover,
+      singles,
       defaultSelected,
     }),
   ),

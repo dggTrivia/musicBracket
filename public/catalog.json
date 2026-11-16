@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "artists": [
     {
       "id": "kanye-west",
@@ -15385,6 +15385,54 @@
       "sourceUrl": "https://music.apple.com/us/album/band-of-gypsys-50th-anniversary-live/1504524548?uo=4",
       "appleId": 1504524548,
       "edition": "Band of Gypsys (50th Anniversary / Live)"
+    },
+    {
+      "id": "the-beatles-singles",
+      "artistIds": [
+        "the-beatles"
+      ],
+      "title": "Singles",
+      "year": 1963,
+      "cover": "/covers/the-beatles-singles.jpg",
+      "defaultSelected": true,
+      "sourceUrl": "https://music.apple.com/us/album/past-masters-vols-1-2/1441133181?uo=4",
+      "singles": true
+    },
+    {
+      "id": "frank-ocean-singles",
+      "artistIds": [
+        "frank-ocean"
+      ],
+      "title": "Singles",
+      "year": 2017,
+      "cover": "/covers/frank-ocean-singles.jpg",
+      "defaultSelected": true,
+      "sourceUrl": "https://music.apple.com/us/album/chanel-single/1214557444?uo=4",
+      "singles": true
+    },
+    {
+      "id": "kendrick-lamar-singles",
+      "artistIds": [
+        "kendrick-lamar"
+      ],
+      "title": "Singles",
+      "year": 2024,
+      "cover": "/covers/kendrick-lamar-singles.jpg",
+      "defaultSelected": true,
+      "sourceUrl": "https://music.apple.com/us/album/not-like-us-single/1744776162?uo=4",
+      "singles": true
+    },
+    {
+      "id": "rihanna-singles",
+      "artistIds": [
+        "rihanna"
+      ],
+      "title": "Singles",
+      "year": 2015,
+      "cover": "/covers/rihanna-singles.jpg",
+      "defaultSelected": true,
+      "sourceUrl": "https://music.apple.com/us/album/fourfiveseconds-single/1445170915?uo=4",
+      "singles": true
     }
   ],
   "songs": [
@@ -545555,6 +545603,499 @@
       },
       "appleTrackId": 1504524561,
       "sourceUrl": "https://music.apple.com/us/album/we-gotta-live-together-live-at-filmore-east-1970-50th/1504524548?i=1504524561&uo=4"
+    },
+    {
+      "id": "the-beatles-she-loves-you",
+      "title": "She Loves You",
+      "artistIds": [
+        "the-beatles"
+      ],
+      "albumIds": [
+        "the-beatles-singles"
+      ],
+      "albumId": "the-beatles-singles",
+      "duration": 141,
+      "kind": "song",
+      "quality": 85.8,
+      "popularity": 69.32,
+      "scoreSource": "RYM 4.29/5 (2k ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.29,
+        "ratingCount": 2000,
+        "ratingCountDisplay": "2k",
+        "url": "https://rateyourmusic.com/song/the-beatles/she-loves-you/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1441133611,
+      "sourceUrl": "https://music.apple.com/us/album/she-loves-you/1441133181?i=1441133611&uo=4",
+      "youtubeId": "nGbWU8S3vzs",
+      "videoSource": {
+        "url": "https://www.youtube.com/results?search_query=The%20Beatles%20She%20Loves%20You%20official%20audio",
+        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
+        "retrievedAt": "2026-11-16T01:16:29.273Z"
+      },
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 216944880,
+        "url": "https://kworb.net/spotify/artist/3WrFJ7ztbogyGnTHbHJFl2_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      }
+    },
+    {
+      "id": "the-beatles-i-want-to-hold-your-hand",
+      "title": "I Want to Hold Your Hand",
+      "artistIds": [
+        "the-beatles"
+      ],
+      "albumIds": [
+        "the-beatles-singles"
+      ],
+      "albumId": "the-beatles-singles",
+      "duration": 147,
+      "kind": "song",
+      "quality": 85,
+      "popularity": 82.39,
+      "scoreSource": "RYM 4.25/5 (2k ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.25,
+        "ratingCount": 2000,
+        "ratingCountDisplay": "2k",
+        "url": "https://rateyourmusic.com/song/the-beatles/i-want-to-hold-your-hand/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1441133632,
+      "sourceUrl": "https://music.apple.com/us/album/i-want-to-hold-your-hand/1441133181?i=1441133632&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 554079154,
+        "url": "https://kworb.net/spotify/artist/3WrFJ7ztbogyGnTHbHJFl2_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "jenWdylTtzs",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/thebeatles.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:38.020Z"
+      }
+    },
+    {
+      "id": "the-beatles-day-tripper",
+      "title": "Day Tripper",
+      "artistIds": [
+        "the-beatles"
+      ],
+      "albumIds": [
+        "the-beatles-singles"
+      ],
+      "albumId": "the-beatles-singles",
+      "duration": 168,
+      "kind": "song",
+      "quality": 86.8,
+      "popularity": 70.22,
+      "scoreSource": "RYM 4.34/5 (2k ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.34,
+        "ratingCount": 2000,
+        "ratingCountDisplay": "2k",
+        "url": "https://rateyourmusic.com/song/the-beatles/day-tripper/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1441134091,
+      "sourceUrl": "https://music.apple.com/us/album/day-tripper/1441133181?i=1441134091&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 231283057,
+        "url": "https://kworb.net/spotify/artist/3WrFJ7ztbogyGnTHbHJFl2_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "2IbPn5j2YKk",
+      "videoSource": {
+        "url": "https://www.youtube.com/results?search_query=The%20Beatles%20Day%20Tripper%20official%20audio",
+        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
+        "retrievedAt": "2026-11-16T01:16:30.268Z"
+      }
+    },
+    {
+      "id": "the-beatles-hey-jude",
+      "title": "Hey Jude",
+      "artistIds": [
+        "the-beatles"
+      ],
+      "albumIds": [
+        "the-beatles-singles"
+      ],
+      "albumId": "the-beatles-singles",
+      "duration": 430,
+      "kind": "song",
+      "quality": 89.8,
+      "popularity": 87.59,
+      "scoreSource": "RYM 4.49/5 (2k ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.49,
+        "ratingCount": 2000,
+        "ratingCountDisplay": "2k",
+        "url": "https://rateyourmusic.com/song/the-beatles/hey-jude/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1441134371,
+      "sourceUrl": "https://music.apple.com/us/album/hey-jude/1441133181?i=1441134371&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 804480645,
+        "url": "https://kworb.net/spotify/artist/3WrFJ7ztbogyGnTHbHJFl2_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "RhfHed14cNc",
+      "backupYoutubeId": "A_MjCqQoLLA",
+      "videoSource": {
+        "url": "https://www.youtube.com/watch?v=RhfHed14cNc",
+        "verification": "Official artist upload; YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-16T01:17:36.746Z"
+      }
+    },
+    {
+      "id": "the-beatles-don-t-let-me-down",
+      "title": "Don't Let Me Down",
+      "artistIds": [
+        "the-beatles"
+      ],
+      "albumIds": [
+        "the-beatles-singles"
+      ],
+      "albumId": "the-beatles-singles",
+      "duration": 216,
+      "kind": "song",
+      "quality": 89,
+      "popularity": 73.99,
+      "scoreSource": "RYM 4.45/5 (2k ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.45,
+        "ratingCount": 2000,
+        "ratingCountDisplay": "2k",
+        "url": "https://rateyourmusic.com/song/the-beatles/dont-let-me-down/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1441134474,
+      "sourceUrl": "https://music.apple.com/us/album/dont-let-me-down/1441133181?i=1441134474&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 303252506,
+        "url": "https://kworb.net/spotify/artist/3WrFJ7ztbogyGnTHbHJFl2_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "NCtzkaL2t_Y",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/thebeatles.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:38.020Z"
+      }
+    },
+    {
+      "id": "frank-ocean-chanel",
+      "title": "Chanel",
+      "artistIds": [
+        "frank-ocean"
+      ],
+      "albumIds": [
+        "frank-ocean-singles"
+      ],
+      "albumId": "frank-ocean-singles",
+      "duration": 210,
+      "kind": "song",
+      "quality": 86.8,
+      "popularity": 83.22,
+      "scoreSource": "RYM 4.34/5 (421 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.34,
+        "ratingCount": 421,
+        "url": "https://rateyourmusic.com/song/frank-ocean/chanel/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1214557446,
+      "sourceUrl": "https://music.apple.com/us/album/chanel/1214557444?i=1214557446&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 1021085919,
+        "url": "https://kworb.net/spotify/artist/2h93pZq0e7k5yf4dywlkpM_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "XnbsIl2BnWw",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/frankocean.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:37.243Z"
+      }
+    },
+    {
+      "id": "frank-ocean-dhl",
+      "title": "DHL",
+      "artistIds": [
+        "frank-ocean"
+      ],
+      "albumIds": [
+        "frank-ocean-singles"
+      ],
+      "albumId": "frank-ocean-singles",
+      "duration": 269,
+      "kind": "song",
+      "quality": 70,
+      "popularity": 42.12,
+      "scoreSource": "Quality: initial estimate · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Initial estimate",
+        "note": "Neutral 70/100 prior until a verified song rating is available."
+      },
+      "appleTrackId": 1484535196,
+      "sourceUrl": "https://music.apple.com/us/album/dhl/1484535192?i=1484535196&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 135778975,
+        "url": "https://kworb.net/spotify/artist/2h93pZq0e7k5yf4dywlkpM_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "7So2lOJjTXI",
+      "videoSource": {
+        "url": "https://www.youtube.com/results?search_query=Frank%20Ocean%20DHL%20official%20audio",
+        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
+        "retrievedAt": "2026-11-16T01:16:31.190Z"
+      }
+    },
+    {
+      "id": "frank-ocean-in-my-room",
+      "title": "In My Room",
+      "artistIds": [
+        "frank-ocean"
+      ],
+      "albumIds": [
+        "frank-ocean-singles"
+      ],
+      "albumId": "frank-ocean-singles",
+      "duration": 134,
+      "kind": "song",
+      "quality": 70,
+      "popularity": 71.07,
+      "scoreSource": "Quality: initial estimate · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Initial estimate",
+        "note": "Neutral 70/100 prior until a verified song rating is available."
+      },
+      "appleTrackId": 1486713880,
+      "sourceUrl": "https://music.apple.com/us/album/in-my-room/1486713879?i=1486713880&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 562320715,
+        "url": "https://kworb.net/spotify/artist/2h93pZq0e7k5yf4dywlkpM_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "PtvlmOsNV4E",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/frankocean.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:37.243Z"
+      }
+    },
+    {
+      "id": "kendrick-lamar-not-like-us",
+      "title": "Not Like Us",
+      "artistIds": [
+        "kendrick-lamar"
+      ],
+      "albumIds": [
+        "kendrick-lamar-singles"
+      ],
+      "albumId": "kendrick-lamar-singles",
+      "duration": 274,
+      "kind": "song",
+      "quality": 70,
+      "popularity": 95.48,
+      "scoreSource": "Quality: initial estimate · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Initial estimate",
+        "note": "Neutral 70/100 prior until a verified song rating is available."
+      },
+      "appleTrackId": 1744776167,
+      "sourceUrl": "https://music.apple.com/us/album/not-like-us/1744776162?i=1744776167&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 2081540243,
+        "url": "https://kworb.net/spotify/artist/2YZyLoL8N0Wb9xBt1NhZWg_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "H58vbez_m4E",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/kendricklamar.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:37.631Z"
+      }
+    },
+    {
+      "id": "kendrick-lamar-euphoria",
+      "title": "euphoria",
+      "artistIds": [
+        "kendrick-lamar"
+      ],
+      "albumIds": [
+        "kendrick-lamar-singles"
+      ],
+      "albumId": "kendrick-lamar-singles",
+      "duration": 384,
+      "kind": "song",
+      "quality": 87,
+      "popularity": 80.83,
+      "scoreSource": "RYM 4.35/5 (818 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.35,
+        "ratingCount": 818,
+        "url": "https://rateyourmusic.com/song/kendrick-lamar/euphoria/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1744024751,
+      "sourceUrl": "https://music.apple.com/us/album/euphoria/1744024729?i=1744024751&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 490583874,
+        "url": "https://kworb.net/spotify/artist/2YZyLoL8N0Wb9xBt1NhZWg_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "NPqDIwWMtxg",
+      "videoSource": {
+        "url": "https://www.youtube.com/results?search_query=Kendrick%20Lamar%20euphoria%20official%20audio",
+        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
+        "retrievedAt": "2026-11-16T01:16:28.150Z"
+      }
+    },
+    {
+      "id": "kendrick-lamar-meet-the-grahams",
+      "title": "meet the grahams",
+      "artistIds": [
+        "kendrick-lamar"
+      ],
+      "albumIds": [
+        "kendrick-lamar-singles"
+      ],
+      "albumId": "kendrick-lamar-singles",
+      "duration": 392,
+      "kind": "song",
+      "quality": 88,
+      "popularity": 72,
+      "scoreSource": "RYM 4.40/5 (1k ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.4,
+        "ratingCount": 1000,
+        "ratingCountDisplay": "1k",
+        "url": "https://rateyourmusic.com/song/kendrick-lamar/meet-the-grahams/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1744776350,
+      "sourceUrl": "https://music.apple.com/us/album/meet-the-grahams/1744776349?i=1744776350&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 205369748,
+        "url": "https://kworb.net/spotify/artist/2YZyLoL8N0Wb9xBt1NhZWg_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "2QiFl9Dc7D0",
+      "videoSource": {
+        "url": "https://www.youtube.com/results?search_query=Kendrick%20Lamar%20meet%20the%20grahams%20official%20audio",
+        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
+        "retrievedAt": "2026-11-16T01:16:27.957Z"
+      }
+    },
+    {
+      "id": "rihanna-fourfiveseconds",
+      "title": "FourFiveSeconds",
+      "artistIds": [
+        "rihanna"
+      ],
+      "albumIds": [
+        "rihanna-singles"
+      ],
+      "albumId": "rihanna-singles",
+      "duration": 188,
+      "kind": "song",
+      "quality": 56.2,
+      "popularity": 93.48,
+      "scoreSource": "RYM 2.81/5 (226 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 2.81,
+        "ratingCount": 226,
+        "url": "https://rateyourmusic.com/song/rihanna-kanye-west-paul-mccartney/fourfiveseconds/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1445170918,
+      "sourceUrl": "https://music.apple.com/us/album/fourfiveseconds/1445170915?i=1445170918&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 1411927713,
+        "url": "https://kworb.net/spotify/artist/5pKCCKE2ajJHZ9KAiaK11H_songs.html",
+        "sourceUpdatedAt": "2026/11/14",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "kt0g4dWxEBo",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/rihanna.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:39.619Z"
+      }
+    },
+    {
+      "id": "rihanna-bitch-better-have-my-money",
+      "title": "Bitch Better Have My Money",
+      "artistIds": [
+        "rihanna"
+      ],
+      "albumIds": [
+        "rihanna-singles"
+      ],
+      "albumId": "rihanna-singles",
+      "duration": 219,
+      "kind": "song",
+      "quality": 65.8,
+      "popularity": 90.43,
+      "scoreSource": "RYM 3.29/5 (108 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 3.29,
+        "ratingCount": 108,
+        "url": "https://rateyourmusic.com/song/rihanna/bitch-better-have-my-money/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1445136075,
+      "sourceUrl": "https://music.apple.com/us/album/bitch-better-have-my-money/1445136072?i=1445136075&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 1035037418,
+        "url": "https://kworb.net/spotify/artist/5pKCCKE2ajJHZ9KAiaK11H_songs.html",
+        "sourceUpdatedAt": "2026/11/14",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "B3eAMGXFw1o",
+      "backupYoutubeId": "oQW2FFt3-A8",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/rihanna.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:39.619Z"
+      }
     }
   ],
   "sources": [
@@ -553660,6 +554201,69 @@
       "albumId": "jimi-hendrix-band-of-gypsys",
       "retrievedAt": "2026-11-15",
       "trackCount": 6
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1441133181&entity=song&country=us&limit=200",
+      "albumId": "the-beatles-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 5
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1214557444&entity=song&country=us&limit=200",
+      "albumId": "frank-ocean-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1484535192&entity=song&country=us&limit=200",
+      "albumId": "frank-ocean-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1486713879&entity=song&country=us&limit=200",
+      "albumId": "frank-ocean-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1744776162&entity=song&country=us&limit=200",
+      "albumId": "kendrick-lamar-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1744024729&entity=song&country=us&limit=200",
+      "albumId": "kendrick-lamar-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1744776349&entity=song&country=us&limit=200",
+      "albumId": "kendrick-lamar-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1445170915&entity=song&country=us&limit=200",
+      "albumId": "rihanna-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1445136072&entity=song&country=us&limit=200",
+      "albumId": "rihanna-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
     }
   ],
   "issues": [

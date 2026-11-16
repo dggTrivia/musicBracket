@@ -770,8 +770,12 @@ export default function App() {
             : "Mixed artist bracket",
       }
     : artist;
-  const albums = c.albums
-    .filter((a) => a.artistIds.includes(artist.id))
+  const artistReleases = c.albums.filter((a) =>
+    a.artistIds.includes(artist.id),
+  );
+  const singles = artistReleases.find((release) => release.singles);
+  const albums = artistReleases
+    .filter((release) => !release.singles)
     .sort((a, b) => a.year - b.year);
   const artistPickerView = settings.artistPickerView ?? "grid";
   const albumPickerView = settings.albumPickerView ?? "grid";
@@ -782,10 +786,15 @@ export default function App() {
   const libraryTracks = librarySelection
     ? c.songs.filter((s) => s.artistIds.includes(librarySelection.id))
     : c.songs;
-  const libraryAlbumCount = librarySelection
-    ? c.albums.filter((a) => a.artistIds.includes(librarySelection.id)).length
-    : c.albums.length;
+  const libraryAlbumCount = c.albums.filter(
+    (a) =>
+      !a.singles &&
+      (!librarySelection || a.artistIds.includes(librarySelection.id)),
+  ).length;
   const selectedAlbums = artistAlbums?.[artist.id] ?? options.albumIds;
+  const singlesSelected = Boolean(
+    singles && selectedAlbums.includes(singles.id),
+  );
   const field =
     view === "new" && artistChosen ? selectEntrants(options, c.songs) : null;
   const entrants = field?.entrants.length ?? 0;
@@ -865,7 +874,10 @@ export default function App() {
       const albums = c.albums.filter(
         (album) =>
           album.artistIds.includes(id) &&
-          (!years || (album.year >= years[0] && album.year <= years[1])) &&
+          (!years ||
+            (!album.singles &&
+              album.year >= years[0] &&
+              album.year <= years[1])) &&
           (albumSongCounts.get(album.id) ?? 0) > 0,
       );
       return albums.length
@@ -1325,7 +1337,7 @@ export default function App() {
                   <span>
                     {c.artists.length} artists
                     <br />
-                    {c.albums.length} albums
+                    {c.albums.filter((album) => !album.singles).length} albums
                   </span>
                 </div>
               </div>
@@ -1534,7 +1546,7 @@ export default function App() {
                           </h2>
                           <p>
                             {mixed
-                              ? "Switch artists to edit their albums. Your choices stay checked."
+                              ? "Switch artists to edit their selections. Your choices stay checked."
                               : "Everything checked goes into the mix."}
                           </p>
                         </div>
@@ -1549,7 +1561,7 @@ export default function App() {
                         <div
                           className="lineup-tabs"
                           role="group"
-                          aria-label="Whose albums to show"
+                          aria-label="Whose releases to show"
                         >
                           {mixedArtists.map((a) => (
                             <button
@@ -1566,6 +1578,33 @@ export default function App() {
                           ))}
                         </div>
                       )}
+                      {singles && (
+                        <div className="singles-picker">
+                          <label className="singles-picker-toggle">
+                            <input
+                              type="checkbox"
+                              checked={singlesSelected}
+                              aria-describedby="setup-singles-tracks"
+                              onChange={() =>
+                                updateVisibleAlbums(
+                                  singlesSelected
+                                    ? selectedAlbums.filter(
+                                        (id) => id !== singles.id,
+                                      )
+                                    : [...selectedAlbums, singles.id],
+                                )
+                              }
+                            />
+                            <span>Include non-album singles</span>
+                          </label>
+                          <p id="setup-singles-tracks">
+                            {c.songs
+                              .filter((song) => song.albumId === singles.id)
+                              .map((song) => song.title)
+                              .join(" · ")}
+                          </p>
+                        </div>
+                      )}
                       <div className="collection-toolbar">
                         <span>
                           {
@@ -1579,13 +1618,26 @@ export default function App() {
                           <div className="album-selection-actions">
                             <button
                               onClick={() =>
-                                updateVisibleAlbums(albums.map((a) => a.id))
+                                updateVisibleAlbums([
+                                  ...albums.map((a) => a.id),
+                                  ...(singlesSelected && singles
+                                    ? [singles.id]
+                                    : []),
+                                ])
                               }
                             >
                               Select all
                             </button>
                             <span> / </span>
-                            <button onClick={() => updateVisibleAlbums([])}>
+                            <button
+                              onClick={() =>
+                                updateVisibleAlbums(
+                                  singlesSelected && singles
+                                    ? [singles.id]
+                                    : [],
+                                )
+                              }
+                            >
                               Clear
                             </button>
                           </div>

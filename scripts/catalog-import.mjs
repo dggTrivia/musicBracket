@@ -147,6 +147,36 @@ const plans = {
     [1440933869, "Anti", 2016],
   ],
 };
+// Keep non-album tracks in one selectable group per artist. The first release
+// provides the group's cover. Include only records absent from the main albums.
+const singles = {
+  "the-beatles": [
+    1963,
+    [1441133181],
+    [
+      "Hey Jude",
+      "I Want to Hold Your Hand",
+      "Don't Let Me Down",
+      "Day Tripper",
+      "She Loves You",
+    ],
+  ],
+  "frank-ocean": [
+    2017,
+    [1214557444, 1484535192, 1486713879],
+    ["Chanel", "DHL", "In My Room"],
+  ],
+  "kendrick-lamar": [
+    2024,
+    [1744776162, 1744024729, 1744776349],
+    ["Not Like Us", "euphoria", "meet the grahams"],
+  ],
+  rihanna: [
+    2015,
+    [1445170915, 1445136072],
+    ["FourFiveSeconds", "Bitch Better Have My Money"],
+  ],
+};
 const slug = (s) =>
   s
     .normalize("NFKD")
@@ -173,7 +203,8 @@ let catalog = {
   sources: [],
   issues: [],
 };
-const append = process.argv.includes("--expanded-only");
+const singlesOnly = process.argv.includes("--singles-only");
+const append = singlesOnly || process.argv.includes("--expanded-only");
 const artistFilter = new Set(
   process.argv
     .slice(2)
@@ -345,9 +376,11 @@ async function checkpoint() {
     JSON.stringify(out, null, 2),
   );
 }
-for (const artist of append
-  ? expandedArtists
-  : [...artists, ...expandedArtists]) {
+for (const artist of singlesOnly
+  ? []
+  : append
+    ? expandedArtists
+    : [...artists, ...expandedArtists]) {
   if (append && artistFilter.size && !artistFilter.has(artist.id)) continue;
   for (const [appleId, title, year, credit] of plans[artist.id]) {
     const albumId = `${artist.id}-${slug(title)}`;
@@ -488,6 +521,78 @@ for (const artist of append
       console.error(catalog.issues.at(-1));
     }
   }
+}
+async function importSingles() {
+  for (const [artistId, [year, releaseIds, titles]] of Object.entries(
+    singles,
+  )) {
+    if (artistFilter.size && !artistFilter.has(artistId)) continue;
+    const title = "Singles";
+    const id = `${artistId}-singles`;
+    if (catalog.albums.some((album) => album.id === id)) continue;
+    if (titles.length > 5)
+      throw Error(`${artistId} exceeds the five-single limit`);
+    const wanted = new Set(titles.map(normalizeTitle));
+    const releases = await Promise.all(
+      releaseIds.map(async (appleId) => {
+        const url = `https://itunes.apple.com/lookup?id=${appleId}&entity=song&country=us&limit=200`;
+        const { results } = await get(url, `album-${appleId}.json`);
+        const meta = results.find((row) => row.wrapperType === "collection");
+        if (!meta) throw Error(`Missing metadata for ${title} (${appleId})`);
+        return {
+          url,
+          meta,
+          tracks: results.filter((row) => row.kind === "song"),
+        };
+      }),
+    );
+    const { meta } = releases[0];
+    const cover = `/covers/${id}.jpg`;
+    const coverFile = path.join(root, "public", cover.slice(1));
+    try {
+      await readFile(coverFile);
+    } catch {
+      const response = await fetch(
+        meta.artworkUrl100.replace(/100x100bb\.(jpg|png)/, "600x600bb.jpg"),
+        { signal: AbortSignal.timeout(20000) },
+      );
+      if (!response.ok)
+        throw Error(`Missing cover for ${title}: HTTP ${response.status}`);
+      await writeFile(coverFile, Buffer.from(await response.arrayBuffer()));
+    }
+    const album = {
+      id,
+      artistIds: [artistId],
+      title,
+      year,
+      cover,
+      singles: true,
+      defaultSelected: true,
+      sourceUrl: meta.collectionViewUrl,
+    };
+    catalog.albums.push(album);
+    for (const { url, tracks } of releases) {
+      const before = catalog.songs.length;
+      for (const track of tracks) {
+        const trackTitle = canonicalTitle(track.trackName);
+        if (!wanted.has(normalizeTitle(trackTitle))) continue;
+        const key = songKey(album.artistIds, trackTitle);
+        if (!songMap.has(key)) addSong(track, album, album.artistIds);
+      }
+      catalog.sources.push({
+        provider: "Apple iTunes public lookup API",
+        url,
+        albumId: id,
+        retrievedAt: new Date().toISOString().slice(0, 10),
+        trackCount: catalog.songs.length - before,
+      });
+    }
+  }
+}
+if (singlesOnly) {
+  await importSingles();
+  await checkpoint();
+  process.exit(0);
 }
 for (const [albumId, artistId, credit] of [
   ["kanye-west-watch-the-throne", "jay-z"],
@@ -670,6 +775,7 @@ catalog.issues.push(
 catalog.issues.push(
   "YouTube availability is validated at playback time; video-sources.json is maintained separately.",
 );
+await importSingles();
 await checkpoint();
 console.log(
   JSON.stringify(
