@@ -1599,7 +1599,10 @@ export default function App() {
                           </label>
                           <p id="setup-singles-tracks">
                             {c.songs
-                              .filter((song) => song.albumId === singles.id)
+                              .filter((song) =>
+                                song.albumIds.includes(singles.id),
+                              )
+                              .sort((a, b) => b.popularity - a.popularity)
                               .map((song) => song.title)
                               .join(" · ")}
                           </p>

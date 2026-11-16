@@ -148,7 +148,8 @@ const plans = {
   ],
 };
 // Keep non-album tracks in one selectable group per artist. The first release
-// provides the group's cover. Include only records absent from the main albums.
+// provides the group's cover. Favor major lead-artist singles missing from the
+// album catalog.
 const singles = {
   "the-beatles": [
     1963,
@@ -163,8 +164,8 @@ const singles = {
   ],
   "frank-ocean": [
     2017,
-    [1214557444, 1484535192, 1486713879],
-    ["Chanel", "DHL", "In My Room"],
+    [1214557444, 1486713879, 1445278500, 1349524897, 1444860879],
+    ["Chanel", "In My Room", "Novacane", "Moon River", "Swim Good"],
   ],
   "kendrick-lamar": [
     2024,
@@ -173,8 +174,13 @@ const singles = {
   ],
   rihanna: [
     2015,
-    [1445170915, 1445136072],
-    ["FourFiveSeconds", "Bitch Better Have My Money"],
+    [1445170915, 1445136072, 1651763191, 985919136],
+    [
+      "FourFiveSeconds",
+      "Bitch Better Have My Money",
+      "Lift Me Up",
+      "American Oxygen",
+    ],
   ],
 };
 const slug = (s) =>
@@ -363,13 +369,26 @@ function addSong(track, album, artistIds) {
   songMap.set(key, song);
   catalog.songs.push(song);
 }
-async function checkpoint() {
+async function checkpoint(songFilter) {
   let out = catalog;
   try {
     const ratings = JSON.parse(
       await readFile(path.join(root, "public/ratings.json"), "utf8"),
     );
-    out = applyRatings(catalog, ratings).catalog;
+    if (songFilter) {
+      const scored = applyRatings(
+        { ...catalog, songs: catalog.songs.filter(songFilter) },
+        ratings,
+      ).catalog;
+      const byId = new Map(scored.songs.map((song) => [song.id, song]));
+      out = {
+        ...catalog,
+        songs: catalog.songs.map((song) => byId.get(song.id) ?? song),
+        ratingsUpdatedAt: scored.ratingsUpdatedAt,
+      };
+    } else {
+      out = applyRatings(catalog, ratings).catalog;
+    }
   } catch {}
   await writeFile(
     path.join(root, "public/catalog.json"),
@@ -529,10 +548,11 @@ async function importSingles() {
     if (artistFilter.size && !artistFilter.has(artistId)) continue;
     const title = "Singles";
     const id = `${artistId}-singles`;
-    if (catalog.albums.some((album) => album.id === id)) continue;
     if (titles.length > 5)
       throw Error(`${artistId} exceeds the five-single limit`);
-    const wanted = new Set(titles.map(normalizeTitle));
+    const wanted = new Map(
+      titles.map((title) => [normalizeTitle(title), title]),
+    );
     const releases = await Promise.all(
       releaseIds.map(async (appleId) => {
         const url = `https://itunes.apple.com/lookup?id=${appleId}&entity=song&country=us&limit=200`;
@@ -560,7 +580,7 @@ async function importSingles() {
         throw Error(`Missing cover for ${title}: HTTP ${response.status}`);
       await writeFile(coverFile, Buffer.from(await response.arrayBuffer()));
     }
-    const album = {
+    const album = catalog.albums.find((entry) => entry.id === id) ?? {
       id,
       artistIds: [artistId],
       title,
@@ -570,28 +590,47 @@ async function importSingles() {
       defaultSelected: true,
       sourceUrl: meta.collectionViewUrl,
     };
-    catalog.albums.push(album);
+    if (!catalog.albums.includes(album)) catalog.albums.push(album);
+    for (const song of catalog.songs) {
+      if (!song.albumIds.includes(id) || wanted.has(normalizeTitle(song.title)))
+        continue;
+      song.albumIds = song.albumIds.filter((albumId) => albumId !== id);
+      if (song.albumId === id) song.albumId = song.albumIds[0];
+      if (!song.albumId) songMap.delete(songKey(song.artistIds, song.title));
+    }
+    catalog.songs = catalog.songs.filter((song) => song.albumId);
+    catalog.sources = catalog.sources.filter((source) => source.albumId !== id);
     for (const { url, tracks } of releases) {
-      const before = catalog.songs.length;
+      let trackCount = 0;
       for (const track of tracks) {
-        const trackTitle = canonicalTitle(track.trackName);
-        if (!wanted.has(normalizeTitle(trackTitle))) continue;
+        if (/\bInstrumental[)\]]$/i.test(track.trackName)) continue;
+        const normalized = normalizeTitle(canonicalTitle(track.trackName));
+        const trackTitle = wanted.get(normalized);
+        if (!trackTitle) continue;
         const key = songKey(album.artistIds, trackTitle);
-        if (!songMap.has(key)) addSong(track, album, album.artistIds);
+        const existing = songMap.get(key);
+        if (existing && !existing.albumIds.includes(id)) continue;
+        addSong({ ...track, trackName: trackTitle }, album, album.artistIds);
+        trackCount++;
       }
       catalog.sources.push({
         provider: "Apple iTunes public lookup API",
         url,
         albumId: id,
         retrievedAt: new Date().toISOString().slice(0, 10),
-        trackCount: catalog.songs.length - before,
+        trackCount,
       });
     }
   }
 }
 if (singlesOnly) {
   await importSingles();
-  await checkpoint();
+  const groups = new Set(
+    Object.keys(singles)
+      .filter((id) => !artistFilter.size || artistFilter.has(id))
+      .map((id) => `${id}-singles`),
+  );
+  await checkpoint((song) => song.albumIds.some((id) => groups.has(id)));
   process.exit(0);
 }
 for (const [albumId, artistId, credit] of [

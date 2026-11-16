@@ -55886,6 +55886,72 @@
       "sourceUrl": "https://rateyourmusic.com/song/the-beatles/i-want-to-hold-your-hand/",
       "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the%2dbeatles/2/",
       "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "Not Like Us",
+      "rating": 4.08,
+      "ratingCount": 999,
+      "quality": 81.6,
+      "sourceUrl": "https://rateyourmusic.com/song/kendrick-lamar/not-like-us/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "In My Room",
+      "rating": 3.82,
+      "ratingCount": 168,
+      "quality": 76.4,
+      "sourceUrl": "https://rateyourmusic.com/song/frank-ocean/in-my-room/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "Moon River",
+      "rating": 3.95,
+      "ratingCount": 154,
+      "quality": 79,
+      "sourceUrl": "https://rateyourmusic.com/song/frank-ocean/moon-river/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "rihanna",
+      "title": "Lift Me Up",
+      "rating": 2.85,
+      "ratingCount": 74,
+      "quality": 57,
+      "sourceUrl": "https://rateyourmusic.com/song/rihanna/lift-me-up/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "rihanna",
+      "title": "American Oxygen",
+      "rating": 2.64,
+      "ratingCount": 21,
+      "quality": 52.8,
+      "sourceUrl": "https://rateyourmusic.com/song/rihanna/american-oxygen/",
+      "retrievedAt": "2026-11-16"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "Novacane",
+      "rating": 4.38,
+      "ratingCount": 1000,
+      "ratingCountDisplay": "1k",
+      "quality": 87.6,
+      "sourceUrl": "https://rateyourmusic.com/song/frank-ocean/novacane/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:frank%2docean/",
+      "retrievedAt": "2026-11-15"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "Swim Good",
+      "rating": 4.19,
+      "ratingCount": 940,
+      "quality": 83.8,
+      "sourceUrl": "https://rateyourmusic.com/song/frank-ocean/swim-good/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:frank%2docean/",
+      "retrievedAt": "2026-11-15"
     }
   ],
   "popularity": [

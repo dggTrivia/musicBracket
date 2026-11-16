@@ -545839,41 +545839,6 @@
       }
     },
     {
-      "id": "frank-ocean-dhl",
-      "title": "DHL",
-      "artistIds": [
-        "frank-ocean"
-      ],
-      "albumIds": [
-        "frank-ocean-singles"
-      ],
-      "albumId": "frank-ocean-singles",
-      "duration": 269,
-      "kind": "song",
-      "quality": 70,
-      "popularity": 42.12,
-      "scoreSource": "Quality: initial estimate · Popularity: log-normalized public Spotify streams (Kworb)",
-      "qualitySource": {
-        "provider": "Initial estimate",
-        "note": "Neutral 70/100 prior until a verified song rating is available."
-      },
-      "appleTrackId": 1484535196,
-      "sourceUrl": "https://music.apple.com/us/album/dhl/1484535192?i=1484535196&uo=4",
-      "popularitySource": {
-        "provider": "Kworb / Spotify public stream totals",
-        "streams": 135778975,
-        "url": "https://kworb.net/spotify/artist/2h93pZq0e7k5yf4dywlkpM_songs.html",
-        "sourceUpdatedAt": "2026/11/13",
-        "retrievedAt": "2026-11-15"
-      },
-      "youtubeId": "7So2lOJjTXI",
-      "videoSource": {
-        "url": "https://www.youtube.com/results?search_query=Frank%20Ocean%20DHL%20official%20audio",
-        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
-        "retrievedAt": "2026-11-16T01:16:31.190Z"
-      }
-    },
-    {
       "id": "frank-ocean-in-my-room",
       "title": "In My Room",
       "artistIds": [
@@ -545885,12 +545850,15 @@
       "albumId": "frank-ocean-singles",
       "duration": 134,
       "kind": "song",
-      "quality": 70,
+      "quality": 76.4,
       "popularity": 71.07,
-      "scoreSource": "Quality: initial estimate · Popularity: log-normalized public Spotify streams (Kworb)",
+      "scoreSource": "RYM 3.82/5 (168 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
       "qualitySource": {
-        "provider": "Initial estimate",
-        "note": "Neutral 70/100 prior until a verified song rating is available."
+        "provider": "Rate Your Music",
+        "rating": 3.82,
+        "ratingCount": 168,
+        "url": "https://rateyourmusic.com/song/frank-ocean/in-my-room/",
+        "retrievedAt": "2026-11-16"
       },
       "appleTrackId": 1486713880,
       "sourceUrl": "https://music.apple.com/us/album/in-my-room/1486713879?i=1486713880&uo=4",
@@ -545920,12 +545888,15 @@
       "albumId": "kendrick-lamar-singles",
       "duration": 274,
       "kind": "song",
-      "quality": 70,
+      "quality": 81.6,
       "popularity": 95.48,
-      "scoreSource": "Quality: initial estimate · Popularity: log-normalized public Spotify streams (Kworb)",
+      "scoreSource": "RYM 4.08/5 (999 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
       "qualitySource": {
-        "provider": "Initial estimate",
-        "note": "Neutral 70/100 prior until a verified song rating is available."
+        "provider": "Rate Your Music",
+        "rating": 4.08,
+        "ratingCount": 999,
+        "url": "https://rateyourmusic.com/song/kendrick-lamar/not-like-us/",
+        "retrievedAt": "2026-11-16"
       },
       "appleTrackId": 1744776167,
       "sourceUrl": "https://music.apple.com/us/album/not-like-us/1744776162?i=1744776167&uo=4",
@@ -546091,6 +546062,198 @@
       },
       "youtubeId": "B3eAMGXFw1o",
       "backupYoutubeId": "oQW2FFt3-A8",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/rihanna.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:39.619Z"
+      }
+    },
+    {
+      "id": "frank-ocean-novacane",
+      "title": "Novacane",
+      "artistIds": [
+        "frank-ocean"
+      ],
+      "albumIds": [
+        "frank-ocean-singles"
+      ],
+      "albumId": "frank-ocean-singles",
+      "duration": 303,
+      "kind": "song",
+      "quality": 87.6,
+      "popularity": 84.93,
+      "scoreSource": "RYM 4.38/5 (1k ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.38,
+        "ratingCount": 1000,
+        "ratingCountDisplay": "1k",
+        "url": "https://rateyourmusic.com/song/frank-ocean/novacane/",
+        "retrievedAt": "2026-11-15"
+      },
+      "appleTrackId": 1445278502,
+      "sourceUrl": "https://music.apple.com/us/album/novacane/1445278500?i=1445278502&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 1110193803,
+        "url": "https://kworb.net/spotify/artist/2h93pZq0e7k5yf4dywlkpM_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "hgOu8eRJZ3Q",
+      "videoSource": {
+        "url": "https://www.youtube.com/watch?v=hgOu8eRJZ3Q",
+        "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime",
+        "retrievedAt": "2026-11-16T01:30:03.037Z"
+      }
+    },
+    {
+      "id": "frank-ocean-moon-river",
+      "title": "Moon River",
+      "artistIds": [
+        "frank-ocean"
+      ],
+      "albumIds": [
+        "frank-ocean-singles"
+      ],
+      "albumId": "frank-ocean-singles",
+      "duration": 188,
+      "kind": "song",
+      "quality": 79,
+      "popularity": 64.73,
+      "scoreSource": "RYM 3.95/5 (154 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 3.95,
+        "ratingCount": 154,
+        "url": "https://rateyourmusic.com/song/frank-ocean/moon-river/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1349524898,
+      "sourceUrl": "https://music.apple.com/us/album/moon-river/1349524897?i=1349524898&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 411889337,
+        "url": "https://kworb.net/spotify/artist/2h93pZq0e7k5yf4dywlkpM_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "mXiFHDfvn4A",
+      "videoSource": {
+        "url": "https://kworb.net/youtube/artist/frankocean.html",
+        "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
+        "retrievedAt": "2026-11-14T23:39:37.243Z"
+      }
+    },
+    {
+      "id": "frank-ocean-swim-good",
+      "title": "Swim Good",
+      "artistIds": [
+        "frank-ocean"
+      ],
+      "albumIds": [
+        "frank-ocean-singles"
+      ],
+      "albumId": "frank-ocean-singles",
+      "duration": 257,
+      "kind": "song",
+      "quality": 83.8,
+      "popularity": 56.96,
+      "scoreSource": "RYM 4.19/5 (940 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 4.19,
+        "ratingCount": 940,
+        "url": "https://rateyourmusic.com/song/frank-ocean/swim-good/",
+        "retrievedAt": "2026-11-15"
+      },
+      "appleTrackId": 1444860886,
+      "sourceUrl": "https://music.apple.com/us/album/swim-good/1444860879?i=1444860886&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 281359679,
+        "url": "https://kworb.net/spotify/artist/2h93pZq0e7k5yf4dywlkpM_songs.html",
+        "sourceUpdatedAt": "2026/11/13",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "ic1nhvWBvIo",
+      "videoSource": {
+        "url": "https://www.youtube.com/watch?v=ic1nhvWBvIo",
+        "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime",
+        "retrievedAt": "2026-11-16T01:30:03.162Z"
+      }
+    },
+    {
+      "id": "rihanna-lift-me-up",
+      "title": "Lift Me Up",
+      "artistIds": [
+        "rihanna"
+      ],
+      "albumIds": [
+        "rihanna-singles"
+      ],
+      "albumId": "rihanna-singles",
+      "duration": 197,
+      "kind": "song",
+      "quality": 57,
+      "popularity": 83.14,
+      "scoreSource": "RYM 2.85/5 (74 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 2.85,
+        "ratingCount": 74,
+        "url": "https://rateyourmusic.com/song/rihanna/lift-me-up/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 1651763192,
+      "sourceUrl": "https://music.apple.com/us/album/lift-me-up-from-black-panther-wakanda-forever-music/1651763191?i=1651763192&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 491699080,
+        "url": "https://kworb.net/spotify/artist/5pKCCKE2ajJHZ9KAiaK11H_songs.html",
+        "sourceUpdatedAt": "2026/11/14",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "Mx_OexsUI2M",
+      "backupYoutubeId": "UWCf7GNy6cc",
+      "videoSource": {
+        "url": "https://www.youtube.com/watch?v=Mx_OexsUI2M",
+        "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime",
+        "retrievedAt": "2026-11-16T01:30:03.242Z"
+      }
+    },
+    {
+      "id": "rihanna-american-oxygen",
+      "title": "American Oxygen",
+      "artistIds": [
+        "rihanna"
+      ],
+      "albumIds": [
+        "rihanna-singles"
+      ],
+      "albumId": "rihanna-singles",
+      "duration": 320,
+      "kind": "song",
+      "quality": 52.8,
+      "popularity": 71.28,
+      "scoreSource": "RYM 2.64/5 (21 ratings) · Popularity: log-normalized public Spotify streams (Kworb)",
+      "qualitySource": {
+        "provider": "Rate Your Music",
+        "rating": 2.64,
+        "ratingCount": 21,
+        "url": "https://rateyourmusic.com/song/rihanna/american-oxygen/",
+        "retrievedAt": "2026-11-16"
+      },
+      "appleTrackId": 985919144,
+      "sourceUrl": "https://music.apple.com/us/album/american-oxygen/985919136?i=985919144&uo=4",
+      "popularitySource": {
+        "provider": "Kworb / Spotify public stream totals",
+        "streams": 146522439,
+        "url": "https://kworb.net/spotify/artist/5pKCCKE2ajJHZ9KAiaK11H_songs.html",
+        "sourceUpdatedAt": "2026/11/14",
+        "retrievedAt": "2026-11-15"
+      },
+      "youtubeId": "Ao8cGLIMtvg",
       "videoSource": {
         "url": "https://kworb.net/youtube/artist/rihanna.html",
         "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
@@ -554218,14 +554381,28 @@
     },
     {
       "provider": "Apple iTunes public lookup API",
-      "url": "https://itunes.apple.com/lookup?id=1484535192&entity=song&country=us&limit=200",
+      "url": "https://itunes.apple.com/lookup?id=1486713879&entity=song&country=us&limit=200",
       "albumId": "frank-ocean-singles",
       "retrievedAt": "2026-11-16",
       "trackCount": 1
     },
     {
       "provider": "Apple iTunes public lookup API",
-      "url": "https://itunes.apple.com/lookup?id=1486713879&entity=song&country=us&limit=200",
+      "url": "https://itunes.apple.com/lookup?id=1445278500&entity=song&country=us&limit=200",
+      "albumId": "frank-ocean-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1349524897&entity=song&country=us&limit=200",
+      "albumId": "frank-ocean-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1444860879&entity=song&country=us&limit=200",
       "albumId": "frank-ocean-singles",
       "retrievedAt": "2026-11-16",
       "trackCount": 1
@@ -554264,11 +554441,25 @@
       "albumId": "rihanna-singles",
       "retrievedAt": "2026-11-16",
       "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=1651763191&entity=song&country=us&limit=200",
+      "albumId": "rihanna-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
+    },
+    {
+      "provider": "Apple iTunes public lookup API",
+      "url": "https://itunes.apple.com/lookup?id=985919136&entity=song&country=us&limit=200",
+      "albumId": "rihanna-singles",
+      "retrievedAt": "2026-11-16",
+      "trackCount": 1
     }
   ],
   "issues": [
     "Song quality defaults to a transparent neutral prior where verified RYM ratings are unavailable. Popularity is merged from public Kworb Spotify totals where matched.",
     "YouTube availability is validated at playback time; video-sources.json is maintained separately."
   ],
-  "ratingsUpdatedAt": "2026-11-15"
+  "ratingsUpdatedAt": "2026-11-16"
 }

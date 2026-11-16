@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-16T01:17:36.937Z",
+  "updatedAt": "2026-11-16T01:30:03.358Z",
   "sources": [
     {
       "artistId": "kanye-west",
@@ -9066,17 +9066,15 @@
     {
       "artistId": "rihanna",
       "title": "Lift Me Up",
-      "youtubeId": "UWCf7GNy6cc",
-      "sourceUrl": "https://kworb.net/youtube/artist/rihanna.html",
-      "videoTitle": "Rihanna - Lift Me Up (Wakanda Forever Lyric Video)",
-      "retrievedAt": "2026-11-14T23:39:39.619Z",
-      "verification": "YouTube oEmbed metadata available; final region/embedding checked at runtime",
-      "backupYoutubeId": "0NZ6A-X6taA",
-      "oembedStatus": 200,
+      "youtubeId": "Mx_OexsUI2M",
+      "backupYoutubeId": "UWCf7GNy6cc",
+      "sourceUrl": "https://www.youtube.com/watch?v=Mx_OexsUI2M",
+      "videoTitle": "Rihanna - Lift Me Up (From Black Panther: Wakanda Forever)",
       "channel": "RihannaVEVO",
-      "metadataCheckedAt": "2026-11-14T23:54:51.580Z",
-      "backupOembedStatus": 200,
-      "backupMetadataCheckedAt": "2026-11-14T23:54:51.614Z"
+      "retrievedAt": "2026-11-16T01:30:03.242Z",
+      "metadataCheckedAt": "2026-11-16T01:30:03.242Z",
+      "oembedStatus": 200,
+      "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime"
     },
     {
       "artistId": "rihanna",
@@ -173573,6 +173571,30 @@
       "metadataCheckedAt": "2026-11-16T01:16:27.957Z",
       "oembedStatus": 200,
       "verification": "YouTube search and oEmbed; embedding/region checked at runtime"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "Novacane",
+      "youtubeId": "hgOu8eRJZ3Q",
+      "sourceUrl": "https://www.youtube.com/watch?v=hgOu8eRJZ3Q",
+      "videoTitle": "Novacane (Explicit Version)",
+      "channel": "Frank Ocean - Topic",
+      "retrievedAt": "2026-11-16T01:30:03.037Z",
+      "metadataCheckedAt": "2026-11-16T01:30:03.037Z",
+      "oembedStatus": 200,
+      "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime"
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "Swim Good",
+      "youtubeId": "ic1nhvWBvIo",
+      "sourceUrl": "https://www.youtube.com/watch?v=ic1nhvWBvIo",
+      "videoTitle": "Swim Good",
+      "channel": "Frank Ocean - Topic",
+      "retrievedAt": "2026-11-16T01:30:03.162Z",
+      "metadataCheckedAt": "2026-11-16T01:30:03.162Z",
+      "oembedStatus": 200,
+      "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime"
     }
   ]
 }
