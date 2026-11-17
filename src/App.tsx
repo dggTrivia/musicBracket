@@ -3065,21 +3065,28 @@ function ShareDialog({
   const [url, setUrl] = useState("");
   const [message, setMessage] = useState("");
   const input = useRef<HTMLInputElement>(null);
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
   useDialogFocus(true, ".share-dialog", onClose);
   useEffect(() => {
     let cancelled = false;
+    setFailed(false);
+    setMessage("");
     createChallengeLink(definition, window.location.href).then(
       (value) => {
         if (!cancelled) setUrl(value);
       },
       (error) => {
-        if (!cancelled) setMessage(error.message);
+        if (!cancelled) {
+          setMessage(error.message);
+          setFailed(true);
+        }
       },
     );
     return () => {
       cancelled = true;
     };
-  }, [definition]);
+  }, [definition, attempt]);
   const local = /^(localhost|127(?:\.\d+){3}|\[::1\])$|\.localhost$/i.test(
     window.location.hostname,
   );
@@ -3121,7 +3128,20 @@ function ShareDialog({
             />
           </label>
         )}
+        {!url && !failed && (
+          <p role="status" className="field-note">
+            Creating your bracket link…
+          </p>
+        )}
         <div className="inline">
+          {failed && (
+            <button
+              className="secondary"
+              onClick={() => setAttempt((value) => value + 1)}
+            >
+              Try again
+            </button>
+          )}
           <button
             className="primary"
             disabled={!url}

@@ -2,6 +2,8 @@ import { validateDefinition } from "./engine";
 import type { Definition, SourceOverride } from "./types";
 
 const prefix = "#bracket=v1.";
+const shortPrefix = "#b=";
+export const shareCodePattern = /^[A-Za-z0-9_-]{16}$/;
 const maxLinkPayload = 64_000;
 const maxSnapshotBytes = 8_000_000;
 
@@ -51,10 +53,34 @@ export function challengeSnapshot(
 }
 
 export function isChallengeLink(hash: string) {
-  return hash.startsWith("#bracket=");
+  return hash.startsWith("#bracket=") || hash.startsWith(shortPrefix);
 }
 
 export async function createChallengeLink(
+  definition: Definition,
+  base: string,
+) {
+  const url = new URL(base);
+  const portable = await createPortableChallengeLink(definition, base);
+  if (/^(localhost|127(?:\.\d+){3}|\[::1\])$|\.localhost$/i.test(url.hostname))
+    return portable;
+  const response = await fetch(new URL("/api/brackets", url), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ payload: new URL(portable).hash }),
+    signal: AbortSignal.timeout(20000),
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || !shareCodePattern.test(data.id))
+    throw Error(
+      data.error || "The bracket link could not be created. Please try again.",
+    );
+  url.search = "";
+  url.hash = shortPrefix + data.id;
+  return url.href;
+}
+
+export async function createPortableChallengeLink(
   definition: Definition,
   base: string,
 ) {
@@ -72,9 +98,7 @@ export async function createChallengeLink(
     .replace(/\//g, "_")
     .replace(/=+$/, "");
   if (payload.length > maxLinkPayload) {
-    throw Error(
-      "This bracket is too large for a link. Send the challenge file instead.",
-    );
+    throw Error("This bracket is too large to share. Try a smaller bracket.");
   }
   const url = new URL(base);
   url.hash = prefix + payload;
@@ -82,6 +106,23 @@ export async function createChallengeLink(
 }
 
 export async function readChallengeLink(hash: string) {
+  if (hash.startsWith(shortPrefix)) {
+    const id = hash.slice(shortPrefix.length);
+    if (!shareCodePattern.test(id))
+      throw Error("This bracket link is invalid or incomplete.");
+    const response = await fetch(`/api/brackets/${id}`, {
+      signal: AbortSignal.timeout(20000),
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok)
+      throw Error(
+        data.error ||
+          "This shared bracket could not be loaded. Please try again.",
+      );
+    if (typeof data.payload !== "string" || !data.payload.startsWith(prefix))
+      throw Error("This shared bracket is invalid.");
+    return readChallengeLink(data.payload);
+  }
   const payload = hash.slice(prefix.length);
   if (
     !hash.startsWith(prefix) ||

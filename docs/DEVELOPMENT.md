@@ -7,7 +7,8 @@ Technical context for contributors and coding agents. See the root README for pl
 - `src/App.tsx` owns setup, artist selection, matchups, replay invitations, share dialogs and results.
 - `src/engine.ts` builds the frozen tournament, balances mixed artist slots, validates imported definitions and applies picks.
 - `src/Player.tsx` owns the YouTube IFrame API, playback switching, fallback videos and Restart.
-- `src/share.ts` serializes self-contained compressed replay links. Preserve the original bracket tree and never include personal picks.
+- `src/share.ts` creates short replay links on the hosted site and portable compressed links on localhost. Preserve the original bracket tree and never include personal picks.
+- `functions/api/brackets.ts`, `functions/api/brackets/[id].ts`, and `server/brackets.ts` store and retrieve immutable replay snapshots through the `BRACKETS` D1 binding.
 - `src/storage.ts` stores active runs and image-only completed history in IndexedDB.
 - `src/exports.ts` draws full-bracket and final-stage PNGs.
 - `src/types.ts` defines the persisted formats. New optional options must remain compatible with older saves.
@@ -68,7 +69,9 @@ IndexedDB stores up to five active runs plus preferences, video overrides, and c
 
 Mixed artists lets you select 2–8 artists, then switch between compact album collections with remembered selections. Smaller fields share slots evenly where possible, choosing each artist's strongest songs with the usual score. A shared collaboration enters once. Every selected song enters when that size is chosen.
 
-Share bracket in Full bracket or on the winner screen creates a compressed URL containing the frozen entrants, video sources and opening matchups. Opening it shows a replay invitation, and Play this bracket saves a fresh run with no picks. Later opponents follow each listener's decisions. Links use the current site's address, so send links from the hosted site when playing with friends. No server database is required for these links.
+Share bracket in Full bracket or on the winner screen creates a short `#b=<16-character-code>` URL on the hosted site. D1 stores the compressed, frozen entrants, videos, and opening matchups. A content hash reuses identical snapshots. Opening the link shows a replay invitation, and Play this bracket saves a fresh run with no picks. Later opponents follow each listener's decisions. Localhost uses portable `#bracket=v1.` links, and existing portable links continue to work. Shared snapshots have no expiration. Anyone with the link can replay the bracket.
+
+Apply `migrations/0002_shared_brackets.sql` to the dedicated `musicbracket-shares` D1 database and bind it as `BRACKETS` on the production Pages project. Functions route only `/api/brackets` and `/api/brackets/*` through `public/_routes.json`. Other assets remain static. Creation accepts same-origin JSON, limits the request body and decompressed size, validates the whole tournament, strips personal picks, and atomically limits new snapshots to 500 per rolling day. Fetches use immutable browser and edge caching. Failures show an error with a retry button. Include the binding when deploying to another hosted environment. Preview environments have no production database binding.
 
 ## Catalog and provenance
 
@@ -86,6 +89,6 @@ The application is a static SPA with no machine-local server dependency in produ
 
 For Workers: install Cloudflare's `cf` development dependency when enabling deployment, run `cf build` to prepare its Vite integration, review generated configuration, then `cf deploy`. Keep the static SPA entrypoint; no D1/R2 is required merely to publish the current app. See [Cloudflare config](https://developers.cloudflare.com/cf/projects/cloudflare-config/) and [Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 
-When online sharing or cross-device saves are enabled, apply `migrations/0001_catalog.sql` to D1, use R2 for the two history PNGs, add authenticated ownership checks and signed opaque share tokens, and replace the storage adapter without changing the tournament engine. `node scripts/catalog-sql.mjs` writes a catalog seed migration to `tmp/`. Do not expose an unauthenticated write API.
+For future cross-device saves, apply `migrations/0001_catalog.sql` to a separate D1 database, use R2 for the two history PNGs, add authenticated ownership checks, and replace the storage adapter without changing the tournament engine. `node scripts/catalog-sql.mjs` writes a catalog seed migration to `tmp/`. The shared bracket endpoint contains public replay snapshots only. Personal active runs and history stay in IndexedDB.
 
 `src/chat.ts` is a dormant, tested voting boundary: transport contract, match-scoped deadline checking and one vote per user. `CHAT_VOTING_ENABLED` is false; no chat connection is opened. Enabling it later needs a provider transport, server-authoritative deadlines, identity, anti-replay checks and authenticated session ownership.

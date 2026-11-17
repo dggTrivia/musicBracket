@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "include": ["/api/brackets", "/api/brackets/*"],
+  "exclude": []
+}
