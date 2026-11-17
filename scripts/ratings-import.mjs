@@ -7,9 +7,12 @@ import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
-export const minimumSingleRatingCount = 80;
+export const minimumSingleRatingCount = 51;
+export const maximumSinglesPerArtist = 7;
 
 export function normalizeTitle(value) {
+  // Carti's standalone @ MEH and Whole Lotta Red's Meh are different recordings.
+  if (/^\s*@\s*meh\s*$/i.test(value)) return "atmeh";
   return value
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")

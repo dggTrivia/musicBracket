@@ -1,5 +1,8 @@
 import { readFile, rm, writeFile } from "node:fs/promises";
-import { minimumSingleRatingCount } from "./ratings-import.mjs";
+import {
+  minimumSingleRatingCount,
+  maximumSinglesPerArtist,
+} from "./ratings-import.mjs";
 
 const asset = (name) => new URL(`../dist/${name}`, import.meta.url);
 const catalogFile = asset("catalog.json");
@@ -9,6 +12,13 @@ const { artists, albums, songs } = JSON.parse(
 const singlesIds = new Set(
   albums.filter((album) => album.singles).map((album) => album.id),
 );
+for (const id of singlesIds) {
+  if (
+    songs.filter((song) => song.albumIds.includes(id)).length >
+    maximumSinglesPerArtist
+  )
+    throw Error(`${id} exceeds the ${maximumSinglesPerArtist}-single limit.`);
+}
 for (const song of songs) {
   if (!song.albumIds.some((id) => singlesIds.has(id))) continue;
   const { provider, ratingCount } = song.qualitySource ?? {};

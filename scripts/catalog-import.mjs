@@ -7,6 +7,7 @@ import path from "node:path";
 import {
   applyRatings,
   minimumSingleRatingCount,
+  maximumSinglesPerArtist,
   normalizeTitle,
 } from "./ratings-import.mjs";
 import {
@@ -353,7 +354,7 @@ function addSong(track, album, artistIds) {
   const trackKind = kind(title, artistIds[0]);
   const quality = trackKind === "song" ? 70 : 45;
   const song = {
-    id: `${key.split(":")[0]}-${slug(title)}`,
+    id: `${key.split(":")[0]}-${artistIds.includes("playboi-carti") && normalizeTitle(title) === "atmeh" ? "at-meh" : slug(title)}`,
     title,
     artistIds,
     albumIds: [album.id],
@@ -562,8 +563,10 @@ async function importSingles() {
     if (artistFilter.size && !artistFilter.has(artistId)) continue;
     const title = "Singles";
     const id = `${artistId}-singles`;
-    if (titles.length > 5)
-      throw Error(`${artistId} exceeds the five-single limit`);
+    if (titles.length > maximumSinglesPerArtist)
+      throw Error(
+        `${artistId} exceeds the ${maximumSinglesPerArtist}-single limit`,
+      );
     const wanted = new Map(
       titles
         .filter((title) => {

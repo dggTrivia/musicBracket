@@ -9,6 +9,7 @@
     "preview": "vite preview --host 127.0.0.1 --port 19473 --strictPort",
     "test": "tsx --test tests/*.test.ts",
     "catalog:import": "node scripts/catalog-import.mjs",
+    "singles:audit": "node scripts/audit-singles.mjs",
     "videos:import": "node scripts/video-import.mjs"
   },
   "dependencies": {

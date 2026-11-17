@@ -173595,6 +173595,18 @@
       "metadataCheckedAt": "2026-11-16T01:30:03.162Z",
       "oembedStatus": 200,
       "verification": "Official upload; YouTube oEmbed metadata available; embedding checked at runtime"
+    },
+    {
+      "artistId": "playboi-carti",
+      "title": "@ MEH",
+      "youtubeId": "nMDOSLEVdBw",
+      "sourceUrl": "https://www.youtube.com/watch?v=nMDOSLEVdBw",
+      "videoTitle": "Playboi Carti - @ MEH [Official Video]",
+      "channel": "Playboi Carti",
+      "retrievedAt": "2026-11-17T16:06:29.804Z",
+      "metadataCheckedAt": "2026-11-17T16:06:29.804Z",
+      "oembedStatus": 200,
+      "verification": "User-selected official upload; metadata checked; embedding checked at playback"
     }
   ]
 }

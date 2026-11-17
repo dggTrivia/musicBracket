@@ -259170,7 +259170,7 @@
       "duration": 119,
       "kind": "song",
       "quality": 70,
-      "popularity": 67.01,
+      "popularity": 65.66,
       "scoreSource": "Quality: initial estimate · Popularity: log-normalized public Spotify streams (Kworb)",
       "qualitySource": {
         "provider": "Initial estimate",
@@ -259186,7 +259186,7 @@
       },
       "popularitySource": {
         "provider": "Kworb / Spotify public stream totals",
-        "streams": 129174111,
+        "streams": 116109895,
         "url": "https://kworb.net/spotify/artist/699OTQXzgjhIYAHMy9RyPD_songs.html",
         "sourceUpdatedAt": "2026/11/14",
         "retrievedAt": "2026-11-15"
