@@ -258338,11 +258338,11 @@
       },
       "appleTrackId": 1381553477,
       "sourceUrl": "https://music.apple.com/us/album/shoota-feat-lil-uzi-vert/1381553184?i=1381553477&uo=4",
-      "youtubeId": "hvXNWOxlRhE",
+      "youtubeId": "j3EwWAMWM6Q",
       "videoSource": {
-        "url": "https://www.youtube.com/results?search_query=Playboi%20Carti%20Shoota%20official%20audio",
-        "verification": "YouTube search and oEmbed; embedding/region checked at runtime",
-        "retrievedAt": "2026-11-15T22:28:18.120Z"
+        "url": "https://www.youtube.com/watch?v=j3EwWAMWM6Q",
+        "verification": "User-selected upload; YouTube metadata checked; embedding checked at playback",
+        "retrievedAt": "2026-11-17T16:00:20.058Z"
       },
       "popularitySource": {
         "provider": "Kworb / Spotify public stream totals",
