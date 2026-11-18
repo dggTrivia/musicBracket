@@ -48,6 +48,10 @@ export function normalizeTitle(value) {
     )
     .replace(/^(elevators)\s+\(me\s*&\s*you\)$/, "$1")
     .replace(/^(mx)\s+\(including hidden tracks.*\)$/, "$1")
+    .replace(
+      /\s*\(from (?:the (?:original )?motion picture|the .*soundtrack|["“]).*$/i,
+      "",
+    )
     .replace(/\s*(?:\(\d{4} mix\)|[-–—]\s*\d{4} mix)$/i, "")
     .replace(
       /\s*(?:[-–—]\s*|\()from (?:black panther: wakanda forever|the ["“]home["”] soundtrack).*$/i,

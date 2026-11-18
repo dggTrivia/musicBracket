@@ -15,6 +15,7 @@ import {
   expandedBonusTracks,
   expandedPhysicalAlbums,
 } from "./expanded-albums.mjs";
+import { reviewedSingles, reviewedSingleTracks } from "./reviewed-singles.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const cache = path.join(root, "tmp/itunes");
@@ -156,6 +157,7 @@ const plans = {
 // provides the group's cover. Favor major lead-artist singles missing from the
 // album catalog.
 const singles = {
+  ...reviewedSingles,
   "the-beatles": [
     1963,
     [1441133181],
@@ -165,6 +167,8 @@ const singles = {
       "Don't Let Me Down",
       "Day Tripper",
       "She Loves You",
+      "We Can Work It Out",
+      "Revolution",
     ],
   ],
   "frank-ocean": [
@@ -188,6 +192,7 @@ const singles = {
     ],
   ],
 };
+Object.assign(singles, reviewedSingles);
 const slug = (s) =>
   s
     .normalize("NFKD")
@@ -573,7 +578,7 @@ async function importSingles() {
           const key = songKey([artistId], title);
           const alreadyOnAlbum = songMap
             .get(key)
-            ?.albumIds.some((albumId) => albumId !== id);
+            ?.albumIds.some((albumId) => !albumId.endsWith("-singles"));
           return eligibleRatings.has(key) && !alreadyOnAlbum;
         })
         .map((title) => [normalizeTitle(title), title]),
@@ -589,6 +594,53 @@ async function importSingles() {
     catalog.sources = catalog.sources.filter((source) => source.albumId !== id);
     if (!wanted.size) {
       catalog.albums = catalog.albums.filter((album) => album.id !== id);
+      continue;
+    }
+    if (reviewedSingleTracks[artistId]) {
+      const approved = reviewedSingleTracks[artistId].filter((track) =>
+        wanted.has(normalizeTitle(track.title)),
+      );
+      let cover = `/covers/${id}.jpg`;
+      try {
+        await readFile(path.join(root, "public", cover.slice(1)));
+      } catch {
+        try {
+          await readFile(path.join(root, "public/artists", `${artistId}.webp`));
+          cover = `/artists/${artistId}.webp`;
+        } catch {
+          cover = "/record.svg";
+        }
+      }
+      const album = catalog.albums.find((entry) => entry.id === id) ?? {
+        id,
+        artistIds: [artistId],
+        title,
+        year,
+        cover,
+        singles: true,
+        defaultSelected: true,
+        sourceUrl: approved[0].sourceUrl,
+      };
+      if (!catalog.albums.includes(album)) catalog.albums.push(album);
+      if (album.cover === "/record.svg") album.cover = cover;
+      for (const track of approved) {
+        addSong(
+          {
+            trackName: track.title,
+            trackId: track.apple?.trackId,
+            trackViewUrl: track.apple?.url ?? track.sourceUrl,
+          },
+          album,
+          [artistId],
+        );
+        catalog.sources.push({
+          provider: "Reviewed RYM original single release",
+          url: track.sourceUrl,
+          albumId: id,
+          retrievedAt: track.quality.retrievedAt,
+          trackCount: 1,
+        });
+      }
       continue;
     }
     const releases = await Promise.all(
@@ -649,6 +701,46 @@ async function importSingles() {
       });
     }
   }
+  // A jointly credited release is one recording even when several artist
+  // Singles buckets select it. The release's published credits establish identity.
+  const recordingsByTitle = new Map();
+  for (const song of catalog.songs) {
+    const titleKey = normalizeTitle(song.title);
+    const list = recordingsByTitle.get(titleKey) ?? [];
+    list.push(song);
+    recordingsByTitle.set(titleKey, list);
+  }
+  for (const tracks of Object.values(reviewedSingleTracks))
+    for (const track of tracks) {
+      const credit = normalizeTitle(
+        new URL(track.sourceUrl).pathname.split("/")[3] ?? "",
+      );
+      const matches = (recordingsByTitle.get(normalizeTitle(track.title)) ?? [])
+        .filter((song) =>
+          song.artistIds.some((artistId) =>
+            credit.includes(normalizeTitle(artistId)),
+          ),
+        )
+        .sort(
+          (a, b) =>
+            Number(a.albumId.endsWith("-singles")) -
+            Number(b.albumId.endsWith("-singles")),
+        );
+      if (matches.length < 2) continue;
+      const primary = matches[0];
+      for (const duplicate of matches.slice(1)) {
+        primary.artistIds = [
+          ...new Set([...primary.artistIds, ...duplicate.artistIds]),
+        ];
+        primary.albumIds = [
+          ...new Set([...primary.albumIds, ...duplicate.albumIds]),
+        ];
+        catalog.songs = catalog.songs.filter(
+          (song) => song.id !== duplicate.id,
+        );
+      }
+      recordingsByTitle.set(normalizeTitle(track.title), [primary]);
+    }
 }
 if (singlesOnly) {
   await importSingles();

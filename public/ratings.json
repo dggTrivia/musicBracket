@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-18",
   "methodology": {
     "quality": "RYM rating / 5 × 100, unshrunk. Abbreviated chart vote counts retain their display label and use a rounded numeric count.",
     "popularity": "Log-normalized Spotify total streams within each artist, based on public third-party Kworb tables. Not Spotify API data.",
@@ -55952,6 +55952,2234 @@
       "sourceUrl": "https://rateyourmusic.com/song/frank-ocean/swim-good/",
       "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:frank%2docean/",
       "retrievedAt": "2026-11-15"
+    },
+    {
+      "rating": 4.33,
+      "ratingCount": 69,
+      "sourceUrl": "https://rateyourmusic.com/song/alex-g/treehouse/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:alex%2dg/3/",
+      "artistId": "alex-g",
+      "title": "Treehouse",
+      "quality": 86.6
+    },
+    {
+      "rating": 3.3,
+      "ratingCount": 82,
+      "sourceUrl": "https://rateyourmusic.com/song/drake/laugh-now-cry-later/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:drake/6/",
+      "artistId": "drake",
+      "title": "Laugh Now Cry Later",
+      "quality": 66
+    },
+    {
+      "rating": 2.08,
+      "ratingCount": 54,
+      "sourceUrl": "https://rateyourmusic.com/song/drake/search-and-rescue/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:drake/10/",
+      "artistId": "drake",
+      "title": "Search & Rescue",
+      "quality": 41.6
+    },
+    {
+      "rating": 4.08,
+      "ratingCount": 156,
+      "sourceUrl": "https://rateyourmusic.com/song/gorillaz/doncamatic/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:gorillaz/",
+      "artistId": "gorillaz",
+      "title": "Doncamatic",
+      "quality": 81.6
+    },
+    {
+      "rating": 2.82,
+      "ratingCount": 61,
+      "sourceUrl": "https://rateyourmusic.com/song/j-cole/lion-king-on-ice/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:j%2dcole/6/",
+      "artistId": "j-cole",
+      "title": "Lion King on Ice",
+      "quality": 56.4
+    },
+    {
+      "rating": 3.65,
+      "ratingCount": 79,
+      "sourceUrl": "https://rateyourmusic.com/song/james-blake/godspeed/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:james%2dblake/3/",
+      "artistId": "james-blake",
+      "title": "Godspeed",
+      "quality": 73
+    },
+    {
+      "rating": 3.94,
+      "ratingCount": 224,
+      "sourceUrl": "https://rateyourmusic.com/song/kanye-west/all-day/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:kanye%2dwest/3/",
+      "artistId": "kanye-west",
+      "title": "All Day",
+      "quality": 78.8
+    },
+    {
+      "rating": 3.88,
+      "ratingCount": 167,
+      "sourceUrl": "https://rateyourmusic.com/song/lana-del-rey/say-yes-to-heaven/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:lana%2ddel%2drey/2/",
+      "artistId": "lana-del-rey",
+      "title": "Say Yes To Heaven",
+      "quality": 77.6
+    },
+    {
+      "rating": 4.16,
+      "ratingCount": 465,
+      "sourceUrl": "https://rateyourmusic.com/song/radiohead/the-daily-mail/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:radiohead/2/",
+      "artistId": "radiohead",
+      "title": "The Daily Mail",
+      "quality": 83.2
+    },
+    {
+      "rating": 3.53,
+      "ratingCount": 57,
+      "sourceUrl": "https://rateyourmusic.com/song/sza/hit-different/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:sza/2/",
+      "artistId": "sza",
+      "title": "Hit Different",
+      "quality": 70.6
+    },
+    {
+      "rating": 3.89,
+      "ratingCount": 181,
+      "sourceUrl": "https://rateyourmusic.com/song/tame-impala/patience/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:tame%2dimpala/",
+      "artistId": "tame-impala",
+      "title": "Patience",
+      "quality": 77.8
+    },
+    {
+      "rating": 3.29,
+      "ratingCount": 155,
+      "sourceUrl": "https://rateyourmusic.com/song/playboi-carti/all-red/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:playboi%2dcarti/3/",
+      "artistId": "playboi-carti",
+      "title": "ALL RED",
+      "quality": 65.8
+    },
+    {
+      "rating": 4.36,
+      "ratingCount": 2000,
+      "sourceUrl": "https://rateyourmusic.com/song/the-beatles/we-can-work-it-out/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the%2dbeatles/2/",
+      "cachedFile": "tmp\\rym-charts\\the-beatles-2.json",
+      "artistId": "the-beatles",
+      "title": "We Can Work It Out",
+      "quality": 87.2
+    },
+    {
+      "rating": 4.32,
+      "ratingCount": 2000,
+      "sourceUrl": "https://rateyourmusic.com/song/the-beatles/revolution/",
+      "chartUrl": "https://rateyourmusic.com/charts/top/song/all-time/a:the%2dbeatles/2/",
+      "cachedFile": "tmp\\rym-charts\\the-beatles-2.json",
+      "artistId": "the-beatles",
+      "title": "Revolution",
+      "quality": 86.4
+    },
+    {
+      "artistId": "playboi-carti",
+      "title": "@ MEH",
+      "rating": 3.48,
+      "ratingCount": 2474,
+      "quality": 69.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/-meh/",
+      "retrievedAt": "2026-11-18",
+      "note": "Standalone 2020 single release rating, verified from the user-supplied RYM page. Distinct from Meh on Whole Lotta Red."
+    },
+    {
+      "artistId": "kanye-west",
+      "title": "Only One",
+      "rating": 3.53,
+      "ratingCount": 1826,
+      "quality": 70.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west/only-one/",
+      "retrievedAt": "2026-11-18T12:39:10.416Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kanye-west",
+      "title": "FourFiveSeconds",
+      "rating": 2.6,
+      "ratingCount": 2865,
+      "quality": 52,
+      "sourceUrl": "https://rateyourmusic.com/release/single/rihanna-kanye-west-paul-mccartney/fourfiveseconds/",
+      "retrievedAt": "2026-11-18T12:39:10.416Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kanye-west",
+      "title": "Lift Yourself",
+      "rating": 3.22,
+      "ratingCount": 3615,
+      "quality": 64.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west/lift-yourself/",
+      "retrievedAt": "2026-11-18T12:39:10.416Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kanye-west",
+      "title": "I Love It",
+      "rating": 2.28,
+      "ratingCount": 3573,
+      "quality": 45.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west-lil-pump/i-love-it/",
+      "retrievedAt": "2026-11-18T12:39:10.416Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kanye-west",
+      "title": "Wash Us in the Blood",
+      "rating": 3.25,
+      "ratingCount": 2531,
+      "quality": 65,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west/wash-us-in-the-blood/",
+      "retrievedAt": "2026-11-18T12:39:10.416Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kid-cudi",
+      "title": "THE SCOTTS",
+      "rating": 2.81,
+      "ratingCount": 1422,
+      "quality": 56.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-scotts/the-scotts/",
+      "retrievedAt": "2026-11-18T12:35:50.514Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kid-cudi",
+      "title": "love.",
+      "rating": 4.1,
+      "ratingCount": 713,
+      "quality": 82,
+      "sourceUrl": "https://rateyourmusic.com/release/single/cudderland/love/",
+      "retrievedAt": "2026-11-18T12:35:50.514Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kid-cudi",
+      "title": "The Adventures of Moon Man and Slim Shady",
+      "rating": 2.62,
+      "ratingCount": 580,
+      "quality": 52.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kid-cudi/the-adventures-of-moon-man-and-slim-shady/",
+      "retrievedAt": "2026-11-18T12:35:50.514Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kid-cudi",
+      "title": "Leader of the Delinquents",
+      "rating": 3.31,
+      "ratingCount": 451,
+      "quality": 66.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kid-cudi/leader-of-the-delinquents/",
+      "retrievedAt": "2026-11-18T12:35:50.514Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kid-cudi",
+      "title": "Stars in the Sky",
+      "rating": 3.21,
+      "ratingCount": 196,
+      "quality": 64.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kid-cudi/stars-in-the-sky/",
+      "retrievedAt": "2026-11-18T12:35:50.514Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "Biking",
+      "rating": 3.81,
+      "ratingCount": 2123,
+      "quality": 76.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/biking/",
+      "retrievedAt": "2026-11-18T12:37:19.006Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "frank-ocean",
+      "title": "DHL",
+      "rating": 3.58,
+      "ratingCount": 2104,
+      "quality": 71.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/dhl/",
+      "retrievedAt": "2026-11-18T12:37:19.006Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "The Heart Part 4",
+      "rating": 3.7,
+      "ratingCount": 1648,
+      "quality": 74,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar/the-heart-part-4/",
+      "retrievedAt": "2026-11-18T12:40:00.102Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "The Hillbillies",
+      "rating": 3.67,
+      "ratingCount": 1952,
+      "quality": 73.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/baby-keem-kendrick-lamar/the-hillbillies/",
+      "retrievedAt": "2026-11-18T12:40:00.102Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "title": "Cartoon & Cereal",
+      "rating": 4.11,
+      "ratingCount": 1579,
+      "quality": 82.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar/cartoon-cereal/",
+      "retrievedAt": "2026-11-18T12:40:00.102Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "queen",
+      "title": "No One But You",
+      "rating": 3.36,
+      "ratingCount": 99,
+      "quality": 67.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/queen/no-one-but-you-tie-your-mother-down/",
+      "retrievedAt": "2026-11-18T12:41:11.288Z",
+      "note": "RYM rating of the original single release (No One But You / Tie Your Mother Down); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "queen",
+      "title": "Face It Alone",
+      "rating": 3.07,
+      "ratingCount": 189,
+      "quality": 61.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/queen/face-it-alone/",
+      "retrievedAt": "2026-11-18T12:41:11.288Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "michael-jackson",
+      "title": "Say Say Say",
+      "rating": 3.28,
+      "ratingCount": 750,
+      "quality": 65.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/paul-mccartney-michael-jackson/say-say-say-ode-to-a-koala-bear/",
+      "retrievedAt": "2026-11-18T12:41:40.400Z",
+      "note": "RYM rating of the original single release (Say Say Say / Ode to a Koala Bear); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "michael-jackson",
+      "title": "This Is It",
+      "rating": 3.02,
+      "ratingCount": 143,
+      "quality": 60.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/michael-jackson/this-is-it/",
+      "retrievedAt": "2026-11-18T12:41:40.400Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "rihanna",
+      "title": "Sledgehammer",
+      "rating": 2.64,
+      "ratingCount": 141,
+      "quality": 52.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/rihanna/sledgehammer/",
+      "retrievedAt": "2026-11-18T12:45:54.217Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "earl-sweatshirt",
+      "title": "Making the Band (Danity Kane)",
+      "rating": 3.9,
+      "ratingCount": 1094,
+      "quality": 78,
+      "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/making-the-band-danity-kane/",
+      "retrievedAt": "2026-11-18T12:46:58.326Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "earl-sweatshirt",
+      "title": "Wind in My Sails",
+      "rating": 3.99,
+      "ratingCount": 841,
+      "quality": 79.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/wind-in-my-sails/",
+      "retrievedAt": "2026-11-18T12:46:58.326Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "earl-sweatshirt",
+      "title": "Whole World",
+      "rating": 3.28,
+      "ratingCount": 524,
+      "quality": 65.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/whole-world/",
+      "retrievedAt": "2026-11-18T12:46:58.326Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "earl-sweatshirt",
+      "title": "Balance",
+      "rating": 3.74,
+      "ratingCount": 492,
+      "quality": 74.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/balance/",
+      "retrievedAt": "2026-11-18T12:46:58.326Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "vince-staples",
+      "title": "Get the Fuck Off My Dick",
+      "rating": 3.3,
+      "ratingCount": 461,
+      "quality": 66,
+      "sourceUrl": "https://rateyourmusic.com/release/single/vince-staples/get-the-fuck-off-my-dick/",
+      "retrievedAt": "2026-11-18T12:47:30.672Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "vince-staples",
+      "title": "Hell Bound (Ad 01)",
+      "rating": 2.43,
+      "ratingCount": 133,
+      "quality": 48.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/vince-staples/hell-bound-ad-01/",
+      "retrievedAt": "2026-11-18T12:47:30.672Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "vince-staples",
+      "title": "Sheet Music (Episode 02)",
+      "rating": 2.26,
+      "ratingCount": 118,
+      "quality": 45.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/vince-staples/sheet-music-episode-02/",
+      "retrievedAt": "2026-11-18T12:47:30.672Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "eminem",
+      "title": "Lose Yourself",
+      "rating": 3.81,
+      "ratingCount": 2849,
+      "quality": 76.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/eminem/lose-yourself/",
+      "retrievedAt": "2026-11-18T12:48:07.649Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "eminem",
+      "title": "Killshot",
+      "rating": 3.02,
+      "ratingCount": 1266,
+      "quality": 60.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/eminem/killshot/",
+      "retrievedAt": "2026-11-18T12:48:07.649Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "eminem",
+      "title": "When I'm Gone",
+      "rating": 3.14,
+      "ratingCount": 662,
+      "quality": 62.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/eminem/when-im-gone/",
+      "retrievedAt": "2026-11-18T12:48:07.649Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "eminem",
+      "title": "Shake That",
+      "rating": 2.71,
+      "ratingCount": 503,
+      "quality": 54.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/eminem/shake-that/",
+      "retrievedAt": "2026-11-18T12:48:07.649Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "eminem",
+      "title": "8 Mile",
+      "rating": 3.41,
+      "ratingCount": 294,
+      "quality": 68.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/eminem/8-mile/",
+      "retrievedAt": "2026-11-18T12:48:07.649Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "eminem",
+      "title": "From the D 2 the LBC",
+      "rating": 1.85,
+      "ratingCount": 349,
+      "quality": 37,
+      "sourceUrl": "https://rateyourmusic.com/release/single/eminem-snoop-dogg/from-the-d-2-the-lbc/",
+      "retrievedAt": "2026-11-18T12:48:07.649Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "james-blake",
+      "title": "If the Car Beside You Moves Ahead",
+      "rating": 3.7,
+      "ratingCount": 1131,
+      "quality": 74,
+      "sourceUrl": "https://rateyourmusic.com/release/single/james-blake/if-the-car-beside-you-moves-ahead/",
+      "retrievedAt": "2026-11-18T12:48:34.703Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "james-blake",
+      "title": "You're Too Precious",
+      "rating": 3.42,
+      "ratingCount": 392,
+      "quality": 68.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/james-blake/youre-too-precious/",
+      "retrievedAt": "2026-11-18T12:48:34.703Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "james-blake",
+      "title": "Are You Even Real?",
+      "rating": 3.44,
+      "ratingCount": 386,
+      "quality": 68.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/james-blake/are-you-even-real/",
+      "retrievedAt": "2026-11-18T12:48:34.703Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "jpegmafia",
+      "title": "Puff Daddy",
+      "rating": 3.88,
+      "ratingCount": 1981,
+      "quality": 77.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia-kenny-beats/puff-daddy/",
+      "retrievedAt": "2026-11-18T12:48:57.760Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "jpegmafia",
+      "title": "Covered in Money!",
+      "rating": 3.67,
+      "ratingCount": 1001,
+      "quality": 73.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia/covered-in-money/",
+      "retrievedAt": "2026-11-18T12:48:57.760Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "jpegmafia",
+      "title": "Bodyguard!",
+      "rating": 3.33,
+      "ratingCount": 726,
+      "quality": 66.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia/bodyguard/",
+      "retrievedAt": "2026-11-18T12:48:57.760Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "jpegmafia",
+      "title": "The Who",
+      "rating": 3.46,
+      "ratingCount": 647,
+      "quality": 69.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia/the-who/",
+      "retrievedAt": "2026-11-18T12:48:57.760Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "mf-doom",
+      "title": "Avalanche",
+      "rating": 3.36,
+      "ratingCount": 312,
+      "quality": 67.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/mf-doom-madlib/avalanche/",
+      "retrievedAt": "2026-11-18T12:50:00.886Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "mf-doom",
+      "title": "My Favorite Ladies",
+      "rating": 3.6,
+      "ratingCount": 168,
+      "quality": 72,
+      "sourceUrl": "https://rateyourmusic.com/release/single/mf-doom/my-favorite-ladies-all-outta-ale/",
+      "retrievedAt": "2026-11-18T12:50:00.886Z",
+      "note": "RYM rating of the original single release (My Favorite Ladies / All Outta Ale); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "a-tribe-called-quest",
+      "title": "Rumble in the Jungle",
+      "rating": 3.5,
+      "ratingCount": 85,
+      "quality": 70,
+      "sourceUrl": "https://rateyourmusic.com/release/single/fugees/rumble-in-the-jungle/",
+      "retrievedAt": "2026-11-18T12:50:46.464Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "young-thug",
+      "title": "Old English",
+      "rating": 3.63,
+      "ratingCount": 862,
+      "quality": 72.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/young-thug-a_ap-ferg-freddie-gibbs/old-english/",
+      "retrievedAt": "2026-11-18T12:51:36.725Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "young-thug",
+      "title": "Stoner",
+      "rating": 3.52,
+      "ratingCount": 624,
+      "quality": 70.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/stoner/",
+      "retrievedAt": "2026-11-18T12:51:36.725Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "young-thug",
+      "title": "Danny Glover",
+      "rating": 3.74,
+      "ratingCount": 518,
+      "quality": 74.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/danny-glover/",
+      "retrievedAt": "2026-11-18T12:51:36.725Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "young-thug",
+      "title": "Hercules",
+      "rating": 3.78,
+      "ratingCount": 379,
+      "quality": 75.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/hercules/",
+      "retrievedAt": "2026-11-18T12:51:36.725Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "young-thug",
+      "title": "Tick Tock",
+      "rating": 3.46,
+      "ratingCount": 288,
+      "quality": 69.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/tick-tock/",
+      "retrievedAt": "2026-11-18T12:51:36.725Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "young-thug",
+      "title": "Pacifier",
+      "rating": 3.58,
+      "ratingCount": 268,
+      "quality": 71.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/pacifier/",
+      "retrievedAt": "2026-11-18T12:51:36.725Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "action-bronson",
+      "title": "Bird on a Wire",
+      "rating": 3.62,
+      "ratingCount": 321,
+      "quality": 72.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/action-bronson/bird-on-a-wire/",
+      "retrievedAt": "2026-11-18T12:52:03.030Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "action-bronson",
+      "title": "Warlord Leather",
+      "rating": 3.65,
+      "ratingCount": 57,
+      "quality": 73,
+      "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt-action-bronson/warlord-leather/",
+      "retrievedAt": "2026-11-18T12:52:03.030Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "action-bronson",
+      "title": "Standing in the Rain",
+      "rating": 2.85,
+      "ratingCount": 56,
+      "quality": 57,
+      "sourceUrl": "https://rateyourmusic.com/release/single/action-bronson-mark-ronson-dan-auerbach/standing-in-the-rain/",
+      "retrievedAt": "2026-11-18T12:52:03.030Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "drake",
+      "title": "Family Matters",
+      "rating": 2.81,
+      "ratingCount": 2170,
+      "quality": 56.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/drake/family-matters/",
+      "retrievedAt": "2026-11-18T12:53:05.369Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "drake",
+      "title": "Push Ups",
+      "rating": 3.14,
+      "ratingCount": 1918,
+      "quality": 62.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/drake/push-ups/",
+      "retrievedAt": "2026-11-18T12:53:05.369Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "drake",
+      "title": "Duppy Freestyle",
+      "rating": 2.74,
+      "ratingCount": 611,
+      "quality": 54.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/drake/duppy-freestyle/",
+      "retrievedAt": "2026-11-18T12:53:05.369Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "drake",
+      "title": "Summer Sixteen",
+      "rating": 2.8,
+      "ratingCount": 469,
+      "quality": 56,
+      "sourceUrl": "https://rateyourmusic.com/release/single/drake/summer-sixteen/",
+      "retrievedAt": "2026-11-18T12:53:05.369Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "radiohead",
+      "title": "Staircase",
+      "rating": 3.88,
+      "ratingCount": 2339,
+      "quality": 77.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/the-daily-mail-staircase/",
+      "retrievedAt": "2026-11-18T12:53:36.666Z",
+      "note": "RYM rating of the original single release (The Daily Mail / Staircase); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "radiohead",
+      "title": "Spectre",
+      "rating": 3.84,
+      "ratingCount": 2188,
+      "quality": 76.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/spectre/",
+      "retrievedAt": "2026-11-18T12:53:36.666Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "radiohead",
+      "title": "Supercollider",
+      "rating": 3.5,
+      "ratingCount": 1783,
+      "quality": 70,
+      "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/supercollider-the-butcher/",
+      "retrievedAt": "2026-11-18T12:53:36.666Z",
+      "note": "RYM rating of the original single release (Supercollider / The Butcher); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "radiohead",
+      "title": "The Butcher",
+      "rating": 3.5,
+      "ratingCount": 1783,
+      "quality": 70,
+      "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/supercollider-the-butcher/",
+      "retrievedAt": "2026-11-18T12:53:36.666Z",
+      "note": "RYM rating of the original single release (Supercollider / The Butcher); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "radiohead",
+      "title": "Ill Wind",
+      "rating": 3.58,
+      "ratingCount": 1445,
+      "quality": 71.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/ill-wind/",
+      "retrievedAt": "2026-11-18T12:53:36.666Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "radiohead",
+      "title": "These Are My Twisted Words",
+      "rating": 3.43,
+      "ratingCount": 1327,
+      "quality": 68.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/these-are-my-twisted-words/",
+      "retrievedAt": "2026-11-18T12:53:36.666Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "olivia-rodrigo",
+      "title": "Can't Catch Me Now",
+      "rating": 3.75,
+      "ratingCount": 473,
+      "quality": 75,
+      "sourceUrl": "https://rateyourmusic.com/release/single/olivia-rodrigo/cant-catch-me-now/",
+      "retrievedAt": "2026-11-18T12:54:06.041Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "olivia-rodrigo",
+      "title": "All I Want",
+      "rating": 3.55,
+      "ratingCount": 134,
+      "quality": 71,
+      "sourceUrl": "https://rateyourmusic.com/release/single/olivia-rodrigo/all-i-want/",
+      "retrievedAt": "2026-11-18T12:54:06.041Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "tyler-the-creator",
+      "title": "Potato Salad",
+      "rating": 3.81,
+      "ratingCount": 2321,
+      "quality": 76.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator-a_ap-rocky/potato-salad/",
+      "retrievedAt": "2026-11-18T12:54:47.885Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "tyler-the-creator",
+      "title": "BEST INTEREST",
+      "rating": 3.78,
+      "ratingCount": 1903,
+      "quality": 75.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/best-interest/",
+      "retrievedAt": "2026-11-18T12:54:47.885Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "tyler-the-creator",
+      "title": "OKRA",
+      "rating": 3.63,
+      "ratingCount": 1852,
+      "quality": 72.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/okra/",
+      "retrievedAt": "2026-11-18T12:54:47.885Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "tyler-the-creator",
+      "title": "435",
+      "rating": 3.38,
+      "ratingCount": 578,
+      "quality": 67.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/435/",
+      "retrievedAt": "2026-11-18T12:54:47.885Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "tyler-the-creator",
+      "title": "GROUP B",
+      "rating": 3.4,
+      "ratingCount": 779,
+      "quality": 68,
+      "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/group-b/",
+      "retrievedAt": "2026-11-18T12:54:47.885Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "linkin-park",
+      "title": "New Divide",
+      "rating": 3.19,
+      "ratingCount": 865,
+      "quality": 63.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/new-divide/",
+      "retrievedAt": "2026-11-18T12:55:14.499Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "linkin-park",
+      "title": "Friendly Fire",
+      "rating": 3.07,
+      "ratingCount": 289,
+      "quality": 61.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/friendly-fire/",
+      "retrievedAt": "2026-11-18T12:55:14.499Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "linkin-park",
+      "title": "A Light That Never Comes",
+      "rating": 2.48,
+      "ratingCount": 218,
+      "quality": 49.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park-steve-aoki/a-light-that-never-comes/",
+      "retrievedAt": "2026-11-18T12:55:14.499Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "linkin-park",
+      "title": "QWERTY",
+      "rating": 3.73,
+      "ratingCount": 147,
+      "quality": 74.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/qwerty/",
+      "retrievedAt": "2026-11-18T12:55:14.499Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "linkin-park",
+      "title": "Not Alone",
+      "rating": 2.95,
+      "ratingCount": 118,
+      "quality": 59,
+      "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/not-alone/",
+      "retrievedAt": "2026-11-18T12:55:14.499Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "j-cole",
+      "title": "MIDDLE CHILD",
+      "rating": 2.72,
+      "ratingCount": 678,
+      "quality": 54.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/middle-child/",
+      "retrievedAt": "2026-11-18T12:55:51.321Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "j-cole",
+      "title": "Snow on tha Bluff",
+      "rating": 1.56,
+      "ratingCount": 573,
+      "quality": 31.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/snow-on-tha-bluff/",
+      "retrievedAt": "2026-11-18T12:55:51.321Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "j-cole",
+      "title": "False Prophets",
+      "rating": 3.02,
+      "ratingCount": 300,
+      "quality": 60.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/false-prophets/",
+      "retrievedAt": "2026-11-18T12:55:51.321Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "j-cole",
+      "title": "Everybody Dies",
+      "rating": 3.23,
+      "ratingCount": 183,
+      "quality": 64.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/everybody-dies/",
+      "retrievedAt": "2026-11-18T12:55:51.321Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "gorillaz",
+      "title": "DoYaThing",
+      "rating": 4.24,
+      "ratingCount": 4196,
+      "quality": 84.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/gorillaz/doyathing/",
+      "retrievedAt": "2026-11-18T12:56:19.654Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "gorillaz",
+      "title": "Sleeping Powder",
+      "rating": 3.49,
+      "ratingCount": 653,
+      "quality": 69.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/gorillaz/sleeping-powder/",
+      "retrievedAt": "2026-11-18T12:56:19.654Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "the-weeknd",
+      "title": "Popular",
+      "rating": 3.09,
+      "ratingCount": 969,
+      "quality": 61.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-weeknd-playboi-carti-madonna/popular/",
+      "retrievedAt": "2026-11-18T12:56:50.016Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "the-weeknd",
+      "title": "Pray for Me",
+      "rating": 3.23,
+      "ratingCount": 904,
+      "quality": 64.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-weeknd-kendrick-lamar/pray-for-me/",
+      "retrievedAt": "2026-11-18T12:56:50.016Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "the-weeknd",
+      "title": "King of the Fall",
+      "rating": 3.86,
+      "ratingCount": 710,
+      "quality": 77.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-weeknd/king-of-the-fall/",
+      "retrievedAt": "2026-11-18T12:56:50.016Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "the-weeknd",
+      "title": "Lost in the Fire",
+      "rating": 2.6,
+      "ratingCount": 519,
+      "quality": 52,
+      "sourceUrl": "https://rateyourmusic.com/release/single/gesaffelstein-the-weeknd/lost-in-the-fire/",
+      "retrievedAt": "2026-11-18T12:56:50.016Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "the-weeknd",
+      "title": "One Right Now",
+      "rating": 2.73,
+      "ratingCount": 422,
+      "quality": 54.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/post-malone-the-weeknd/one-right-now/",
+      "retrievedAt": "2026-11-18T12:56:50.016Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "arctic-monkeys",
+      "title": "Leave Before the Lights Come On",
+      "rating": 3.71,
+      "ratingCount": 988,
+      "quality": 74.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/leave-before-the-lights-come-on/",
+      "retrievedAt": "2026-11-18T12:57:52.717Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "arctic-monkeys",
+      "title": "You're So Dark",
+      "rating": 3.07,
+      "ratingCount": 480,
+      "quality": 61.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/one-for-the-road-youre-so-dark/",
+      "retrievedAt": "2026-11-18T12:57:52.717Z",
+      "note": "RYM rating of the original single release (One for the Road / You're So Dark); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "arctic-monkeys",
+      "title": "Bigger Boys and Stolen Sweethearts",
+      "rating": 3.68,
+      "ratingCount": 211,
+      "quality": 73.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/bigger-boys-and-stolen-sweethearts/",
+      "retrievedAt": "2026-11-18T12:57:52.717Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "arctic-monkeys",
+      "title": "Evil Twin",
+      "rating": 3.41,
+      "ratingCount": 363,
+      "quality": 68.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/suck-it-and-see-evil-twin/",
+      "retrievedAt": "2026-11-18T12:57:52.717Z",
+      "note": "RYM rating of the original single release (Suck It and See / Evil Twin); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "mac-miller",
+      "title": "Programs",
+      "rating": 3.64,
+      "ratingCount": 183,
+      "quality": 72.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/mac-miller/programs/",
+      "retrievedAt": "2026-11-18T12:58:15.965Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "mac-miller",
+      "title": "Buttons",
+      "rating": 3.76,
+      "ratingCount": 172,
+      "quality": 75.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/mac-miller/buttons/",
+      "retrievedAt": "2026-11-18T12:58:15.965Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "mac-miller",
+      "title": "Time",
+      "rating": 3.67,
+      "ratingCount": 281,
+      "quality": 73.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/free-nationals-mac-miller-kali-uchis/time/",
+      "retrievedAt": "2026-11-18T12:58:15.965Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "tame-impala",
+      "title": "Sundown Syndrome",
+      "rating": 3.77,
+      "ratingCount": 671,
+      "quality": 75.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/tame-impala/sundown-syndrome-remember-me/",
+      "retrievedAt": "2026-11-18T12:58:54.818Z",
+      "note": "RYM rating of the original single release (Sundown Syndrome / Remember Me); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "tame-impala",
+      "title": "Remember Me",
+      "rating": 3.77,
+      "ratingCount": 671,
+      "quality": 75.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/tame-impala/sundown-syndrome-remember-me/",
+      "retrievedAt": "2026-11-18T12:58:54.818Z",
+      "note": "RYM rating of the original single release (Sundown Syndrome / Remember Me); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "tame-impala",
+      "title": "No More Lies",
+      "rating": 3.63,
+      "ratingCount": 710,
+      "quality": 72.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/thundercat-tame-impala/no-more-lies/",
+      "retrievedAt": "2026-11-18T12:58:54.818Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "paramore",
+      "title": "Decode",
+      "rating": 4.14,
+      "ratingCount": 1751,
+      "quality": 82.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/paramore/decode/",
+      "retrievedAt": "2026-11-18T12:59:54.776Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "paramore",
+      "title": "Monster",
+      "rating": 3.4,
+      "ratingCount": 357,
+      "quality": 68,
+      "sourceUrl": "https://rateyourmusic.com/release/single/paramore/monster/",
+      "retrievedAt": "2026-11-18T12:59:54.776Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "paramore",
+      "title": "I Caught Myself",
+      "rating": 4.09,
+      "ratingCount": 324,
+      "quality": 81.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/paramore/i-caught-myself/",
+      "retrievedAt": "2026-11-18T12:59:54.776Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "paramore",
+      "title": "Burning Down the House",
+      "rating": 3.52,
+      "ratingCount": 512,
+      "quality": 70.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/paramore/burning-down-the-house/",
+      "retrievedAt": "2026-11-18T12:59:54.776Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "sza",
+      "title": "All the Stars",
+      "rating": 3.32,
+      "ratingCount": 1555,
+      "quality": 66.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar-sza/all-the-stars/",
+      "retrievedAt": "2026-11-18T13:00:22.121Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "sza",
+      "title": "The Other Side",
+      "rating": 3.12,
+      "ratingCount": 258,
+      "quality": 62.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/sza-justin-timberlake/the-other-side/",
+      "retrievedAt": "2026-11-18T13:00:22.121Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "sza",
+      "title": "Power Is Power",
+      "rating": 2.44,
+      "ratingCount": 314,
+      "quality": 48.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/sza-the-weeknd-travis-scott/power-is-power/",
+      "retrievedAt": "2026-11-18T13:00:22.121Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "outkast",
+      "title": "The Whole World",
+      "rating": 3.63,
+      "ratingCount": 426,
+      "quality": 72.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/outkast/the-whole-world/",
+      "retrievedAt": "2026-11-18T13:00:48.837Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "outkast",
+      "title": "Land of a Million Drums",
+      "rating": 3.02,
+      "ratingCount": 110,
+      "quality": 60.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/outkast/land-of-a-million-drums/",
+      "retrievedAt": "2026-11-18T13:00:48.837Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "fleetwood-mac",
+      "title": "Albatross",
+      "rating": 3.95,
+      "ratingCount": 636,
+      "quality": 79,
+      "sourceUrl": "https://rateyourmusic.com/release/single/fleetwood-mac/albatross-jigsaw-puzzle-blues/",
+      "retrievedAt": "2026-11-18T13:01:19.284Z",
+      "note": "RYM rating of the original single release (Albatross / Jigsaw Puzzle Blues); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "fleetwood-mac",
+      "title": "Man of the World",
+      "rating": 3.77,
+      "ratingCount": 309,
+      "quality": 75.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/fleetwood-mac/man-of-the-world-somebodys-gonna-get-their-head-kicked-in-tonite/",
+      "retrievedAt": "2026-11-18T13:01:19.284Z",
+      "note": "RYM rating of the original single release (Man of the World / Somebody's Gonna Get Their Head Kicked in Tonite); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "pink-floyd",
+      "title": "See Emily Play",
+      "rating": 4.12,
+      "ratingCount": 1884,
+      "quality": 82.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-pink-floyd/see-emily-play-scarecrow/",
+      "retrievedAt": "2026-11-18T13:01:46.889Z",
+      "note": "RYM rating of the original single release (See Emily Play / Scarecrow); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "pink-floyd",
+      "title": "Arnold Layne",
+      "rating": 3.94,
+      "ratingCount": 1254,
+      "quality": 78.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-pink-floyd/arnold-layne-candy-and-a-currant-bun/",
+      "retrievedAt": "2026-11-18T13:01:46.889Z",
+      "note": "RYM rating of the original single release (Arnold Layne / Candy and a Currant Bun); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "pink-floyd",
+      "title": "Careful With That Axe, Eugene",
+      "rating": 3.77,
+      "ratingCount": 566,
+      "quality": 75.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/pink-floyd/point-me-at-the-sky-careful-with-that-axe-eugene/",
+      "retrievedAt": "2026-11-18T13:01:46.889Z",
+      "note": "RYM rating of the original single release (Point Me at the Sky / Careful With That Axe Eugene); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "pink-floyd",
+      "title": "Apples and Oranges",
+      "rating": 3.68,
+      "ratingCount": 727,
+      "quality": 73.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-pink-floyd/apples-and-oranges-paint-box/",
+      "retrievedAt": "2026-11-18T13:01:46.889Z",
+      "note": "RYM rating of the original single release (Apples and Oranges / Paint Box); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "pink-floyd",
+      "title": "Point Me at the Sky",
+      "rating": 3.77,
+      "ratingCount": 566,
+      "quality": 75.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/pink-floyd/point-me-at-the-sky-careful-with-that-axe-eugene/",
+      "retrievedAt": "2026-11-18T13:01:46.889Z",
+      "note": "RYM rating of the original single release (Point Me at the Sky / Careful With That Axe Eugene); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "lana-del-rey",
+      "title": "Young and Beautiful",
+      "rating": 3.61,
+      "ratingCount": 1122,
+      "quality": 72.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/lana-del-rey/young-and-beautiful/",
+      "retrievedAt": "2026-11-18T13:02:27.352Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "lana-del-rey",
+      "title": "Tough",
+      "rating": 3.04,
+      "ratingCount": 476,
+      "quality": 60.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/quavo-lana-del-rey/tough/",
+      "retrievedAt": "2026-11-18T13:02:27.352Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "lana-del-rey",
+      "title": "Looking for America",
+      "rating": 3.47,
+      "ratingCount": 434,
+      "quality": 69.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/lana-del-rey/looking-for-america/",
+      "retrievedAt": "2026-11-18T13:02:27.352Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "stevie-wonder",
+      "title": "Do I Do",
+      "rating": 3.87,
+      "ratingCount": 274,
+      "quality": 77.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/stevie-wonder/do-i-do-rocket-love/",
+      "retrievedAt": "2026-11-18T13:03:24.651Z",
+      "note": "RYM rating of the original single release (Do I Do / Rocket Love); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "stevie-wonder",
+      "title": "That Girl",
+      "rating": 3.64,
+      "ratingCount": 170,
+      "quality": 72.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/stevie-wonder/that-girl-all-i-do/",
+      "retrievedAt": "2026-11-18T13:03:24.651Z",
+      "note": "RYM rating of the original single release (That Girl / All I Do); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "stevie-wonder",
+      "title": "Ribbon in the Sky",
+      "rating": 3.44,
+      "ratingCount": 103,
+      "quality": 68.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/stevie-wonder/ribbon-in-the-sky-black-orchid/",
+      "retrievedAt": "2026-11-18T13:03:24.651Z",
+      "note": "RYM rating of the original single release (Ribbon in the Sky / Black Orchid); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "nirvana",
+      "title": "You Know You're Right",
+      "rating": 4.15,
+      "ratingCount": 1887,
+      "quality": 83,
+      "sourceUrl": "https://rateyourmusic.com/release/single/nirvana/you-know-youre-right/",
+      "retrievedAt": "2026-11-18T13:03:52.793Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "50-cent",
+      "title": "Window Shopper",
+      "rating": 2.85,
+      "ratingCount": 217,
+      "quality": 57,
+      "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/window-shopper/",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "50-cent",
+      "title": "How to Rob",
+      "rating": 3.3,
+      "ratingCount": 155,
+      "quality": 66,
+      "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/how-to-rob-rowdy-rowdy/",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "note": "RYM rating of the original single release (How to Rob / Rowdy Rowdy); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "50-cent",
+      "title": "Hustler's Ambition",
+      "rating": 3.27,
+      "ratingCount": 77,
+      "quality": 65.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/hustlers-ambition/",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "50-cent",
+      "title": "Best Friend",
+      "rating": 2.87,
+      "ratingCount": 70,
+      "quality": 57.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/50-cent-olivia/best-friend/",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "50-cent",
+      "title": "My Life",
+      "rating": 2.32,
+      "ratingCount": 82,
+      "quality": 46.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/my-life/",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "50-cent",
+      "title": "I'm the Man",
+      "rating": 2.62,
+      "ratingCount": 62,
+      "quality": 52.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/im-the-man/",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "50-cent",
+      "title": "We Up",
+      "rating": 2.76,
+      "ratingCount": 62,
+      "quality": 55.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/we-up/",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "playboi-carti",
+      "title": "Broke Boi",
+      "rating": 3.76,
+      "ratingCount": 1274,
+      "quality": 75.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/broke-boi/",
+      "retrievedAt": "2026-11-18T13:04:56.668Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "playboi-carti",
+      "title": "Fetti",
+      "rating": 3.99,
+      "ratingCount": 1791,
+      "quality": 79.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/fetti/",
+      "retrievedAt": "2026-11-18T13:04:56.668Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "playboi-carti",
+      "title": "YUNGXANHOE",
+      "rating": 3.84,
+      "ratingCount": 1494,
+      "quality": 76.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/yungxanhoe/",
+      "retrievedAt": "2026-11-18T13:04:56.668Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "smino",
+      "title": "Baguetti",
+      "rating": 2.78,
+      "ratingCount": 134,
+      "quality": 55.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/smino-jid-and-kenny-beats/baguetti/",
+      "retrievedAt": "2026-11-18T13:05:30.646Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "smino",
+      "title": "I Deserve",
+      "rating": 3.82,
+      "ratingCount": 76,
+      "quality": 76.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/smino/i-deserve/",
+      "retrievedAt": "2026-11-18T13:05:30.646Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "sufjan-stevens",
+      "title": "Mystery of Love",
+      "rating": 4.21,
+      "ratingCount": 1999,
+      "quality": 84.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/mystery-of-love/",
+      "retrievedAt": "2026-11-18T13:05:56.047Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "sufjan-stevens",
+      "title": "My Rajneesh",
+      "rating": 4.03,
+      "ratingCount": 1784,
+      "quality": 80.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/my-rajneesh/",
+      "retrievedAt": "2026-11-18T13:05:56.047Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "sufjan-stevens",
+      "title": "Tonya Harding",
+      "rating": 3.83,
+      "ratingCount": 1076,
+      "quality": 76.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/tonya-harding/",
+      "retrievedAt": "2026-11-18T13:05:56.047Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "sufjan-stevens",
+      "title": "Love Yourself",
+      "rating": 3.39,
+      "ratingCount": 615,
+      "quality": 67.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/love-yourself-with-my-whole-heart/",
+      "retrievedAt": "2026-11-18T13:05:56.047Z",
+      "note": "RYM rating of the original single release (Love Yourself / With My Whole Heart); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "sufjan-stevens",
+      "title": "With My Whole Heart",
+      "rating": 3.39,
+      "ratingCount": 615,
+      "quality": 67.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/love-yourself-with-my-whole-heart/",
+      "retrievedAt": "2026-11-18T13:05:56.047Z",
+      "note": "RYM rating of the original single release (Love Yourself / With My Whole Heart); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "mitski",
+      "title": "Cop Car",
+      "rating": 3.5,
+      "ratingCount": 398,
+      "quality": 70,
+      "sourceUrl": "https://rateyourmusic.com/release/single/mitski/cop-car/",
+      "retrievedAt": "2026-11-18T13:06:25.529Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "mitski",
+      "title": "Glide",
+      "rating": 3.94,
+      "ratingCount": 201,
+      "quality": 78.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/mitski/glide/",
+      "retrievedAt": "2026-11-18T13:06:25.529Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "mitski",
+      "title": "This Is a Life",
+      "rating": 3.66,
+      "ratingCount": 104,
+      "quality": 73.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/son-lux-w-mitski-and-david-byrne/this-is-a-life/",
+      "retrievedAt": "2026-11-18T13:06:25.529Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "danny-brown",
+      "title": "Grown Up",
+      "rating": 3.81,
+      "ratingCount": 1251,
+      "quality": 76.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown/grown-up/",
+      "retrievedAt": "2026-11-18T13:06:53.647Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "danny-brown",
+      "title": "Worth It",
+      "rating": 4.3,
+      "ratingCount": 2994,
+      "quality": 86,
+      "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown/aint-it-funny-worth-it/",
+      "retrievedAt": "2026-11-18T13:06:53.647Z",
+      "note": "RYM rating of the original single release (Ain't It Funny / Worth It); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "danny-brown",
+      "title": "Molly Ringwald",
+      "rating": 3.31,
+      "ratingCount": 149,
+      "quality": 66.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown-araabmuzik/molly-ringwald/",
+      "retrievedAt": "2026-11-18T13:06:53.647Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "danny-brown",
+      "title": "Kool Aid",
+      "rating": 3.09,
+      "ratingCount": 141,
+      "quality": 61.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown/kool-aid/",
+      "retrievedAt": "2026-11-18T13:06:53.647Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "freddie-gibbs",
+      "title": "Old English",
+      "rating": 3.63,
+      "ratingCount": 862,
+      "quality": 72.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/young-thug-a_ap-ferg-freddie-gibbs/old-english/",
+      "retrievedAt": "2026-11-18T13:07:25.574Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "freddie-gibbs",
+      "title": "Bandana",
+      "rating": 3.52,
+      "ratingCount": 470,
+      "quality": 70.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/freddie-gibbs-and-madlib/bandana/",
+      "retrievedAt": "2026-11-18T13:07:25.574Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "freddie-gibbs",
+      "title": "Cocaine Parties in L.A.",
+      "rating": 3.45,
+      "ratingCount": 213,
+      "quality": 69,
+      "sourceUrl": "https://rateyourmusic.com/release/single/freddie-gibbs/cocaine-parties-in-l_a/",
+      "retrievedAt": "2026-11-18T13:07:25.574Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "freddie-gibbs",
+      "title": "Winter in America",
+      "rating": 3.33,
+      "ratingCount": 118,
+      "quality": 66.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/freddie-gibbs/winter-in-america/",
+      "retrievedAt": "2026-11-18T13:07:25.574Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "portishead",
+      "title": "Chase the Tear",
+      "rating": 3.62,
+      "ratingCount": 651,
+      "quality": 72.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/portishead/chase-the-tear/",
+      "retrievedAt": "2026-11-18T13:07:48.584Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "portishead",
+      "title": "SOS",
+      "rating": 3.49,
+      "ratingCount": 227,
+      "quality": 69.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/portishead/sos/",
+      "retrievedAt": "2026-11-18T13:07:48.584Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "aphex-twin",
+      "title": "Blackbox Life Recorder 21f",
+      "rating": 3.76,
+      "ratingCount": 1900,
+      "quality": 75.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/aphex-twin/blackbox-life-recorder-21f/",
+      "retrievedAt": "2026-11-18T13:08:24.474Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "aphex-twin",
+      "title": "T69 Collapse",
+      "rating": 3.6,
+      "ratingCount": 961,
+      "quality": 72,
+      "sourceUrl": "https://rateyourmusic.com/release/single/aphex-twin/t69-collapse/",
+      "retrievedAt": "2026-11-18T13:08:24.474Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "beyonce",
+      "title": "MY HOUSE",
+      "rating": 3.49,
+      "ratingCount": 607,
+      "quality": 69.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/beyonce/my-house/",
+      "retrievedAt": "2026-11-18T13:08:48.193Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "beyonce",
+      "title": "Check on It",
+      "rating": 3.14,
+      "ratingCount": 482,
+      "quality": 62.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/beyonce/check-on-it/",
+      "retrievedAt": "2026-11-18T13:08:48.193Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "beyonce",
+      "title": "Work It Out",
+      "rating": 2.82,
+      "ratingCount": 258,
+      "quality": 56.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/beyonce/work-it-out/",
+      "retrievedAt": "2026-11-18T13:08:48.193Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "beyonce",
+      "title": "Perfect Duet",
+      "rating": 1.66,
+      "ratingCount": 346,
+      "quality": 33.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/ed-sheeran-beyonce/perfect-duet/",
+      "retrievedAt": "2026-11-18T13:08:48.193Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "al-green",
+      "title": "Put a Little Love in Your Heart",
+      "rating": 2.7,
+      "ratingCount": 89,
+      "quality": 54,
+      "sourceUrl": "https://rateyourmusic.com/release/single/annie-lennox-and-al-green-the-spheres-of-celestial-influence/put-a-little-love-in-your-heart-a-great-big-piece-of-love/",
+      "retrievedAt": "2026-11-18T13:09:21.704Z",
+      "note": "RYM rating of the original single release (Put a Little Love in Your Heart / A Great Big Piece of Love); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "ray-charles",
+      "title": "Hit the Road Jack",
+      "rating": 3.92,
+      "ratingCount": 817,
+      "quality": 78.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/ray-charles/hit-the-road-jack-the-danger-zone/",
+      "retrievedAt": "2026-11-18T13:09:48.296Z",
+      "note": "RYM rating of the original single release (Hit the Road Jack / The Danger Zone); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "ray-charles",
+      "title": "Unchain My Heart",
+      "rating": 3.79,
+      "ratingCount": 173,
+      "quality": 75.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/ray-charles-and-his-orchestra/unchain-my-heart-but-on-the-other-hand-baby/",
+      "retrievedAt": "2026-11-18T13:09:48.296Z",
+      "note": "RYM rating of the original single release (Unchain My Heart / But on the Other Hand Baby); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "aretha-franklin",
+      "title": "The House That Jack Built",
+      "rating": 4.01,
+      "ratingCount": 518,
+      "quality": 80.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/aretha-franklin/the-house-that-jack-built-i-say-a-little-prayer/",
+      "retrievedAt": "2026-11-18T13:10:22.180Z",
+      "note": "RYM rating of the original single release (The House That Jack Built / I Say a Little Prayer); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "aretha-franklin",
+      "title": "Spanish Harlem",
+      "rating": 3.57,
+      "ratingCount": 139,
+      "quality": 71.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/aretha-franklin/spanish-harlem-lean-on-me/",
+      "retrievedAt": "2026-11-18T13:10:22.180Z",
+      "note": "RYM rating of the original single release (Spanish Harlem / Lean on Me); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "aretha-franklin",
+      "title": "Bridge Over Troubled Water",
+      "rating": 3.52,
+      "ratingCount": 99,
+      "quality": 70.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/aretha-franklin/bridge-over-troubled-water-a-brand-new-me/",
+      "retrievedAt": "2026-11-18T13:10:22.180Z",
+      "note": "RYM rating of the original single release (Bridge Over Troubled Water / A Brand New Me); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "marvin-gaye",
+      "title": "Got to Give It Up",
+      "rating": 3.97,
+      "ratingCount": 639,
+      "quality": 79.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/marvin-gaye/got-to-give-it-up-part-1-and-2/",
+      "retrievedAt": "2026-11-18T13:11:22.479Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "mary-j-blige",
+      "title": "As",
+      "rating": 3.35,
+      "ratingCount": 161,
+      "quality": 67,
+      "sourceUrl": "https://rateyourmusic.com/release/single/george-michael-mary-j-blige/as/",
+      "retrievedAt": "2026-11-18T13:12:27.128Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "prince",
+      "title": "Erotic City",
+      "rating": 3.63,
+      "ratingCount": 267,
+      "quality": 72.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/prince-and-the-revolution/girls-and-boys-under-the-cherry-moon-erotic-city/",
+      "retrievedAt": "2026-11-18T13:13:22.472Z",
+      "note": "RYM rating of the original single release (Girls & Boys / Under the Cherry Moon / Erotic City); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "prince",
+      "title": "She's Always in My Hair",
+      "rating": 4.14,
+      "ratingCount": 1492,
+      "quality": 82.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/prince-and-the-revolution/raspberry-beret-shes-always-in-my-hair/",
+      "retrievedAt": "2026-11-18T13:13:22.472Z",
+      "note": "RYM rating of the original single release (Raspberry Beret / She's Always in My Hair); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "prince",
+      "title": "17 Days",
+      "rating": 3.62,
+      "ratingCount": 57,
+      "quality": 72.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/prince/17-days/",
+      "retrievedAt": "2026-11-18T13:13:22.472Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "prince",
+      "title": "How Come U Don't Call Me Anymore",
+      "rating": 4.09,
+      "ratingCount": 1335,
+      "quality": 81.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/prince/_1999-how-come-u-dont-call-me-anymore/",
+      "retrievedAt": "2026-11-18T13:13:22.472Z",
+      "note": "RYM rating of the original single release (**1999** / How Come U Don't Call Me Anymore); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "r-kelly",
+      "title": "The World's Greatest",
+      "rating": 2.7,
+      "ratingCount": 128,
+      "quality": 54,
+      "sourceUrl": "https://rateyourmusic.com/release/single/r-kelly/the-worlds-greatest/",
+      "retrievedAt": "2026-11-18T13:13:48.683Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "r-kelly",
+      "title": "Gotham City",
+      "rating": 2.21,
+      "ratingCount": 119,
+      "quality": 44.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/r-kelly/gotham-city/",
+      "retrievedAt": "2026-11-18T13:13:48.683Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "green-day",
+      "title": "The Saints Are Coming",
+      "rating": 2.37,
+      "ratingCount": 553,
+      "quality": 47.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/u2-and-green-day/the-saints-are-coming/",
+      "retrievedAt": "2026-11-18T13:14:25.738Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "green-day",
+      "title": "Working Class Hero",
+      "rating": 2.43,
+      "ratingCount": 264,
+      "quality": 48.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/green-day/working-class-hero/",
+      "retrievedAt": "2026-11-18T13:14:25.738Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "green-day",
+      "title": "J.A.R. (Jason Andrew Relva)",
+      "rating": 3.79,
+      "ratingCount": 238,
+      "quality": 75.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/green-day/j_a_r-jason-andrew-relva/",
+      "retrievedAt": "2026-11-18T13:14:25.738Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "green-day",
+      "title": "Pollyanna",
+      "rating": 2.57,
+      "ratingCount": 233,
+      "quality": 51.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/green-day/pollyanna/",
+      "retrievedAt": "2026-11-18T13:14:25.738Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "nine-inch-nails",
+      "title": "The Perfect Drug",
+      "rating": 4.11,
+      "ratingCount": 344,
+      "quality": 82.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/nine-inch-nails/the-perfect-drug-1/",
+      "retrievedAt": "2026-11-18T13:15:04.120Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "nine-inch-nails",
+      "title": "Burn",
+      "rating": 3.87,
+      "ratingCount": 275,
+      "quality": 77.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/nine-inch-nails/burn/",
+      "retrievedAt": "2026-11-18T13:15:04.120Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "nine-inch-nails",
+      "title": "Deep",
+      "rating": 3.31,
+      "ratingCount": 184,
+      "quality": 66.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/nine-inch-nails/deep/",
+      "retrievedAt": "2026-11-18T13:15:04.120Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "rage-against-the-machine",
+      "title": "No Shelter",
+      "rating": 3.72,
+      "ratingCount": 283,
+      "quality": 74.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/rage-against-the-machine/no-shelter/",
+      "retrievedAt": "2026-11-18T13:15:32.276Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "the-beach-boys",
+      "title": "Break Away",
+      "rating": 3.86,
+      "ratingCount": 437,
+      "quality": 77.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-beach-boys/break-away-celebrate-the-news/",
+      "retrievedAt": "2026-11-18T13:15:59.115Z",
+      "note": "RYM rating of the original single release (Break Away / Celebrate the News); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-beach-boys",
+      "title": "The Little Girl I Once Knew",
+      "rating": 3.69,
+      "ratingCount": 344,
+      "quality": 73.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-beach-boys/the-little-girl-i-once-knew-theres-no-other-like-my-baby/",
+      "retrievedAt": "2026-11-18T13:15:59.115Z",
+      "note": "RYM rating of the original single release (The Little Girl I Once Knew / There's No Other (Like My Baby)); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "ac-dc",
+      "title": "Big Gun",
+      "rating": 3.28,
+      "ratingCount": 229,
+      "quality": 65.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/ac_dc/big-gun/",
+      "retrievedAt": "2026-11-18T13:17:28.250Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "metallica",
+      "title": "I Disappear",
+      "rating": 2.96,
+      "ratingCount": 616,
+      "quality": 59.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/metallica/i-disappear/",
+      "retrievedAt": "2026-11-18T13:17:59.536Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "the-rolling-stones",
+      "title": "Jumpin' Jack Flash",
+      "rating": 4.16,
+      "ratingCount": 1643,
+      "quality": 83.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/jumpin-jack-flash-child-of-the-moon/",
+      "retrievedAt": "2026-11-18T13:19:32.055Z",
+      "note": "RYM rating of the original single release (Jumpin' Jack Flash / Child of the Moon); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-rolling-stones",
+      "title": "Honky Tonk Women",
+      "rating": 4.01,
+      "ratingCount": 1350,
+      "quality": 80.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/honky-tonk-women-you-cant-always-get-what-you-want/",
+      "retrievedAt": "2026-11-18T13:19:32.055Z",
+      "note": "RYM rating of the original single release (Honky Tonk Women / You Can't Always Get What You Want); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-rolling-stones",
+      "title": "19th Nervous Breakdown",
+      "rating": 3.98,
+      "ratingCount": 905,
+      "quality": 79.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/19th-nervous-breakdown-as-tears-go-by/",
+      "retrievedAt": "2026-11-18T13:19:32.055Z",
+      "note": "RYM rating of the original single release (19th Nervous Breakdown / As Tears Go By); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-rolling-stones",
+      "title": "We Love You",
+      "rating": 3.85,
+      "ratingCount": 597,
+      "quality": 77,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/we-love-you-dandelion/",
+      "retrievedAt": "2026-11-18T13:19:32.055Z",
+      "note": "RYM rating of the original single release (We Love You / Dandelion); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-rolling-stones",
+      "title": "Dandelion",
+      "rating": 3.85,
+      "ratingCount": 597,
+      "quality": 77,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/we-love-you-dandelion/",
+      "retrievedAt": "2026-11-18T13:19:32.055Z",
+      "note": "RYM rating of the original single release (We Love You / Dandelion); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "bob-dylan",
+      "title": "Positively 4th Street",
+      "rating": 4.15,
+      "ratingCount": 1116,
+      "quality": 83,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bob-dylan/positively-4th-street-from-a-buick-6/",
+      "retrievedAt": "2026-11-18T13:19:59.166Z",
+      "note": "RYM rating of the original single release (Positively 4th Street / From a Buick 6); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "bob-dylan",
+      "title": "Things Have Changed",
+      "rating": 3.84,
+      "ratingCount": 416,
+      "quality": 76.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bob-dylan/things-have-changed/",
+      "retrievedAt": "2026-11-18T13:19:59.166Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "bob-dylan",
+      "title": "Can You Please Crawl Out Your Window?",
+      "rating": 3.67,
+      "ratingCount": 269,
+      "quality": 73.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bob-dylan/can-you-please-crawl-out-your-window-highway-61-revisited/",
+      "retrievedAt": "2026-11-18T13:19:59.166Z",
+      "note": "RYM rating of the original single release (Can You Please Crawl Out Your Window? / Highway 61 Revisited); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "neil-young",
+      "title": "Sugar Mountain",
+      "rating": 4.12,
+      "ratingCount": 1128,
+      "quality": 82.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/neil-young/heart-of-gold-sugar-mountain/",
+      "retrievedAt": "2026-11-18T13:20:34.807Z",
+      "note": "RYM rating of the original single release (Heart of Gold / Sugar Mountain); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "neil-young",
+      "title": "Philadelphia",
+      "rating": 3.88,
+      "ratingCount": 129,
+      "quality": 77.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/neil-young/philadelphia/",
+      "retrievedAt": "2026-11-18T13:20:34.807Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "david-bowie",
+      "title": "John, I'm Only Dancing",
+      "rating": 3.82,
+      "ratingCount": 727,
+      "quality": 76.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/david-bowie/john-im-only-dancing-hang-on-to-yourself/",
+      "retrievedAt": "2026-11-18T13:22:07.922Z",
+      "note": "RYM rating of the original single release (John, I'm Only Dancing / Hang On to Yourself); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "david-bowie",
+      "title": "Absolute Beginners",
+      "rating": 3.67,
+      "ratingCount": 621,
+      "quality": 73.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/david-bowie/absolute-beginners/",
+      "retrievedAt": "2026-11-18T13:22:07.922Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "david-bowie",
+      "title": "This Is Not America",
+      "rating": 3.67,
+      "ratingCount": 511,
+      "quality": 73.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/david-bowie-pat-metheny-group/this-is-not-america/",
+      "retrievedAt": "2026-11-18T13:22:07.922Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "talking-heads",
+      "title": "Love → Building on Fire",
+      "rating": 3.85,
+      "ratingCount": 673,
+      "quality": 77,
+      "sourceUrl": "https://rateyourmusic.com/release/single/talking-heads/love-%E2%86%92-building-on-fire-new-feeling/",
+      "retrievedAt": "2026-11-18T13:22:41.774Z",
+      "note": "RYM rating of the original single release (Love → Building on Fire / New Feeling); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-who",
+      "title": "I Can't Explain",
+      "rating": 4.21,
+      "ratingCount": 1748,
+      "quality": 84.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-who/baba-oriley-i-cant-explain/",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "note": "RYM rating of the original single release (Baba O'Riley / I Can't Explain); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-who",
+      "title": "Substitute",
+      "rating": 3.98,
+      "ratingCount": 772,
+      "quality": 79.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-who/substitute-instant-party/",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "note": "RYM rating of the original single release (Substitute / Instant Party); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-who",
+      "title": "Pictures of Lily",
+      "rating": 3.79,
+      "ratingCount": 525,
+      "quality": 75.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-who/pictures-of-lily-doctor-doctor/",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "note": "RYM rating of the original single release (Pictures of Lily / Doctor, Doctor); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-who",
+      "title": "Let's See Action",
+      "rating": 3.26,
+      "ratingCount": 146,
+      "quality": 65.2,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-who/lets-see-action-when-i-was-a-boy/",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "note": "RYM rating of the original single release (Let's See Action / When I Was a Boy); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-who",
+      "title": "Join Together",
+      "rating": 3.55,
+      "ratingCount": 238,
+      "quality": 71,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-who/join-together-baby-dont-you-do-it/",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "note": "RYM rating of the original single release (Join Together / Baby Don't You Do It); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-who",
+      "title": "The Seeker",
+      "rating": 3.73,
+      "ratingCount": 515,
+      "quality": 74.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-who/the-seeker-here-for-more/",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "note": "RYM rating of the original single release (The Seeker / Here for More); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "the-who",
+      "title": "Dogs",
+      "rating": 3.45,
+      "ratingCount": 137,
+      "quality": 69,
+      "sourceUrl": "https://rateyourmusic.com/release/single/the-who/dogs-call-me-lightning/",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "note": "RYM rating of the original single release (Dogs / Call Me Lightning); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "bruce-springsteen",
+      "title": "Streets of Philadelphia",
+      "rating": 3.92,
+      "ratingCount": 836,
+      "quality": 78.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bruce-springsteen/streets-of-philadelphia-if-i-should-fall-behind/",
+      "retrievedAt": "2026-11-18T13:24:09.415Z",
+      "note": "RYM rating of the original single release (Streets of Philadelphia / If I Should Fall Behind); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "bruce-springsteen",
+      "title": "Pink Cadillac",
+      "rating": 3.93,
+      "ratingCount": 1176,
+      "quality": 78.6,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bruce-springsteen/dancing-in-the-dark-pink-cadillac/",
+      "retrievedAt": "2026-11-18T13:24:09.415Z",
+      "note": "RYM rating of the original single release (Dancing in the Dark / Pink Cadillac); release-level score, not an individual track rating."
+    },
+    {
+      "artistId": "kraftwerk",
+      "title": "Tour de France",
+      "rating": 3.85,
+      "ratingCount": 922,
+      "quality": 77,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kraftwerk/tour-de-france/",
+      "retrievedAt": "2026-11-18T13:25:07.443Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "kraftwerk",
+      "title": "Expo 2000",
+      "rating": 3.39,
+      "ratingCount": 376,
+      "quality": 67.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/kraftwerk/expo-2000/",
+      "retrievedAt": "2026-11-18T13:25:07.443Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "bjork",
+      "title": "Oral",
+      "rating": 3.87,
+      "ratingCount": 1846,
+      "quality": 77.4,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bjork-rosalia/oral/",
+      "retrievedAt": "2026-11-18T13:25:40.349Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "bjork",
+      "title": "It's in Our Hands",
+      "rating": 3.85,
+      "ratingCount": 489,
+      "quality": 77,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bjork/its-in-our-hands/",
+      "retrievedAt": "2026-11-18T13:25:40.349Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "bjork",
+      "title": "Play Dead",
+      "rating": 4.09,
+      "ratingCount": 1097,
+      "quality": 81.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/bjork-david-arnold/play-dead/",
+      "retrievedAt": "2026-11-18T13:25:40.349Z",
+      "note": "RYM original single release rating."
+    },
+    {
+      "artistId": "pixies",
+      "title": "Bam Thwok",
+      "rating": 3.04,
+      "ratingCount": 202,
+      "quality": 60.8,
+      "sourceUrl": "https://rateyourmusic.com/release/single/pixies/bam-thwok/",
+      "retrievedAt": "2026-11-18T13:26:06.973Z",
+      "note": "RYM original single release rating."
     }
   ],
   "popularity": [
@@ -336309,13 +338537,13 @@
     {
       "artistId": "the-who",
       "title": "The Seeker",
-      "streams": 1681111,
-      "daily": 738,
-      "spotifyUrl": "https://open.spotify.com/track/4vAD6goBKmPPUKHZ8XfDtL",
+      "streams": 92564056,
+      "daily": 22490,
+      "spotifyUrl": "https://open.spotify.com/track/788cNfvhhitTb5T8GORmqj",
       "sourceUrl": "https://kworb.net/spotify/artist/67ea9eGLXYMsO2eYQRui3w_songs.html",
       "sourceUpdatedAt": "2026/11/14",
       "retrievedAt": "2026-11-15",
-      "popularity": 27.01
+      "popularity": 74.66
     },
     {
       "artistId": "the-who",
@@ -363277,6 +365505,204 @@
       "sourceUpdatedAt": "2026/11/12",
       "retrievedAt": "2026-11-15",
       "popularity": 0
+    },
+    {
+      "artistId": "kid-cudi",
+      "title": "Stars in the Sky",
+      "streams": 48117309,
+      "daily": 15272,
+      "spotifyUrl": "https://open.spotify.com/track/0WFOl7P9gowO92fuI0eJIZ",
+      "sourceUrl": "https://kworb.net/spotify/artist/0fA0VVWsXO9YnASrzqfmYu_songs.html",
+      "sourceUpdatedAt": "2026/11/13",
+      "retrievedAt": "2026-11-15",
+      "popularity": 63.15
+    },
+    {
+      "artistId": "rihanna",
+      "title": "Sledgehammer",
+      "streams": 56257543,
+      "daily": 4544,
+      "spotifyUrl": "https://open.spotify.com/track/3EdsfpdAlaQBMO0LgNOEhn",
+      "sourceUrl": "https://kworb.net/spotify/artist/5pKCCKE2ajJHZ9KAiaK11H_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 61.9
+    },
+    {
+      "artistId": "olivia-rodrigo",
+      "title": "Can't Catch Me Now",
+      "streams": 578766375,
+      "daily": 485476,
+      "spotifyUrl": "https://open.spotify.com/track/17cia5k4BpGVlyEfqrFH50",
+      "sourceUrl": "https://kworb.net/spotify/artist/1McMsnEElThX1knmY4oliG_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 79.92
+    },
+    {
+      "artistId": "olivia-rodrigo",
+      "title": "All I Want",
+      "streams": 1229274083,
+      "daily": 520187,
+      "spotifyUrl": "https://open.spotify.com/track/4Yxc55NX3tAXC2mHRAhtcW",
+      "sourceUrl": "https://kworb.net/spotify/artist/1McMsnEElThX1knmY4oliG_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 89.09
+    },
+    {
+      "artistId": "paramore",
+      "title": "Decode",
+      "streams": 622724099,
+      "daily": 586563,
+      "spotifyUrl": "https://open.spotify.com/track/4IDfVjI1TlB1UwlC01T4Bm",
+      "sourceUrl": "https://kworb.net/spotify/artist/74XFHRwlV6OrjEM0A2NCMF_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 89.81
+    },
+    {
+      "artistId": "paramore",
+      "title": "Monster",
+      "streams": 108620797,
+      "daily": 44349,
+      "spotifyUrl": "https://open.spotify.com/track/04BSvYghzdxjSJNpee36er",
+      "sourceUrl": "https://kworb.net/spotify/artist/74XFHRwlV6OrjEM0A2NCMF_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 66.41
+    },
+    {
+      "artistId": "sza",
+      "title": "All the Stars",
+      "streams": 3253078369,
+      "daily": 1496873,
+      "spotifyUrl": "https://open.spotify.com/track/3GCdLUSnKSMJhs4Tj6CV3s",
+      "sourceUrl": "https://kworb.net/spotify/artist/7tYKF4w9nC0nq9CsPZTHyP_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 100
+    },
+    {
+      "artistId": "sza",
+      "title": "The Other Side",
+      "streams": 197233601,
+      "daily": 23261,
+      "spotifyUrl": "https://open.spotify.com/track/463PQggkmk5tTw8ug0ahOX",
+      "sourceUrl": "https://kworb.net/spotify/artist/7tYKF4w9nC0nq9CsPZTHyP_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 69.3
+    },
+    {
+      "artistId": "fleetwood-mac",
+      "title": "Albatross",
+      "streams": 1170298,
+      "daily": 113,
+      "spotifyUrl": "https://open.spotify.com/track/4ir5hZS5DXK3W7sbq1v9b6",
+      "sourceUrl": "https://kworb.net/spotify/artist/08GQAI4eElDnROBrJRGE0X_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 12.66
+    },
+    {
+      "artistId": "smino",
+      "title": "I Deserve",
+      "streams": 29728644,
+      "daily": 7128,
+      "spotifyUrl": "https://open.spotify.com/track/4SqPtAd2irUOyLoLcOFtkl",
+      "sourceUrl": "https://kworb.net/spotify/artist/1ybINI1qPiFbwDXamRtwxD_songs.html",
+      "sourceUpdatedAt": "2026/11/10",
+      "retrievedAt": "2026-11-15",
+      "popularity": 70.67
+    },
+    {
+      "artistId": "prince",
+      "title": "Erotic City",
+      "streams": 31440985,
+      "daily": 10142,
+      "spotifyUrl": "https://open.spotify.com/track/4pkEET0wXNNY5o61lVK5FF",
+      "sourceUrl": "https://kworb.net/spotify/artist/5a2EaR3hamoenG9rDuVn8j_songs.html",
+      "sourceUpdatedAt": "2026/11/13",
+      "retrievedAt": "2026-11-15",
+      "popularity": 57.5
+    },
+    {
+      "artistId": "prince",
+      "title": "17 Days",
+      "streams": 7804041,
+      "daily": 1742,
+      "spotifyUrl": "https://open.spotify.com/track/3TNzMvWUuNoeyBcNeUQZH4",
+      "sourceUrl": "https://kworb.net/spotify/artist/5a2EaR3hamoenG9rDuVn8j_songs.html",
+      "sourceUpdatedAt": "2026/11/13",
+      "retrievedAt": "2026-11-15",
+      "popularity": 40.31
+    },
+    {
+      "artistId": "prince",
+      "title": "How Come U Don't Call Me Anymore",
+      "streams": 7926583,
+      "daily": 1771,
+      "spotifyUrl": "https://open.spotify.com/track/1WZVtI5aX68qwitrKkGH9L",
+      "sourceUrl": "https://kworb.net/spotify/artist/5a2EaR3hamoenG9rDuVn8j_songs.html",
+      "sourceUpdatedAt": "2026/11/13",
+      "retrievedAt": "2026-11-15",
+      "popularity": 40.5
+    },
+    {
+      "artistId": "nine-inch-nails",
+      "title": "Burn",
+      "streams": 8446736,
+      "daily": 2413,
+      "spotifyUrl": "https://open.spotify.com/track/4SHHU5xx7ud4iUR4ebdPuD",
+      "sourceUrl": "https://kworb.net/spotify/artist/0X380XXQSNBYuleKzav5UO_songs.html",
+      "sourceUpdatedAt": "2026/11/12",
+      "retrievedAt": "2026-11-15",
+      "popularity": 52.5
+    },
+    {
+      "artistId": "the-who",
+      "title": "Substitute",
+      "streams": 22491638,
+      "daily": 4040,
+      "spotifyUrl": "https://open.spotify.com/track/2x4QFtQdPS0IijZmp4PPXA",
+      "sourceUrl": "https://kworb.net/spotify/artist/67ea9eGLXYMsO2eYQRui3w_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 57.84
+    },
+    {
+      "artistId": "the-who",
+      "title": "Let's See Action",
+      "streams": 1007698,
+      "daily": 198,
+      "spotifyUrl": "https://open.spotify.com/track/2wNxnUbGGg4DoVDxJvmX1q",
+      "sourceUrl": "https://kworb.net/spotify/artist/67ea9eGLXYMsO2eYQRui3w_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 20.92
+    },
+    {
+      "artistId": "the-who",
+      "title": "Join Together",
+      "streams": 17852411,
+      "daily": 8841,
+      "spotifyUrl": "https://open.spotify.com/track/3L59mpFyXjfEOefwBfDKkj",
+      "sourceUrl": "https://kworb.net/spotify/artist/67ea9eGLXYMsO2eYQRui3w_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 55.1
+    },
+    {
+      "artistId": "bruce-springsteen",
+      "title": "Pink Cadillac",
+      "streams": 23143202,
+      "daily": 6017,
+      "spotifyUrl": "https://open.spotify.com/track/3zG1YiTu53KCt8W56psgs2",
+      "sourceUrl": "https://kworb.net/spotify/artist/3eqjTLE0HfPfh78zjh6TqT_songs.html",
+      "sourceUpdatedAt": "2026/11/14",
+      "retrievedAt": "2026-11-15",
+      "popularity": 43.2
     }
   ],
   "issues": [

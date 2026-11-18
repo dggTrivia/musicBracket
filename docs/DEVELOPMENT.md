@@ -2,6 +2,14 @@
 
 Technical context for contributors and coding agents. See the root README for player setup.
 
+## Non-album singles maintenance
+
+`docs/SINGLES_AUDIT.json` records the review of all 88 artists' complete RYM Singles sections. `scripts/reviewed-singles.json` is the approved recording manifest. Keep at most seven significant original non-album recordings per artist, require more than 50 RYM ratings, and exclude album editions, remixes and guest-only appearances. An artist can have no Singles bucket. Do not fill the quota with minor B-sides.
+
+Prefer an individual song measurement when available. A single release's aggregate rating must retain its release URL and an explicit release-level note, especially for A/B-side records. Missing Spotify measurements remain estimates; never use another artist's identically titled recording. Shared stream evidence requires joint credits and is normalized to the selected artist's scale.
+
+To reproduce the approved data offline, run `node scripts/apply-singles-evidence.mjs`, `node scripts/catalog-import.mjs --singles-only`, then `node scripts/video-import.mjs --apply`. New artist-page evidence is saved under ignored `tmp/artist-singles/`; the review helpers generate a local shortlist and metadata candidates, not automatic approvals. The checked-in manifest is the import authority. YouTube search/oEmbed checks establish metadata availability; actual regional embedding is checked by the player and must not be claimed verified from metadata alone.
+
 ## Code map and verification
 
 - `src/App.tsx` owns setup, artist selection, matchups, replay invitations, share dialogs and results.

@@ -1,0 +1,2296 @@
+{
+  "updatedAt": "2026-11-18T13:38:14.388Z",
+  "method": "Complete RYM artist Singles sections; >50 ratings; max 7 significant original non-album recordings. Existing album editions, remixes and guest-only credits excluded. Release-level scores are labeled explicitly. Public Spotify streams reused when available; missing streams remain estimated.",
+  "artists": [
+    {
+      "artistId": "kanye-west",
+      "name": "Kanye West",
+      "url": "https://rateyourmusic.com/artist/kanye-west",
+      "retrievedAt": "2026-11-18T12:39:10.416Z",
+      "releaseCount": 136,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "All Day",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west/all-day/",
+          "ratingCount": 2145
+        },
+        {
+          "title": "Only One",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west/only-one/",
+          "ratingCount": 1826
+        },
+        {
+          "title": "FourFiveSeconds",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/rihanna-kanye-west-paul-mccartney/fourfiveseconds/",
+          "ratingCount": 2865
+        },
+        {
+          "title": "Lift Yourself",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west/lift-yourself/",
+          "ratingCount": 3615
+        },
+        {
+          "title": "I Love It",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west-lil-pump/i-love-it/",
+          "ratingCount": 3573
+        },
+        {
+          "title": "Wash Us in the Blood",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kanye-west/wash-us-in-the-blood/",
+          "ratingCount": 2531
+        }
+      ]
+    },
+    {
+      "artistId": "kid-cudi",
+      "name": "Kid Cudi",
+      "url": "https://rateyourmusic.com/artist/kid-cudi?_wl_challenge_id=4482c205368b83dbfe81c3ee9b463046&_wl_challenge_response=7f1e9514496f280b87ba762815f2c39a",
+      "retrievedAt": "2026-11-18T12:35:50.514Z",
+      "releaseCount": 60,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "THE SCOTTS",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-scotts/the-scotts/",
+          "ratingCount": 1422
+        },
+        {
+          "title": "love.",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/cudderland/love/",
+          "ratingCount": 713
+        },
+        {
+          "title": "The Adventures of Moon Man and Slim Shady",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kid-cudi/the-adventures-of-moon-man-and-slim-shady/",
+          "ratingCount": 580
+        },
+        {
+          "title": "Leader of the Delinquents",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kid-cudi/leader-of-the-delinquents/",
+          "ratingCount": 451
+        },
+        {
+          "title": "Stars in the Sky",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kid-cudi/stars-in-the-sky/",
+          "ratingCount": 196
+        }
+      ]
+    },
+    {
+      "artistId": "frank-ocean",
+      "name": "Frank Ocean",
+      "url": "https://rateyourmusic.com/artist/frank-ocean",
+      "retrievedAt": "2026-11-18T12:37:19.006Z",
+      "releaseCount": 30,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Chanel",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/chanel/",
+          "ratingCount": 4305
+        },
+        {
+          "title": "Novacane",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/novacane/",
+          "ratingCount": 1892
+        },
+        {
+          "title": "Swim Good",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/swim-good/",
+          "ratingCount": 1223
+        },
+        {
+          "title": "Moon River",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/moon-river/",
+          "ratingCount": 1998
+        },
+        {
+          "title": "In My Room",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/in-my-room/",
+          "ratingCount": 2075
+        },
+        {
+          "title": "Biking",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/biking/",
+          "ratingCount": 2123
+        },
+        {
+          "title": "DHL",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/frank-ocean/dhl/",
+          "ratingCount": 2104
+        }
+      ]
+    },
+    {
+      "artistId": "kendrick-lamar",
+      "name": "Kendrick Lamar",
+      "url": "https://rateyourmusic.com/artist/kendrick-lamar",
+      "retrievedAt": "2026-11-18T12:40:00.102Z",
+      "releaseCount": 50,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Not Like Us",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar/not-like-us/",
+          "ratingCount": 7625
+        },
+        {
+          "title": "euphoria",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar/euphoria/",
+          "ratingCount": 6435
+        },
+        {
+          "title": "meet the grahams",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar/meet-the-grahams/",
+          "ratingCount": 8495
+        },
+        {
+          "title": "The Heart Part 4",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar/the-heart-part-4/",
+          "ratingCount": 1648
+        },
+        {
+          "title": "The Hillbillies",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/baby-keem-kendrick-lamar/the-hillbillies/",
+          "ratingCount": 1952
+        },
+        {
+          "title": "Cartoon & Cereal",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar/cartoon-cereal/",
+          "ratingCount": 1579
+        }
+      ]
+    },
+    {
+      "artistId": "the-beatles",
+      "name": "The Beatles",
+      "url": "https://rateyourmusic.com/artist/the-beatles",
+      "retrievedAt": "2026-11-18T12:40:31.037Z",
+      "releaseCount": 179,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Hey Jude",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beatles/hey-jude-revolution/",
+          "ratingCount": 3554
+        },
+        {
+          "title": "I Want to Hold Your Hand",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beatles/i-want-to-hold-your-hand-this-boy/",
+          "ratingCount": 2084
+        },
+        {
+          "title": "Don't Let Me Down",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beatles-with-billy-preston/get-back-dont-let-me-down/",
+          "ratingCount": 1956
+        },
+        {
+          "title": "Day Tripper",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beatles/we-can-work-it-out-day-tripper/",
+          "ratingCount": 2585
+        },
+        {
+          "title": "She Loves You",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beatles/she-loves-you-ill-get-you/",
+          "ratingCount": 2026
+        },
+        {
+          "title": "We Can Work It Out",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beatles/we-can-work-it-out-day-tripper/",
+          "ratingCount": 2585
+        },
+        {
+          "title": "Revolution",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beatles/hey-jude-revolution/",
+          "ratingCount": 3554
+        }
+      ]
+    },
+    {
+      "artistId": "queen",
+      "name": "Queen",
+      "url": "https://rateyourmusic.com/artist/queen",
+      "retrievedAt": "2026-11-18T12:41:11.288Z",
+      "releaseCount": 127,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "No One But You",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/queen/no-one-but-you-tie-your-mother-down/",
+          "ratingCount": 99
+        },
+        {
+          "title": "Face It Alone",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/queen/face-it-alone/",
+          "ratingCount": 189
+        }
+      ]
+    },
+    {
+      "artistId": "michael-jackson",
+      "name": "Michael Jackson",
+      "url": "https://rateyourmusic.com/artist/michael-jackson",
+      "retrievedAt": "2026-11-18T12:41:40.400Z",
+      "releaseCount": 143,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Say Say Say",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/paul-mccartney-michael-jackson/say-say-say-ode-to-a-koala-bear/",
+          "ratingCount": 750
+        },
+        {
+          "title": "This Is It",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/michael-jackson/this-is-it/",
+          "ratingCount": 143
+        }
+      ]
+    },
+    {
+      "artistId": "abba",
+      "name": "ABBA",
+      "url": "https://rateyourmusic.com/artist/abba",
+      "retrievedAt": "2026-11-18T12:42:16.130Z",
+      "releaseCount": 91,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "rihanna",
+      "name": "Rihanna",
+      "url": "https://rateyourmusic.com/artist/rihanna",
+      "retrievedAt": "2026-11-18T12:45:54.217Z",
+      "releaseCount": 98,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "FourFiveSeconds",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/rihanna-kanye-west-paul-mccartney/fourfiveseconds/",
+          "ratingCount": 2865
+        },
+        {
+          "title": "Bitch Better Have My Money",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/rihanna/bitch-better-have-my-money/",
+          "ratingCount": 1262
+        },
+        {
+          "title": "Lift Me Up",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/rihanna/lift-me-up/",
+          "ratingCount": 568
+        },
+        {
+          "title": "Sledgehammer",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/rihanna/sledgehammer/",
+          "ratingCount": 141
+        }
+      ]
+    },
+    {
+      "artistId": "jay-z",
+      "name": "JAY-Z",
+      "url": "https://rateyourmusic.com/artist/jay-z",
+      "retrievedAt": "2026-11-18T12:46:38.437Z",
+      "releaseCount": 99,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "earl-sweatshirt",
+      "name": "Earl Sweatshirt",
+      "url": "https://rateyourmusic.com/artist/earl-sweatshirt",
+      "retrievedAt": "2026-11-18T12:46:58.326Z",
+      "releaseCount": 35,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Making the Band (Danity Kane)",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/making-the-band-danity-kane/",
+          "ratingCount": 1094
+        },
+        {
+          "title": "Wind in My Sails",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/wind-in-my-sails/",
+          "ratingCount": 841
+        },
+        {
+          "title": "Whole World",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/whole-world/",
+          "ratingCount": 524
+        },
+        {
+          "title": "Balance",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt/balance/",
+          "ratingCount": 492
+        }
+      ]
+    },
+    {
+      "artistId": "vince-staples",
+      "name": "Vince Staples",
+      "url": "https://rateyourmusic.com/artist/vince-staples",
+      "retrievedAt": "2026-11-18T12:47:30.672Z",
+      "releaseCount": 35,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Get the Fuck Off My Dick",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/vince-staples/get-the-fuck-off-my-dick/",
+          "ratingCount": 461
+        },
+        {
+          "title": "Hell Bound (Ad 01)",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/vince-staples/hell-bound-ad-01/",
+          "ratingCount": 133
+        },
+        {
+          "title": "Sheet Music (Episode 02)",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/vince-staples/sheet-music-episode-02/",
+          "ratingCount": 118
+        }
+      ]
+    },
+    {
+      "artistId": "eminem",
+      "name": "Eminem",
+      "url": "https://rateyourmusic.com/artist/eminem",
+      "retrievedAt": "2026-11-18T12:48:07.649Z",
+      "releaseCount": 89,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Lose Yourself",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/eminem/lose-yourself/",
+          "ratingCount": 2849
+        },
+        {
+          "title": "Killshot",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/eminem/killshot/",
+          "ratingCount": 1266
+        },
+        {
+          "title": "When I'm Gone",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/eminem/when-im-gone/",
+          "ratingCount": 662
+        },
+        {
+          "title": "Shake That",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/eminem/shake-that/",
+          "ratingCount": 503
+        },
+        {
+          "title": "8 Mile",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/eminem/8-mile/",
+          "ratingCount": 294
+        },
+        {
+          "title": "From the D 2 the LBC",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/eminem-snoop-dogg/from-the-d-2-the-lbc/",
+          "ratingCount": 349
+        }
+      ]
+    },
+    {
+      "artistId": "james-blake",
+      "name": "James Blake",
+      "url": "https://rateyourmusic.com/artist/james-blake",
+      "retrievedAt": "2026-11-18T12:48:34.703Z",
+      "releaseCount": 42,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Godspeed",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/james-blake/godspeed/",
+          "ratingCount": 216
+        },
+        {
+          "title": "If the Car Beside You Moves Ahead",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/james-blake/if-the-car-beside-you-moves-ahead/",
+          "ratingCount": 1131
+        },
+        {
+          "title": "You're Too Precious",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/james-blake/youre-too-precious/",
+          "ratingCount": 392
+        },
+        {
+          "title": "Are You Even Real?",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/james-blake/are-you-even-real/",
+          "ratingCount": 386
+        }
+      ]
+    },
+    {
+      "artistId": "jpegmafia",
+      "name": "JPEGMAFIA",
+      "url": "https://rateyourmusic.com/artist/jpegmafia",
+      "retrievedAt": "2026-11-18T12:48:57.760Z",
+      "releaseCount": 62,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Puff Daddy",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia-kenny-beats/puff-daddy/",
+          "ratingCount": 1981
+        },
+        {
+          "title": "Covered in Money!",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia/covered-in-money/",
+          "ratingCount": 1001
+        },
+        {
+          "title": "Bodyguard!",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia/bodyguard/",
+          "ratingCount": 726
+        },
+        {
+          "title": "The Who",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/jpegmafia/the-who/",
+          "ratingCount": 647
+        }
+      ]
+    },
+    {
+      "artistId": "ka",
+      "name": "Ka",
+      "url": "https://rateyourmusic.com/artist/ka-1",
+      "retrievedAt": "2026-11-18T12:49:29.544Z",
+      "releaseCount": 2,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "mf-doom",
+      "name": "MF DOOM",
+      "url": "https://rateyourmusic.com/artist/mf-doom",
+      "retrievedAt": "2026-11-18T12:50:00.886Z",
+      "releaseCount": 41,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Avalanche",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/mf-doom-madlib/avalanche/",
+          "ratingCount": 312
+        },
+        {
+          "title": "My Favorite Ladies",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/mf-doom/my-favorite-ladies-all-outta-ale/",
+          "ratingCount": 168
+        }
+      ]
+    },
+    {
+      "artistId": "a-tribe-called-quest",
+      "name": "A Tribe Called Quest",
+      "url": "https://rateyourmusic.com/artist/a-tribe-called-quest",
+      "retrievedAt": "2026-11-18T12:50:46.464Z",
+      "releaseCount": 32,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Rumble in the Jungle",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/fugees/rumble-in-the-jungle/",
+          "ratingCount": 85
+        }
+      ]
+    },
+    {
+      "artistId": "young-thug",
+      "name": "Young Thug",
+      "url": "https://rateyourmusic.com/artist/young-thug",
+      "retrievedAt": "2026-11-18T12:51:36.725Z",
+      "releaseCount": 141,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Old English",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/young-thug-a_ap-ferg-freddie-gibbs/old-english/",
+          "ratingCount": 862
+        },
+        {
+          "title": "Stoner",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/stoner/",
+          "ratingCount": 624
+        },
+        {
+          "title": "Danny Glover",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/danny-glover/",
+          "ratingCount": 518
+        },
+        {
+          "title": "Hercules",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/hercules/",
+          "ratingCount": 379
+        },
+        {
+          "title": "Tick Tock",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/tick-tock/",
+          "ratingCount": 288
+        },
+        {
+          "title": "Pacifier",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/young-thug/pacifier/",
+          "ratingCount": 268
+        }
+      ]
+    },
+    {
+      "artistId": "action-bronson",
+      "name": "Action Bronson",
+      "url": "https://rateyourmusic.com/artist/action-bronson",
+      "retrievedAt": "2026-11-18T12:52:03.030Z",
+      "releaseCount": 32,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Bird on a Wire",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/action-bronson/bird-on-a-wire/",
+          "ratingCount": 321
+        },
+        {
+          "title": "Warlord Leather",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/earl-sweatshirt-action-bronson/warlord-leather/",
+          "ratingCount": 57
+        },
+        {
+          "title": "Standing in the Rain",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/action-bronson-mark-ronson-dan-auerbach/standing-in-the-rain/",
+          "ratingCount": 56
+        }
+      ]
+    },
+    {
+      "artistId": "alex-g",
+      "name": "Alex G",
+      "url": "https://rateyourmusic.com/artist/alex-g",
+      "retrievedAt": "2026-11-18T12:52:38.660Z",
+      "releaseCount": 35,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Treehouse",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/alex-g/treehouse/",
+          "ratingCount": 404
+        }
+      ]
+    },
+    {
+      "artistId": "drake",
+      "name": "Drake",
+      "url": "https://rateyourmusic.com/artist/drake",
+      "retrievedAt": "2026-11-18T12:53:05.369Z",
+      "releaseCount": 92,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Family Matters",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/drake/family-matters/",
+          "ratingCount": 2170
+        },
+        {
+          "title": "Push Ups",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/drake/push-ups/",
+          "ratingCount": 1918
+        },
+        {
+          "title": "Laugh Now Cry Later",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/drake/laugh-now-cry-later/",
+          "ratingCount": 989
+        },
+        {
+          "title": "Search & Rescue",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/drake/search-and-rescue/",
+          "ratingCount": 810
+        },
+        {
+          "title": "Duppy Freestyle",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/drake/duppy-freestyle/",
+          "ratingCount": 611
+        },
+        {
+          "title": "Summer Sixteen",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/drake/summer-sixteen/",
+          "ratingCount": 469
+        }
+      ]
+    },
+    {
+      "artistId": "radiohead",
+      "name": "Radiohead",
+      "url": "https://rateyourmusic.com/artist/radiohead",
+      "retrievedAt": "2026-11-18T12:53:36.666Z",
+      "releaseCount": 74,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "The Daily Mail",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/the-daily-mail-staircase/",
+          "ratingCount": 2339
+        },
+        {
+          "title": "Staircase",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/the-daily-mail-staircase/",
+          "ratingCount": 2339
+        },
+        {
+          "title": "Spectre",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/spectre/",
+          "ratingCount": 2188
+        },
+        {
+          "title": "Supercollider",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/supercollider-the-butcher/",
+          "ratingCount": 1783
+        },
+        {
+          "title": "The Butcher",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/supercollider-the-butcher/",
+          "ratingCount": 1783
+        },
+        {
+          "title": "Ill Wind",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/ill-wind/",
+          "ratingCount": 1445
+        },
+        {
+          "title": "These Are My Twisted Words",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/radiohead/these-are-my-twisted-words/",
+          "ratingCount": 1327
+        }
+      ]
+    },
+    {
+      "artistId": "olivia-rodrigo",
+      "name": "Olivia Rodrigo",
+      "url": "https://rateyourmusic.com/artist/olivia-rodrigo",
+      "retrievedAt": "2026-11-18T12:54:06.041Z",
+      "releaseCount": 37,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Can't Catch Me Now",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/olivia-rodrigo/cant-catch-me-now/",
+          "ratingCount": 473
+        },
+        {
+          "title": "All I Want",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/olivia-rodrigo/all-i-want/",
+          "ratingCount": 134
+        }
+      ]
+    },
+    {
+      "artistId": "tyler-the-creator",
+      "name": "Tyler, the Creator",
+      "url": "https://rateyourmusic.com/artist/tyler-the-creator?_wl_challenge_id=f87ec99eeedb8d12de8c638dac62770f&_wl_challenge_response=28344d43914b9a6d7389862a860ac8fc",
+      "retrievedAt": "2026-11-18T12:54:47.885Z",
+      "releaseCount": 59,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Potato Salad",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator-a_ap-rocky/potato-salad/",
+          "ratingCount": 2321
+        },
+        {
+          "title": "BEST INTEREST",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/best-interest/",
+          "ratingCount": 1903
+        },
+        {
+          "title": "OKRA",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/okra/",
+          "ratingCount": 1852
+        },
+        {
+          "title": "435",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/435/",
+          "ratingCount": 578
+        },
+        {
+          "title": "GROUP B",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tyler-the-creator/group-b/",
+          "ratingCount": 779
+        }
+      ]
+    },
+    {
+      "artistId": "linkin-park",
+      "name": "Linkin Park",
+      "url": "https://rateyourmusic.com/artist/linkin-park",
+      "retrievedAt": "2026-11-18T12:55:14.499Z",
+      "releaseCount": 85,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "New Divide",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/new-divide/",
+          "ratingCount": 865
+        },
+        {
+          "title": "Friendly Fire",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/friendly-fire/",
+          "ratingCount": 289
+        },
+        {
+          "title": "A Light That Never Comes",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park-steve-aoki/a-light-that-never-comes/",
+          "ratingCount": 218
+        },
+        {
+          "title": "QWERTY",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/qwerty/",
+          "ratingCount": 147
+        },
+        {
+          "title": "Not Alone",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/linkin-park/not-alone/",
+          "ratingCount": 118
+        }
+      ]
+    },
+    {
+      "artistId": "j-cole",
+      "name": "J. Cole",
+      "url": "https://rateyourmusic.com/artist/j-cole",
+      "retrievedAt": "2026-11-18T12:55:51.321Z",
+      "releaseCount": 43,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "MIDDLE CHILD",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/middle-child/",
+          "ratingCount": 678
+        },
+        {
+          "title": "Snow on tha Bluff",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/snow-on-tha-bluff/",
+          "ratingCount": 573
+        },
+        {
+          "title": "False Prophets",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/false-prophets/",
+          "ratingCount": 300
+        },
+        {
+          "title": "Everybody Dies",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/everybody-dies/",
+          "ratingCount": 183
+        },
+        {
+          "title": "Lion King on Ice",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/j-cole/lewis-street/",
+          "ratingCount": 310
+        }
+      ]
+    },
+    {
+      "artistId": "gorillaz",
+      "name": "Gorillaz",
+      "url": "https://rateyourmusic.com/artist/gorillaz",
+      "retrievedAt": "2026-11-18T12:56:19.654Z",
+      "releaseCount": 98,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "DoYaThing",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/gorillaz/doyathing/",
+          "ratingCount": 4196
+        },
+        {
+          "title": "Doncamatic",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/gorillaz/doncamatic/",
+          "ratingCount": 777
+        },
+        {
+          "title": "Sleeping Powder",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/gorillaz/sleeping-powder/",
+          "ratingCount": 653
+        }
+      ]
+    },
+    {
+      "artistId": "the-weeknd",
+      "name": "The Weeknd",
+      "url": "https://rateyourmusic.com/artist/the-weeknd",
+      "retrievedAt": "2026-11-18T12:56:50.016Z",
+      "releaseCount": 118,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Popular",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-weeknd-playboi-carti-madonna/popular/",
+          "ratingCount": 969
+        },
+        {
+          "title": "Pray for Me",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-weeknd-kendrick-lamar/pray-for-me/",
+          "ratingCount": 904
+        },
+        {
+          "title": "King of the Fall",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-weeknd/king-of-the-fall/",
+          "ratingCount": 710
+        },
+        {
+          "title": "Lost in the Fire",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/gesaffelstein-the-weeknd/lost-in-the-fire/",
+          "ratingCount": 519
+        },
+        {
+          "title": "One Right Now",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/post-malone-the-weeknd/one-right-now/",
+          "ratingCount": 422
+        }
+      ]
+    },
+    {
+      "artistId": "daft-punk",
+      "name": "Daft Punk",
+      "url": "https://rateyourmusic.com/artist/daft-punk",
+      "retrievedAt": "2026-11-18T12:57:17.538Z",
+      "releaseCount": 46,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "arctic-monkeys",
+      "name": "Arctic Monkeys",
+      "url": "https://rateyourmusic.com/artist/arctic-monkeys",
+      "retrievedAt": "2026-11-18T12:57:52.717Z",
+      "releaseCount": 45,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Leave Before the Lights Come On",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/leave-before-the-lights-come-on/",
+          "ratingCount": 988
+        },
+        {
+          "title": "You're So Dark",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/one-for-the-road-youre-so-dark/",
+          "ratingCount": 480
+        },
+        {
+          "title": "Bigger Boys and Stolen Sweethearts",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/bigger-boys-and-stolen-sweethearts/",
+          "ratingCount": 211
+        },
+        {
+          "title": "Evil Twin",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/arctic-monkeys/suck-it-and-see-evil-twin/",
+          "ratingCount": 363
+        }
+      ]
+    },
+    {
+      "artistId": "mac-miller",
+      "name": "Mac Miller",
+      "url": "https://rateyourmusic.com/artist/mac-miller",
+      "retrievedAt": "2026-11-18T12:58:15.965Z",
+      "releaseCount": 79,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Programs",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/mac-miller/programs/",
+          "ratingCount": 183
+        },
+        {
+          "title": "Buttons",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/mac-miller/buttons/",
+          "ratingCount": 172
+        },
+        {
+          "title": "Time",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/free-nationals-mac-miller-kali-uchis/time/",
+          "ratingCount": 281
+        }
+      ]
+    },
+    {
+      "artistId": "tame-impala",
+      "name": "Tame Impala",
+      "url": "https://rateyourmusic.com/artist/tame-impala",
+      "retrievedAt": "2026-11-18T12:58:54.818Z",
+      "releaseCount": 54,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Patience",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tame-impala/patience/",
+          "ratingCount": 1187
+        },
+        {
+          "title": "Sundown Syndrome",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tame-impala/sundown-syndrome-remember-me/",
+          "ratingCount": 671
+        },
+        {
+          "title": "Remember Me",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/tame-impala/sundown-syndrome-remember-me/",
+          "ratingCount": 671
+        },
+        {
+          "title": "No More Lies",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/thundercat-tame-impala/no-more-lies/",
+          "ratingCount": 710
+        }
+      ]
+    },
+    {
+      "artistId": "deftones",
+      "name": "Deftones",
+      "url": "https://rateyourmusic.com/artist/deftones",
+      "retrievedAt": "2026-11-18T12:59:22.043Z",
+      "releaseCount": 38,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "paramore",
+      "name": "Paramore",
+      "url": "https://rateyourmusic.com/artist/paramore",
+      "retrievedAt": "2026-11-18T12:59:54.776Z",
+      "releaseCount": 50,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Decode",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/paramore/decode/",
+          "ratingCount": 1751
+        },
+        {
+          "title": "Monster",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/paramore/monster/",
+          "ratingCount": 357
+        },
+        {
+          "title": "I Caught Myself",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/paramore/i-caught-myself/",
+          "ratingCount": 324
+        },
+        {
+          "title": "Burning Down the House",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/paramore/burning-down-the-house/",
+          "ratingCount": 512
+        }
+      ]
+    },
+    {
+      "artistId": "sza",
+      "name": "SZA",
+      "url": "https://rateyourmusic.com/artist/sza",
+      "retrievedAt": "2026-11-18T13:00:22.121Z",
+      "releaseCount": 48,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "All the Stars",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kendrick-lamar-sza/all-the-stars/",
+          "ratingCount": 1555
+        },
+        {
+          "title": "Hit Different",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sza/hit-different/",
+          "ratingCount": 573
+        },
+        {
+          "title": "The Other Side",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sza-justin-timberlake/the-other-side/",
+          "ratingCount": 258
+        },
+        {
+          "title": "Power Is Power",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sza-the-weeknd-travis-scott/power-is-power/",
+          "ratingCount": 314
+        }
+      ]
+    },
+    {
+      "artistId": "outkast",
+      "name": "OutKast",
+      "url": "https://rateyourmusic.com/artist/outkast",
+      "retrievedAt": "2026-11-18T13:00:48.837Z",
+      "releaseCount": 40,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "The Whole World",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/outkast/the-whole-world/",
+          "ratingCount": 426
+        },
+        {
+          "title": "Land of a Million Drums",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/outkast/land-of-a-million-drums/",
+          "ratingCount": 110
+        }
+      ]
+    },
+    {
+      "artistId": "fleetwood-mac",
+      "name": "Fleetwood Mac",
+      "url": "https://rateyourmusic.com/artist/fleetwood-mac",
+      "retrievedAt": "2026-11-18T13:01:19.284Z",
+      "releaseCount": 101,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Albatross",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/fleetwood-mac/albatross-jigsaw-puzzle-blues/",
+          "ratingCount": 636
+        },
+        {
+          "title": "Man of the World",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/fleetwood-mac/man-of-the-world-somebodys-gonna-get-their-head-kicked-in-tonite/",
+          "ratingCount": 309
+        }
+      ]
+    },
+    {
+      "artistId": "pink-floyd",
+      "name": "Pink Floyd",
+      "url": "https://rateyourmusic.com/artist/pink-floyd",
+      "retrievedAt": "2026-11-18T13:01:46.889Z",
+      "releaseCount": 96,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "See Emily Play",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-pink-floyd/see-emily-play-scarecrow/",
+          "ratingCount": 1884
+        },
+        {
+          "title": "Arnold Layne",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-pink-floyd/arnold-layne-candy-and-a-currant-bun/",
+          "ratingCount": 1254
+        },
+        {
+          "title": "Careful With That Axe, Eugene",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/pink-floyd/point-me-at-the-sky-careful-with-that-axe-eugene/",
+          "ratingCount": 566
+        },
+        {
+          "title": "Apples and Oranges",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-pink-floyd/apples-and-oranges-paint-box/",
+          "ratingCount": 727
+        },
+        {
+          "title": "Point Me at the Sky",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/pink-floyd/point-me-at-the-sky-careful-with-that-axe-eugene/",
+          "ratingCount": 566
+        }
+      ]
+    },
+    {
+      "artistId": "lana-del-rey",
+      "name": "Lana Del Rey",
+      "url": "https://rateyourmusic.com/artist/lana-del-rey",
+      "retrievedAt": "2026-11-18T13:02:27.352Z",
+      "releaseCount": 120,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Young and Beautiful",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/lana-del-rey/young-and-beautiful/",
+          "ratingCount": 1122
+        },
+        {
+          "title": "Say Yes to Heaven",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/lana-del-rey/say-yes-to-heaven/",
+          "ratingCount": 931
+        },
+        {
+          "title": "Tough",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/quavo-lana-del-rey/tough/",
+          "ratingCount": 476
+        },
+        {
+          "title": "Looking for America",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/lana-del-rey/looking-for-america/",
+          "ratingCount": 434
+        }
+      ]
+    },
+    {
+      "artistId": "the-cure",
+      "name": "The Cure",
+      "url": "https://rateyourmusic.com/artist/the-cure",
+      "retrievedAt": "2026-11-18T13:02:53.157Z",
+      "releaseCount": 92,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "stevie-wonder",
+      "name": "Stevie Wonder",
+      "url": "https://rateyourmusic.com/artist/stevie-wonder",
+      "retrievedAt": "2026-11-18T13:03:24.651Z",
+      "releaseCount": 133,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Do I Do",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/stevie-wonder/do-i-do-rocket-love/",
+          "ratingCount": 274
+        },
+        {
+          "title": "That Girl",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/stevie-wonder/that-girl-all-i-do/",
+          "ratingCount": 170
+        },
+        {
+          "title": "Ribbon in the Sky",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/stevie-wonder/ribbon-in-the-sky-black-orchid/",
+          "ratingCount": 103
+        }
+      ]
+    },
+    {
+      "artistId": "nirvana",
+      "name": "Nirvana",
+      "url": "https://rateyourmusic.com/artist/nirvana",
+      "retrievedAt": "2026-11-18T13:03:52.793Z",
+      "releaseCount": 38,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "You Know You're Right",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/nirvana/you-know-youre-right/",
+          "ratingCount": 1887
+        }
+      ]
+    },
+    {
+      "artistId": "50-cent",
+      "name": "50 Cent",
+      "url": "https://rateyourmusic.com/artist/50-cent",
+      "retrievedAt": "2026-11-18T13:04:25.309Z",
+      "releaseCount": 80,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Window Shopper",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/window-shopper/",
+          "ratingCount": 217
+        },
+        {
+          "title": "How to Rob",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/how-to-rob-rowdy-rowdy/",
+          "ratingCount": 155
+        },
+        {
+          "title": "Hustler's Ambition",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/hustlers-ambition/",
+          "ratingCount": 77
+        },
+        {
+          "title": "Best Friend",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/50-cent-olivia/best-friend/",
+          "ratingCount": 70
+        },
+        {
+          "title": "My Life",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/my-life/",
+          "ratingCount": 82
+        },
+        {
+          "title": "I'm the Man",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/im-the-man/",
+          "ratingCount": 62
+        },
+        {
+          "title": "We Up",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/50-cent/we-up/",
+          "ratingCount": 62
+        }
+      ]
+    },
+    {
+      "artistId": "playboi-carti",
+      "name": "Playboi Carti",
+      "url": "https://rateyourmusic.com/artist/playboi-carti",
+      "retrievedAt": "2026-11-18T13:04:56.668Z",
+      "releaseCount": 52,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "@ MEH",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/-meh/",
+          "ratingCount": 2474
+        },
+        {
+          "title": "ALL RED",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/all-red/",
+          "ratingCount": 1430
+        },
+        {
+          "title": "Broke Boi",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/broke-boi/",
+          "ratingCount": 1274
+        },
+        {
+          "title": "Fetti",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/fetti/",
+          "ratingCount": 1791
+        },
+        {
+          "title": "YUNGXANHOE",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/playboi-carti/yungxanhoe/",
+          "ratingCount": 1494
+        }
+      ]
+    },
+    {
+      "artistId": "smino",
+      "name": "Smino",
+      "url": "https://rateyourmusic.com/artist/smino",
+      "retrievedAt": "2026-11-18T13:05:30.646Z",
+      "releaseCount": 42,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Baguetti",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/smino-jid-and-kenny-beats/baguetti/",
+          "ratingCount": 134
+        },
+        {
+          "title": "I Deserve",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/smino/i-deserve/",
+          "ratingCount": 76
+        }
+      ]
+    },
+    {
+      "artistId": "sufjan-stevens",
+      "name": "Sufjan Stevens",
+      "url": "https://rateyourmusic.com/artist/sufjan-stevens",
+      "retrievedAt": "2026-11-18T13:05:56.047Z",
+      "releaseCount": 51,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Mystery of Love",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/mystery-of-love/",
+          "ratingCount": 1999
+        },
+        {
+          "title": "My Rajneesh",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/my-rajneesh/",
+          "ratingCount": 1784
+        },
+        {
+          "title": "Tonya Harding",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/tonya-harding/",
+          "ratingCount": 1076
+        },
+        {
+          "title": "Love Yourself",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/love-yourself-with-my-whole-heart/",
+          "ratingCount": 615
+        },
+        {
+          "title": "With My Whole Heart",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/sufjan-stevens/love-yourself-with-my-whole-heart/",
+          "ratingCount": 615
+        }
+      ]
+    },
+    {
+      "artistId": "mitski",
+      "name": "Mitski",
+      "url": "https://rateyourmusic.com/artist/mitski",
+      "retrievedAt": "2026-11-18T13:06:25.529Z",
+      "releaseCount": 27,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Cop Car",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/mitski/cop-car/",
+          "ratingCount": 398
+        },
+        {
+          "title": "Glide",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/mitski/glide/",
+          "ratingCount": 201
+        },
+        {
+          "title": "This Is a Life",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/son-lux-w-mitski-and-david-byrne/this-is-a-life/",
+          "ratingCount": 104
+        }
+      ]
+    },
+    {
+      "artistId": "danny-brown",
+      "name": "Danny Brown",
+      "url": "https://rateyourmusic.com/artist/danny-brown",
+      "retrievedAt": "2026-11-18T13:06:53.647Z",
+      "releaseCount": 38,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Grown Up",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown/grown-up/",
+          "ratingCount": 1251
+        },
+        {
+          "title": "Worth It",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown/aint-it-funny-worth-it/",
+          "ratingCount": 2994
+        },
+        {
+          "title": "Molly Ringwald",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown-araabmuzik/molly-ringwald/",
+          "ratingCount": 149
+        },
+        {
+          "title": "Kool Aid",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/danny-brown/kool-aid/",
+          "ratingCount": 141
+        }
+      ]
+    },
+    {
+      "artistId": "freddie-gibbs",
+      "name": "Freddie Gibbs",
+      "url": "https://rateyourmusic.com/artist/freddie-gibbs",
+      "retrievedAt": "2026-11-18T13:07:25.574Z",
+      "releaseCount": 76,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Old English",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/young-thug-a_ap-ferg-freddie-gibbs/old-english/",
+          "ratingCount": 862
+        },
+        {
+          "title": "Bandana",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/freddie-gibbs-and-madlib/bandana/",
+          "ratingCount": 470
+        },
+        {
+          "title": "Cocaine Parties in L.A.",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/freddie-gibbs/cocaine-parties-in-l_a/",
+          "ratingCount": 213
+        },
+        {
+          "title": "Winter in America",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/freddie-gibbs/winter-in-america/",
+          "ratingCount": 118
+        }
+      ]
+    },
+    {
+      "artistId": "portishead",
+      "name": "Portishead",
+      "url": "https://rateyourmusic.com/artist/portishead",
+      "retrievedAt": "2026-11-18T13:07:48.584Z",
+      "releaseCount": 18,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Chase the Tear",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/portishead/chase-the-tear/",
+          "ratingCount": 651
+        },
+        {
+          "title": "SOS",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/portishead/sos/",
+          "ratingCount": 227
+        }
+      ]
+    },
+    {
+      "artistId": "aphex-twin",
+      "name": "Aphex Twin",
+      "url": "https://rateyourmusic.com/artist/aphex-twin",
+      "retrievedAt": "2026-11-18T13:08:24.474Z",
+      "releaseCount": 65,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Blackbox Life Recorder 21f",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/aphex-twin/blackbox-life-recorder-21f/",
+          "ratingCount": 1900
+        },
+        {
+          "title": "T69 Collapse",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/aphex-twin/t69-collapse/",
+          "ratingCount": 961
+        }
+      ]
+    },
+    {
+      "artistId": "beyonce",
+      "name": "Beyoncé",
+      "url": "https://rateyourmusic.com/artist/beyonce",
+      "retrievedAt": "2026-11-18T13:08:48.193Z",
+      "releaseCount": 135,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "MY HOUSE",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/beyonce/my-house/",
+          "ratingCount": 607
+        },
+        {
+          "title": "Check on It",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/beyonce/check-on-it/",
+          "ratingCount": 482
+        },
+        {
+          "title": "Work It Out",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/beyonce/work-it-out/",
+          "ratingCount": 258
+        },
+        {
+          "title": "Perfect Duet",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/ed-sheeran-beyonce/perfect-duet/",
+          "ratingCount": 346
+        }
+      ]
+    },
+    {
+      "artistId": "al-green",
+      "name": "Al Green",
+      "url": "https://rateyourmusic.com/artist/al-green",
+      "retrievedAt": "2026-11-18T13:09:21.704Z",
+      "releaseCount": 58,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Put a Little Love in Your Heart",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/annie-lennox-and-al-green-the-spheres-of-celestial-influence/put-a-little-love-in-your-heart-a-great-big-piece-of-love/",
+          "ratingCount": 89
+        }
+      ]
+    },
+    {
+      "artistId": "ray-charles",
+      "name": "Ray Charles",
+      "url": "https://rateyourmusic.com/artist/ray-charles",
+      "retrievedAt": "2026-11-18T13:09:48.296Z",
+      "releaseCount": 162,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Hit the Road Jack",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/ray-charles/hit-the-road-jack-the-danger-zone/",
+          "ratingCount": 817
+        },
+        {
+          "title": "Unchain My Heart",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/ray-charles-and-his-orchestra/unchain-my-heart-but-on-the-other-hand-baby/",
+          "ratingCount": 173
+        }
+      ]
+    },
+    {
+      "artistId": "aretha-franklin",
+      "name": "Aretha Franklin",
+      "url": "https://rateyourmusic.com/artist/aretha-franklin",
+      "retrievedAt": "2026-11-18T13:10:22.180Z",
+      "releaseCount": 145,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "The House That Jack Built",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/aretha-franklin/the-house-that-jack-built-i-say-a-little-prayer/",
+          "ratingCount": 518
+        },
+        {
+          "title": "Spanish Harlem",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/aretha-franklin/spanish-harlem-lean-on-me/",
+          "ratingCount": 139
+        },
+        {
+          "title": "Bridge Over Troubled Water",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/aretha-franklin/bridge-over-troubled-water-a-brand-new-me/",
+          "ratingCount": 99
+        }
+      ]
+    },
+    {
+      "artistId": "sam-cooke",
+      "name": "Sam Cooke",
+      "url": "https://rateyourmusic.com/artist/sam-cooke",
+      "retrievedAt": "2026-11-18T13:10:48.056Z",
+      "releaseCount": 63,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "marvin-gaye",
+      "name": "Marvin Gaye",
+      "url": "https://rateyourmusic.com/artist/marvin-gaye",
+      "retrievedAt": "2026-11-18T13:11:22.479Z",
+      "releaseCount": 131,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Got to Give It Up",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/marvin-gaye/got-to-give-it-up-part-1-and-2/",
+          "ratingCount": 639
+        }
+      ]
+    },
+    {
+      "artistId": "otis-redding",
+      "name": "Otis Redding",
+      "url": "https://rateyourmusic.com/artist/otis-redding",
+      "retrievedAt": "2026-11-18T13:11:53.831Z",
+      "releaseCount": 66,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "mary-j-blige",
+      "name": "Mary J. Blige",
+      "url": "https://rateyourmusic.com/artist/mary-j-blige",
+      "retrievedAt": "2026-11-18T13:12:27.128Z",
+      "releaseCount": 92,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "As",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/george-michael-mary-j-blige/as/",
+          "ratingCount": 161
+        }
+      ]
+    },
+    {
+      "artistId": "curtis-mayfield",
+      "name": "Curtis Mayfield",
+      "url": "https://rateyourmusic.com/artist/curtis-mayfield",
+      "retrievedAt": "2026-11-18T13:12:52.106Z",
+      "releaseCount": 59,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "prince",
+      "name": "Prince",
+      "url": "https://rateyourmusic.com/artist/prince",
+      "retrievedAt": "2026-11-18T13:13:22.472Z",
+      "releaseCount": 196,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Erotic City",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/prince-and-the-revolution/girls-and-boys-under-the-cherry-moon-erotic-city/",
+          "ratingCount": 267
+        },
+        {
+          "title": "She's Always in My Hair",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/prince-and-the-revolution/raspberry-beret-shes-always-in-my-hair/",
+          "ratingCount": 1492
+        },
+        {
+          "title": "17 Days",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/prince/17-days/",
+          "ratingCount": 57
+        },
+        {
+          "title": "How Come U Don't Call Me Anymore",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/prince/_1999-how-come-u-dont-call-me-anymore/",
+          "ratingCount": 1335
+        }
+      ]
+    },
+    {
+      "artistId": "r-kelly",
+      "name": "R. Kelly",
+      "url": "https://rateyourmusic.com/artist/r-kelly",
+      "retrievedAt": "2026-11-18T13:13:48.683Z",
+      "releaseCount": 83,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "The World's Greatest",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/r-kelly/the-worlds-greatest/",
+          "ratingCount": 128
+        },
+        {
+          "title": "Gotham City",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/r-kelly/gotham-city/",
+          "ratingCount": 119
+        }
+      ]
+    },
+    {
+      "artistId": "green-day",
+      "name": "Green Day",
+      "url": "https://rateyourmusic.com/artist/green-day",
+      "retrievedAt": "2026-11-18T13:14:25.738Z",
+      "releaseCount": 72,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "The Saints Are Coming",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/u2-and-green-day/the-saints-are-coming/",
+          "ratingCount": 553
+        },
+        {
+          "title": "Working Class Hero",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/green-day/working-class-hero/",
+          "ratingCount": 264
+        },
+        {
+          "title": "J.A.R. (Jason Andrew Relva)",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/green-day/j_a_r-jason-andrew-relva/",
+          "ratingCount": 238
+        },
+        {
+          "title": "Pollyanna",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/green-day/pollyanna/",
+          "ratingCount": 233
+        }
+      ]
+    },
+    {
+      "artistId": "nine-inch-nails",
+      "name": "Nine Inch Nails",
+      "url": "https://rateyourmusic.com/artist/nine-inch-nails?_wl_challenge_id=1a364aa66ca2a4b521666f55fba91b4d&_wl_challenge_response=5a2a2f4752a0de54db259498dda0cc9f",
+      "retrievedAt": "2026-11-18T13:15:04.120Z",
+      "releaseCount": 43,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "The Perfect Drug",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/nine-inch-nails/the-perfect-drug-1/",
+          "ratingCount": 344
+        },
+        {
+          "title": "Burn",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/nine-inch-nails/burn/",
+          "ratingCount": 275
+        },
+        {
+          "title": "Deep",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/nine-inch-nails/deep/",
+          "ratingCount": 184
+        }
+      ]
+    },
+    {
+      "artistId": "rage-against-the-machine",
+      "name": "Rage Against the Machine",
+      "url": "https://rateyourmusic.com/artist/rage-against-the-machine",
+      "retrievedAt": "2026-11-18T13:15:32.276Z",
+      "releaseCount": 19,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "No Shelter",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/rage-against-the-machine/no-shelter/",
+          "ratingCount": 283
+        }
+      ]
+    },
+    {
+      "artistId": "the-beach-boys",
+      "name": "The Beach Boys",
+      "url": "https://rateyourmusic.com/artist/the-beach-boys",
+      "retrievedAt": "2026-11-18T13:15:59.115Z",
+      "releaseCount": 174,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Break Away",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beach-boys/break-away-celebrate-the-news/",
+          "ratingCount": 437
+        },
+        {
+          "title": "The Little Girl I Once Knew",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-beach-boys/the-little-girl-i-once-knew-theres-no-other-like-my-baby/",
+          "ratingCount": 344
+        }
+      ]
+    },
+    {
+      "artistId": "the-clash",
+      "name": "The Clash",
+      "url": "https://rateyourmusic.com/artist/the-clash",
+      "retrievedAt": "2026-11-18T13:16:34.955Z",
+      "releaseCount": 41,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "creedence-clearwater-revival",
+      "name": "Creedence Clearwater Revival",
+      "url": "https://rateyourmusic.com/artist/creedence-clearwater-revival",
+      "retrievedAt": "2026-11-18T13:16:59.143Z",
+      "releaseCount": 44,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "ac-dc",
+      "name": "AC/DC",
+      "url": "https://rateyourmusic.com/artist/ac_dc",
+      "retrievedAt": "2026-11-18T13:17:28.250Z",
+      "releaseCount": 73,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Big Gun",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/ac_dc/big-gun/",
+          "ratingCount": 229
+        }
+      ]
+    },
+    {
+      "artistId": "metallica",
+      "name": "Metallica",
+      "url": "https://rateyourmusic.com/artist/metallica",
+      "retrievedAt": "2026-11-18T13:17:59.536Z",
+      "releaseCount": 99,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "I Disappear",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/metallica/i-disappear/",
+          "ratingCount": 616
+        }
+      ]
+    },
+    {
+      "artistId": "black-sabbath",
+      "name": "Black Sabbath",
+      "url": "https://rateyourmusic.com/artist/black-sabbath",
+      "retrievedAt": "2026-11-18T13:18:33.300Z",
+      "releaseCount": 81,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "led-zeppelin",
+      "name": "Led Zeppelin",
+      "url": "https://rateyourmusic.com/artist/led-zeppelin",
+      "retrievedAt": "2026-11-18T13:18:59.112Z",
+      "releaseCount": 40,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "the-rolling-stones",
+      "name": "The Rolling Stones",
+      "url": "https://rateyourmusic.com/artist/the-rolling-stones",
+      "retrievedAt": "2026-11-18T13:19:32.055Z",
+      "releaseCount": 182,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Jumpin' Jack Flash",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/jumpin-jack-flash-child-of-the-moon/",
+          "ratingCount": 1643
+        },
+        {
+          "title": "Honky Tonk Women",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/honky-tonk-women-you-cant-always-get-what-you-want/",
+          "ratingCount": 1350
+        },
+        {
+          "title": "19th Nervous Breakdown",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/19th-nervous-breakdown-as-tears-go-by/",
+          "ratingCount": 905
+        },
+        {
+          "title": "We Love You",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/we-love-you-dandelion/",
+          "ratingCount": 597
+        },
+        {
+          "title": "Dandelion",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-rolling-stones/we-love-you-dandelion/",
+          "ratingCount": 597
+        }
+      ]
+    },
+    {
+      "artistId": "bob-dylan",
+      "name": "Bob Dylan",
+      "url": "https://rateyourmusic.com/artist/bob-dylan",
+      "retrievedAt": "2026-11-18T13:19:59.166Z",
+      "releaseCount": 142,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Positively 4th Street",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bob-dylan/positively-4th-street-from-a-buick-6/",
+          "ratingCount": 1116
+        },
+        {
+          "title": "Things Have Changed",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bob-dylan/things-have-changed/",
+          "ratingCount": 416
+        },
+        {
+          "title": "Can You Please Crawl Out Your Window?",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bob-dylan/can-you-please-crawl-out-your-window-highway-61-revisited/",
+          "ratingCount": 269
+        }
+      ]
+    },
+    {
+      "artistId": "neil-young",
+      "name": "Neil Young",
+      "url": "https://rateyourmusic.com/artist/neil-young",
+      "retrievedAt": "2026-11-18T13:20:34.807Z",
+      "releaseCount": 199,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Sugar Mountain",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/neil-young/heart-of-gold-sugar-mountain/",
+          "ratingCount": 1128
+        },
+        {
+          "title": "Philadelphia",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/neil-young/philadelphia/",
+          "ratingCount": 129
+        }
+      ]
+    },
+    {
+      "artistId": "john-coltrane",
+      "name": "John Coltrane",
+      "url": "https://rateyourmusic.com/artist/john-coltrane",
+      "retrievedAt": "2026-11-18T13:20:59.267Z",
+      "releaseCount": 28,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "jimi-hendrix",
+      "name": "Jimi Hendrix",
+      "url": "https://rateyourmusic.com/artist/jimi-hendrix",
+      "retrievedAt": "2026-11-18T13:21:32.476Z",
+      "releaseCount": 96,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "david-bowie",
+      "name": "David Bowie",
+      "url": "https://rateyourmusic.com/artist/david-bowie",
+      "retrievedAt": "2026-11-18T13:22:07.922Z",
+      "releaseCount": 210,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "John, I'm Only Dancing",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/david-bowie/john-im-only-dancing-hang-on-to-yourself/",
+          "ratingCount": 727
+        },
+        {
+          "title": "Absolute Beginners",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/david-bowie/absolute-beginners/",
+          "ratingCount": 621
+        },
+        {
+          "title": "This Is Not America",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/david-bowie-pat-metheny-group/this-is-not-america/",
+          "ratingCount": 511
+        }
+      ]
+    },
+    {
+      "artistId": "talking-heads",
+      "name": "Talking Heads",
+      "url": "https://rateyourmusic.com/artist/talking-heads",
+      "retrievedAt": "2026-11-18T13:22:41.774Z",
+      "releaseCount": 57,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Love → Building on Fire",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/talking-heads/love-%E2%86%92-building-on-fire-new-feeling/",
+          "ratingCount": 673
+        }
+      ]
+    },
+    {
+      "artistId": "tom-waits",
+      "name": "Tom Waits",
+      "url": "https://rateyourmusic.com/artist/tom-waits",
+      "retrievedAt": "2026-11-18T13:23:08.596Z",
+      "releaseCount": 49,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "the-who",
+      "name": "The Who",
+      "url": "https://rateyourmusic.com/artist/the-who",
+      "retrievedAt": "2026-11-18T13:23:41.183Z",
+      "releaseCount": 81,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "I Can't Explain",
+          "status": "selected-apple-and-rym",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-who/baba-oriley-i-cant-explain/",
+          "ratingCount": 1748
+        },
+        {
+          "title": "Substitute",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-who/substitute-instant-party/",
+          "ratingCount": 772
+        },
+        {
+          "title": "Pictures of Lily",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-who/pictures-of-lily-doctor-doctor/",
+          "ratingCount": 525
+        },
+        {
+          "title": "Let's See Action",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-who/lets-see-action-when-i-was-a-boy/",
+          "ratingCount": 146
+        },
+        {
+          "title": "Join Together",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-who/join-together-baby-dont-you-do-it/",
+          "ratingCount": 238
+        },
+        {
+          "title": "The Seeker",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/the-who/the-seeker-here-for-more/",
+          "ratingCount": 515
+        }
+      ]
+    },
+    {
+      "artistId": "bruce-springsteen",
+      "name": "Bruce Springsteen",
+      "url": "https://rateyourmusic.com/artist/bruce-springsteen",
+      "retrievedAt": "2026-11-18T13:24:09.415Z",
+      "releaseCount": 135,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Streets of Philadelphia",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bruce-springsteen/streets-of-philadelphia-if-i-should-fall-behind/",
+          "ratingCount": 836
+        },
+        {
+          "title": "Pink Cadillac",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bruce-springsteen/dancing-in-the-dark-pink-cadillac/",
+          "ratingCount": 1176
+        }
+      ]
+    },
+    {
+      "artistId": "ramones",
+      "name": "Ramones",
+      "url": "https://rateyourmusic.com/artist/ramones",
+      "retrievedAt": "2026-11-18T13:24:40.964Z",
+      "releaseCount": 53,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    },
+    {
+      "artistId": "kraftwerk",
+      "name": "Kraftwerk",
+      "url": "https://rateyourmusic.com/artist/kraftwerk",
+      "retrievedAt": "2026-11-18T13:25:07.443Z",
+      "releaseCount": 36,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Expo 2000",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/kraftwerk/expo-2000/",
+          "ratingCount": 376
+        }
+      ]
+    },
+    {
+      "artistId": "bjork",
+      "name": "Björk",
+      "url": "https://rateyourmusic.com/artist/bjork",
+      "retrievedAt": "2026-11-18T13:25:40.349Z",
+      "releaseCount": 141,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Oral",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bjork-rosalia/oral/",
+          "ratingCount": 1846
+        },
+        {
+          "title": "It's in Our Hands",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bjork/its-in-our-hands/",
+          "ratingCount": 489
+        },
+        {
+          "title": "Play Dead",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/bjork-david-arnold/play-dead/",
+          "ratingCount": 1097
+        }
+      ]
+    },
+    {
+      "artistId": "pixies",
+      "name": "Pixies",
+      "url": "https://rateyourmusic.com/artist/pixies",
+      "retrievedAt": "2026-11-18T13:26:06.973Z",
+      "releaseCount": 46,
+      "note": "Original releases reviewed against album catalog; only selected significant recordings proceed.",
+      "decisions": [
+        {
+          "title": "Bam Thwok",
+          "status": "selected-rym-original-release",
+          "sourceUrl": "https://rateyourmusic.com/release/single/pixies/bam-thwok/",
+          "ratingCount": 202
+        }
+      ]
+    },
+    {
+      "artistId": "wilco",
+      "name": "Wilco",
+      "url": "https://rateyourmusic.com/artist/wilco",
+      "retrievedAt": "2026-11-18T13:26:41.895Z",
+      "releaseCount": 59,
+      "note": "No major original non-album single selected; album aliases, guest appearances, remixes and minor B-sides excluded.",
+      "decisions": []
+    }
+  ]
+}

@@ -38,6 +38,12 @@ const artistFilter = new Set(
 const sources = new Map(data.sources.map((r) => [key(r), r]));
 // Title spelling or shared credits make these recordings difficult to match automatically.
 const reviewedLinks = [
+  ["kendrick-lamar", "The Hillbillies", "nsCsM1xqiTY"],
+  ["vince-staples", "Get the Fuck Off My Dick", "G5k6AVqLmA0"],
+  ["vince-staples", "Sheet Music (Episode 02)", "2A10MrtzoNw"],
+  ["lana-del-rey", "Tough", "R2hgq8j6ETY"],
+  ["mary-j-blige", "As", "3V726_HShyY"],
+  ["prince", "Erotic City", "KY4gnToCXa4"],
   ["paramore", "Still Into You", "OblL026SvD4"],
   ["deftones", "Sextape", "f0pdwd0miqs"],
   ["deftones", "Entombed", "gEXbHKAuHSg"],
@@ -86,7 +92,7 @@ for (const [artistId, title, youtubeId, backupYoutubeId] of reviewedLinks) {
     youtubeId,
     backupYoutubeId,
     sourceUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
-    retrievedAt: "2026-11-15",
+    retrievedAt: new Date().toISOString().slice(0, 10),
     verification:
       "Title and recording manually matched to the published video.",
   };
@@ -181,8 +187,16 @@ if (process.argv.includes("--kworb")) {
 }
 let catalog = await readJson("public/catalog.json", null);
 if (process.argv.includes("--verify")) {
+  const singleKeys = new Set(
+    (catalog?.songs ?? [])
+      .filter((song) => song.albumIds.some((id) => id.endsWith("-singles")))
+      .flatMap((song) =>
+        song.artistIds.map((artistId) => key({ artistId, title: song.title })),
+      ),
+  );
   const pending = [...sources.values()].filter(
       (s) =>
+        (!process.argv.includes("--singles-only") || singleKeys.has(key(s))) &&
         (!artistFilter.size || artistFilter.has(s.artistId)) &&
         (!s.metadataCheckedAt ||
           (s.backupYoutubeId && !s.backupMetadataCheckedAt)),
@@ -256,11 +270,17 @@ if (process.argv.includes("--search") && catalog) {
       6,
       Math.max(1, Number(process.env.VIDEO_IMPORT_CONCURRENCY || 4)),
     );
-  const queue = [...catalog.songs].sort(
-    (a, b) =>
-      (a.kind === "song" ? 0 : 1) - (b.kind === "song" ? 0 : 1) ||
-      b.popularity - a.popularity,
-  );
+  const queue = catalog.songs
+    .filter(
+      (song) =>
+        !process.argv.includes("--singles-only") ||
+        song.albumIds.some((id) => id.endsWith("-singles")),
+    )
+    .sort(
+      (a, b) =>
+        (a.kind === "song" ? 0 : 1) - (b.kind === "song" ? 0 : 1) ||
+        b.popularity - a.popularity,
+    );
   let searched = 0,
     cursor = 0,
     completed = 0,
@@ -372,12 +392,17 @@ if (process.argv.includes("--search") && catalog) {
                 normalized === requested ||
                 (requested.length > 3 &&
                   normalized.startsWith(requested) &&
-                  normalized.length < requested.length + 18);
+                  normalized.length < requested.length + 18) ||
+                (process.argv.includes("--singles-only") &&
+                  artistMatch &&
+                  requested.length >= 7 &&
+                  normalized.includes(requested) &&
+                  normalized.length < requested.length + 65);
               let score = titleMatch ? 10 : -100;
               if (artistMatch) score += 4;
               if (/topic|vevo|official/i.test(channel)) score += 3;
               if (
-                /\b(live|cover|reaction|karaoke|instrumental|slowed|sped up)\b/i.test(
+                /\b(live|cover|reaction|karaoke|instrumental|slowed|sped up|remix)\b/i.test(
                   title,
                 ) &&
                 !new RegExp("live|instrumental", "i").test(song.title)
@@ -393,6 +418,25 @@ if (process.argv.includes("--search") && catalog) {
                 /^[\w-]{11}$/.test(c.v.videoId),
             )
             .sort((a, b) => b.score - a.score);
+          if (
+            !candidates.length &&
+            process.argv.includes("--review-candidates")
+          )
+            console.log(
+              JSON.stringify({
+                artist,
+                song: song.title,
+                review: results
+                  .slice(0, 5)
+                  .map((v) => ({
+                    id: v.videoId,
+                    title: (v.title?.runs || []).map((r) => r.text).join(""),
+                    channel: (v.ownerText?.runs || [])
+                      .map((r) => r.text)
+                      .join(""),
+                  })),
+              }),
+            );
           for (const candidate of candidates.slice(0, 2)) {
             const id = candidate.v.videoId;
             const meta = await fetch(
