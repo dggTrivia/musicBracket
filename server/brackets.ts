@@ -3,6 +3,8 @@ import {
   createPortableChallengeLink,
   readChallengeLink,
   shareCodePattern,
+  restoreResult,
+  resultPicks,
 } from "../src/share";
 
 interface Statement {
@@ -43,7 +45,7 @@ export async function createBracket(request: Request, env: ShareEnvironment) {
         const { done, value } = await reader.read();
         if (done) break;
         size += value.byteLength;
-        if (size > 66000) {
+        if (size > 90_000) {
           await reader.cancel();
           return error("This bracket is too large to share.", 413);
         }
@@ -65,6 +67,11 @@ export async function createBracket(request: Request, env: ShareEnvironment) {
       request.url,
     );
     payload = new URL(url).hash;
+    if (input.picks !== undefined) {
+      if (typeof input.picks !== "string")
+        return error("Invalid result picks.", 400);
+      payload += "~" + resultPicks(restoreResult(definition, input.picks));
+    }
   } catch {
     return error("The bracket is invalid or incomplete.", 400);
   }

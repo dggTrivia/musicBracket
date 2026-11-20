@@ -1,5 +1,6 @@
-import type { HistoryEntry, Run, Song } from "./types";
+import type { HistoryEntry, Run, Song, SourceOverride } from "./types";
 import { matchSongs, outcomes, songArtist } from "./engine";
+import { challengeSnapshot } from "./share";
 const palettes = {
   light: {
     bg: "#f5edda",
@@ -30,9 +31,13 @@ type ExportTheme = boolean | "streaming";
 export async function renderHistoryEntry(
   run: Run,
   theme: ExportTheme,
+  sources: Record<string, SourceOverride> = {},
 ): Promise<HistoryEntry> {
   const full = await exportBracket(run, "full", theme),
-    top = await exportBracket(run, "top", theme);
+    top =
+      run.definition.songs.length > 16
+        ? await exportBracket(run, "top", theme)
+        : undefined;
   const won = outcomes(run),
     winner = run.definition.songs.find(
       (s) => s.id === won[run.definition.matches.at(-1)!.id],
@@ -48,6 +53,18 @@ export async function renderHistoryEntry(
     entrantCount: run.definition.songs.length,
     full,
     top,
+    result: {
+      ...run,
+      definition: challengeSnapshot(run.definition, {
+        ...run.definition.sharedSources,
+        ...sources,
+      }),
+      picks: run.picks.map(({ matchId, songId, at }) => ({
+        matchId,
+        songId,
+        at,
+      })),
+    },
   };
 }
 async function picture(url: string) {

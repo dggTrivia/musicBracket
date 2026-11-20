@@ -1991,6 +1991,59 @@ progress::-webkit-progress-value {
   justify-content: center;
   padding: 30px;
 }
+.finished-result-dialog {
+  width: min(100%, 92rem);
+  max-height: 100%;
+  overflow: auto;
+  background: var(--paper);
+  padding: clamp(16px, 3vw, 30px);
+}
+.finished-result-dialog .bracket-scroll {
+  max-height: 60dvh;
+}
+.finished-result-actions {
+  flex-wrap: wrap;
+}
+.result-champion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 12px;
+}
+.result-song-player {
+  width: min(100%, 640px);
+  margin-inline: auto;
+}
+.result-listen-dialog {
+  width: min(calc(100% - 24px), 680px);
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+}
+.result-listen-dialog::backdrop {
+  background: #17160fd1;
+}
+.result-listen-content {
+  padding: clamp(14px, 3vw, 24px);
+}
+.result-listen-content .share-heading {
+  margin-bottom: 12px;
+}
+.tree-listen {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  color: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.tree-listen svg {
+  flex: none;
+}
 [data-theme="dark"] .dialog-backdrop {
   background: #151617d1;
 }

@@ -2,6 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   makeDefinition,
+  choose,
+  currentMatch,
+  matchSongs,
   selectEntrants,
   validateDefinition,
 } from "../src/engine.ts";
@@ -10,6 +13,8 @@ import {
   createChallengeLink,
   createPortableChallengeLink,
   readChallengeLink,
+  createResultLink,
+  readResultLink,
 } from "../src/share.ts";
 import {
   createBracket,
@@ -18,7 +23,7 @@ import {
 } from "../server/brackets.ts";
 import { DatabaseSync } from "node:sqlite";
 import { readFileSync } from "node:fs";
-import type { BracketOptions, Song } from "../src/types.ts";
+import type { BracketOptions, Run, Song } from "../src/types.ts";
 
 const options: BracketOptions = {
   artistId: "a",
@@ -195,6 +200,53 @@ test("short links store an immutable replay, deduplicate shares and reject malfo
       JSON.parse(JSON.stringify(snapshot)),
     );
     await assert.rejects(readChallengeLink("#b=short"));
+    let run: Run = {
+      id: snapshot.id,
+      definition: snapshot,
+      picks: [],
+      updatedAt: snapshot.createdAt,
+    };
+    await assert.rejects(
+      createResultLink(run, "full", "https://musicbracket.pages.dev/"),
+    );
+    for (let match = currentMatch(run); match; match = currentMatch(run)) {
+      run = choose(run, matchSongs(run, match)[0].id);
+    }
+    const full = await createResultLink(
+      run,
+      "full",
+      "https://musicbracket.pages.dev/",
+    );
+    const top = await createResultLink(
+      run,
+      "top",
+      "https://musicbracket.pages.dev/",
+    );
+    assert.match(new URL(full).hash, /^#r=[\w-]{16}$/);
+    assert.equal(top, full + "/16");
+    const result = await readResultLink(new URL(full).hash);
+    assert.deepEqual(
+      result.run.picks.map(({ matchId, songId }) => ({ matchId, songId })),
+      run.picks.map(({ matchId, songId }) => ({ matchId, songId })),
+    );
+    assert.equal((await readResultLink(new URL(top).hash)).mode, "top");
+    assert.equal(
+      (
+        await readResultLink(
+          new URL(
+            await createResultLink(
+              run,
+              "full",
+              "http://musicbracket.localhost:19473/",
+            ),
+          ).hash,
+        )
+      ).run.picks.length,
+      run.picks.length,
+    );
+    await assert.rejects(
+      readChallengeLink(new URL(full).hash.replace("#r=", "#b=")),
+    );
     const invalid = await createBracket(
       new Request("https://musicbracket.pages.dev/api/brackets", {
         method: "POST",
@@ -218,7 +270,7 @@ test("short links store an immutable replay, deduplicate shares and reject malfo
           Origin: "https://musicbracket.pages.dev",
           "Content-Type": "application/json",
         },
-        body: "x".repeat(67000),
+        body: "x".repeat(91_000),
       }),
       env,
     );

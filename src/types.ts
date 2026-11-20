@@ -88,7 +88,8 @@ export interface HistoryEntry {
   completedAt: string;
   entrantCount: number;
   full: Blob;
-  top: Blob;
+  top?: Blob;
+  result?: Run;
 }
 export interface SourceOverride {
   primary?: string;

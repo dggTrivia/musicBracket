@@ -81,6 +81,10 @@ import {
   createChallengeLink,
   isChallengeLink,
   readChallengeLink,
+  createResultLink,
+  readResultLink,
+  isResultLink,
+  type ResultView,
 } from "./share";
 
 const defaults: Settings = {
@@ -211,6 +215,12 @@ const emptyOptions: BracketOptions = {
 type View =
   "home" | "new" | "game" | "active" | "history" | "library" | "settings";
 const menuGuard = { musicBracketMenuGuard: true };
+function historyReplaceWithoutHash() {
+  const url = new URL(location.href);
+  url.hash = "";
+  window.history.replaceState(window.history.state, "", url);
+}
+
 function keepMenuInHistory(url?: string) {
   if (!window.history.state?.musicBracketMenuGuard)
     window.history.pushState(menuGuard, "", url);
@@ -258,7 +268,48 @@ function prepareRoundCue(volume: number) {
   }
 }
 export default function App() {
-  const [snapshotSize, setSnapshotSize] = useState(16);
+  const [resultView, setResultView] = useState<{
+    run: Run;
+    mode: ResultView;
+    shared?: boolean;
+  }>();
+  const [resultShare, setResultShare] = useState<{
+    run: Run;
+    mode: ResultView;
+  }>();
+  const [resultLinkError, setResultLinkError] = useState("");
+  const [resultLinkLoading, setResultLinkLoading] = useState(false);
+  const [listening, setListening] = useState<{ run: Run; song: Song }>();
+  const closeResult = () => {
+    setResultView(undefined);
+    setResultLinkError("");
+    if (isResultLink(location.hash)) historyReplaceWithoutHash();
+  };
+  useEffect(() => {
+    let request = 0;
+    const open = async () => {
+      const id = ++request;
+      const hash = location.hash;
+      setResultLinkError("");
+      setResultLinkLoading(isResultLink(hash));
+      setResultView((value) => (value?.shared ? undefined : value));
+      if (!isResultLink(hash)) return;
+      try {
+        const result = await readResultLink(hash);
+        if (id === request) setResultView({ ...result, shared: true });
+      } catch (error) {
+        if (id === request) setResultLinkError((error as Error).message);
+      } finally {
+        if (id === request) setResultLinkLoading(false);
+      }
+    };
+    void open();
+    window.addEventListener("hashchange", open);
+    return () => {
+      request++;
+      window.removeEventListener("hashchange", open);
+    };
+  }, []);
   const [artistChosen, setArtistChosen] = useState(false);
   const [incoming, setIncoming] = useState<Definition | null>(null);
   const incomingUrl = useRef<string | undefined>(undefined);
@@ -691,7 +742,7 @@ export default function App() {
       if (archiving.current.has(finished.id)) return;
       archiving.current.add(finished.id);
       try {
-        const entry = await renderHistoryEntry(finished, exportTheme);
+        const entry = await renderHistoryEntry(finished, exportTheme, sources);
         if (!(await storage.archive(entry))) return;
         if (finished.id === runId) setWinnerRun(finished);
         setHistory((items) => [
@@ -709,7 +760,7 @@ export default function App() {
         archiving.current.delete(finished.id);
       }
     },
-    [runId, exportTheme],
+    [runId, exportTheme, sources],
   );
   useEffect(() => {
     for (const finished of runs) {
@@ -2132,18 +2183,15 @@ export default function App() {
                     {run.definition.artist.name} · {run.definition.songs.length}{" "}
                     songs · {run.picks.length} decisions
                   </p>
-                  <div className="winner-art">
-                    {(() => {
-                      const winner = run.definition.songs.find(
-                        (s) =>
-                          s.id ===
-                          outcomes(run)[run.definition.matches.at(-1)!.id],
-                      );
-                      return winner ? (
-                        <Cover song={winner} albums={run.definition.albums} />
-                      ) : null;
-                    })()}
-                  </div>
+                  {!resultView && !listening && (
+                    <ResultSong
+                      key={run.id}
+                      run={run}
+                      song={championSong(run)}
+                      source={sources[championSong(run)?.id ?? ""]}
+                      volume={settings.volume}
+                    />
+                  )}
                   <p>You followed your ears. Here’s where they took you.</p>
                   <div className="inline centered">
                     <button
@@ -2154,7 +2202,12 @@ export default function App() {
                     </button>
                     <button
                       className="secondary"
-                      onClick={() => setBracket(true)}
+                      onClick={() =>
+                        setResultView({
+                          run: freezeResult(run, sources),
+                          mode: "full",
+                        })
+                      }
                     >
                       View full bracket
                     </button>
@@ -2163,43 +2216,25 @@ export default function App() {
                     </button>
                   </div>
                   <div className="result-downloads">
-                    <select
-                      aria-label="Snapshot size"
-                      value={snapshotSize}
-                      onChange={(e) => setSnapshotSize(+e.target.value)}
-                    >
-                      <option value={8}>Final 8 snapshot</option>
-                      <option value={16}>Final 16 snapshot</option>
-                      <option value={32}>Final 32 snapshot</option>
-                    </select>
-                    <button
-                      className="secondary"
-                      disabled={busy}
-                      onClick={async () => {
-                        try {
-                          setBusy(true);
-                          download(
-                            await exportBracket(
-                              run,
-                              "top",
-                              exportTheme,
-                              snapshotSize,
-                            ),
-                            `final-${snapshotSize}.png`,
-                          );
-                        } catch (e) {
-                          setError((e as Error).message);
-                        } finally {
-                          setBusy(false);
+                    {resultModes(run).map((mode) => (
+                      <button
+                        key={mode}
+                        className="secondary"
+                        onClick={() =>
+                          setResultShare({
+                            run: freezeResult(run, sources),
+                            mode,
+                          })
                         }
-                      }}
-                    >
-                      <Download size={15} /> Download snapshot
-                    </button>
+                      >
+                        <Link2 size={15} /> Share{" "}
+                        {mode === "top" ? "Final 16" : "full result"}
+                      </button>
+                    ))}
                   </div>
                   <small>
                     {history.some((item) => item.id === run.id)
-                      ? "Full bracket and Final 16 saved to History."
+                      ? "Result saved to History."
                       : archiveFailures.includes(run.id)
                         ? "Your result is safe. Retry saving its images from History."
                         : "Saving your result images to History…"}
@@ -2309,6 +2344,16 @@ export default function App() {
                   <HistoryCard
                     key={h.id}
                     entry={h}
+                    onOpen={
+                      h.result
+                        ? (mode) => setResultView({ run: h.result!, mode })
+                        : undefined
+                    }
+                    onShare={
+                      h.result
+                        ? (mode) => setResultShare({ run: h.result!, mode })
+                        : undefined
+                    }
                     onDelete={() => {
                       if (confirm("Delete these result images?"))
                         storage
@@ -2757,7 +2802,15 @@ export default function App() {
               Highlighted: your current matchup. Lines progress from left to
               right. Later opponents follow your picks.
             </p>
-            <BracketTree run={run} />
+            <BracketTree
+              run={run}
+              onListen={
+                !match
+                  ? (song) =>
+                      setListening({ run: freezeResult(run, sources), song })
+                  : undefined
+              }
+            />
             <div className="bracket-bottom">
               <span>
                 <span className="live-dot" /> Current matchup
@@ -2771,6 +2824,35 @@ export default function App() {
             </div>
           </section>
         </div>
+      )}
+      {(resultView || resultLinkError || resultLinkLoading) && (
+        <ResultDialog
+          result={resultView}
+          status={
+            resultLinkError || (resultLinkLoading ? "Loading result…" : "")
+          }
+          onClose={closeResult}
+          onMode={(mode) =>
+            setResultView((value) => value && { ...value, mode })
+          }
+          onShare={resultShare ? undefined : setResultShare}
+          onListen={(run, song) => setListening({ run, song })}
+          covered={Boolean(resultShare || listening)}
+          theme={exportTheme}
+        />
+      )}
+      {resultShare && (
+        <ShareDialog
+          result={resultShare}
+          onClose={() => setResultShare(undefined)}
+        />
+      )}
+      {listening && (
+        <ListenDialog
+          {...listening}
+          volume={settings.volume}
+          onClose={() => setListening(undefined)}
+        />
       )}
       {share && !confirmHome && (
         <ShareDialog definition={share} onClose={() => setShare(null)} />
@@ -3057,9 +3139,11 @@ function MainMenu({
 }
 function ShareDialog({
   definition,
+  result,
   onClose,
 }: {
-  definition: Definition;
+  definition?: Definition;
+  result?: { run: Run; mode: ResultView };
   onClose: () => void;
 }) {
   const [url, setUrl] = useState("");
@@ -3072,7 +3156,10 @@ function ShareDialog({
     let cancelled = false;
     setFailed(false);
     setMessage("");
-    createChallengeLink(definition, window.location.href).then(
+    const link = result
+      ? createResultLink(result.run, result.mode, window.location.href)
+      : createChallengeLink(definition!, window.location.href);
+    link.then(
       (value) => {
         if (!cancelled) setUrl(value);
       },
@@ -3086,7 +3173,7 @@ function ShareDialog({
     return () => {
       cancelled = true;
     };
-  }, [definition, attempt]);
+  }, [definition, result, attempt]);
   const local = /^(localhost|127(?:\.\d+){3}|\[::1\])$|\.localhost$/i.test(
     window.location.hostname,
   );
@@ -3099,7 +3186,13 @@ function ShareDialog({
         className="bracket-prompt share-dialog"
       >
         <div className="share-heading">
-          <h2 id="share-heading">Share this bracket</h2>
+          <h2 id="share-heading">
+            {result
+              ? result.mode === "top"
+                ? "Share Final 16"
+                : "Share full result"
+              : "Share this bracket"}
+          </h2>
           <button
             className="icon-button"
             aria-label="Close share dialog"
@@ -3109,7 +3202,9 @@ function ShareDialog({
           </button>
         </div>
         <p>
-          Your friend gets the same matchups and starts with their own picks.
+          {result
+            ? "Anyone with the link can see your picks and listen to the songs."
+            : "Your friend gets the same matchups and starts with their own picks."}
         </p>
         {local && (
           <p className="field-note">
@@ -3219,21 +3314,39 @@ function Empty({
 }
 function HistoryCard({
   entry,
+  onOpen,
+  onShare,
   onDelete,
 }: {
   entry: HistoryEntry;
+  onOpen?: (mode: ResultView) => void;
+  onShare?: (mode: ResultView) => void;
   onDelete: () => void;
 }) {
   const [url, setUrl] = useState(""),
-    [top, setTop] = useState(true);
+    [showTop, setTop] = useState(true);
+  const top = Boolean(entry.top && entry.entrantCount > 16 && showTop);
+  const image = top ? entry.top! : entry.full;
   useEffect(() => {
-    const src = URL.createObjectURL(top ? entry.top : entry.full);
+    const src = URL.createObjectURL(image);
     setUrl(src);
     return () => URL.revokeObjectURL(src);
-  }, [entry, top]);
+  }, [image]);
   return (
     <article className="history-card">
-      <a href={url} target="_blank" rel="noreferrer">
+      <a
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        onClick={
+          onOpen
+            ? (event) => {
+                event.preventDefault();
+                onOpen(top ? "top" : "full");
+              }
+            : undefined
+        }
+      >
         <img
           src={url}
           alt={`${entry.name} ${top ? "Final 16" : "full bracket"} result`}
@@ -3255,14 +3368,32 @@ function HistoryCard({
         </button>
       </div>
       <div className="history-actions">
-        <button className="text-button" onClick={() => setTop(!top)}>
-          {top ? "View full bracket" : "View Final 16"}
-        </button>
+        {onOpen && (
+          <button
+            className="text-button"
+            onClick={() => onOpen(top ? "top" : "full")}
+          >
+            Open result
+          </button>
+        )}
+        {entry.top && entry.entrantCount > 16 && (
+          <button className="text-button" onClick={() => setTop(!top)}>
+            {top ? "Preview full bracket" : "Preview Final 16"}
+          </button>
+        )}
+        {onShare && (
+          <button
+            className="text-button"
+            onClick={() => onShare(top ? "top" : "full")}
+          >
+            <Link2 size={14} /> Share {top ? "Final 16" : "full result"}
+          </button>
+        )}
         <button
           className="text-button"
           onClick={() =>
             download(
-              top ? entry.top : entry.full,
+              image,
               `${entry.artist}-${top ? "final-16" : "full-bracket"}.png`,
             )
           }
@@ -3273,7 +3404,223 @@ function HistoryCard({
     </article>
   );
 }
-function BracketTree({ run }: { run: Run }) {
+function resultModes(run: Run): ResultView[] {
+  return run.definition.songs.length > 16 ? ["full", "top"] : ["full"];
+}
+
+function freezeResult(run: Run, sources: Record<string, SourceOverride>) {
+  return {
+    ...run,
+    definition: challengeSnapshot(run.definition, {
+      ...run.definition.sharedSources,
+      ...sources,
+    }),
+  };
+}
+
+function championSong(run: Run) {
+  const winner = outcomes(run)[run.definition.matches.at(-1)!.id];
+  return run.definition.songs.find((song) => song.id === winner);
+}
+
+function ResultSong({
+  run,
+  song,
+  source,
+  volume,
+}: {
+  run: Run;
+  song?: Song;
+  source?: SourceOverride;
+  volume: number;
+}) {
+  const [active, setActive] = useState(false);
+  if (!song) return null;
+  return (
+    <div className="result-song-player">
+      <SongPlayer
+        song={song}
+        artistName={songArtist(run.definition, song)}
+        source={source ?? run.definition.sharedSources?.[song.id] ?? {}}
+        volume={volume}
+        active={active}
+        onActivate={() => setActive(true)}
+      />
+    </div>
+  );
+}
+
+function ListenDialog({
+  run,
+  song,
+  volume,
+  onClose,
+}: {
+  run: Run;
+  song: Song;
+  volume: number;
+  onClose: () => void;
+}) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+  useEffect(() => {
+    dialog.current?.showModal();
+  }, []);
+  return (
+    <dialog
+      ref={dialog}
+      className="bracket-prompt result-listen-dialog"
+      aria-labelledby={titleId}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div className="result-listen-content">
+        <div className="share-heading">
+          <h2 id={titleId}>{song.title}</h2>
+          <button
+            type="button"
+            className="icon-button"
+            aria-label="Close player"
+            onClick={onClose}
+          >
+            <X size={22} />
+          </button>
+        </div>
+        <ResultSong
+          key={song.id}
+          run={run}
+          song={run.definition.songs.find((item) => item.id === song.id)}
+          volume={volume}
+        />
+      </div>
+    </dialog>
+  );
+}
+
+function ResultDialog({
+  result,
+  status,
+  covered,
+  theme,
+  onClose,
+  onMode,
+  onShare,
+  onListen,
+}: {
+  result?: { run: Run; mode: ResultView; shared?: boolean };
+  status: string;
+  covered: boolean;
+  theme: Parameters<typeof exportBracket>[2];
+  onClose: () => void;
+  onMode: (mode: ResultView) => void;
+  onShare?: (result: { run: Run; mode: ResultView }) => void;
+  onListen: (run: Run, song: Song) => void;
+}) {
+  useDialogFocus(!covered, ".finished-result-dialog", onClose);
+  const [exporting, setExporting] = useState(false);
+  const [error, setError] = useState("");
+  const run = result?.run;
+  const mode =
+    result?.mode === "top" && run && resultModes(run).includes("top")
+      ? "top"
+      : "full";
+  return (
+    <div className="dialog-backdrop">
+      <section
+        className="bracket-prompt finished-result-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="finished-result-heading"
+      >
+        <div className="share-heading">
+          <h2 id="finished-result-heading">
+            {run
+              ? run.definition.options.name || run.definition.artist.name
+              : "Bracket result"}
+          </h2>
+          <button
+            className="icon-button"
+            aria-label="Close result"
+            onClick={onClose}
+          >
+            <X size={22} />
+          </button>
+        </div>
+        {status && <p role="status">{status}</p>}
+        {run && (
+          <>
+            <p className="result-champion">
+              <Trophy size={17} /> Winner · {championSong(run)?.title}
+            </p>
+            <div className="inline finished-result-actions">
+              {resultModes(run).length > 1 &&
+                resultModes(run).map((view) => (
+                  <button
+                    className={view === mode ? "primary" : "secondary"}
+                    key={view}
+                    aria-pressed={view === mode}
+                    onClick={() => onMode(view)}
+                  >
+                    {view === "top" ? "Final 16" : "Full bracket"}
+                  </button>
+                ))}
+              {onShare && (
+                <button
+                  className="secondary"
+                  onClick={() => onShare({ run, mode })}
+                >
+                  <Link2 size={15} /> Share result
+                </button>
+              )}
+              <button
+                className="secondary"
+                disabled={exporting}
+                onClick={async () => {
+                  setError("");
+                  setExporting(true);
+                  try {
+                    download(
+                      await exportBracket(run, mode, theme),
+                      mode === "top" ? "final-16.png" : "full-bracket.png",
+                    );
+                  } catch {
+                    setError("The image couldn't be exported. Try again.");
+                  } finally {
+                    setExporting(false);
+                  }
+                }}
+              >
+                <Download size={15} />{" "}
+                {exporting ? "Exporting…" : "Download PNG"}
+              </button>
+            </div>
+            {error && <p role="alert">{error}</p>}
+            <BracketTree
+              run={run}
+              mode={mode}
+              onListen={(song) => onListen(run, song)}
+            />
+          </>
+        )}
+      </section>
+    </div>
+  );
+}
+
+function BracketTree({
+  run,
+  mode = "full",
+  onListen,
+}: {
+  run: Run;
+  mode?: ResultView;
+  onListen?: (song: Song) => void;
+}) {
   const won = outcomes(run),
     current = currentMatch(run);
   const [zoom, setZoom] = useState(1);
@@ -3316,8 +3663,17 @@ function BracketTree({ run }: { run: Run }) {
     const observer = new ResizeObserver(redraw);
     observer.observe(el);
     return () => observer.disconnect();
-  }, [run, zoom]);
-  const rounds = [...new Set(run.definition.matches.map((m) => m.round))];
+  }, [run, zoom, mode]);
+  const allRounds = [...new Set(run.definition.matches.map((m) => m.round))];
+  const rounds =
+    mode === "top"
+      ? allRounds.filter(
+          (round) =>
+            run.definition.matches
+              .filter((m) => m.round === round)
+              .reduce((count, match) => count + match.slots.length, 0) <= 16,
+        )
+      : allRounds;
   return (
     <>
       <label className="zoom-control">
@@ -3351,7 +3707,7 @@ function BracketTree({ run }: { run: Run }) {
           </svg>
           {rounds.map((r) => (
             <div className="bracket-round" key={r}>
-              <h3>{roundTitle(r, rounds.length)}</h3>
+              <h3>{roundTitle(r, allRounds.length)}</h3>
               <div className="round-matches">
                 {run.definition.matches
                   .filter((m) => m.round === r)
@@ -3390,7 +3746,17 @@ function BracketTree({ run }: { run: Run }) {
                                   albums={run.definition.albums}
                                 />
                                 <span>
-                                  {song.title}
+                                  {onListen ? (
+                                    <button
+                                      className="tree-listen"
+                                      onClick={() => onListen(song)}
+                                      aria-label={`Listen to ${song.title}`}
+                                    >
+                                      <Play size={12} /> {song.title}
+                                    </button>
+                                  ) : (
+                                    song.title
+                                  )}
                                   {run.definition.artists && (
                                     <small className="tree-artist">
                                       {songArtist(run.definition, song)}

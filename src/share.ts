@@ -1,5 +1,123 @@
-import { validateDefinition } from "./engine";
-import type { Definition, SourceOverride } from "./types";
+import { decisionCount, validateDefinition } from "./engine";
+import type { Definition, Run, SourceOverride } from "./types";
+
+export type ResultView = "full" | "top";
+
+export function restoreResult(definition: Definition, picks: string): Run {
+  if (picks.length > 25_000 || !/^[0-9]+(?:\.[0-9]+)*$/.test(picks))
+    throw Error("Invalid result picks.");
+  const indexes = picks.split(".");
+  if (indexes.length !== decisionCount(definition))
+    throw Error("Incomplete result.");
+  const run: Run = {
+    id: definition.id,
+    definition,
+    picks: [],
+    updatedAt: definition.createdAt,
+  };
+  const winners = new Map<string, string>();
+  let next = 0;
+  for (const match of definition.matches) {
+    const candidates = match.slots.map((slot) =>
+      "songId" in slot ? slot.songId : winners.get(slot.matchId),
+    );
+    const winner =
+      candidates.length === 1
+        ? candidates[0]
+        : definition.songs[Number(indexes[next++])]?.id;
+    if (!winner || !candidates.includes(winner))
+      throw Error("Invalid matchup winner.");
+    winners.set(match.id, winner);
+    if (candidates.length > 1)
+      run.picks.push({
+        matchId: match.id,
+        songId: winner,
+        at: definition.createdAt,
+      });
+  }
+  return run;
+}
+
+export function resultPicks(run: Run) {
+  const indexes = new Map(
+    run.definition.songs.map((song, index) => [song.id, index]),
+  );
+  return run.picks.map((pick) => indexes.get(pick.songId) ?? -1).join(".");
+}
+
+export function isResultLink(hash: string) {
+  return hash.startsWith("#r=") || hash.startsWith("#result=");
+}
+
+export async function createResultLink(
+  run: Run,
+  mode: ResultView,
+  base: string,
+) {
+  const portable = await createPortableChallengeLink(run.definition, base);
+  const url = new URL(base);
+  const picks = resultPicks(run);
+  const suffix = mode === "top" ? "/16" : "";
+  if (
+    /^(localhost|127(?:\.\d+){3}|\[::1\])$|\.localhost$/i.test(url.hostname)
+  ) {
+    url.search = "";
+    url.hash =
+      "#result=" +
+      new URL(portable).hash.slice(prefix.length) +
+      "~" +
+      picks +
+      suffix;
+    return url.href;
+  }
+  const response = await fetch(new URL("/api/brackets", url), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ payload: new URL(portable).hash, picks }),
+    signal: AbortSignal.timeout(20000),
+  });
+  const data = await response.json().catch(() => ({}));
+  if (
+    !response.ok ||
+    typeof data.id !== "string" ||
+    !shareCodePattern.test(data.id)
+  )
+    throw Error(
+      data.error ||
+        "Couldn't create a result link. Try again on the hosted site.",
+    );
+  url.search = "";
+  url.hash = "#r=" + data.id + suffix;
+  return url.href;
+}
+
+export async function readResultLink(hash: string) {
+  if (hash.startsWith("#result=")) {
+    const portable = /^#result=([\w-]+)~([0-9.]+)(\/16)?$/.exec(hash);
+    if (!portable || hash.length > maxLinkPayload + 25_020)
+      throw Error("This result link is invalid.");
+    return {
+      run: restoreResult(
+        await readChallengeLink(prefix + portable[1]),
+        portable[2],
+      ),
+      mode: portable[3] ? ("top" as const) : ("full" as const),
+    };
+  }
+  const match = /^#r=([\w-]{16})(\/16)?$/.exec(hash);
+  if (!match) throw Error("This result link is invalid.");
+  const response = await fetch(`/api/brackets/${match[1]}`, {
+    signal: AbortSignal.timeout(20000),
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw Error(data.error || "Couldn't load this result.");
+  const [definition, picks] =
+    typeof data.payload === "string" ? data.payload.split("~") : [];
+  if (!definition?.startsWith("#bracket=v1.") || !picks)
+    throw Error("This link has no finished result.");
+  const run = restoreResult(await readChallengeLink(definition), picks);
+  return { run, mode: match[2] ? ("top" as const) : ("full" as const) };
+}
 
 const prefix = "#bracket=v1.";
 const shortPrefix = "#b=";

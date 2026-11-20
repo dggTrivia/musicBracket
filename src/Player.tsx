@@ -76,7 +76,7 @@ export function SongPlayer({
   active: boolean;
   volume: number;
   onActivate: () => void;
-  onEdit: () => void;
+  onEdit?: () => void;
 }) {
   const mount = useRef<HTMLDivElement>(null),
     player = useRef<PlayerAPI | null>(null);
@@ -217,7 +217,7 @@ export function SongPlayer({
           )}
           <Play size={36} />
           <strong>{error || "No video linked yet"}</strong>
-          {!watchParams && (
+          {!watchParams && onEdit && (
             <button className="small-button" onClick={onEdit}>
               <Link2 size={13} /> Add link
             </button>
