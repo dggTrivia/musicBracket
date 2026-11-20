@@ -60,6 +60,7 @@ import {
   choose,
   currentMatch,
   decisionCount,
+  defaultPopularityWeight,
   makeDefinition,
   matchSongs,
   outcomes,
@@ -211,6 +212,7 @@ const emptyOptions: BracketOptions = {
   first: 2,
   second: 2,
   randomness: 28,
+  popularityWeight: defaultPopularityWeight,
   seed: Math.floor(Math.random() * 2 ** 31),
   name: "",
 };
@@ -1804,7 +1806,7 @@ export default function App() {
                         <SettingLabel id="setup-size" label="How many songs?">
                           {mixed
                             ? "Smaller brackets give each artist an even share where possible. Extra slots go to artists with songs left."
-                            : "Smaller brackets pick songs using 60% popularity and 40% quality. If fewer songs are available, they all enter."}
+                            : "Smaller brackets pick the highest-scoring songs from your selected albums. If fewer songs are available, they all enter."}
                         </SettingLabel>
                         <select
                           id="setup-size"
@@ -1841,14 +1843,22 @@ export default function App() {
                           <option value={4}>Up to 4 songs</option>
                         </select>
                       </div>
+                      <SongWeightControl
+                        value={
+                          options.popularityWeight ?? defaultPopularityWeight
+                        }
+                        onChange={(value) =>
+                          setOption("popularityWeight", value)
+                        }
+                      />
                       <div className="field range-label">
                         <SettingLabel
                           id="setup-shuffle"
                           label="Shuffle character"
                         >
-                          Balanced spreads high-scoring songs across the bracket
-                          using 60% popularity and 40% quality. Surprising
-                          allows more variation.
+                          Balanced spreads high-scoring songs across the
+                          bracket. Surprising adds more variation to the
+                          matchups.
                         </SettingLabel>
                         <strong>
                           {options.randomness < 25
@@ -3052,6 +3062,61 @@ function PickerViewControl({
     </div>
   );
 }
+function SongWeightControl({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (value: number) => void;
+}) {
+  const quality = 100 - value;
+  return (
+    <div className="field range-label song-weight">
+      <SettingLabel id="setup-weight" label="Quality vs. popularity">
+        This mix ranks songs for smaller brackets and seeds the matchups. If you
+        enter every song, it only changes the seeding. Quality uses Rate Your
+        Music scores where available.
+      </SettingLabel>
+      <output
+        htmlFor="setup-weight"
+        className="song-weight-summary"
+        aria-live="off"
+      >
+        <span>{quality}% quality</span>
+        <span>{value}% popularity</span>
+      </output>
+      <div className="song-weight-track">
+        <span
+          className="song-weight-tooltip"
+          aria-hidden="true"
+          style={{ left: `clamp(80px, ${value}%, calc(100% - 80px))` }}
+        >
+          {quality}% quality · {value}% popularity
+        </span>
+        <input
+          id="setup-weight"
+          type="range"
+          min={0}
+          max={100}
+          step={1}
+          value={value}
+          aria-valuetext={`${quality}% quality, ${value}% popularity`}
+          onChange={(event) => onChange(Number(event.target.value))}
+        />
+        <div className="song-weight-ticks" aria-hidden="true">
+          {[0, 25, 50, 75, 100].map((mark) => (
+            <span key={mark}>{mark}</span>
+          ))}
+        </div>
+      </div>
+      <div className="range-ends">
+        <span>All quality</span>
+        <span>All popularity</span>
+      </div>
+    </div>
+  );
+}
+
 function SettingLabel({
   id,
   label,

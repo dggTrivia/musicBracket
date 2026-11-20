@@ -43,6 +43,7 @@ export interface BracketOptions {
   first: number;
   second: number;
   randomness: number;
+  popularityWeight?: number;
   seed: number;
   name: string;
 }

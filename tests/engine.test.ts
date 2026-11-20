@@ -8,6 +8,7 @@ import {
   matchSongs,
   outcomes,
   plan,
+  selectEntrants,
   undo,
   validateDefinition,
 } from "../src/engine.ts";
@@ -49,6 +50,36 @@ const definition = (n: number, o: Partial<BracketOptions> = {}) =>
     })),
     { id: "test", name: "Test" },
   );
+test("ranking weight changes capped fields and seeding while keeping the old default", () => {
+  const tracks = songs(8).map((song, i) => ({
+    ...song,
+    quality: 100 - i * 10,
+    popularity: i * 10,
+  }));
+  const field = (popularityWeight?: number) =>
+    selectEntrants(
+      { ...options, size: 2, popularityWeight },
+      tracks,
+    ).entrants.map((song) => song.id);
+  assert.deepEqual(field(0), ["s0", "s1"]);
+  assert.deepEqual(field(100), ["s7", "s6"]);
+  assert.deepEqual(field(), field(60));
+  const seed = (popularityWeight?: number) =>
+    makeDefinition(
+      { ...options, randomness: 0, popularityWeight },
+      tracks,
+      [],
+      { id: "test", name: "Test" },
+    );
+  assert.deepEqual(seed().matches, seed(60).matches);
+  const quality = seed(0);
+  const popularity = seed(100);
+  assert.equal(quality.songs.length, tracks.length);
+  assert.equal(popularity.songs.length, tracks.length);
+  assert.deepEqual(quality.matches[0].slots[0], { songId: "s0" });
+  assert.deepEqual(popularity.matches[0].slots[0], { songId: "s7" });
+  assert.throws(() => validateDefinition(seed(101)), /Invalid bracket details/);
+});
 test("every field size 2–512 and all early-round caps balance without losing entrants", () => {
   for (let n = 2; n <= 512; n++)
     for (const first of [2, 3, 4])

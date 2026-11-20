@@ -1028,6 +1028,59 @@ main {
   color: var(--muted);
   font-weight: 400;
 }
+.song-weight-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+}
+.song-weight-track {
+  position: relative;
+  min-width: 0;
+}
+.song-weight-track input[type="range"] {
+  display: block;
+  height: 20px;
+  margin: 0;
+}
+.song-weight-tooltip {
+  position: absolute;
+  z-index: 1;
+  bottom: calc(100% + 3px);
+  width: max-content;
+  padding: 5px 8px;
+  translate: -50% 0;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 11px;
+  pointer-events: none;
+  visibility: hidden;
+}
+.song-weight-track:focus-within .song-weight-tooltip,
+.song-weight-track:hover .song-weight-tooltip {
+  visibility: visible;
+}
+.song-weight-ticks {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.song-weight-ticks span {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+.song-weight-ticks span::before {
+  content: "";
+  width: 1px;
+  height: 4px;
+  background: currentColor;
+}
 .check-field {
   display: flex;
   align-items: center;

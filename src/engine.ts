@@ -17,7 +17,13 @@ export function random(seed: number) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
-export const selectionScore = (s: Song) => s.popularity * 0.6 + s.quality * 0.4;
+export const defaultPopularityWeight = 60;
+export const selectionScore = (
+  s: Song,
+  popularityWeight = defaultPopularityWeight,
+) =>
+  s.popularity * (popularityWeight / 100) +
+  s.quality * ((100 - popularityWeight) / 100);
 export const seedingScore = selectionScore;
 export function groupSizes(n: number, cap: number): number[] {
   if (n < 2) return [];
@@ -57,15 +63,13 @@ function seedOrder(n: number): number[] {
 }
 
 export function selectEntrants(options: BracketOptions, songs: Song[]) {
+  const score = (song: Song) => selectionScore(song, options.popularityWeight);
   const albumSets = Object.entries(
     options.artistAlbums ?? { [options.artistId]: options.albumIds },
   ).map(([artistId, albums]) => ({ artistId, albums: new Set(albums) }));
   const ranked = songs
     .filter((song) => options.includeInterludes || song.kind === "song")
-    .sort(
-      (a, b) =>
-        selectionScore(b) - selectionScore(a) || a.id.localeCompare(b.id),
-    );
+    .sort((a, b) => score(b) - score(a) || a.id.localeCompare(b.id));
   const pools = albumSets.map(({ artistId, albums }) => ({
     artistId,
     songs: ranked.filter(
@@ -89,7 +93,7 @@ export function selectEntrants(options: BracketOptions, songs: Song[]) {
         (a, b) =>
           a.used - b.used ||
           a.songs.length - a.cursor - (b.songs.length - b.cursor) ||
-          selectionScore(b.songs[b.cursor]) - selectionScore(a.songs[a.cursor]),
+          score(b.songs[b.cursor]) - score(a.songs[a.cursor]),
       )[0];
     if (!next) break;
     const song = next.songs[next.cursor++];
@@ -121,13 +125,14 @@ export function makeDefinition(
   artists?: Artist[],
 ): Definition {
   const rng = random(options.seed);
+  const score = (song: Song) => seedingScore(song, options.popularityWeight);
   const { entrants, owners } = selectEntrants(options, allSongs);
   if (entrants.length < 2)
     throw Error("Select at least two songs to start a bracket.");
   const sorted = entrants
     .map((s) => ({
       s,
-      score: seedingScore(s) + (rng() - 0.5) * options.randomness * 0.34,
+      score: score(s) + (rng() - 0.5) * options.randomness * 0.34,
     }))
     .sort((a, b) => b.score - a.score)
     .map((x) => x.s);
@@ -154,7 +159,7 @@ export function makeDefinition(
     // Weak seeds fill the opposite edge of each quality band; album ties get a small penalty.
     bucket = bucket.sort((a, b) => {
       const groupScore = (group: Song[]) =>
-        group.reduce((s, x) => s + seedingScore(x), 0) / group.length -
+        group.reduce((s, x) => s + score(x), 0) / group.length -
         (group.some((x) => x.albumId === song.albumId) ? 1.5 : 0) -
         (artists && group.some((x) => owners.get(x.id) === owners.get(song.id))
           ? 5
@@ -298,6 +303,10 @@ export function validateDefinition(d: Definition) {
             typeof artist.name !== "string",
         ))) ||
     typeof d.options.name !== "string" ||
+    (d.options.popularityWeight !== undefined &&
+      (!Number.isInteger(d.options.popularityWeight) ||
+        d.options.popularityWeight < 0 ||
+        d.options.popularityWeight > 100)) ||
     d.albums.some(
       (album) =>
         !album ||
