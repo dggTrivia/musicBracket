@@ -88,8 +88,9 @@ import {
 } from "./share";
 
 const defaults: Settings = {
+  appearance: "soul",
   resumeSongs: true,
-  dark: false,
+  dark: true,
   pinned: false,
   hover: true,
   volume: 65,
