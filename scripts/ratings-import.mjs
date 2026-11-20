@@ -1,6 +1,7 @@
 /** Public ratings evidence and catalog merge. No API keys, no fabricated RYM values.
  * node scripts/ratings-import.mjs --apply
  * node scripts/ratings-import.mjs --refresh-popularity --apply
+ * node scripts/ratings-import.mjs --fill-reviewed-popularity
  * Add verified RYM records to public/ratings.json quality[] to extend coverage.
  */
 import { readFile, writeFile } from "node:fs/promises";
@@ -87,6 +88,7 @@ export function applyRatings(catalog, data) {
     const key = `${scope}:${normalizeTitle(r.title)}`;
     if (!p.has(key) || r.streams > p.get(key).streams) p.set(key, r);
   }
+  const reviewed = reviewedPopularity(catalog, data);
   let qualityMatches = 0,
     popularityMatches = 0;
   const songs = catalog.songs.map((song) => {
@@ -100,6 +102,7 @@ export function applyRatings(catalog, data) {
       if (next && (!popularity || next.streams > popularity.streams))
         popularity = next;
     }
+    popularity ??= reviewed.get(song.id);
     const sparseQuality = quality && quality.ratingCount < minimumRatingCount;
     if (quality && !sparseQuality) qualityMatches++;
     if (popularity) popularityMatches++;
@@ -131,6 +134,10 @@ export function applyRatings(catalog, data) {
             sourceUpdatedAt: popularity.sourceUpdatedAt,
             scaleArtistId: popularity.scaleArtistId,
             retrievedAt: popularity.retrievedAt,
+            ...(popularity.matchedTitle && {
+              spotifyUrl: popularity.spotifyUrl,
+              matchedTitle: popularity.matchedTitle,
+            }),
           }
         : song.popularitySource,
       scoreSource: [
@@ -153,6 +160,67 @@ export function applyRatings(catalog, data) {
     qualityMatches,
     popularityMatches,
   };
+}
+
+function reviewedPopularity(catalog, data) {
+  const rows = new Map(
+    (data.popularity ?? [])
+      .filter((row) => row.spotifyUrl)
+      .map((row) => [`${row.artistId}:${row.spotifyUrl}`, row]),
+  );
+  const albumRows = new Map(
+    (data.popularity ?? [])
+      .filter((row) => row.reviewedAlbumTrack && row.albumId)
+      .map((row) => [`${row.albumId}:${row.title}`, row]),
+  );
+  const songs = new Map(catalog.songs.map((song) => [song.id, song]));
+  const matches = new Map();
+  for (const match of data.reviewedPopularityMatches ?? []) {
+    const song = songs.get(match.songId);
+    const row = match.albumId
+      ? albumRows.get(`${match.albumId}:${match.sourceTitle}`)
+      : rows.get(`${match.artistId}:${match.spotifyUrl}`);
+    if (
+      !song ||
+      !row ||
+      (!song.artistIds.includes(row.artistId) &&
+        !(row.albumId && song.albumIds.includes(row.albumId)))
+    )
+      continue;
+    matches.set(song.id, { ...row, matchedTitle: row.title });
+  }
+  return matches;
+}
+
+export function fillReviewedPopularity(catalog, data) {
+  const matches = reviewedPopularity(catalog, data);
+  let filled = 0;
+  const songs = catalog.songs.map((song) => {
+    const row = matches.get(song.id);
+    if (Number.isFinite(song.popularitySource?.streams) || !row) return song;
+    filled++;
+    return {
+      ...song,
+      popularity: row.popularity,
+      popularitySource: {
+        provider: row.provider ?? "Kworb / Spotify public stream totals",
+        streams: row.streams,
+        url: row.sourceUrl,
+        sourceUpdatedAt: row.sourceUpdatedAt,
+        retrievedAt: row.retrievedAt,
+        scaleArtistId: row.scaleArtistId,
+        spotifyUrl: row.spotifyUrl,
+        matchedTitle: row.title,
+      },
+      scoreSource: [
+        song.scoreSource?.split(" · Popularity:")[0],
+        `Popularity: log-normalized public Spotify streams (${row.provider ?? "Kworb"})`,
+      ]
+        .filter(Boolean)
+        .join(" · "),
+    };
+  });
+  return { catalog: { ...catalog, songs }, filled };
 }
 
 const spotifyIds = {
@@ -331,7 +399,9 @@ export async function refreshPopularity(data, onlyArtist) {
         Math.round(10000 * Math.min(1, Math.max(0, fraction))) / 100;
     }
     data.popularity = [
-      ...data.popularity.filter((r) => r.artistId !== artistId),
+      ...data.popularity.filter(
+        (r) => r.artistId !== artistId || r.reviewedAlbumTrack,
+      ),
       ...rows,
     ];
     console.log(`${artistId}: ${rows.length} stream records`);
@@ -355,7 +425,18 @@ if (
     );
     await writeFile(ratingsPath, JSON.stringify(data, null, 2) + "\n");
   }
-  if (process.argv.includes("--apply")) {
+  if (process.argv.includes("--fill-reviewed-popularity")) {
+    const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
+    const result = fillReviewedPopularity(catalog, data);
+    if (result.filled)
+      await writeFile(
+        catalogPath,
+        JSON.stringify(result.catalog, null, 2) + "\n",
+      );
+    console.log(
+      `Filled ${result.filled} missing Spotify counts from reviewed matches.`,
+    );
+  } else if (process.argv.includes("--apply")) {
     const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
     const result = applyRatings(catalog, data);
     await writeFile(

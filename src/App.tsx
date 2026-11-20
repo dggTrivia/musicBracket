@@ -91,6 +91,7 @@ import {
 const defaults: Settings = {
   appearance: "soul",
   resumeSongs: true,
+  showSongScores: false,
   dark: true,
   pinned: false,
   hover: true,
@@ -204,17 +205,21 @@ const artistPortraits = new Set([
   "wilco",
   "young-thug",
 ]);
-const emptyOptions: BracketOptions = {
-  artistId: "kanye-west",
-  albumIds: [],
+const defaultSetupOptions = {
   includeInterludes: false,
+  startAt40: false,
   size: 0,
   first: 2,
   second: 2,
   randomness: 28,
   popularityWeight: defaultPopularityWeight,
-  seed: Math.floor(Math.random() * 2 ** 31),
   name: "",
+};
+const emptyOptions: BracketOptions = {
+  ...defaultSetupOptions,
+  artistId: "kanye-west",
+  albumIds: [],
+  seed: Math.floor(Math.random() * 2 ** 31),
 };
 type View =
   "home" | "new" | "game" | "active" | "history" | "library" | "settings";
@@ -567,6 +572,8 @@ export default function App() {
               : {}),
             youtubeId: published.youtubeId ?? song.youtubeId,
             backupYoutubeId: published.backupYoutubeId ?? song.backupYoutubeId,
+            streamCount:
+              published.streamCount ?? published.popularitySource?.streams,
           };
         });
         setCatalog(c);
@@ -1916,6 +1923,20 @@ export default function App() {
                           video is long enough.
                         </SettingLabel>
                       </div>
+                      <button
+                        type="button"
+                        className="text-button"
+                        onClick={() => {
+                          setOptions((current) => ({
+                            ...current,
+                            ...defaultSetupOptions,
+                          }));
+                          setPreview(null);
+                          notify("Bracket options reset to default.");
+                        }}
+                      >
+                        <Undo2 size={15} /> Reset to default options
+                      </button>
                       <div className="route-preview">
                         {canStart ? (
                           <>
@@ -2092,6 +2113,15 @@ export default function App() {
                                 )?.title
                               }
                             </span>
+                            {settings.showSongScores && (
+                              <SongScores
+                                song={song}
+                                streamCount={
+                                  c.songs.find((entry) => entry.id === song.id)
+                                    ?.streamCount
+                                }
+                              />
+                            )}
                           </div>
                         </div>
                         <div className="player-wrap">
@@ -2562,6 +2592,25 @@ export default function App() {
                       setSettings((s) => ({
                         ...s,
                         resumeSongs: e.target.checked,
+                      }))
+                    }
+                  />
+                </label>
+                <label className="preference">
+                  <span>
+                    <strong>Show song scores during games</strong>
+                    <small>
+                      Show quality, popularity, and available Spotify stream
+                      counts under each song.
+                    </small>
+                  </span>
+                  <input
+                    type="checkbox"
+                    checked={settings.showSongScores ?? false}
+                    onChange={(event) =>
+                      setSettings((current) => ({
+                        ...current,
+                        showSongScores: event.target.checked,
                       }))
                     }
                   />
@@ -3382,6 +3431,41 @@ function ShareDialog({
     </div>
   );
 }
+const streamCountFormat = new Intl.NumberFormat(undefined, {
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
+
+function SongScores({
+  song,
+  streamCount,
+}: {
+  song: Song;
+  streamCount?: number;
+}) {
+  const streams =
+    streamCount ?? song.streamCount ?? song.popularitySource?.streams;
+  const hasStreams =
+    typeof streams === "number" &&
+    Number.isSafeInteger(streams) &&
+    streams >= 0;
+  return (
+    <div className="song-scores">
+      <span>
+        Quality <strong>{(song.quality / 10).toFixed(1)}/10</strong>
+      </span>
+      <span>
+        Popularity <strong>{Math.round(song.popularity)}/100</strong>{" "}
+        {hasStreams && (
+          <em title={`${streams.toLocaleString()} Spotify streams`}>
+            ({streamCountFormat.format(streams)} streams)
+          </em>
+        )}
+      </span>
+    </div>
+  );
+}
+
 function Cover({ song, albums }: { song: Song; albums: Album[] }) {
   const album =
     albums.find((a) => a.id === song.albumId) ||

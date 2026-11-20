@@ -1298,6 +1298,21 @@ button.primary:not(:disabled):hover {
   overflow-wrap: anywhere;
   letter-spacing: -0.04em;
 }
+.song-scores {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 2px;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.song-scores strong {
+  color: var(--ink);
+  font-weight: 600;
+}
 .album-tag {
   display: inline-block;
   font-size: 9px;

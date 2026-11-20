@@ -365703,9 +365703,1635 @@
       "sourceUpdatedAt": "2026/11/14",
       "retrievedAt": "2026-11-15",
       "popularity": 43.2
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-cruel-summer",
+      "title": "The Morning",
+      "streams": 49680013,
+      "popularity": 61.55,
+      "sourceUrl": "https://kworb.net/spotify/artist/0fA0VVWsXO9YnASrzqfmYu_songs.html",
+      "provider": "Kworb",
+      "spotifyUrl": "https://open.spotify.com/track/6KdwBL0OFecxLc1cSV9WVp",
+      "sourceUpdatedAt": "2026/11/13",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-cruel-summer",
+      "title": "Creepers",
+      "streams": 15803090,
+      "popularity": 49.88,
+      "sourceUrl": "https://kworb.net/spotify/artist/0fA0VVWsXO9YnASrzqfmYu_songs.html",
+      "provider": "Kworb",
+      "spotifyUrl": "https://open.spotify.com/track/6vO5OZ18h33ZO40S9plFDx",
+      "sourceUpdatedAt": "2026/11/13",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-cruel-summer",
+      "title": "Higher",
+      "streams": 11151082,
+      "popularity": 46.33,
+      "sourceUrl": "https://chartmasters.org/album/various-artists/good-music/",
+      "provider": "ChartMasters",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-cruel-summer",
+      "title": "Sin City",
+      "streams": 15814007,
+      "popularity": 49.89,
+      "sourceUrl": "https://chartmasters.org/album/various-artists/good-music/",
+      "provider": "ChartMasters",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-cruel-summer",
+      "title": "Bliss - Album Version (Edited)",
+      "streams": 7571038,
+      "popularity": 42.39,
+      "sourceUrl": "https://open.spotify.com/track/7zlJ5XIzj9Nk6LT0ZSDSc6",
+      "provider": "Spotify public track page",
+      "spotifyUrl": "https://open.spotify.com/track/7zlJ5XIzj9Nk6LT0ZSDSc6",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-late-registration",
+      "title": "Skit #3 (Kanye West/Late Registration) - Album Version (Edited)",
+      "streams": 32708,
+      "popularity": 0,
+      "sourceUrl": "https://open.spotify.com/track/4gAmOQP3pSjiLxkg1BOZam",
+      "provider": "Spotify public track page",
+      "spotifyUrl": "https://open.spotify.com/track/4gAmOQP3pSjiLxkg1BOZam",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-donda",
+      "title": "Life Of The Party (with André 3000)",
+      "streams": 98036702,
+      "popularity": 68.48,
+      "sourceUrl": "https://kworb.net/spotify/artist/5K4W6rqBFWDnAN6FQUkS6x_songs.html",
+      "provider": "Kworb",
+      "spotifyUrl": "https://open.spotify.com/track/2yBb1CRq98SSWRuDSn36SZ",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-vultures-2",
+      "title": "ISABELLA",
+      "streams": 27336,
+      "popularity": 0,
+      "sourceUrl": "https://spotify.checkleaked.cc/albums/5RV2TNyjylqWJNxQyHBTeJ",
+      "provider": "CheckLeaked",
+      "sourceUpdatedAt": "2026-11-16",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
+    },
+    {
+      "artistId": "kanye-west",
+      "albumId": "kanye-west-vultures-2",
+      "title": "FIELD TRIP",
+      "streams": 161650699,
+      "popularity": 73.57,
+      "sourceUrl": "https://spotify-top.com/artist/playboi-carti",
+      "provider": "Spotify Top",
+      "retrievedAt": "2026-11-20",
+      "scaleArtistId": "kanye-west",
+      "reviewedAlbumTrack": true
     }
   ],
   "issues": [
     "RYM artist-filtered chart returned unrelated album rows; rejected. Direct song pages are validated by title/artist."
+  ],
+  "reviewedPopularityMatches": [
+    {
+      "songId": "kanye-west-see-me-now",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/2IpsD4mKVOJ5SJKLdx2vjG",
+      "sourceTitle": "See Me Now - Exclusive Bonus Track (Edited)",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "kid-cudi-erase-me",
+      "artistId": "kid-cudi",
+      "spotifyUrl": "https://open.spotify.com/track/6XkuklKiHYVTlVvWlTgQYP",
+      "sourceTitle": "Erase Me - Main",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "kid-cudi-burrow",
+      "artistId": "kid-cudi",
+      "spotifyUrl": "https://open.spotify.com/track/79QdtrBWO8lCVaZCYMIxvn",
+      "sourceTitle": "Burrow (with Don Toliver, Steve Aoki & Dot Da Genius) - Bonus Track",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-black-boy-fly",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/1H7yy9jlDYS2EBF41J6Yf5",
+      "sourceTitle": "Black Boy Fly - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "kendrick-lamar-now-or-never",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/4KjnaUNYPwGnJjoeTFlt91",
+      "sourceTitle": "Now Or Never - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-beatles-drive-my-car",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/2SFfo7hrfBTBDlF2a9MTW5",
+      "sourceTitle": "Drive My Car (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-you-won-t-see-me",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/58erv0e14pg6HjH0BOEn2K",
+      "sourceTitle": "You Won't See Me (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-the-word",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/4515mI4dPTM1BoqGxrqkJ8",
+      "sourceTitle": "The Word (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-michelle",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/722tG3JdHMDfLzHSxTP8YL",
+      "sourceTitle": "Michelle (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-what-goes-on",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/0659ZNjpYQykyxUinR2Zvc",
+      "sourceTitle": "What Goes On (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-i-m-looking-through-you",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/3FvTjnW62AtRcxFJuXxjhb",
+      "sourceTitle": "I'm Looking Through You (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-in-my-life",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/4jAuq1vIYU2fFS8r5ZNhgr",
+      "sourceTitle": "In My Life (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-wait",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/7ves0QlJtXKs4wSUZUrIb2",
+      "sourceTitle": "Wait (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-run-for-your-life",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/1CExaRZDO0Rfg2EMCgJpWn",
+      "sourceTitle": "Run For Your Life (2026 Mix)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-for-no-one",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/6aVssog265SY3b7EuhLDPf",
+      "sourceTitle": "For No One - 2022 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-beatles-within-you-without-you",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/6TiJhvluwaDgyymGDY2y3m",
+      "sourceTitle": "Within You Without You - 2017 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-doing-all-right",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/1310gs5AAiy11L0tAp8jqU",
+      "sourceTitle": "Doing All Right - 2024 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-liar",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/7eyOCaOfX4KsmawMNEp0tW",
+      "sourceTitle": "Liar - 2024 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-father-to-son",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/27eURUGOHZdzAIoZLzkLzo",
+      "sourceTitle": "Father To Son - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-white-queen-as-it-began",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/5M6vFYDtqJnfIPprpiajYP",
+      "sourceTitle": "White Queen (As It Began) - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-some-day-one-day",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/0lRoUHkaMsDBHKFfzThBaT",
+      "sourceTitle": "Some Day One Day - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-the-loser-in-the-end",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/05elG3oIUEpigAxGbcUW0X",
+      "sourceTitle": "The Loser In The End - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-ogre-battle",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/4OQDonpqp6QRzY2zMyT03f",
+      "sourceTitle": "Ogre Battle - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-the-fairy-feller-s-master-stroke",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/1e8Hsbp1D07CX1MzFJo4hB",
+      "sourceTitle": "The Fairy Feller's Master-Stroke - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-nevermore",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/4MWdFZr7CSiBjym0xTNZKi",
+      "sourceTitle": "Nevermore - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-the-march-of-the-black-queen",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/1ogvvAjZoxGaBOTs2oW4xS",
+      "sourceTitle": "The March of the Black Queen - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-funny-how-love-is",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/5kN4Gwc3LYV0cphZKkWiMz",
+      "sourceTitle": "Funny How Love Is - 2026 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "queen-a-human-body",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/1uTdCHMoJcePqB0qt2pdje",
+      "sourceTitle": "A Human Body - B-Side",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "queen-soul-brother",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/0nWipGMzqZffahwSPe3uqg",
+      "sourceTitle": "Soul Brother - B-Side",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "queen-i-go-crazy",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/74jNEuP0ggFzXp2AOJ71tC",
+      "sourceTitle": "I Go Crazy - B-Side",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "queen-hang-on-in-there",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/0rdrktunJ9ImIaPSzh8C8u",
+      "sourceTitle": "Hang On In There - B-Side",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "queen-hijack-my-heart",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/2pQ930i1guohR9PeclyfI1",
+      "sourceTitle": "Hijack My Heart - B-Side",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "queen-stealin",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/6ICH8o1f3tbejuj5HAF91n",
+      "sourceTitle": "Stealin' - B-Side",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "queen-lost-opportunity",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/64w09p66WnT8uNvFpVxY3U",
+      "sourceTitle": "Lost Opportunity - B-Side",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "alex-g-sandy",
+      "artistId": "alex-g",
+      "spotifyUrl": "https://open.spotify.com/track/3UbfyazVYol6R2O9oBUyPN",
+      "sourceTitle": "Sandy - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-weeknd-nothing-compares",
+      "artistId": "the-weeknd",
+      "spotifyUrl": "https://open.spotify.com/track/4XNB3imn7Ag2PhCkzpfaMc",
+      "sourceTitle": "Nothing Compares - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-weeknd-missed-you",
+      "artistId": "the-weeknd",
+      "spotifyUrl": "https://open.spotify.com/track/3WLRzyWxdcdcRA2npf2RxQ",
+      "sourceTitle": "Missed You - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-weeknd-final-lullaby",
+      "artistId": "the-weeknd",
+      "spotifyUrl": "https://open.spotify.com/track/3WwV6tZY9gVM8Q9YFEgEYA",
+      "sourceTitle": "Final Lullaby - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "fleetwood-mac-you-re-so-evil",
+      "artistId": "fleetwood-mac",
+      "spotifyUrl": "https://open.spotify.com/track/4W485dVUKd8m6fg6MEe8jf",
+      "sourceTitle": "You're So Evil - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "fleetwood-mac-i-m-coming-home-to-stay",
+      "artistId": "fleetwood-mac",
+      "spotifyUrl": "https://open.spotify.com/track/6MDxjEmwVBrZM1UH9FpYP4",
+      "sourceTitle": "I'm Coming Home to Stay - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "fleetwood-mac-i-held-my-baby-last-night",
+      "artistId": "fleetwood-mac",
+      "spotifyUrl": "https://open.spotify.com/track/057HbqBcdmXri9DgyTO2np",
+      "sourceTitle": "I Held My Baby Last Night - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "nirvana-moist-vagina",
+      "artistId": "nirvana",
+      "spotifyUrl": "https://open.spotify.com/track/3fP8KXXUoBenEM46UZZgSG",
+      "sourceTitle": "Moist Vagina - 2013 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "sufjan-stevens-i-went-dancing-with-my-sister",
+      "artistId": "sufjan-stevens",
+      "spotifyUrl": "https://open.spotify.com/track/2E8p2xkMaloP8V7tSgi0Ba",
+      "sourceTitle": "I Went Dancing With My Sister - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "sufjan-stevens-waste-of-what-your-kids-won-t-have",
+      "artistId": "sufjan-stevens",
+      "spotifyUrl": "https://open.spotify.com/track/6X96Fw2STnKocw9r3qVots",
+      "sourceTitle": "Waste of What Your Kids Won't Have - Bonus Track",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-hot-wire",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/6I56ppsvv3V32jvOpH9Znb",
+      "sourceTitle": "Hot Wire - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-stop-and-check-myself",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/2wXMYwg7nqJ2h5Ef7TlKZw",
+      "sourceTitle": "Stop And Check Myself - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-let-me-help-you",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/2PZkgPzUlU6LfpsmRoFKkX",
+      "sourceTitle": "Let Me Help You - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-i-m-reachin-out",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/10uR7z0tqzosCBHxAJrPz5",
+      "sourceTitle": "I'm Reachin' Out - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-don-t-hurt-me-no-more",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/7qFirTCPWyxMaNnDPTMo9B",
+      "sourceTitle": "Don't Hurt Me No More - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-don-t-leave-me",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/1HUsKNmrqKzAVUwENfUI5s",
+      "sourceTitle": "Don't Leave Me - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-i-ll-be-good-to-you",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/0f5CsivclEPjoCp3lXi3l6",
+      "sourceTitle": "I'll Be Good To You - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-that-s-all-it-takes-lady",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/0zSlqoKYQB9ht5EHK4SDtw",
+      "sourceTitle": "That's All It Takes (Lady) - Digitally Remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-get-yourself-together",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/5bbQPEoEAqDRePghLV8nMW",
+      "sourceTitle": "Get Yourself Together - Digitally remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-what-s-it-all-about",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/4mAn4ieGfhPGf4owVCWJxH",
+      "sourceTitle": "What's It All About - Digitally Remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "al-green-a-lover-s-hideaway",
+      "artistId": "al-green",
+      "spotifyUrl": "https://open.spotify.com/track/7wJAGoLbTzBmsd6B2o7JwJ",
+      "sourceTitle": "A Lover's Hideaway - Digitally Remastered",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "ray-charles-yes-indeed",
+      "artistId": "ray-charles",
+      "spotifyUrl": "https://open.spotify.com/track/4DCwRNyu7LNtbxmUlgOEa0",
+      "sourceTitle": "Yes Indeed! (Single Version)",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "aretha-franklin-i-wonder-where-are-you-tonight",
+      "artistId": "aretha-franklin",
+      "spotifyUrl": "https://open.spotify.com/track/1HOJBxfWjgKpDm2YDtz50R",
+      "sourceTitle": "I Wonder (Where Are You Tonight) - 2002 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "marvin-gaye-once-upon-a-time",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/0QQFRCYX68pJL8LVghXBeS",
+      "sourceTitle": "Once Upon A Time - Single Version / Mono",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "marvin-gaye-what-s-the-matter-with-you-baby",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/4z88wjVjeo5w9hSxtJKrgf",
+      "sourceTitle": "What's The Matter With You Baby - Single Version / Mono",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "marvin-gaye-unforgettable",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/4mKIr4pAroFFnQoGnh0fSE",
+      "sourceTitle": "Unforgettable - Original Mono LP Mix",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "marvin-gaye-calypso-blues",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/4IqQXCvyiUheE5Nl8JWm6e",
+      "sourceTitle": "Calypso Blues - Original Mono LP Mix",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "marvin-gaye-i-ll-be-doggone",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/7MOzeaLPGakvVqBOn5Fa2E",
+      "sourceTitle": "I'll Be Doggone - Single Version / Mono",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "mary-j-blige-color-from-precious",
+      "artistId": "mary-j-blige",
+      "spotifyUrl": "https://open.spotify.com/track/7C0dmNpUzqTIpY79SwgHpW",
+      "sourceTitle": "Color - From The Motion Picture Precious",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "prince-take-me-with-u",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/4C5TEfo9ArK9ednL0oEIp3",
+      "sourceTitle": "Take Me with U - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "prince-the-beautiful-ones",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/21JYZcolh7YfGmv8RBTEha",
+      "sourceTitle": "The Beautiful Ones - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "prince-computer-blue",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/2j3oQs3RNO3VcMA0YHegJc",
+      "sourceTitle": "Computer Blue - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "prince-darling-nikki",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/7IkxG6NGeHh5G3BqTnwVSA",
+      "sourceTitle": "Darling Nikki - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "prince-when-doves-cry",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/5wYgc53ayonbzaDc0o3bAP",
+      "sourceTitle": "When Doves Cry - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "prince-i-would-die-4-u",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/0gncmZNxsrISpW2U39PtF5",
+      "sourceTitle": "I Would Die 4 U - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "prince-baby-i-m-a-star",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/0rNHHt7dB91mVWc9LEDSoP",
+      "sourceTitle": "Baby I'm a Star - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "prince-purple-rain",
+      "artistId": "prince",
+      "spotifyUrl": "https://open.spotify.com/track/1vfvy1Of0iJLDjh5eMfVyI",
+      "sourceTitle": "Purple Rain - 2015 Paisley Park Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "black-sabbath-planet-caravan",
+      "artistId": "black-sabbath",
+      "spotifyUrl": "https://open.spotify.com/track/2VDg6h3Qr3F8UuFVInQxE6",
+      "sourceTitle": "Planet Caravan - 2012 - Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "black-sabbath-hand-of-doom",
+      "artistId": "black-sabbath",
+      "spotifyUrl": "https://open.spotify.com/track/72YRB6ar59nBsNdnn0cVdD",
+      "sourceTitle": "Hand of Doom - 2012 - Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-no-expectations",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/49ScE2M6RIqfeHnnP4v94B",
+      "sourceTitle": "No Expectations - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-dear-doctor",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/3oxqLl1TcDNYgAaAxct3jK",
+      "sourceTitle": "Dear Doctor - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-parachute-woman",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/2t95lca5RT63G2J988AorQ",
+      "sourceTitle": "Parachute Woman - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-jigsaw-puzzle",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/4FzDrD5KndBVrFaVwZToen",
+      "sourceTitle": "Jigsaw Puzzle - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-street-fighting-man",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/7EXgO1bRnEArE58rtrgMWB",
+      "sourceTitle": "Street Fighting Man - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-prodigal-son",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/294YjFlURvve9qm23KZCqP",
+      "sourceTitle": "Prodigal Son - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-stray-cat-blues",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/0mynYmSfl8q2KhjSp96G3w",
+      "sourceTitle": "Stray Cat Blues - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-factory-girl",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/5DZPlkknHAi3JxcpMFlJ69",
+      "sourceTitle": "Factory Girl - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-salt-of-the-earth",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/5FTPD9wSP9IjYBeivNE7cU",
+      "sourceTitle": "Salt Of The Earth - 50th Anniversary Edition",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-rolling-stones-sway",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/1ZS5HBMAmZk3gjFcedts66",
+      "sourceTitle": "Sway - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-wild-horses",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/52dm9op3rbfAkc1LGXgipW",
+      "sourceTitle": "Wild Horses - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-can-t-you-hear-me-knocking",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/1hIQPCM3oWXrpnXmgTDaKG",
+      "sourceTitle": "Can't You Hear Me Knocking - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-you-gotta-move",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/4uhJps8XVlPZbdI5ZArAUO",
+      "sourceTitle": "You Gotta Move - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-bitch",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/01JYvQ6udfhUw9Jed9EzoK",
+      "sourceTitle": "Bitch - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-i-got-the-blues",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/6WvgizUMVUdPksmm7BMfnm",
+      "sourceTitle": "I Got The Blues - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-sister-morphine",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/1XaL1OWGibGlPqLUW9MnCX",
+      "sourceTitle": "Sister Morphine - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-dead-flowers",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/3oJtUnnt5uYPtzulIbLw3D",
+      "sourceTitle": "Dead Flowers - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-moonlight-mile",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/3w7hnMNX4zVZeBJ6LisTjT",
+      "sourceTitle": "Moonlight Mile - 2009 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-rolling-stones-hot-stuff",
+      "artistId": "the-rolling-stones",
+      "spotifyUrl": "https://open.spotify.com/track/2ctJGsf4YJLVLFogyyHDr8",
+      "sourceTitle": "Hot Stuff - 2025 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "john-coltrane-good-bait",
+      "artistId": "john-coltrane",
+      "spotifyUrl": "https://open.spotify.com/track/0Gjm4gSzWvsJk4VEXov0z1",
+      "sourceTitle": "Good Bait - From The Album Soultrane",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "john-coltrane-i-want-to-talk-about-you",
+      "artistId": "john-coltrane",
+      "spotifyUrl": "https://open.spotify.com/track/5rJau3s0zVPIfSnd4UhBNB",
+      "sourceTitle": "I Want To Talk About You - From The Album Soultrane",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "john-coltrane-you-say-you-care",
+      "artistId": "john-coltrane",
+      "spotifyUrl": "https://open.spotify.com/track/70GnZ5FpBRdDU60KPvNbT6",
+      "sourceTitle": "You Say You Care - From The Album Soultrane",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "john-coltrane-russian-lullaby",
+      "artistId": "john-coltrane",
+      "spotifyUrl": "https://open.spotify.com/track/1pLMUjWww8Yc2WiHUtxhcT",
+      "sourceTitle": "Russian Lullaby - From The Album Soultrane",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "john-coltrane-i-love-you",
+      "artistId": "john-coltrane",
+      "spotifyUrl": "https://open.spotify.com/track/3WC3GPIxGaFeWhsEFSVMDC",
+      "sourceTitle": "I Love You - Rudy Van Gelder Remaster",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "david-bowie-the-width-of-a-circle",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/3NkXNnmJukJTrrCqRy2j0G",
+      "sourceTitle": "The Width Of A Circle - 2020 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "david-bowie-black-country-rock",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/3m2wGu1o7Da53Ue2hb8hVE",
+      "sourceTitle": "Black Country Rock - 2020 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "david-bowie-running-gun-blues",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/7KyS768E2vK8OLZMxQ89y9",
+      "sourceTitle": "Running Gun Blues - 2020 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "david-bowie-she-shook-me-cold",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/1JOCQudJt0rveB8vBnw1Fe",
+      "sourceTitle": "She Shook Me Cold - 2020 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "david-bowie-the-supermen",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/6wLRluqg6VSqXyo7SVIc8z",
+      "sourceTitle": "The Supermen - 2020 Mix",
+      "reason": "Same title after catalog and Spotify edition labels are reconciled."
+    },
+    {
+      "songId": "the-who-disguises",
+      "artistId": "the-who",
+      "spotifyUrl": "https://open.spotify.com/track/6zJQECqGf6KksyXCZHd2GC",
+      "sourceTitle": "Disguises - Original Stereo Version",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "the-who-pictures-of-lily",
+      "artistId": "the-who",
+      "spotifyUrl": "https://open.spotify.com/track/6tMiOMnn6qUoStQWH3iZLM",
+      "sourceTitle": "Pictures Of Lily - Single Mix / Mono Version",
+      "reason": "Matching title with a release, remaster or original single label."
+    },
+    {
+      "songId": "kanye-west-skit-1",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/6fT7bHVzfU9u7UByS3sLbU",
+      "sourceTitle": "Skit #1 (Kanye West/Late Registration)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kanye-west-skit-2",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/2QE7F4OzNUHsFaNhzzR9qZ",
+      "sourceTitle": "Skit #2 (Kanye West/Late Registration)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kanye-west-skit-4",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/29z9CnCfnBTsXEsglul2jC",
+      "sourceTitle": "Skit #4 (Kanye West/Late Registration)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kanye-west-illest-motherfucker-alive",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/4DOoissGiO2oc7vtGkhAib",
+      "sourceTitle": "Illest Motherf**ker Alive",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kanye-west-don-t-like",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/2rJvc7nSYWBKAuNUMx1Cr2",
+      "sourceTitle": "Don't Like.1",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kid-cudi-enter-galactic-love-connection-pt-i",
+      "artistId": "kid-cudi",
+      "spotifyUrl": "https://open.spotify.com/track/0ujsBQIHVikzdQOekiu5gS",
+      "sourceTitle": "Enter Galactic (Love Connection Part I)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-fuck-your-ethnicity",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/1gXH8hT9dxsBqbRy7h2iC8",
+      "sourceTitle": "F*ck Your Ethnicity",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-01-l-08-19-2014",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/6OkOFxU6j0UufR97VgSnS7",
+      "sourceTitle": "untitled 01 \\| 08.19.2014.",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-02-l-06-23-2014",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/3I0FBDc1c1BLNtXWKVjmFg",
+      "sourceTitle": "untitled 02 \\| 06.23.2014.",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-03-l-05-28-2013",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/2fgAJeky8Cpsr8Cfvn2NVp",
+      "sourceTitle": "untitled 03 \\| 05.28.2013.",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-04-l-08-14-2014",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/1U13SSgDOxK98L1FTWYrjQ",
+      "sourceTitle": "untitled 04 \\| 08.14.2014.",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-05-l-09-21-2014",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/3V8vWoCbKbfjNrPaQ4YtSg",
+      "sourceTitle": "untitled 05 \\| 09.21.2014.",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-06-l-06-30-2014",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/4M2t7bP4Mq87mGMn0PObUX",
+      "sourceTitle": "untitled 06 \\| 06.30.2014.",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-07-l-2014-2016",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/40IQooNkPRVtn4zlE3ZFpA",
+      "sourceTitle": "untitled 07 \\| 2014 - 2016",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kendrick-lamar-untitled-08-l-09-06-2014",
+      "artistId": "kendrick-lamar",
+      "spotifyUrl": "https://open.spotify.com/track/5bBUDJUfGcG7eFy3Bf4fXv",
+      "sourceTitle": "untitled 08 \\| 09.06.2014.",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "the-beatles-kansas-city-hey-hey-hey-hey",
+      "artistId": "the-beatles",
+      "spotifyUrl": "https://open.spotify.com/track/5xf0zdP4KCfshyVn02D3Ea",
+      "sourceTitle": "Kansas City / Hey-Hey-Hey-Hey - Medley / Remastered 2009",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "queen-keep-yourself-alive-long-lost-retake-june-1975",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/0hpe7o5pdxzlTXvdd0s5CR",
+      "sourceTitle": "Keep Yourself Alive - Long Lost Retake / June 1975 / Remastered 2011",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "queen-feelings-feelings-take-10-july-1977",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/3tocn636ijK13xEEKTR5B5",
+      "sourceTitle": "Feelings, Feelings - Take 10 / July 1977 / Remastered 2011",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "abba-la-reina-del-baile-spanish-version",
+      "artistId": "abba",
+      "spotifyUrl": "https://open.spotify.com/track/733ceORqYo0LjPaqkXzmGc",
+      "sourceTitle": "La Reina Del Baile",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "jpegmafia-kingdom-hearts-key",
+      "artistId": "danny-brown",
+      "spotifyUrl": "https://open.spotify.com/track/3aR8TeNQYW1m6xdSvu27Yn",
+      "sourceTitle": "Kingdom Hearts Key (ft. redveil)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "mf-doom-guinnesses",
+      "artistId": "mf-doom",
+      "spotifyUrl": "https://open.spotify.com/track/1FAHFrh5yApXwT66z3JzZy",
+      "sourceTitle": "Guinnessez",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "mf-doom-what-a-n-a-know-q3",
+      "artistId": "mf-doom",
+      "spotifyUrl": "https://open.spotify.com/track/12Bgcm95jPbfc44cmPmJio",
+      "sourceTitle": "What A Nigga Know - Q3 Album Version",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "a-tribe-called-quest-one-two-shit",
+      "artistId": "a-tribe-called-quest",
+      "spotifyUrl": "https://open.spotify.com/track/0dlqL10KW7c3jLAJDA2Rbo",
+      "sourceTitle": "One Two Sh*t (feat. Busta Rhymes)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "drake-cameras-good-ones-go-interlude",
+      "artistId": "drake",
+      "spotifyUrl": "https://open.spotify.com/track/2FbGlEPAjNhWvrVvlentVq",
+      "sourceTitle": "Cameras / Good Ones Go Interlude - Medley",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "drake-hurrr-nor-thurrr",
+      "artistId": "drake",
+      "spotifyUrl": "https://open.spotify.com/track/2bPrEAsc7qDz5Y8YDhnutq",
+      "sourceTitle": "Hurrr Nor Thurr (feat. Sexyy Red)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "radiohead-polyethylene-pts-1-2",
+      "artistId": "radiohead",
+      "spotifyUrl": "https://open.spotify.com/track/17npanU0UU9JzglUnCoKdL",
+      "sourceTitle": "Polyethylene (Parts 1 & 2) - Remastered",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "radiohead-packt-like-sardines-in-a-crushed-tin-box",
+      "artistId": "radiohead",
+      "spotifyUrl": "https://open.spotify.com/track/0tDn82XkoueVV5q9G7OUAv",
+      "sourceTitle": "Packt Like Sardines In a Crushd Tin Box",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "outkast-no-bootleg-dvds",
+      "artistId": "outkast",
+      "spotifyUrl": "https://open.spotify.com/track/6hyCMKk7d2TTUHuDpytD1X",
+      "sourceTitle": "No Bootleg DVDs (Interlude)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "fleetwood-mac-illume",
+      "artistId": "fleetwood-mac",
+      "spotifyUrl": "https://open.spotify.com/track/3BoH0VPwnxdnCfoMJxLJud",
+      "sourceTitle": "Illume (9-11)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "the-cure-foxey-lady",
+      "artistId": "the-cure",
+      "spotifyUrl": "https://open.spotify.com/track/2Dsv7XMXZA6WQ8PqmuUjqr",
+      "sourceTitle": "Foxy Lady",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "stevie-wonder-love-light-in-flight",
+      "artistId": "stevie-wonder",
+      "spotifyUrl": "https://open.spotify.com/track/5gF7do1o5THe1lz0rb7RgW",
+      "sourceTitle": "Love Light In Flight - The Woman In Red/Soundtrack Version",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "stevie-wonder-get-it-duet-with-michael-jackson",
+      "artistId": "stevie-wonder",
+      "spotifyUrl": "https://open.spotify.com/track/0xcSiOtyL97KkJGrdhG33w",
+      "sourceTitle": "Get It",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "sufjan-stevens-chicago-acoustic",
+      "artistId": "sufjan-stevens",
+      "spotifyUrl": "https://open.spotify.com/track/6tclkDfOgetmI3nE5nY0Xw",
+      "sourceTitle": "Chicago (acoustic version)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "sufjan-stevens-we-re-going-to-the-country",
+      "artistId": "sufjan-stevens",
+      "spotifyUrl": "https://open.spotify.com/track/4ngshZgKdD2IGZo4rC3x1M",
+      "sourceTitle": "We're Goin' To the Country!",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-acrid-avid-jam-shred-1994",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/6RjEg1YpdNJlXrGOy4KeVs",
+      "sourceTitle": "Acrid Avid Jam Shred",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-the-waxen-pith-1993",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/2O47kvC3i2H5u1SBSFU60B",
+      "sourceTitle": "The Waxen Pith",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-wax-the-nip-1990",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/4OLn9JczgVsRespw6XSlHc",
+      "sourceTitle": "Wax The Nip",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-come-on-you-slags-1990",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/4iCLQQbZtY5th6Am8bwXto",
+      "sourceTitle": "Come On You Slags",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-start-as-you-mean-to-go-on-1993",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/5buqDKDW117NA9wRXz9J2y",
+      "sourceTitle": "Start As You Mean To Go On",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-wet-tip-hen-ax-1994",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/35V8jQKi8A9rbHJlxxatfm",
+      "sourceTitle": "Wet Tip Hen Ax",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-mookid-1994",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/75Ml44CCprAbusMbPZuHEr",
+      "sourceTitle": "Mookid",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-alberto-balsalm-1994",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/6gbmylJ7sB7NFfMfTQHosf",
+      "sourceTitle": "Alberto Balsalm",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-cow-cud-is-a-twin-1994",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/1rfsweNl8UOYQnugjH5b5g",
+      "sourceTitle": "Cow Cud Is A Twin",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aphex-twin-next-heap-with-1993",
+      "artistId": "aphex-twin",
+      "spotifyUrl": "https://open.spotify.com/track/1KIq3HD7Ju6sHOPHDkGjRS",
+      "sourceTitle": "Next Heap With",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "beyonce-dangerously-in-love-2",
+      "artistId": "beyonce",
+      "spotifyUrl": "https://open.spotify.com/track/75n8NNxozHYy7THEzzpWtX",
+      "sourceTitle": "Dangerously In Love",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ray-charles-losing-hand",
+      "artistId": "ray-charles",
+      "spotifyUrl": "https://open.spotify.com/track/1okqJvDEH4kbngQD9L90DF",
+      "sourceTitle": "Loosing Hand",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ray-charles-it-s-alright",
+      "artistId": "ray-charles",
+      "spotifyUrl": "https://open.spotify.com/track/3a5PF7Fh2lHZosBuygpNO3",
+      "sourceTitle": "It's All Right",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ray-charles-jumpin-in-the-morning",
+      "artistId": "ray-charles",
+      "spotifyUrl": "https://open.spotify.com/track/01qo8fSTHVD3NGbdODMIlS",
+      "sourceTitle": "Jumpin' in the Mornin'",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ray-charles-don-t-let-the-sun-catch-you-crying",
+      "artistId": "ray-charles",
+      "spotifyUrl": "https://open.spotify.com/track/3pEwXiu1AVstyAluolJnW7",
+      "sourceTitle": "Don't Let the Sun Catch You Cryin'",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ray-charles-early-in-the-mornin",
+      "artistId": "ray-charles",
+      "spotifyUrl": "https://open.spotify.com/track/0E0lqj2aggULOd4ZUey7hp",
+      "sourceTitle": "Early in the Morning",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ray-charles-baby-grand-duet-with-ray-charles",
+      "artistId": "ray-charles",
+      "spotifyUrl": "https://open.spotify.com/track/5BntHMijV3q8sI6Fa2XwFV",
+      "sourceTitle": "Baby Grand",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aretha-franklin-lover-come-back-to-me",
+      "artistId": "aretha-franklin",
+      "spotifyUrl": "https://open.spotify.com/track/4znjdSP2CnYfSsojxPfYuI",
+      "sourceTitle": "Lover Come Back to Me: Lover, Come Back to Me",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aretha-franklin-dr-feelgood-love-is-serious-business",
+      "artistId": "aretha-franklin",
+      "spotifyUrl": "https://open.spotify.com/track/0xGcAq56TXf3RnSHkCiL9k",
+      "sourceTitle": "Dr. Feelgood (Love Is a Serious Business)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "aretha-franklin-think-1989-remake",
+      "artistId": "aretha-franklin",
+      "spotifyUrl": "https://open.spotify.com/track/2wSlu7mya7LrvA35VAcHNa",
+      "sourceTitle": "Think (1989)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "sam-cooke-you-belong-to-me",
+      "artistId": "sam-cooke",
+      "spotifyUrl": "https://open.spotify.com/track/4uLmPVclKCQtjrSPImJ9nQ",
+      "sourceTitle": "You Belong o Me",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "marvin-gaye-how-deep-is-the-ocean",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/7Gs9aAMbukL0jhZQbbK0zC",
+      "sourceTitle": "How Deep Is the Ocean (How High Is the Sky)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "marvin-gaye-stubborn-kind-of-fellow",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/6LVfXDy2HVdfMNnGwwAvHD",
+      "sourceTitle": "Stubborn Kind of Fellow (Marvin Gaye with the Vandellas)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "marvin-gaye-fly-me-to-the-moon-in-other-words",
+      "artistId": "marvin-gaye",
+      "spotifyUrl": "https://open.spotify.com/track/5OkfPsCNpkzdEmmlACIsyS",
+      "sourceTitle": "Fly Me To The Moon",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "otis-redding-change-is-gonna-come",
+      "artistId": "otis-redding",
+      "spotifyUrl": "https://open.spotify.com/track/2IkM8zrt6Y1F344CNfaDA0",
+      "sourceTitle": "A Change Is Gonna Come - Mono; 2008 Remaster",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "otis-redding-when-something-is-wrong-with-my-baby",
+      "artistId": "otis-redding",
+      "spotifyUrl": "https://open.spotify.com/track/1FI7Gu2KviINiUF5DD2im8",
+      "sourceTitle": "When Something Is Wrong with My Baby - 1",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "mary-j-blige-no-happy-holiday",
+      "artistId": "mary-j-blige",
+      "spotifyUrl": "https://open.spotify.com/track/2a8oinyb3lcirTff6XPNWQ",
+      "sourceTitle": "No Happy Holidays",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "mary-j-blige-finally-made-it",
+      "artistId": "mary-j-blige",
+      "spotifyUrl": "https://open.spotify.com/track/1pi5WTO0thDYGM6rxirTk5",
+      "sourceTitle": "Finally Made It (Interlude)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "mary-j-blige-be-without-you",
+      "artistId": "mary-j-blige",
+      "spotifyUrl": "https://open.spotify.com/track/6Y3WvyUG9iE5bQYg38SPtQ",
+      "sourceTitle": "Be Without You - Kendu Mix",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "curtis-mayfield-now-your-re-gone",
+      "artistId": "curtis-mayfield",
+      "spotifyUrl": "https://open.spotify.com/track/78Yi6oDrD1X7VQJec5WeA7",
+      "sourceTitle": "Now You're Gone",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "curtis-mayfield-junkie-chase",
+      "artistId": "curtis-mayfield",
+      "spotifyUrl": "https://open.spotify.com/track/7s3WcewjV74UJCyyBz3bR1",
+      "sourceTitle": "Junkie Chase - Instrumental",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "curtis-mayfield-think",
+      "artistId": "curtis-mayfield",
+      "spotifyUrl": "https://open.spotify.com/track/1aPTqdBzTN7IBKYQ6VzEg9",
+      "sourceTitle": "Think - Instrumental",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "curtis-mayfield-make-me-belive-in-you",
+      "artistId": "curtis-mayfield",
+      "spotifyUrl": "https://open.spotify.com/track/1yw66ZPsfqblI4PFcEdIKe",
+      "sourceTitle": "Make Me Believe in You",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "r-kelly-same-girl-duet-with-usher",
+      "artistId": "r-kelly",
+      "spotifyUrl": "https://open.spotify.com/track/6OSmeoh8kXhCfz9WqvzDoJ",
+      "sourceTitle": "Same Girl (with Usher)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "green-day-american-eulogy-a-mass-hysteria-b-modern-world",
+      "artistId": "green-day",
+      "spotifyUrl": "https://open.spotify.com/track/3cWoilCK0SRoxrmURADU32",
+      "sourceTitle": "American Eulogy: Mass Hysteria / Modern World",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "the-beach-boys-i-get-around-little-deuce-coupe",
+      "artistId": "the-beach-boys",
+      "spotifyUrl": "https://open.spotify.com/track/0Gf7KHyE7Okqe1huhCQ0oB",
+      "sourceTitle": "I Get Around/Little Deuce Coupe - Medley / Mono / Remastered 2001",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "the-beach-boys-fall-breaks-and-back-to-winter-woody-woodpecker-symphony",
+      "artistId": "the-beach-boys",
+      "spotifyUrl": "https://open.spotify.com/track/22uNhRkimKQYk3dex36Hdl",
+      "sourceTitle": "Fall Breaks And Back To Winter - Woody Woodpecker Symphony/Remastered 2001",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "creedence-clearwater-revival-ninety-nine-and-a-half",
+      "artistId": "creedence-clearwater-revival",
+      "spotifyUrl": "https://open.spotify.com/track/7BcohpfU3yL8ORXb4plTQS",
+      "sourceTitle": "Ninety-Nine And A Half (Won't Do)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "creedence-clearwater-revival-before-you-accuse-me",
+      "artistId": "creedence-clearwater-revival",
+      "spotifyUrl": "https://open.spotify.com/track/0XdmB84JfiqDXofFXJAnxU",
+      "sourceTitle": "Before You Accuse Me (Take A Look At Yourself)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ac-dc-put-the-finger-on-you",
+      "artistId": "ac-dc",
+      "spotifyUrl": "https://open.spotify.com/track/7KGbYZv593eAMISQjYqTDT",
+      "sourceTitle": "I Put the Finger on You",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "black-sabbath-war-pigs-luke-s-wall",
+      "artistId": "black-sabbath",
+      "spotifyUrl": "https://open.spotify.com/track/0HVQuuXGAcQ2P5mBN521ae",
+      "sourceTitle": "War Pigs",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "black-sabbath-under-the-sun-every-day-comes-and-goes",
+      "artistId": "black-sabbath",
+      "spotifyUrl": "https://open.spotify.com/track/0T7zraoBpNHSqwyr40UrNN",
+      "sourceTitle": "Under the Sun - 2014 Remaster",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "bob-dylan-trying-to-get-to-heaven",
+      "artistId": "bob-dylan",
+      "spotifyUrl": "https://open.spotify.com/track/0dgdP5q0irOwAn7hEvEep1",
+      "sourceTitle": "Tryin' to Get to Heaven",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "neil-young-mother-earth-natural-anthem",
+      "artistId": "neil-young",
+      "spotifyUrl": "https://open.spotify.com/track/4TPQn1SYYuA1jC9QZEMVqq",
+      "sourceTitle": "Mother Earth",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "neil-young-falling-off-the-face-of-the-earth",
+      "artistId": "neil-young",
+      "spotifyUrl": "https://open.spotify.com/track/1jIMgsZwBnoj3EmvMst2aK",
+      "sourceTitle": "Falling off of the Face of the Earth",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "neil-young-we-don-t-smoke-it",
+      "artistId": "neil-young",
+      "spotifyUrl": "https://open.spotify.com/track/1YDDAf3HKBXLQZjqgfAyfb",
+      "sourceTitle": "We Don't Smoke It No More",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "john-coltrane-everytime-we-say-goodbye",
+      "artistId": "john-coltrane",
+      "spotifyUrl": "https://open.spotify.com/track/0QvReskpTBWwi1i9E5tL9k",
+      "sourceTitle": "Evry Time We Say Goodbye",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "john-coltrane-trane-s-slo-blues",
+      "artistId": "john-coltrane",
+      "spotifyUrl": "https://open.spotify.com/track/5GlqmiEgvboCkj3TKZYZdQ",
+      "sourceTitle": "Trane's Slow Blues",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "jimi-hendrix-hear-my-train-a-comin-acoustic-version",
+      "artistId": "jimi-hendrix",
+      "spotifyUrl": "https://open.spotify.com/track/5H7FF15O9yujsj79WGSF3w",
+      "sourceTitle": "Hear My Train A Comin' (Acoustic)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "jimi-hendrix-hear-my-train-a-comin-electric-version",
+      "artistId": "jimi-hendrix",
+      "spotifyUrl": "https://open.spotify.com/track/3cb9hcFSChrzfSEGroJ7oW",
+      "sourceTitle": "Hear My Train A Comin' (Electric)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "jimi-hendrix-the-stars-that-play-with-laughing-sam-s-dice",
+      "artistId": "jimi-hendrix",
+      "spotifyUrl": "https://open.spotify.com/track/7G15lxg6vJWT5IhV4A2Pqv",
+      "sourceTitle": "The Stars That Play With Laughing Sam's Dice - Original Mono Mix",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "david-bowie-the-jean-genie",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/436uW8l9J6gfzFXWAliFkj",
+      "sourceTitle": "The Jean Genie - Original Single Mix, 2014 Remaster",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "david-bowie-sweet-thing-reprise",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/1U0NlfB6WruahVwh6H9Gq1",
+      "sourceTitle": "Sweet Thing - Reprise; 2016 Remaster",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "david-bowie-leon-take-us-outside",
+      "artistId": "david-bowie",
+      "spotifyUrl": "https://open.spotify.com/track/2ILv2F60FSk7ZahXFbfDLs",
+      "sourceTitle": "Leon Takes Us Outside - 2021 Remaster",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "talking-heads-first-week-last-week-carefree-lp-version",
+      "artistId": "talking-heads",
+      "spotifyUrl": "https://open.spotify.com/track/2GscQnQSHd0n8GXN0JCej1",
+      "sourceTitle": "First Week / Last Week...Carefree",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "talking-heads-the-girls-want-to-be-with-the-girls",
+      "artistId": "talking-heads",
+      "spotifyUrl": "https://open.spotify.com/track/3EosA6lnwrp6hShE27mPcF",
+      "sourceTitle": "The Girl Wants to Be with the Girls",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "the-who-baby-don-t-you-do-it-new-york-record-plant-session",
+      "artistId": "the-who",
+      "spotifyUrl": "https://open.spotify.com/track/0Es9AG7uyEtCG4Y8KQSbsx",
+      "sourceTitle": "Baby Don't You Do It - New York Record Plant Session Full Version",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "the-who-behind-blue-eyes-new-york-record-plant-session",
+      "artistId": "the-who",
+      "spotifyUrl": "https://open.spotify.com/track/7FmUcSgHCZHYCRmmOvnVMe",
+      "sourceTitle": "Behind Blue Eyes - New York Record Plant Session 2003 Remix",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "the-who-cooks-country",
+      "artistId": "the-who",
+      "spotifyUrl": "https://open.spotify.com/track/7iLrLNnRTCerdY2TlOYFhg",
+      "sourceTitle": "Cooks County",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "bruce-springsteen-american-skin-41-shots",
+      "artistId": "bruce-springsteen",
+      "spotifyUrl": "https://open.spotify.com/track/4fpgB0FJiQ2bH7SVBHcT7j",
+      "sourceTitle": "American Skin (41 Shots) - Studio Version",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "ramones-daytime-dilemma",
+      "artistId": "ramones",
+      "spotifyUrl": "https://open.spotify.com/track/2ZqQF5AMPNy6txHghZW3Za",
+      "sourceTitle": "Daytime Dilemma (Dangers of Love) - 1999 Remaster",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "bjork-litli-tonlistarma-urinn",
+      "artistId": "bjork",
+      "spotifyUrl": "https://open.spotify.com/track/4uh4Ogk7kXLN7phu39TJrg",
+      "sourceTitle": "Litli Tonlistarmadurinn",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "bjork-eg-veit-ei-hva-skal-segja",
+      "artistId": "bjork",
+      "spotifyUrl": "https://open.spotify.com/track/7DEw6VpS8Tcfy2G01GfSgH",
+      "sourceTitle": "Eg Veit Ei Hvad Skal Segja",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "bjork-bornin-vi-tjornina",
+      "artistId": "bjork",
+      "spotifyUrl": "https://open.spotify.com/track/7ka4aSaaec2elzNvpe1a7s",
+      "sourceTitle": "Bornin Vid Tjornina",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "bjork-mi-vikudags",
+      "artistId": "bjork",
+      "spotifyUrl": "https://open.spotify.com/track/3hXN8eOrAX6XnNlzMIsLbQ",
+      "sourceTitle": "Miðvikudag",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "bjork-antartic-return",
+      "artistId": "bjork",
+      "spotifyUrl": "https://open.spotify.com/track/2jzm9QTElKDMU0xSozYZkn",
+      "sourceTitle": "Antarctic Return",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "pixies-vamos-surfer-rosa",
+      "artistId": "pixies",
+      "spotifyUrl": "https://open.spotify.com/track/75liGvzheM6Qkfds1oaSFk",
+      "sourceTitle": "Vamos - 2007 Remaster",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kanye-west-i-love-it",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/4S8d14HvHb70ImctNgVzQQ",
+      "sourceTitle": "I Love It (& Lil Pump)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "queen-no-one-but-you",
+      "artistId": "queen",
+      "spotifyUrl": "https://open.spotify.com/track/3ju0yKcESomUh4Lks918Sl",
+      "sourceTitle": "No One But You (Only The Good Die Young)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "beyonce-perfect-duet",
+      "artistId": "beyonce",
+      "spotifyUrl": "https://open.spotify.com/track/1bhUWB0zJMIKr9yVPrkEuI",
+      "sourceTitle": "Perfect Duet (Ed Sheeran & Beyoncé)",
+      "reason": "Reviewed title, credit and recording identity against the catalog."
+    },
+    {
+      "songId": "kanye-west-pinocchio-story-freestyle-live-from-singapore",
+      "artistId": "kanye-west",
+      "spotifyUrl": "https://open.spotify.com/track/6giHsGo1eSYZSXKdNwTC62",
+      "sourceTitle": "Pinocchio Story",
+      "reason": "Verified against the Spotify album tracklist."
+    },
+    {
+      "songId": "kanye-west-the-morning",
+      "albumId": "kanye-west-cruel-summer",
+      "sourceTitle": "The Morning"
+    },
+    {
+      "songId": "kanye-west-creepers",
+      "albumId": "kanye-west-cruel-summer",
+      "sourceTitle": "Creepers"
+    },
+    {
+      "songId": "kanye-west-higher",
+      "albumId": "kanye-west-cruel-summer",
+      "sourceTitle": "Higher"
+    },
+    {
+      "songId": "kanye-west-sin-city",
+      "albumId": "kanye-west-cruel-summer",
+      "sourceTitle": "Sin City"
+    },
+    {
+      "songId": "kanye-west-bliss",
+      "albumId": "kanye-west-cruel-summer",
+      "sourceTitle": "Bliss - Album Version (Edited)"
+    },
+    {
+      "songId": "kanye-west-skit-3",
+      "albumId": "kanye-west-late-registration",
+      "sourceTitle": "Skit #3 (Kanye West/Late Registration) - Album Version (Edited)"
+    },
+    {
+      "songId": "kanye-west-life-of-the-party",
+      "albumId": "kanye-west-donda",
+      "sourceTitle": "Life Of The Party (with André 3000)"
+    },
+    {
+      "songId": "kanye-west-isabella",
+      "albumId": "kanye-west-vultures-2",
+      "sourceTitle": "ISABELLA"
+    },
+    {
+      "songId": "kanye-west-field-trip",
+      "albumId": "kanye-west-vultures-2",
+      "sourceTitle": "FIELD TRIP"
+    }
   ]
 }

@@ -67,6 +67,7 @@ const playableCatalog = {
       kind,
       quality,
       popularity,
+      popularitySource,
       scoreSource,
       youtubeId,
       backupYoutubeId,
@@ -80,6 +81,11 @@ const playableCatalog = {
       kind,
       quality,
       popularity,
+      streamCount:
+        Number.isSafeInteger(popularitySource?.streams) &&
+        popularitySource.streams >= 0
+          ? popularitySource.streams
+          : undefined,
       scoreSource,
       youtubeId,
       backupYoutubeId,

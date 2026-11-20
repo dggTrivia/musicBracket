@@ -22,6 +22,8 @@ export interface Song {
   kind: "song" | "skit" | "interlude";
   quality: number;
   popularity: number;
+  streamCount?: number;
+  popularitySource?: { streams?: number };
   scoreSource: string;
   youtubeId?: string;
   backupYoutubeId?: string;
@@ -99,6 +101,7 @@ export interface SourceOverride {
   start?: number;
 }
 export interface Settings {
+  showSongScores?: boolean;
   appearance?: "soul" | "streaming";
   resumeSongs?: boolean;
   displayScale?: "auto" | "standard" | "large";
