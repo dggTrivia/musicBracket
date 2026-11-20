@@ -235,7 +235,9 @@
     width: 18px;
     margin-inline-end: 4px;
   }
-  [data-appearance="streaming"] .masthead .header-end {
+  [data-appearance="streaming"]
+    .masthead
+    .header-end:not(:has(.playable-share)) {
     display: none;
   }
   [data-appearance="streaming"] .header-nav {

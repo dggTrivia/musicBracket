@@ -90,6 +90,7 @@ export interface HistoryEntry {
   full: Blob;
   top?: Blob;
   result?: Run;
+  imageTheme?: boolean | "streaming";
 }
 export interface SourceOverride {
   primary?: string;

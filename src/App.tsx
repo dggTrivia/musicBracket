@@ -88,6 +88,7 @@ import {
 } from "./share";
 
 const defaults: Settings = {
+  resumeSongs: true,
   dark: false,
   pinned: false,
   hover: true,
@@ -276,6 +277,7 @@ export default function App() {
   const [resultShare, setResultShare] = useState<{
     run: Run;
     mode: ResultView;
+    theme?: ResultTheme;
   }>();
   const [resultLinkError, setResultLinkError] = useState("");
   const [resultLinkLoading, setResultLinkLoading] = useState(false);
@@ -505,15 +507,10 @@ export default function App() {
     }
   };
   const refresh = async () => {
-    setRuns(
-      (await storage.runs()).sort((a, b) =>
-        b.updatedAt.localeCompare(a.updatedAt),
-      ),
-    );
+    const saved = await storage.library();
+    setRuns(saved.runs.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)));
     setHistory(
-      (await storage.history()).sort((a, b) =>
-        b.completedAt.localeCompare(a.completedAt),
-      ),
+      saved.history.sort((a, b) => b.completedAt.localeCompare(a.completedAt)),
     );
   };
   useEffect(() => {
@@ -523,11 +520,10 @@ export default function App() {
         return r.json();
       }),
       storage.settings(),
-      storage.runs(),
-      storage.history(),
+      storage.library(),
       storage.sources(),
     ])
-      .then(([data, prefs, active, completed, overrides]) => {
+      .then(([data, prefs, savedLibrary, overrides]) => {
         const local = localStorage.getItem("musicbracket.catalog");
         const saved: Catalog | undefined = local
           ? JSON.parse(local)
@@ -571,9 +567,9 @@ export default function App() {
           };
         });
         setCatalog(c);
-        setSettings(prefs || defaults);
-        setRuns(active);
-        setHistory(completed);
+        setSettings({ ...defaults, ...prefs });
+        setRuns(savedLibrary.runs);
+        setHistory(savedLibrary.history);
         setSources(overrides);
         const a = c.artists.find((a) => a.id === "kanye-west") || c.artists[0];
         setOptions((o) => ({
@@ -699,7 +695,7 @@ export default function App() {
           following && match && following.round > match.round
             ? prepareRoundCue(settings.volume)
             : undefined;
-        await storage.saveRun(next, { existing: true });
+        await storage.saveRun(next, { previous: run });
         if (hoverTimer.current) clearTimeout(hoverTimer.current);
         setRuns((list) => list.map((r) => (r.id === next.id ? next : r)));
         setActiveSong("");
@@ -743,7 +739,10 @@ export default function App() {
       archiving.current.add(finished.id);
       try {
         const entry = await renderHistoryEntry(finished, exportTheme, sources);
-        if (!(await storage.archive(entry))) return;
+        if (!(await storage.archive(entry))) {
+          await refresh();
+          return;
+        }
         if (finished.id === runId) setWinnerRun(finished);
         setHistory((items) => [
           entry,
@@ -768,6 +767,16 @@ export default function App() {
         void archive(finished);
     }
   }, [runs, archiveFailures, archive]);
+  if (isResultLink(location.hash) || resultView?.shared) {
+    const rawTheme = new URLSearchParams(location.search).get("image");
+    return (
+      <SharedResultImage
+        result={resultView?.shared ? resultView : undefined}
+        theme={rawTheme === "streaming" ? "streaming" : rawTheme === "dark"}
+        status={resultLinkError || "Loading result image…"}
+      />
+    );
+  }
   if (error && !catalog)
     return (
       <div className="load-state">
@@ -1005,7 +1014,7 @@ export default function App() {
     if (!run || !run.picks.length) return;
     try {
       const next = undo(run);
-      await storage.saveRun(next, { existing: true });
+      await storage.saveRun(next, { previous: run });
       if (hoverTimer.current) clearTimeout(hoverTimer.current);
       setRuns((list) => list.map((r) => (r.id === next.id ? next : r)));
       setActiveSong("");
@@ -1084,18 +1093,18 @@ export default function App() {
         "musicbracket-save.json",
       );
   };
-  const shareDefinition = () => {
-    if (!run) return;
-    if (run.definition.sharedSources) {
-      setShare(run.definition);
+  const shareDefinition = (selected = run) => {
+    if (!selected) return;
+    if (selected.definition.sharedSources) {
+      setShare(selected.definition);
       return;
     }
     const currentSongs = new Map(c.songs.map((song) => [song.id, song]));
     setShare(
       challengeSnapshot(
         {
-          ...run.definition,
-          songs: run.definition.songs.map((song) => {
+          ...selected.definition,
+          songs: selected.definition.songs.map((song) => {
             const current = currentSongs.get(song.id);
             return current
               ? {
@@ -1300,6 +1309,14 @@ export default function App() {
             )}
           </nav>
           <div className="header-end">
+            {view === "game" && run && match && (
+              <button
+                className="secondary playable-share"
+                onClick={() => shareDefinition()}
+              >
+                <Play size={15} /> Share playable bracket
+              </button>
+            )}
             <span className="save-state">
               <CheckCircle2 size={14} /> Saved locally
             </span>
@@ -2027,7 +2044,7 @@ export default function App() {
                   </div>
                   <div
                     className={`matchup-grid players-${match.slots.length}`}
-                    key={match.id}
+                    key={run.id + ":" + match.id}
                   >
                     {matchSongs(run, match).map((song, i) => (
                       <section
@@ -2211,24 +2228,30 @@ export default function App() {
                     >
                       View full bracket
                     </button>
-                    <button className="secondary" onClick={shareDefinition}>
-                      <Link2 size={15} /> Share bracket
+                    <button
+                      className="secondary"
+                      onClick={() => shareDefinition()}
+                    >
+                      <Play size={15} /> Share playable bracket
                     </button>
                   </div>
                   <div className="result-downloads">
                     {resultModes(run).map((mode) => (
                       <button
                         key={mode}
-                        className="secondary"
+                        className="secondary result-share"
                         onClick={() =>
                           setResultShare({
                             run: freezeResult(run, sources),
                             mode,
+                            theme: exportTheme,
                           })
                         }
                       >
                         <Link2 size={15} /> Share{" "}
-                        {mode === "top" ? "Final 16" : "full result"}
+                        {mode === "top"
+                          ? "Final 16 image"
+                          : "full result image"}
                       </button>
                     ))}
                   </div>
@@ -2282,9 +2305,17 @@ export default function App() {
                         max={decisionCount(r.definition)}
                       />
                     </div>
-                    <button className="primary" onClick={() => resume(r)}>
-                      Resume <ArrowRight size={16} />
-                    </button>
+                    <div className="run-share-actions">
+                      <button
+                        className="secondary playable-share"
+                        onClick={() => shareDefinition(r)}
+                      >
+                        <Play size={15} /> Share playable bracket
+                      </button>
+                      <button className="primary" onClick={() => resume(r)}>
+                        Resume <ArrowRight size={16} />
+                      </button>
+                    </div>
                     <button
                       className="icon-button"
                       aria-label={`Delete ${r.definition.artist.name} run`}
@@ -2351,7 +2382,12 @@ export default function App() {
                     }
                     onShare={
                       h.result
-                        ? (mode) => setResultShare({ run: h.result!, mode })
+                        ? (mode) =>
+                            setResultShare({
+                              run: h.result!,
+                              mode,
+                              theme: h.imageTheme ?? exportTheme,
+                            })
                         : undefined
                     }
                     onDelete={() => {
@@ -2510,7 +2546,7 @@ export default function App() {
                   </span>
                   <input
                     type="checkbox"
-                    checked={settings.resumeSongs ?? false}
+                    checked={settings.resumeSongs ?? true}
                     onChange={(e) =>
                       setSettings((s) => ({
                         ...s,
@@ -2786,8 +2822,8 @@ export default function App() {
                 </p>
               </div>
               <div className="inline">
-                <button className="secondary" onClick={shareDefinition}>
-                  <Link2 size={15} /> Share bracket
+                <button className="secondary" onClick={() => shareDefinition()}>
+                  <Play size={15} /> Share playable bracket
                 </button>
                 <button
                   className="icon-button"
@@ -2835,7 +2871,11 @@ export default function App() {
           onMode={(mode) =>
             setResultView((value) => value && { ...value, mode })
           }
-          onShare={resultShare ? undefined : setResultShare}
+          onShare={
+            resultShare
+              ? undefined
+              : (result) => setResultShare({ ...result, theme: exportTheme })
+          }
           onListen={(run, song) => setListening({ run, song })}
           covered={Boolean(resultShare || listening)}
           theme={exportTheme}
@@ -3143,7 +3183,7 @@ function ShareDialog({
   onClose,
 }: {
   definition?: Definition;
-  result?: { run: Run; mode: ResultView };
+  result?: { run: Run; mode: ResultView; theme?: ResultTheme };
   onClose: () => void;
 }) {
   const [url, setUrl] = useState("");
@@ -3157,7 +3197,20 @@ function ShareDialog({
     setFailed(false);
     setMessage("");
     const link = result
-      ? createResultLink(result.run, result.mode, window.location.href)
+      ? createResultLink(result.run, result.mode, window.location.href).then(
+          (link) => {
+            const image = new URL(link);
+            image.searchParams.set(
+              "image",
+              result.theme === "streaming"
+                ? "streaming"
+                : result.theme
+                  ? "dark"
+                  : "light",
+            );
+            return image.href;
+          },
+        )
       : createChallengeLink(definition!, window.location.href);
     link.then(
       (value) => {
@@ -3183,15 +3236,15 @@ function ShareDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="share-heading"
-        className="bracket-prompt share-dialog"
+        className={`bracket-prompt share-dialog ${result ? "result-share-dialog" : ""}`}
       >
         <div className="share-heading">
           <h2 id="share-heading">
             {result
               ? result.mode === "top"
-                ? "Share Final 16"
-                : "Share full result"
-              : "Share this bracket"}
+                ? "Share Final 16 image"
+                : "Share full result image"
+              : "Share playable bracket"}
           </h2>
           <button
             className="icon-button"
@@ -3203,7 +3256,7 @@ function ShareDialog({
         </div>
         <p>
           {result
-            ? "Anyone with the link can see your picks and listen to the songs."
+            ? "Anyone with the link can view and download this result image."
             : "Your friend gets the same matchups and starts with their own picks."}
         </p>
         {local && (
@@ -3214,7 +3267,7 @@ function ShareDialog({
         )}
         {url && (
           <label className="field">
-            Bracket link
+            {result ? "Result image link" : "Playable bracket link"}
             <input
               ref={input}
               value={url}
@@ -3383,10 +3436,11 @@ function HistoryCard({
         )}
         {onShare && (
           <button
-            className="text-button"
+            className="secondary result-share"
             onClick={() => onShare(top ? "top" : "full")}
           >
-            <Link2 size={14} /> Share {top ? "Final 16" : "full result"}
+            <Link2 size={14} /> Share{" "}
+            {top ? "Final 16 image" : "full result image"}
           </button>
         )}
         <button
@@ -3406,6 +3460,71 @@ function HistoryCard({
 }
 function resultModes(run: Run): ResultView[] {
   return run.definition.songs.length > 16 ? ["full", "top"] : ["full"];
+}
+
+type ResultTheme = Parameters<typeof exportBracket>[2];
+
+function SharedResultImage({
+  result,
+  theme,
+  status,
+}: {
+  result?: { run: Run; mode: ResultView };
+  theme: ResultTheme;
+  status: string;
+}) {
+  const [image, setImage] = useState("");
+  const [failed, setFailed] = useState(false);
+  const mode =
+    result?.mode === "top" && resultModes(result.run).includes("top")
+      ? "top"
+      : "full";
+  useEffect(() => {
+    setImage("");
+    setFailed(false);
+    if (!result) return;
+    let cancelled = false;
+    let url = "";
+    exportBracket(result.run, mode, theme)
+      .then((blob) => {
+        if (cancelled) return;
+        url = URL.createObjectURL(blob);
+        setImage(url);
+      })
+      .catch(() => {
+        if (!cancelled) setFailed(true);
+      });
+    return () => {
+      cancelled = true;
+      if (url) URL.revokeObjectURL(url);
+    };
+  }, [result, mode, theme]);
+  const label = mode === "top" ? "Final 16" : "Full bracket";
+  return (
+    <main className="shared-result-image">
+      {image ? (
+        <>
+          <a
+            className="secondary result-share"
+            href={image}
+            download={mode === "top" ? "final-16.png" : "full-bracket.png"}
+          >
+            <Download size={15} /> Download PNG
+          </a>
+          <img
+            src={image}
+            alt={`${label} results for ${result?.run.definition.options.name || result?.run.definition.artist.name}`}
+          />
+        </>
+      ) : (
+        <p role="status">
+          {failed
+            ? "The result image could not be generated. Reload to try again."
+            : status}
+        </p>
+      )}
+    </main>
+  );
 }
 
 function freezeResult(run: Run, sources: Record<string, SourceOverride>) {
@@ -3571,10 +3690,10 @@ function ResultDialog({
                 ))}
               {onShare && (
                 <button
-                  className="secondary"
+                  className="secondary result-share"
                   onClick={() => onShare({ run, mode })}
                 >
-                  <Link2 size={15} /> Share result
+                  <Link2 size={15} /> Share result image
                 </button>
               )}
               <button

@@ -53,6 +53,7 @@ export async function renderHistoryEntry(
     entrantCount: run.definition.songs.length,
     full,
     top,
+    imageTheme: theme,
     result: {
       ...run,
       definition: challengeSnapshot(run.definition, {

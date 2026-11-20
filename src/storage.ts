@@ -38,19 +38,54 @@ async function remove(store: string, key: string) {
   });
 }
 export const storage = {
-  runs: () => readAll<Run>("runs"),
-  history: () => readAll<HistoryEntry>("history"),
-  saveRun: async (run: Run, { existing = false } = {}) => {
+  library: async () => {
+    const db = await database;
+    return new Promise<{ runs: Run[]; history: HistoryEntry[] }>(
+      (resolve, reject) => {
+        const tx = db.transaction(["runs", "history"], "readwrite");
+        const store = tx.objectStore("runs");
+        const runs = store.getAll();
+        const history = tx.objectStore("history").getAll();
+        let active: Run[] = [];
+        history.onsuccess = () => {
+          const archived = new Set(
+            (history.result as HistoryEntry[]).map((entry) => entry.id),
+          );
+          active = (runs.result as Run[]).filter((run) => {
+            if (!archived.has(run.id)) return true;
+            store.delete(run.id);
+            return false;
+          });
+        };
+        tx.oncomplete = () =>
+          resolve({ runs: active, history: history.result });
+        tx.onabort = () => reject(tx.error);
+      },
+    );
+  },
+  saveRun: async (run: Run, { previous }: { previous?: Run } = {}) => {
     const db = await database;
     return new Promise<void>((resolve, reject) => {
-      const tx = db.transaction("runs", "readwrite"),
+      const tx = db.transaction(["runs", "history"], "readwrite"),
         store = tx.objectStore("runs"),
-        request = store.getAll();
+        request = store.getAll(),
+        archived = tx.objectStore("history").getKey(run.id);
       let failure: string | undefined;
-      request.onsuccess = () => {
+      archived.onsuccess = () => {
         const list = request.result as Run[];
-        if (existing && !list.some((r) => r.id === run.id)) {
-          failure = "This run has been deleted.";
+        const saved = list.find((r) => r.id === run.id);
+        if (archived.result !== undefined || (previous && !saved)) {
+          failure = "This run has already been finished or deleted.";
+          tx.abort();
+          return;
+        }
+        if (
+          previous &&
+          (saved?.updatedAt !== previous.updatedAt ||
+            saved.picks.length !== previous.picks.length)
+        ) {
+          failure =
+            "This run changed in another tab. Reopen it from Active runs.";
           tx.abort();
           return;
         }
@@ -89,10 +124,12 @@ export const storage = {
     return new Promise<boolean>((resolve, reject) => {
       const tx = db.transaction(["runs", "history"], "readwrite");
       const runs = tx.objectStore("runs");
-      const request = runs.getKey(entry.id);
+      const request = runs.get(entry.id);
       let archived = false;
       request.onsuccess = () => {
-        if (request.result === undefined) return;
+        const saved = request.result as Run | undefined;
+        if (!saved || currentMatch(saved)) return;
+        if (entry.result && saved.updatedAt !== entry.result.updatedAt) return;
         archived = true;
         tx.objectStore("history").put(entry, entry.id);
         runs.delete(entry.id);

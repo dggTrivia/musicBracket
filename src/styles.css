@@ -1998,6 +1998,62 @@ progress::-webkit-progress-value {
   background: var(--paper);
   padding: clamp(16px, 3vw, 30px);
 }
+.secondary.result-share,
+.result-share-dialog .primary {
+  background: #8b422d;
+  border-color: #8b422d;
+  color: #fff9ef;
+}
+.secondary.result-share:hover,
+.result-share-dialog .primary:hover {
+  background: #6e3423;
+  border-color: #6e3423;
+  color: #fff9ef;
+}
+.run-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-inline-start: auto;
+}
+.shared-result-image {
+  width: min(100%, 100rem);
+  margin-inline: auto;
+  padding: clamp(12px, 3vw, 32px);
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+.shared-result-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.shared-result-image p {
+  justify-self: center;
+}
+@media (max-width: 720px) {
+  .masthead:has(.playable-share) {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 64px;
+    padding-block: 8px;
+    row-gap: 8px;
+  }
+  .masthead .header-end:has(.playable-share) {
+    display: flex;
+  }
+  .masthead .playable-share {
+    min-height: 36px;
+    white-space: normal;
+  }
+  .run-row .run-share-actions {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    order: 1;
+  }
+}
 .finished-result-dialog .bracket-scroll {
   max-height: 60dvh;
 }
