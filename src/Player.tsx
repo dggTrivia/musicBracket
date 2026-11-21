@@ -34,25 +34,32 @@ function loadApi() {
     });
   return api;
 }
-export function parseVideo(value: string) {
-  if (/^[\w-]{11}$/.test(value)) return value;
+export function parseVideo(input: string) {
+  const value = input.trim();
+  const videoId = /^[\w-]{11}$/;
+  if (videoId.test(value)) return value;
   try {
-    const url = new URL(value);
+    const url = new URL(value.includes("://") ? value : `https://${value}`);
     if (
+      !["https:", "http:"].includes(url.protocol) ||
       ![
         "youtube.com",
         "www.youtube.com",
         "m.youtube.com",
         "youtu.be",
+        "music.youtube.com",
+        "youtube-nocookie.com",
         "www.youtube-nocookie.com",
       ].includes(url.hostname)
     )
       return "";
-    return url.hostname === "youtu.be"
-      ? url.pathname.slice(1).split("/")[0]
-      : url.searchParams.get("v") ||
-          url.pathname.match(/\/(?:embed|shorts)\/([\w-]{11})/)?.[1] ||
+    const id =
+      url.hostname === "youtu.be"
+        ? url.pathname.slice(1).split("/")[0]
+        : url.searchParams.get("v") ||
+          url.pathname.match(/^\/(?:embed|shorts|live|v)\/([^/]+)\/?$/)?.[1] ||
           "";
+    return videoId.test(id) ? id : "";
   } catch {
     return "";
   }

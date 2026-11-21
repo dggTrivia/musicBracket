@@ -28,7 +28,8 @@ const canonicalTitle = (title) =>
       .replace(/\s*\((?:nightmare|english version|b-side)\)$/i, "")
       .replace(/\s*\(Kanye West\/Late Registration\)$/i, ""),
   );
-const key = (r) => `${r.artistId}:${canonicalTitle(r.title)}`;
+const key = (r) =>
+  r.songId ? `song:${r.songId}` : `${r.artistId}:${canonicalTitle(r.title)}`;
 const artistFilter = new Set(
   process.argv
     .slice(2)
@@ -69,6 +70,13 @@ const reviewedLinks = [
   ["abba", "No Hay a Quién Culpar (Spanish Version)", "6qmzmD4POMk"],
   ["rihanna", "If I Never See Your Face Again", "MbtajuiuLMU", "liRbwDLJgH0"],
   ["rihanna", "Love the Way You Lie, Pt. II", "1CozRvwZEAs", "OkOOLSYZNxw"],
+  [
+    "rihanna",
+    "Needed Me",
+    "38wlfeXPoZI",
+    "DWkN4eNUlJo",
+    "Both uploads reached PLAYING after a click on musicbracket.localhost:19473 on 2026-11-20.",
+  ],
   ["rihanna", "Sex with Me", "k4X9bXkKUJE", "Rr1nY2mi1uU"],
   ["frank-ocean", "A Certain Way", "uW8_KcOnPcs"],
   ["olivia-rodrigo", "lacy", "_IB5EYuz3XM"],
@@ -85,7 +93,13 @@ const reviewedLinks = [
   ["linkin-park", "The Emptiness Machine", "SRXH9AbT280"],
   ["linkin-park", "Heavy Is the Crown", "5FrhtahQiRc"],
 ];
-for (const [artistId, title, youtubeId, backupYoutubeId] of reviewedLinks) {
+for (const [
+  artistId,
+  title,
+  youtubeId,
+  backupYoutubeId,
+  verification,
+] of reviewedLinks) {
   const record = {
     artistId,
     title,
@@ -94,6 +108,7 @@ for (const [artistId, title, youtubeId, backupYoutubeId] of reviewedLinks) {
     sourceUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
     retrievedAt: new Date().toISOString().slice(0, 10),
     verification:
+      verification ??
       "Title and recording manually matched to the published video.",
   };
   if (sources.get(key(record))?.youtubeId !== youtubeId)
@@ -190,9 +205,12 @@ if (process.argv.includes("--verify")) {
   const singleKeys = new Set(
     (catalog?.songs ?? [])
       .filter((song) => song.albumIds.some((id) => id.endsWith("-singles")))
-      .flatMap((song) =>
-        song.artistIds.map((artistId) => key({ artistId, title: song.title })),
-      ),
+      .flatMap((song) => [
+        `song:${song.id}`,
+        ...song.artistIds.map((artistId) =>
+          key({ artistId, title: song.title }),
+        ),
+      ]),
   );
   const pending = [...sources.values()].filter(
       (s) =>
@@ -295,9 +313,13 @@ if (process.argv.includes("--search") && catalog) {
     Array.from({ length: concurrency }, async () => {
       while (cursor < queue.length && !stop) {
         const song = queue[cursor++];
-        const existingSource = song.artistIds
-          .map((artistId) => sources.get(key({ artistId, title: song.title })))
-          .find(Boolean);
+        const existingSource =
+          sources.get(`song:${song.id}`) ??
+          song.artistIds
+            .map((artistId) =>
+              sources.get(key({ artistId, title: song.title })),
+            )
+            .find(Boolean);
         if (
           existingSource &&
           (!existingSource.oembedStatus || existingSource.oembedStatus === 200)
@@ -426,15 +448,13 @@ if (process.argv.includes("--search") && catalog) {
               JSON.stringify({
                 artist,
                 song: song.title,
-                review: results
-                  .slice(0, 5)
-                  .map((v) => ({
-                    id: v.videoId,
-                    title: (v.title?.runs || []).map((r) => r.text).join(""),
-                    channel: (v.ownerText?.runs || [])
-                      .map((r) => r.text)
-                      .join(""),
-                  })),
+                review: results.slice(0, 5).map((v) => ({
+                  id: v.videoId,
+                  title: (v.title?.runs || []).map((r) => r.text).join(""),
+                  channel: (v.ownerText?.runs || [])
+                    .map((r) => r.text)
+                    .join(""),
+                })),
               }),
             );
           for (const candidate of candidates.slice(0, 2)) {
@@ -492,7 +512,7 @@ if (process.argv.includes("--apply") && catalog) {
   catalog = await readJson("public/catalog.json", catalog);
   let matched = 0;
   for (const song of catalog.songs) {
-    let record;
+    let record = sources.get(`song:${song.id}`);
     for (const artistId of song.artistIds)
       record ||= sources.get(key({ artistId, title: song.title }));
     if (record) {

@@ -92,6 +92,7 @@ export interface HistoryEntry {
   entrantCount: number;
   full: Blob;
   top?: Blob;
+  top8?: Blob;
   result?: Run;
   imageTheme?: boolean | "streaming";
 }

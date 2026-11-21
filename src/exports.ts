@@ -38,6 +38,10 @@ export async function renderHistoryEntry(
       run.definition.songs.length > 16
         ? await exportBracket(run, "top", theme)
         : undefined;
+  const top8 =
+    run.definition.songs.length > 8
+      ? await exportBracket(run, "top", theme, 8)
+      : undefined;
   const won = outcomes(run),
     winner = run.definition.songs.find(
       (s) => s.id === won[run.definition.matches.at(-1)!.id],
@@ -53,6 +57,7 @@ export async function renderHistoryEntry(
     entrantCount: run.definition.songs.length,
     full,
     top,
+    top8,
     imageTheme: theme,
     result: {
       ...run,

@@ -82,7 +82,6 @@ import {
   createChallengeLink,
   isChallengeLink,
   readChallengeLink,
-  createResultLink,
   readResultLink,
   isResultLink,
   type ResultView,
@@ -282,14 +281,15 @@ export default function App() {
     mode: ResultView;
     shared?: boolean;
   }>();
-  const [resultShare, setResultShare] = useState<{
-    run: Run;
-    mode: ResultView;
-    theme?: ResultTheme;
-  }>();
+  const [resultShare, setResultShare] = useState<ImageShare>();
   const [resultLinkError, setResultLinkError] = useState("");
   const [resultLinkLoading, setResultLinkLoading] = useState(false);
-  const [listening, setListening] = useState<{ run: Run; song: Song }>();
+  const [listening, setListening] = useState<{
+    run?: Run;
+    song: Song;
+    artistName?: string;
+    source?: SourceOverride;
+  }>();
   const closeResult = () => {
     setResultView(undefined);
     setResultLinkError("");
@@ -2145,9 +2145,8 @@ export default function App() {
                                   ) || song
                             }
                             source={{
-                              ...((run.definition.sharedSources ?? sources)[
-                                song.id
-                              ] || {}),
+                              ...run.definition.sharedSources?.[song.id],
+                              ...sources[song.id],
                               ...(run.definition.options.startAt40
                                 ? {
                                     start:
@@ -2277,7 +2276,7 @@ export default function App() {
                     </button>
                   </div>
                   <div className="result-downloads">
-                    {resultModes(run).map((mode) => (
+                    {imageModes(run.definition.songs.length).map((mode) => (
                       <button
                         key={mode}
                         className="secondary result-share"
@@ -2289,10 +2288,7 @@ export default function App() {
                           })
                         }
                       >
-                        <Link2 size={15} /> Share{" "}
-                        {mode === "top"
-                          ? "Final 16 image"
-                          : "full result image"}
+                        <Link2 size={15} /> Share {imageShareLabel(mode)}
                       </button>
                     ))}
                   </div>
@@ -2416,20 +2412,24 @@ export default function App() {
                   <HistoryCard
                     key={h.id}
                     entry={h}
+                    onSharePlayable={
+                      h.result ? () => shareDefinition(h.result) : undefined
+                    }
                     onOpen={
                       h.result
                         ? (mode) => setResultView({ run: h.result!, mode })
                         : undefined
                     }
-                    onShare={
-                      h.result
-                        ? (mode) =>
-                            setResultShare({
-                              run: h.result!,
+                    onShare={(mode, image) =>
+                      setResultShare(
+                        image
+                          ? { mode, image }
+                          : {
                               mode,
+                              run: h.result!,
                               theme: h.imageTheme ?? exportTheme,
-                            })
-                        : undefined
+                            },
+                      )
                     }
                     onDelete={() => {
                       if (confirm("Delete these result images?"))
@@ -2513,32 +2513,61 @@ export default function App() {
                   )
                   .slice(0, 250)
                   .map((s) => (
-                    <button
-                      className="library-row"
-                      key={s.id}
-                      onClick={() => setEditing(s)}
-                    >
+                    <div className="library-row" key={s.id}>
                       <div>
-                        <Cover song={s} albums={c.albums} />
-                        <span>
-                          <strong>{s.title}</strong>
-                          <small>
-                            {c.albums.find((a) => a.id === s.albumId)?.title}
-                            {s.kind !== "song" ? ` · ${s.kind}` : ""}
-                          </small>
-                        </span>
+                        <button
+                          type="button"
+                          className="icon-button library-play"
+                          title={`Play ${s.title}`}
+                          aria-label={`Play ${s.title}`}
+                          onClick={() =>
+                            setListening({
+                              song: s,
+                              source: sources[s.id],
+                              artistName: c.artists
+                                .filter((artist) =>
+                                  s.artistIds.includes(artist.id),
+                                )
+                                .map((artist) => artist.name)
+                                .join(" & "),
+                            })
+                          }
+                        >
+                          <Play size={14} />
+                        </button>
+                        <button
+                          type="button"
+                          className="library-song-details"
+                          onClick={() => setEditing(s)}
+                        >
+                          <Cover song={s} albums={c.albums} />
+                          <span>
+                            <strong>{s.title}</strong>
+                            <small>
+                              {c.albums.find((a) => a.id === s.albumId)?.title}
+                              {s.kind !== "song" ? ` · ${s.kind}` : ""}
+                            </small>
+                          </span>
+                        </button>
                       </div>
                       <span title={s.scoreSource}>{Math.round(s.quality)}</span>
                       <span title={s.scoreSource}>
                         {Math.round(s.popularity)}
                       </span>
                       <span>
-                        {sources[s.id]?.primary || s.youtubeId
-                          ? "Linked"
-                          : "Add link"}{" "}
-                        <ArrowRight size={13} />
+                        <button
+                          type="button"
+                          className="text-button"
+                          aria-label={`Edit video for ${s.title}`}
+                          onClick={() => setEditing(s)}
+                        >
+                          {sources[s.id]?.primary || s.youtubeId
+                            ? "Edit link"
+                            : "Add link"}
+                          <ArrowRight size={13} />
+                        </button>
                       </span>
-                    </button>
+                    </div>
                   ))}
               </div>
               <p className="field-note">
@@ -3292,13 +3321,58 @@ function MainMenu({
     </div>
   );
 }
+type ImageMode = ResultView | "top8";
+type ImageShare = { mode: ImageMode } & (
+  { image: Blob } | { run: Run; theme?: ResultTheme }
+);
+
+function imageModes(count: number): ImageMode[] {
+  return [
+    "full",
+    ...(count > 16 ? ["top" as const] : []),
+    ...(count > 8 ? ["top8" as const] : []),
+  ];
+}
+
+function imageShareLabel(mode: ImageMode) {
+  return mode === "top8"
+    ? "Final 8 image"
+    : mode === "top"
+      ? "Final 16 image"
+      : "full result image";
+}
+
+async function shareResultImage(result: ImageShare) {
+  const png =
+    "image" in result
+      ? result.image
+      : await exportBracket(
+          result.run,
+          result.mode === "full" ? "full" : "top",
+          result.theme,
+          result.mode === "top8" ? 8 : 16,
+        );
+  const response = await fetch("/api/result-images", {
+    method: "POST",
+    headers: { "Content-Type": "image/png" },
+    body: png,
+  });
+  const data = await response.json().catch(() => null);
+  if (!response.ok || !/^[a-f0-9]{32}$/.test(data?.id ?? ""))
+    throw Error(
+      data?.error ||
+        "Image links are available on the hosted site. You can still download the PNG.",
+    );
+  return new URL(`/api/result-images/${data.id}`, location.origin).href;
+}
+
 function ShareDialog({
   definition,
   result,
   onClose,
 }: {
   definition?: Definition;
-  result?: { run: Run; mode: ResultView; theme?: ResultTheme };
+  result?: ImageShare;
   onClose: () => void;
 }) {
   const [url, setUrl] = useState("");
@@ -3311,21 +3385,9 @@ function ShareDialog({
     let cancelled = false;
     setFailed(false);
     setMessage("");
+    setUrl("");
     const link = result
-      ? createResultLink(result.run, result.mode, window.location.href).then(
-          (link) => {
-            const image = new URL(link);
-            image.searchParams.set(
-              "image",
-              result.theme === "streaming"
-                ? "streaming"
-                : result.theme
-                  ? "dark"
-                  : "light",
-            );
-            return image.href;
-          },
-        )
+      ? shareResultImage(result)
       : createChallengeLink(definition!, window.location.href);
     link.then(
       (value) => {
@@ -3356,9 +3418,7 @@ function ShareDialog({
         <div className="share-heading">
           <h2 id="share-heading">
             {result
-              ? result.mode === "top"
-                ? "Share Final 16 image"
-                : "Share full result image"
+              ? `Share ${imageShareLabel(result.mode)}`
               : "Share playable bracket"}
           </h2>
           <button
@@ -3393,7 +3453,9 @@ function ShareDialog({
         )}
         {!url && !failed && (
           <p role="status" className="field-note">
-            Creating your bracket link…
+            {result
+              ? "Creating your image link…"
+              : "Creating your bracket link…"}
           </p>
         )}
         <div className="inline">
@@ -3519,17 +3581,27 @@ function HistoryCard({
   entry,
   onOpen,
   onShare,
+  onSharePlayable,
   onDelete,
 }: {
   entry: HistoryEntry;
   onOpen?: (mode: ResultView) => void;
-  onShare?: (mode: ResultView) => void;
+  onShare: (mode: ImageMode, image?: Blob) => void;
+  onSharePlayable?: () => void;
   onDelete: () => void;
 }) {
   const [url, setUrl] = useState(""),
     [showTop, setTop] = useState(true);
   const top = Boolean(entry.top && entry.entrantCount > 16 && showTop);
   const image = top ? entry.top! : entry.full;
+  const defaultName = `${entry.artist} · ${entry.entrantCount} songs`;
+  const customName = entry.result
+    ? entry.result.definition.options.name.trim()
+    : entry.name === defaultName
+      ? ""
+      : entry.name.trim();
+  const title = customName || `${entry.artist} song bracket`;
+  const Thumbnail = onOpen ? "button" : "div";
   useEffect(() => {
     const src = URL.createObjectURL(image);
     setUrl(src);
@@ -3537,29 +3609,31 @@ function HistoryCard({
   }, [image]);
   return (
     <article className="history-card">
-      <a
-        href={url}
-        target="_blank"
-        rel="noreferrer"
-        onClick={
-          onOpen
-            ? (event) => {
-                event.preventDefault();
-                onOpen(top ? "top" : "full");
-              }
-            : undefined
-        }
+      <Thumbnail
+        className="history-image"
+        onClick={onOpen ? () => onOpen(top ? "top" : "full") : undefined}
       >
         <img
-          src={url}
-          alt={`${entry.name} ${top ? "Final 16" : "full bracket"} result`}
+          src={url || undefined}
+          alt={`${title} ${top ? "Final 16" : "full bracket"} result`}
         />
-      </a>
+      </Thumbnail>
       <div className="history-description">
         <div>
-          <h2>{entry.winner}</h2>
+          <h2>{title}</h2>
+          {entry.winner && (
+            <p className="history-winner">
+              <Trophy size={14} /> {entry.winner}
+            </p>
+          )}
           <p>
-            {entry.name} · {new Date(entry.completedAt).toLocaleDateString()}
+            {customName && customName !== entry.artist
+              ? `${entry.artist} · `
+              : ""}
+            {entry.entrantCount} songs ·{" "}
+            {new Date(entry.completedAt).toLocaleDateString(undefined, {
+              dateStyle: "medium",
+            })}
           </p>
         </div>
         <button
@@ -3571,6 +3645,14 @@ function HistoryCard({
         </button>
       </div>
       <div className="history-actions">
+        {onSharePlayable && (
+          <button
+            className="secondary playable-share"
+            onClick={onSharePlayable}
+          >
+            <Play size={15} /> Share playable bracket
+          </button>
+        )}
         {onOpen && (
           <button
             className="text-button"
@@ -3584,15 +3666,32 @@ function HistoryCard({
             {top ? "Preview full bracket" : "Preview Final 16"}
           </button>
         )}
-        {onShare && (
-          <button
-            className="secondary result-share"
-            onClick={() => onShare(top ? "top" : "full")}
-          >
-            <Link2 size={14} /> Share{" "}
-            {top ? "Final 16 image" : "full result image"}
-          </button>
-        )}
+        {imageModes(entry.entrantCount)
+          .filter(
+            (mode) =>
+              mode === "full" ||
+              (mode === "top"
+                ? entry.top || entry.result
+                : entry.top8 || entry.result),
+          )
+          .map((mode) => (
+            <button
+              key={mode}
+              className="secondary result-share"
+              onClick={() =>
+                onShare(
+                  mode,
+                  mode === "top8"
+                    ? entry.top8
+                    : mode === "top"
+                      ? entry.top
+                      : entry.full,
+                )
+              }
+            >
+              <Link2 size={14} /> Share {imageShareLabel(mode)}
+            </button>
+          ))}
         <button
           className="text-button"
           onClick={() =>
@@ -3695,11 +3794,13 @@ function championSong(run: Run) {
 function ResultSong({
   run,
   song,
+  artistName,
   source,
   volume,
 }: {
-  run: Run;
+  run?: Run;
   song?: Song;
+  artistName?: string;
   source?: SourceOverride;
   volume: number;
 }) {
@@ -3709,8 +3810,8 @@ function ResultSong({
     <div className="result-song-player">
       <SongPlayer
         song={song}
-        artistName={songArtist(run.definition, song)}
-        source={source ?? run.definition.sharedSources?.[song.id] ?? {}}
+        artistName={artistName ?? (run ? songArtist(run.definition, song) : "")}
+        source={{ ...run?.definition.sharedSources?.[song.id], ...source }}
         volume={volume}
         active={active}
         onActivate={() => setActive(true)}
@@ -3722,11 +3823,15 @@ function ResultSong({
 function ListenDialog({
   run,
   song,
+  artistName,
+  source,
   volume,
   onClose,
 }: {
-  run: Run;
+  run?: Run;
   song: Song;
+  artistName?: string;
+  source?: SourceOverride;
   volume: number;
   onClose: () => void;
 }) {
@@ -3763,7 +3868,11 @@ function ListenDialog({
         <ResultSong
           key={song.id}
           run={run}
-          song={run.definition.songs.find((item) => item.id === song.id)}
+          song={
+            run?.definition.songs.find((item) => item.id === song.id) ?? song
+          }
+          artistName={artistName}
+          source={source}
           volume={volume}
         />
       </div>
@@ -4119,18 +4228,23 @@ function SourceEditor({
             <X size={22} />
           </button>
         </div>
-        <p>One preferred recording. One backup, if you need it.</p>
+        <p>
+          Video edits are saved in this browser. Paste a full YouTube link for
+          either video.
+        </p>
         <label className="field">
           YouTube link or video ID
           <input
+            inputMode="url"
             value={primary}
             onChange={(e) => setPrimary(e.target.value)}
             placeholder="https://www.youtube.com/watch?v=…"
           />
         </label>
         <label className="field">
-          Backup video <small>optional</small>
+          Backup YouTube link or video ID <small>optional</small>
           <input
+            inputMode="url"
             value={backup}
             onChange={(e) => setBackup(e.target.value)}
             placeholder="Only used if the primary fails"
@@ -4173,7 +4287,8 @@ function SourceEditor({
           </label>
         </div>
         <p className="field-note">
-          Score source: {song.scoreSource}. Changes affect new brackets only.
+          Score source: {song.scoreSource}. Score edits affect new brackets
+          only.
         </p>
         {error && (
           <p role="alert" className="form-error">
@@ -4183,12 +4298,9 @@ function SourceEditor({
         <button
           className="primary wide"
           onClick={() => {
-            const p = primary ? parseVideo(primary) : "",
-              b = backup ? parseVideo(backup) : "";
-            if (
-              (primary && !/^[\w-]{11}$/.test(p)) ||
-              (backup && !/^[\w-]{11}$/.test(b))
-            ) {
+            const p = parseVideo(primary),
+              b = parseVideo(backup);
+            if ((primary.trim() && !p) || (backup.trim() && !b)) {
               setError(
                 "Paste a valid YouTube video link or 11-character video ID.",
               );
