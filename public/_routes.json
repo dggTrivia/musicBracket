@@ -1,5 +1,10 @@
 {
   "version": 1,
-  "include": ["/api/brackets", "/api/brackets/*"],
+  "include": [
+    "/api/brackets",
+    "/api/brackets/*",
+    "/api/result-images",
+    "/api/result-images/*"
+  ],
   "exclude": []
 }
